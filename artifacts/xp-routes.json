@@ -1,0 +1,1634 @@
+{
+  "generated": "2026-08-06T23:39:28.314Z",
+  "electives": [
+    "asgarnia",
+    "desert",
+    "forinthry"
+  ],
+  "methodMatrix16x": [
+    {
+      "skill": "attack",
+      "name": "Attack",
+      "bands": [
+        {
+          "range": "1–30",
+          "method": "Low combat (chickens / cows / goblins)",
+          "xpHr": 400000,
+          "intensity": "afk"
+        },
+        {
+          "range": "30–50",
+          "method": "Early Slayer tasks (free regions)",
+          "xpHr": 1280000,
+          "intensity": "semi"
+        },
+        {
+          "range": "50–90",
+          "method": "Revolution combat camp (best free style)",
+          "xpHr": 5040000,
+          "intensity": "afk"
+        },
+        {
+          "range": "90–99",
+          "method": "High Slayer / reaper / ED trash",
+          "xpHr": 7200000,
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "strength",
+      "name": "Strength",
+      "bands": [
+        {
+          "range": "1–30",
+          "method": "Low combat (chickens / cows / goblins)",
+          "xpHr": 400000,
+          "intensity": "afk"
+        },
+        {
+          "range": "30–50",
+          "method": "Early Slayer tasks (free regions)",
+          "xpHr": 1280000,
+          "intensity": "semi"
+        },
+        {
+          "range": "50–90",
+          "method": "Revolution combat camp (best free style)",
+          "xpHr": 5600000,
+          "intensity": "afk"
+        },
+        {
+          "range": "90–99",
+          "method": "High Slayer / reaper / ED trash",
+          "xpHr": 7200000,
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "defence",
+      "name": "Defence",
+      "bands": [
+        {
+          "range": "1–30",
+          "method": "Low combat (chickens / cows / goblins)",
+          "xpHr": 160000,
+          "intensity": "afk"
+        },
+        {
+          "range": "30–50",
+          "method": "Early Slayer tasks (free regions)",
+          "xpHr": 640000,
+          "intensity": "semi"
+        },
+        {
+          "range": "50–90",
+          "method": "Revolution combat camp (best free style)",
+          "xpHr": 2800000,
+          "intensity": "afk"
+        },
+        {
+          "range": "90–99",
+          "method": "High Slayer / reaper / ED trash",
+          "xpHr": 3600000,
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "ranged",
+      "name": "Ranged",
+      "bands": [
+        {
+          "range": "1–50",
+          "method": "Early ranged combat (cows / hill giants)",
+          "xpHr": 640000,
+          "intensity": "afk"
+        },
+        {
+          "range": "50–99",
+          "method": "Ranged Slayer / chinning-style packs",
+          "xpHr": 6400000,
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "prayer",
+      "name": "Prayer",
+      "bands": [
+        {
+          "range": "1–70",
+          "method": "Bones on altar / gilded",
+          "xpHr": 6400000,
+          "intensity": "clicky"
+        },
+        {
+          "range": "70–99",
+          "method": "Powder of burials / high bones",
+          "xpHr": 19200000,
+          "intensity": "clicky"
+        }
+      ]
+    },
+    {
+      "skill": "magic",
+      "name": "Magic",
+      "bands": [
+        {
+          "range": "1–50",
+          "method": "Early magic combat / splash→strike",
+          "xpHr": 560000,
+          "intensity": "afk"
+        },
+        {
+          "range": "50–99",
+          "method": "Magic combat / burst tasks",
+          "xpHr": 6080000,
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "constitution",
+      "name": "Constitution",
+      "bands": [
+        {
+          "range": "1–30",
+          "method": "Early ranged combat (cows / hill giants)",
+          "xpHr": 192000,
+          "intensity": "afk"
+        },
+        {
+          "range": "30–50",
+          "method": "Early Slayer tasks (free regions)",
+          "xpHr": 512000,
+          "intensity": "semi"
+        },
+        {
+          "range": "50–70",
+          "method": "Ranged Slayer / chinning-style packs",
+          "xpHr": 2560000,
+          "intensity": "semi"
+        },
+        {
+          "range": "70–99",
+          "method": "Necro combat / Rasial attempts",
+          "xpHr": 3360000,
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "necromancy",
+      "name": "Necromancy",
+      "bands": [
+        {
+          "range": "1–30",
+          "method": "Necro quests + ritual ladder",
+          "xpHr": 1920000,
+          "intensity": "semi"
+        },
+        {
+          "range": "30–70",
+          "method": "Rituals (efficient)",
+          "xpHr": 8000000,
+          "intensity": "semi"
+        },
+        {
+          "range": "70–120",
+          "method": "Necro combat / Rasial attempts",
+          "xpHr": 9600000,
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "slayer",
+      "name": "Slayer",
+      "bands": [
+        {
+          "range": "30–50",
+          "method": "Early Slayer tasks (free regions)",
+          "xpHr": 448000,
+          "intensity": "semi"
+        },
+        {
+          "range": "50–90",
+          "method": "Ranged Slayer / chinning-style packs",
+          "xpHr": 1920000,
+          "intensity": "semi"
+        },
+        {
+          "range": "90–99",
+          "method": "High Slayer / reaper / ED trash",
+          "xpHr": 2520000,
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "summoning",
+      "name": "Summoning",
+      "bands": [
+        {
+          "range": "1–99",
+          "method": "Charming + pouches (best available)",
+          "xpHr": 12800000,
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "agility",
+      "name": "Agility",
+      "bands": [
+        {
+          "range": "1–50",
+          "method": "Gnome → Draynor → Varrock courses",
+          "xpHr": 480000,
+          "intensity": "clicky"
+        },
+        {
+          "range": "50–99",
+          "method": "Advanced courses / best unlocked",
+          "xpHr": 1920000,
+          "intensity": "clicky"
+        }
+      ]
+    },
+    {
+      "skill": "thieving",
+      "name": "Thieving",
+      "bands": [
+        {
+          "range": "1–50",
+          "method": "Pickpocket men → stalls",
+          "xpHr": 640000,
+          "intensity": "semi"
+        },
+        {
+          "range": "50–99",
+          "method": "Safecracking / dwarves / best",
+          "xpHr": 5600000,
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "hunter",
+      "name": "Hunter",
+      "bands": [
+        {
+          "range": "1–50",
+          "method": "Bird snares → deadfall",
+          "xpHr": 800000,
+          "intensity": "semi"
+        },
+        {
+          "range": "50–90",
+          "method": "Grenwalls / box traps mid",
+          "xpHr": 2880000,
+          "intensity": "semi"
+        },
+        {
+          "range": "90–99",
+          "method": "Best high Hunter (proteans / Big Game)",
+          "xpHr": 6400000,
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "mining",
+      "name": "Mining",
+      "bands": [
+        {
+          "range": "1–30",
+          "method": "Copper/tin → iron",
+          "xpHr": 480000,
+          "intensity": "afk"
+        },
+        {
+          "range": "30–70",
+          "method": "Coal / mithril",
+          "xpHr": 1280000,
+          "intensity": "afk"
+        },
+        {
+          "range": "70–90",
+          "method": "Orthen / high-tier rocks",
+          "xpHr": 4000000,
+          "intensity": "semi"
+        },
+        {
+          "range": "90–110",
+          "method": "Primal / late ore (best unlocked)",
+          "xpHr": 6400000,
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "fishing",
+      "name": "Fishing",
+      "bands": [
+        {
+          "range": "1–50",
+          "method": "Shrimp → trout/salmon",
+          "xpHr": 560000,
+          "intensity": "afk"
+        },
+        {
+          "range": "50–90",
+          "method": "Lobsters → sharks / cavefish",
+          "xpHr": 1440000,
+          "intensity": "afk"
+        },
+        {
+          "range": "90–99",
+          "method": "Swarm / best late method",
+          "xpHr": 4000000,
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "woodcutting",
+      "name": "Woodcutting",
+      "bands": [
+        {
+          "range": "1–50",
+          "method": "Trees → oaks → willows",
+          "xpHr": 640000,
+          "intensity": "afk"
+        },
+        {
+          "range": "50–90",
+          "method": "Maples / yews / magic",
+          "xpHr": 1920000,
+          "intensity": "afk"
+        },
+        {
+          "range": "90–110",
+          "method": "Crystal / incandescent / best tree",
+          "xpHr": 4800000,
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "farming",
+      "name": "Farming",
+      "bands": [
+        {
+          "range": "1–120",
+          "method": "Herb + tree runs (passive)",
+          "xpHr": 2400000,
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "divination",
+      "name": "Divination",
+      "bands": [
+        {
+          "range": "1–70",
+          "method": "Wisps ladder (pale → luminous)",
+          "xpHr": 960000,
+          "intensity": "afk"
+        },
+        {
+          "range": "70–99",
+          "method": "Incandescent / best wisp",
+          "xpHr": 3200000,
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "archaeology",
+      "name": "Archaeology",
+      "bands": [
+        {
+          "range": "1–70",
+          "method": "Arch tutorial + early sites",
+          "xpHr": 1600000,
+          "intensity": "semi"
+        },
+        {
+          "range": "70–120",
+          "method": "High-tier excavation",
+          "xpHr": 5600000,
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "cooking",
+      "name": "Cooking",
+      "bands": [
+        {
+          "range": "1–90",
+          "method": "Cook fish ladder",
+          "xpHr": 3200000,
+          "intensity": "afk"
+        },
+        {
+          "range": "90–99",
+          "method": "High fish / rocktails / best",
+          "xpHr": 7200000,
+          "intensity": "afk"
+        }
+      ]
+    },
+    {
+      "skill": "firemaking",
+      "name": "Firemaking",
+      "bands": [
+        {
+          "range": "1–90",
+          "method": "Burn logs ladder",
+          "xpHr": 4800000,
+          "intensity": "semi"
+        },
+        {
+          "range": "90–99",
+          "method": "Incinerator / high FM",
+          "xpHr": 11200000,
+          "intensity": "clicky"
+        }
+      ]
+    },
+    {
+      "skill": "crafting",
+      "name": "Crafting",
+      "bands": [
+        {
+          "range": "1–70",
+          "method": "Leather / jewellery early",
+          "xpHr": 1280000,
+          "intensity": "semi"
+        },
+        {
+          "range": "70–99",
+          "method": "Urns / glass / high craft",
+          "xpHr": 5600000,
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "fletching",
+      "name": "Fletching",
+      "bands": [
+        {
+          "range": "1–70",
+          "method": "Arrows / bows ladder",
+          "xpHr": 2400000,
+          "intensity": "afk"
+        },
+        {
+          "range": "70–99",
+          "method": "Broad arrows / high fletch",
+          "xpHr": 9600000,
+          "intensity": "afk"
+        }
+      ]
+    },
+    {
+      "skill": "smithing",
+      "name": "Smithing",
+      "bands": [
+        {
+          "range": "1–50",
+          "method": "Bronze → steel smithing",
+          "xpHr": 1280000,
+          "intensity": "semi"
+        },
+        {
+          "range": "50–110",
+          "method": "Corrupted / burial / best smith",
+          "xpHr": 8000000,
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "herblore",
+      "name": "Herblore",
+      "bands": [
+        {
+          "range": "1–70",
+          "method": "Clean herbs + early potions",
+          "xpHr": 3200000,
+          "intensity": "clicky"
+        },
+        {
+          "range": "70–120",
+          "method": "Overloads / combination potions",
+          "xpHr": 12800000,
+          "intensity": "clicky"
+        }
+      ]
+    },
+    {
+      "skill": "runecrafting",
+      "name": "Runecrafting",
+      "bands": [
+        {
+          "range": "1–70",
+          "method": "Air → pure ess ladders",
+          "xpHr": 800000,
+          "intensity": "semi"
+        },
+        {
+          "range": "70–110",
+          "method": "Abyss / soul / best RC",
+          "xpHr": 4000000,
+          "intensity": "clicky"
+        }
+      ]
+    },
+    {
+      "skill": "construction",
+      "name": "Construction",
+      "bands": [
+        {
+          "range": "1–99",
+          "method": "Plank make + flatpacks",
+          "xpHr": 8000000,
+          "intensity": "clicky"
+        }
+      ]
+    },
+    {
+      "skill": "dungeoneering",
+      "name": "Dungeoneering",
+      "bands": [
+        {
+          "range": "1–120",
+          "method": "DG floors / Sinkholes / ED",
+          "xpHr": 6400000,
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "invention",
+      "name": "Invention",
+      "bands": [
+        {
+          "range": "1–120",
+          "method": "Disassemble + siphon (post-80s)",
+          "xpHr": 4800000,
+          "intensity": "semi"
+        }
+      ]
+    }
+  ],
+  "hoursToCap16x": [
+    {
+      "skill": "farming",
+      "name": "Farming",
+      "to": 120,
+      "hours": 43.45,
+      "peakXpHr": 2400000,
+      "lateMethod": "Herb + tree runs (passive)",
+      "steps": [
+        {
+          "from": 1,
+          "to": 120,
+          "hours": 43.45,
+          "xpHr": 2400000,
+          "method": "Herb + tree runs (passive)",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "invention",
+      "name": "Invention",
+      "to": 120,
+      "hours": 21.72,
+      "peakXpHr": 4800000,
+      "lateMethod": "Disassemble + siphon (post-80s)",
+      "steps": [
+        {
+          "from": 1,
+          "to": 120,
+          "hours": 21.72,
+          "xpHr": 4800000,
+          "method": "Disassemble + siphon (post-80s)",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "archaeology",
+      "name": "Archaeology",
+      "to": 120,
+      "hours": 18.95,
+      "peakXpHr": 5600000,
+      "lateMethod": "High-tier excavation",
+      "steps": [
+        {
+          "from": 1,
+          "to": 70,
+          "hours": 0.46,
+          "xpHr": 1600000,
+          "method": "Arch tutorial + early sites",
+          "intensity": "semi"
+        },
+        {
+          "from": 70,
+          "to": 120,
+          "hours": 18.49,
+          "xpHr": 5600000,
+          "method": "High-tier excavation",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "dungeoneering",
+      "name": "Dungeoneering",
+      "to": 120,
+      "hours": 16.29,
+      "peakXpHr": 6400000,
+      "lateMethod": "DG floors / Sinkholes / ED",
+      "steps": [
+        {
+          "from": 1,
+          "to": 120,
+          "hours": 16.29,
+          "xpHr": 6400000,
+          "method": "DG floors / Sinkholes / ED",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "necromancy",
+      "name": "Necromancy",
+      "to": 120,
+      "hours": 10.88,
+      "peakXpHr": 9600000,
+      "lateMethod": "Necro combat / Rasial attempts",
+      "steps": [
+        {
+          "from": 1,
+          "to": 20,
+          "hours": 0,
+          "xpHr": 1920000,
+          "method": "Necro quests + ritual ladder",
+          "intensity": "semi"
+        },
+        {
+          "from": 20,
+          "to": 70,
+          "hours": 0.09,
+          "xpHr": 8000000,
+          "method": "Rituals (efficient)",
+          "intensity": "semi"
+        },
+        {
+          "from": 70,
+          "to": 120,
+          "hours": 10.78,
+          "xpHr": 9600000,
+          "method": "Necro combat / Rasial attempts",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "runecrafting",
+      "name": "Runecrafting",
+      "to": 110,
+      "hours": 10.42,
+      "peakXpHr": 4000000,
+      "lateMethod": "Abyss / soul / best RC",
+      "steps": [
+        {
+          "from": 1,
+          "to": 70,
+          "hours": 0.92,
+          "xpHr": 800000,
+          "method": "Air → pure ess ladders",
+          "intensity": "semi"
+        },
+        {
+          "from": 70,
+          "to": 110,
+          "hours": 9.5,
+          "xpHr": 4000000,
+          "method": "Abyss / soul / best RC",
+          "intensity": "clicky"
+        }
+      ]
+    },
+    {
+      "skill": "woodcutting",
+      "name": "Woodcutting",
+      "to": 110,
+      "hours": 8.73,
+      "peakXpHr": 4800000,
+      "lateMethod": "Crystal / incandescent / best tree",
+      "steps": [
+        {
+          "from": 1,
+          "to": 40,
+          "hours": 0.06,
+          "xpHr": 640000,
+          "method": "Trees → oaks → willows",
+          "intensity": "afk"
+        },
+        {
+          "from": 40,
+          "to": 80,
+          "hours": 1.02,
+          "xpHr": 1920000,
+          "method": "Maples / yews / magic",
+          "intensity": "afk"
+        },
+        {
+          "from": 80,
+          "to": 110,
+          "hours": 7.66,
+          "xpHr": 4800000,
+          "method": "Crystal / incandescent / best tree",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "herblore",
+      "name": "Herblore",
+      "to": 120,
+      "hours": 8.32,
+      "peakXpHr": 12800000,
+      "lateMethod": "Overloads / combination potions",
+      "steps": [
+        {
+          "from": 1,
+          "to": 70,
+          "hours": 0.23,
+          "xpHr": 3200000,
+          "method": "Clean herbs + early potions",
+          "intensity": "clicky"
+        },
+        {
+          "from": 70,
+          "to": 120,
+          "hours": 8.09,
+          "xpHr": 12800000,
+          "method": "Overloads / combination potions",
+          "intensity": "clicky"
+        }
+      ]
+    },
+    {
+      "skill": "agility",
+      "name": "Agility",
+      "to": 99,
+      "hours": 6.95,
+      "peakXpHr": 1920000,
+      "lateMethod": "Advanced courses / best unlocked",
+      "steps": [
+        {
+          "from": 1,
+          "to": 50,
+          "hours": 0.21,
+          "xpHr": 480000,
+          "method": "Gnome → Draynor → Varrock courses",
+          "intensity": "clicky"
+        },
+        {
+          "from": 50,
+          "to": 99,
+          "hours": 6.74,
+          "xpHr": 1920000,
+          "method": "Advanced courses / best unlocked",
+          "intensity": "clicky"
+        }
+      ]
+    },
+    {
+      "skill": "mining",
+      "name": "Mining",
+      "to": 110,
+      "hours": 6.62,
+      "peakXpHr": 6400000,
+      "lateMethod": "Primal / late ore (best unlocked)",
+      "steps": [
+        {
+          "from": 1,
+          "to": 30,
+          "hours": 0.03,
+          "xpHr": 480000,
+          "method": "Copper/tin → iron",
+          "intensity": "afk"
+        },
+        {
+          "from": 30,
+          "to": 61,
+          "hours": 0.23,
+          "xpHr": 1280000,
+          "method": "Coal / mithril",
+          "intensity": "afk"
+        },
+        {
+          "from": 70,
+          "to": 90,
+          "hours": 1.15,
+          "xpHr": 4000000,
+          "method": "Orthen / high-tier rocks",
+          "intensity": "semi"
+        },
+        {
+          "from": 90,
+          "to": 110,
+          "hours": 5.22,
+          "xpHr": 6400000,
+          "method": "Primal / late ore (best unlocked)",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "slayer",
+      "name": "Slayer",
+      "to": 120,
+      "hours": 6.41,
+      "peakXpHr": 2520000,
+      "lateMethod": "High Slayer / reaper / ED trash",
+      "steps": [
+        {
+          "from": 30,
+          "to": 40,
+          "hours": 0.05,
+          "xpHr": 448000,
+          "method": "Early Slayer tasks (free regions)",
+          "intensity": "semi"
+        },
+        {
+          "from": 40,
+          "to": 90,
+          "hours": 2.77,
+          "xpHr": 1920000,
+          "method": "Ranged Slayer / chinning-style packs",
+          "intensity": "semi"
+        },
+        {
+          "from": 90,
+          "to": 100,
+          "hours": 3.59,
+          "xpHr": 2520000,
+          "method": "High Slayer / reaper / ED trash",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "smithing",
+      "name": "Smithing",
+      "to": 110,
+      "hours": 4.91,
+      "peakXpHr": 8000000,
+      "lateMethod": "Corrupted / burial / best smith",
+      "steps": [
+        {
+          "from": 1,
+          "to": 50,
+          "hours": 0.08,
+          "xpHr": 1280000,
+          "method": "Bronze → steel smithing",
+          "intensity": "semi"
+        },
+        {
+          "from": 50,
+          "to": 110,
+          "hours": 4.83,
+          "xpHr": 8000000,
+          "method": "Corrupted / burial / best smith",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "divination",
+      "name": "Divination",
+      "to": 99,
+      "hours": 4.61,
+      "peakXpHr": 3200000,
+      "lateMethod": "Incandescent / best wisp",
+      "steps": [
+        {
+          "from": 1,
+          "to": 70,
+          "hours": 0.77,
+          "xpHr": 960000,
+          "method": "Wisps ladder (pale → luminous)",
+          "intensity": "afk"
+        },
+        {
+          "from": 70,
+          "to": 99,
+          "hours": 3.84,
+          "xpHr": 3200000,
+          "method": "Incandescent / best wisp",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "fishing",
+      "name": "Fishing",
+      "to": 99,
+      "hours": 4.18,
+      "peakXpHr": 4000000,
+      "lateMethod": "Swarm / best late method",
+      "steps": [
+        {
+          "from": 1,
+          "to": 40,
+          "hours": 0.07,
+          "xpHr": 560000,
+          "method": "Shrimp → trout/salmon",
+          "intensity": "afk"
+        },
+        {
+          "from": 40,
+          "to": 80,
+          "hours": 1.35,
+          "xpHr": 1440000,
+          "method": "Lobsters → sharks / cavefish",
+          "intensity": "afk"
+        },
+        {
+          "from": 80,
+          "to": 99,
+          "hours": 2.76,
+          "xpHr": 4000000,
+          "method": "Swarm / best late method",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "defence",
+      "name": "Defence",
+      "to": 99,
+      "hours": 4.16,
+      "peakXpHr": 3600000,
+      "lateMethod": "High Slayer / reaper / ED trash",
+      "steps": [
+        {
+          "from": 1,
+          "to": 30,
+          "hours": 0.08,
+          "xpHr": 160000,
+          "method": "Low combat (chickens / cows / goblins)",
+          "intensity": "afk"
+        },
+        {
+          "from": 30,
+          "to": 40,
+          "hours": 0.04,
+          "xpHr": 640000,
+          "method": "Early Slayer tasks (free regions)",
+          "intensity": "semi"
+        },
+        {
+          "from": 40,
+          "to": 50,
+          "hours": 0.03,
+          "xpHr": 1920000,
+          "method": "Ranged Slayer / chinning-style packs",
+          "intensity": "semi"
+        },
+        {
+          "from": 50,
+          "to": 90,
+          "hours": 1.87,
+          "xpHr": 2800000,
+          "method": "Revolution combat camp (best free style)",
+          "intensity": "afk"
+        },
+        {
+          "from": 90,
+          "to": 99,
+          "hours": 2.14,
+          "xpHr": 3600000,
+          "method": "High Slayer / reaper / ED trash",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "constitution",
+      "name": "Constitution",
+      "to": 99,
+      "hours": 4.05,
+      "peakXpHr": 3360000,
+      "lateMethod": "Necro combat / Rasial attempts",
+      "steps": [
+        {
+          "from": 1,
+          "to": 30,
+          "hours": 0.07,
+          "xpHr": 192000,
+          "method": "Early ranged combat (cows / hill giants)",
+          "intensity": "afk"
+        },
+        {
+          "from": 30,
+          "to": 40,
+          "hours": 0.05,
+          "xpHr": 512000,
+          "method": "Early Slayer tasks (free regions)",
+          "intensity": "semi"
+        },
+        {
+          "from": 40,
+          "to": 70,
+          "hours": 0.27,
+          "xpHr": 2560000,
+          "method": "Ranged Slayer / chinning-style packs",
+          "intensity": "semi"
+        },
+        {
+          "from": 70,
+          "to": 99,
+          "hours": 3.66,
+          "xpHr": 3360000,
+          "method": "Necro combat / Rasial attempts",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "hunter",
+      "name": "Hunter",
+      "to": 99,
+      "hours": 2.51,
+      "peakXpHr": 6400000,
+      "lateMethod": "Best high Hunter (proteans / Big Game)",
+      "steps": [
+        {
+          "from": 1,
+          "to": 50,
+          "hours": 0.13,
+          "xpHr": 800000,
+          "method": "Bird snares → deadfall",
+          "intensity": "semi"
+        },
+        {
+          "from": 50,
+          "to": 80,
+          "hours": 0.65,
+          "xpHr": 2880000,
+          "method": "Grenwalls / box traps mid",
+          "intensity": "semi"
+        },
+        {
+          "from": 80,
+          "to": 99,
+          "hours": 1.73,
+          "xpHr": 6400000,
+          "method": "Best high Hunter (proteans / Big Game)",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "crafting",
+      "name": "Crafting",
+      "to": 99,
+      "hours": 2.49,
+      "peakXpHr": 5600000,
+      "lateMethod": "Urns / glass / high craft",
+      "steps": [
+        {
+          "from": 1,
+          "to": 60,
+          "hours": 0.21,
+          "xpHr": 1280000,
+          "method": "Leather / jewellery early",
+          "intensity": "semi"
+        },
+        {
+          "from": 60,
+          "to": 99,
+          "hours": 2.28,
+          "xpHr": 5600000,
+          "method": "Urns / glass / high craft",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "thieving",
+      "name": "Thieving",
+      "to": 99,
+      "hours": 2.47,
+      "peakXpHr": 5600000,
+      "lateMethod": "Safecracking / dwarves / best",
+      "steps": [
+        {
+          "from": 1,
+          "to": 50,
+          "hours": 0.16,
+          "xpHr": 640000,
+          "method": "Pickpocket men → stalls",
+          "intensity": "semi"
+        },
+        {
+          "from": 50,
+          "to": 99,
+          "hours": 2.31,
+          "xpHr": 5600000,
+          "method": "Safecracking / dwarves / best",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "attack",
+      "name": "Attack",
+      "to": 99,
+      "hours": 2.21,
+      "peakXpHr": 7200000,
+      "lateMethod": "High Slayer / reaper / ED trash",
+      "steps": [
+        {
+          "from": 1,
+          "to": 30,
+          "hours": 0.03,
+          "xpHr": 400000,
+          "method": "Low combat (chickens / cows / goblins)",
+          "intensity": "afk"
+        },
+        {
+          "from": 30,
+          "to": 50,
+          "hours": 0.07,
+          "xpHr": 1280000,
+          "method": "Early Slayer tasks (free regions)",
+          "intensity": "semi"
+        },
+        {
+          "from": 50,
+          "to": 90,
+          "hours": 1.04,
+          "xpHr": 5040000,
+          "method": "Revolution combat camp (best free style)",
+          "intensity": "afk"
+        },
+        {
+          "from": 90,
+          "to": 99,
+          "hours": 1.07,
+          "xpHr": 7200000,
+          "method": "High Slayer / reaper / ED trash",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "magic",
+      "name": "Magic",
+      "to": 99,
+      "hours": 2.2,
+      "peakXpHr": 6080000,
+      "lateMethod": "Magic combat / burst tasks",
+      "steps": [
+        {
+          "from": 1,
+          "to": 40,
+          "hours": 0.07,
+          "xpHr": 560000,
+          "method": "Early magic combat / splash→strike",
+          "intensity": "afk"
+        },
+        {
+          "from": 40,
+          "to": 99,
+          "hours": 2.14,
+          "xpHr": 6080000,
+          "method": "Magic combat / burst tasks",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "cooking",
+      "name": "Cooking",
+      "to": 99,
+      "hours": 2.16,
+      "peakXpHr": 7200000,
+      "lateMethod": "High fish / rocktails / best",
+      "steps": [
+        {
+          "from": 1,
+          "to": 80,
+          "hours": 0.62,
+          "xpHr": 3200000,
+          "method": "Cook fish ladder",
+          "intensity": "afk"
+        },
+        {
+          "from": 80,
+          "to": 99,
+          "hours": 1.53,
+          "xpHr": 7200000,
+          "method": "High fish / rocktails / best",
+          "intensity": "afk"
+        }
+      ]
+    },
+    {
+      "skill": "strength",
+      "name": "Strength",
+      "to": 99,
+      "hours": 2.11,
+      "peakXpHr": 7200000,
+      "lateMethod": "High Slayer / reaper / ED trash",
+      "steps": [
+        {
+          "from": 1,
+          "to": 30,
+          "hours": 0.03,
+          "xpHr": 400000,
+          "method": "Low combat (chickens / cows / goblins)",
+          "intensity": "afk"
+        },
+        {
+          "from": 30,
+          "to": 50,
+          "hours": 0.07,
+          "xpHr": 1280000,
+          "method": "Early Slayer tasks (free regions)",
+          "intensity": "semi"
+        },
+        {
+          "from": 50,
+          "to": 90,
+          "hours": 0.94,
+          "xpHr": 5600000,
+          "method": "Revolution combat camp (best free style)",
+          "intensity": "afk"
+        },
+        {
+          "from": 90,
+          "to": 99,
+          "hours": 1.07,
+          "xpHr": 7200000,
+          "method": "High Slayer / reaper / ED trash",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "ranged",
+      "name": "Ranged",
+      "to": 99,
+      "hours": 2.09,
+      "peakXpHr": 6400000,
+      "lateMethod": "Ranged Slayer / chinning-style packs",
+      "steps": [
+        {
+          "from": 1,
+          "to": 40,
+          "hours": 0.06,
+          "xpHr": 640000,
+          "method": "Early ranged combat (cows / hill giants)",
+          "intensity": "afk"
+        },
+        {
+          "from": 40,
+          "to": 99,
+          "hours": 2.03,
+          "xpHr": 6400000,
+          "method": "Ranged Slayer / chinning-style packs",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "firemaking",
+      "name": "Firemaking",
+      "to": 99,
+      "hours": 1.8,
+      "peakXpHr": 11200000,
+      "lateMethod": "Incinerator / high FM",
+      "steps": [
+        {
+          "from": 1,
+          "to": 90,
+          "hours": 1.11,
+          "xpHr": 4800000,
+          "method": "Burn logs ladder",
+          "intensity": "semi"
+        },
+        {
+          "from": 90,
+          "to": 99,
+          "hours": 0.69,
+          "xpHr": 11200000,
+          "method": "Incinerator / high FM",
+          "intensity": "clicky"
+        }
+      ]
+    },
+    {
+      "skill": "construction",
+      "name": "Construction",
+      "to": 99,
+      "hours": 1.63,
+      "peakXpHr": 8000000,
+      "lateMethod": "Plank make + flatpacks",
+      "steps": [
+        {
+          "from": 1,
+          "to": 99,
+          "hours": 1.63,
+          "xpHr": 8000000,
+          "method": "Plank make + flatpacks",
+          "intensity": "clicky"
+        }
+      ]
+    },
+    {
+      "skill": "fletching",
+      "name": "Fletching",
+      "to": 99,
+      "hours": 1.59,
+      "peakXpHr": 9600000,
+      "lateMethod": "Broad arrows / high fletch",
+      "steps": [
+        {
+          "from": 1,
+          "to": 70,
+          "hours": 0.31,
+          "xpHr": 2400000,
+          "method": "Arrows / bows ladder",
+          "intensity": "afk"
+        },
+        {
+          "from": 70,
+          "to": 99,
+          "hours": 1.28,
+          "xpHr": 9600000,
+          "method": "Broad arrows / high fletch",
+          "intensity": "afk"
+        }
+      ]
+    },
+    {
+      "skill": "summoning",
+      "name": "Summoning",
+      "to": 99,
+      "hours": 1.02,
+      "peakXpHr": 12800000,
+      "lateMethod": "Charming + pouches (best available)",
+      "steps": [
+        {
+          "from": 1,
+          "to": 99,
+          "hours": 1.02,
+          "xpHr": 12800000,
+          "method": "Charming + pouches (best available)",
+          "intensity": "semi"
+        }
+      ]
+    },
+    {
+      "skill": "prayer",
+      "name": "Prayer",
+      "to": 99,
+      "hours": 0.76,
+      "peakXpHr": 19200000,
+      "lateMethod": "Powder of burials / high bones",
+      "steps": [
+        {
+          "from": 1,
+          "to": 70,
+          "hours": 0.12,
+          "xpHr": 6400000,
+          "method": "Bones on altar / gilded",
+          "intensity": "clicky"
+        },
+        {
+          "from": 70,
+          "to": 99,
+          "hours": 0.64,
+          "xpHr": 19200000,
+          "method": "Powder of burials / high bones",
+          "intensity": "clicky"
+        }
+      ]
+    }
+  ],
+  "sequentialSumHours": 205.7,
+  "phasedRoute": [
+    {
+      "id": "p1-free",
+      "title": "Phase 1 — Free regions (Misthalin / Havenhythe / Karamja)",
+      "goal": "Unlock first blessings, Rasial attempts, early 70s combat",
+      "estimatedHours": 1.5,
+      "relicTier": 1,
+      "electives": [],
+      "priorities": [
+        {
+          "skill": "Necromancy",
+          "to": 80,
+          "method": "Necro quests + ritual ladder",
+          "why": "Weapons + style for winning builds"
+        },
+        {
+          "skill": "Slayer / combat",
+          "to": 70,
+          "method": "Early Slayer tasks",
+          "why": "League points + charms + supplies"
+        },
+        {
+          "skill": "Herblore",
+          "to": 70,
+          "method": "Clean herbs + early potions",
+          "why": "Overloads later; start herb bank now"
+        },
+        {
+          "skill": "Prayer",
+          "to": 70,
+          "method": "Bones on altar / gilded",
+          "why": "Curses / damage prayers"
+        },
+        {
+          "skill": "Farming",
+          "to": 50,
+          "method": "Herb + tree runs",
+          "why": "Passive with 5× grow — never skip runs"
+        }
+      ],
+      "notes": [
+        "Karamja unlocks at first task milestone automatically.",
+        "Camp Rasial as soon as kills are possible for Omni + lantern.",
+        "Blessing: start T1 Order (Aegis) for OCOBCC path."
+      ]
+    },
+    {
+      "id": "p2-asgarnia",
+      "title": "Phase 2 — Unlock asgarnia (recommended first)",
+      "goal": "Invention + jewellery + mid PvM access",
+      "estimatedHours": 2.2,
+      "relicTier": 2,
+      "electives": [
+        "asgarnia"
+      ],
+      "priorities": [
+        {
+          "skill": "Crafting / Smithing / Div",
+          "to": 80,
+          "method": "Best unlocked artisan methods",
+          "why": "Invention gate"
+        },
+        {
+          "skill": "Invention",
+          "to": 80,
+          "method": "Disassemble + siphon (post-80s)",
+          "why": "Perks — permanent DPS & skilling"
+        },
+        {
+          "skill": "Necromancy",
+          "to": 95,
+          "method": "Rasial / necro combat",
+          "why": "T95 weapons + style depth"
+        },
+        {
+          "skill": "Herblore",
+          "to": 96,
+          "method": "Overloads path",
+          "why": "Mandatory for late PvM"
+        }
+      ],
+      "notes": [
+        "Asgarnia: RoD, Souls/EOF, GWD, Invention heartland.",
+        "XP mult should be 8× after T2 relic.",
+        "Keep farming runs; herb is the long bottleneck."
+      ]
+    },
+    {
+      "id": "p3-second",
+      "title": "Phase 3 — Unlock desert",
+      "goal": "Fill gear gaps (Achtó / raids / wildy) + push 99s",
+      "estimatedHours": 8.8,
+      "relicTier": 4,
+      "electives": [
+        "asgarnia",
+        "desert"
+      ],
+      "priorities": [
+        {
+          "skill": "All combat 99",
+          "to": 99,
+          "method": "High Slayer + reaper",
+          "why": "Damage + tasks for points"
+        },
+        {
+          "skill": "Archaeology",
+          "to": 90,
+          "method": "Arch tutorial + early sites → High-tier excavation",
+          "why": "Relics / chronotes / power"
+        },
+        {
+          "skill": "Dungeoneering",
+          "to": 80,
+          "method": "DG floors / Sinkholes / ED",
+          "why": "Chaotics / tokens without full Wildy"
+        },
+        {
+          "skill": "Summoning",
+          "to": 99,
+          "method": "Pouch spam from charm bank",
+          "why": "Familiar DPS / utility"
+        }
+      ],
+      "notes": [
+        "12× XP at T4 — burn artisan 99s here.",
+        "Desert: Achtó / Heart. Forinthry: boots / DG ecosystem."
+      ]
+    },
+    {
+      "id": "p4-max",
+      "title": "Phase 4 — Unlock forinthry + max push",
+      "goal": "120 elites + remaining 99s under 16×",
+      "estimatedHours": 72,
+      "relicTier": 6,
+      "electives": [
+        "asgarnia",
+        "desert",
+        "forinthry"
+      ],
+      "priorities": [
+        {
+          "skill": "Farming",
+          "to": 120,
+          "method": "Herb + tree runs (passive)",
+          "why": "Slowest remaining (~43.4h full ladder at 16×)"
+        },
+        {
+          "skill": "Invention",
+          "to": 120,
+          "method": "Disassemble + siphon (post-80s)",
+          "why": "Slowest remaining (~21.7h full ladder at 16×)"
+        },
+        {
+          "skill": "Archaeology",
+          "to": 120,
+          "method": "High-tier excavation",
+          "why": "Slowest remaining (~18.9h full ladder at 16×)"
+        },
+        {
+          "skill": "Dungeoneering",
+          "to": 120,
+          "method": "DG floors / Sinkholes / ED",
+          "why": "Slowest remaining (~16.3h full ladder at 16×)"
+        },
+        {
+          "skill": "Necromancy",
+          "to": 120,
+          "method": "Necro combat / Rasial attempts",
+          "why": "Slowest remaining (~10.9h full ladder at 16×)"
+        },
+        {
+          "skill": "Runecrafting",
+          "to": 110,
+          "method": "Abyss / soul / best RC",
+          "why": "Slowest remaining (~10.4h full ladder at 16×)"
+        },
+        {
+          "skill": "Woodcutting",
+          "to": 110,
+          "method": "Crystal / incandescent / best tree",
+          "why": "Slowest remaining (~8.7h full ladder at 16×)"
+        },
+        {
+          "skill": "Herblore",
+          "to": 120,
+          "method": "Overloads / combination potions",
+          "why": "Slowest remaining (~8.3h full ladder at 16×)"
+        }
+      ],
+      "notes": [
+        "16× XP — finish slow skills (RC, Agility, Arch, Invention 120).",
+        "Combat path OCOBCC (ST) or BOCBOO (multi) should be complete.",
+        "Passive farming runs continue forever."
+      ]
+    }
+  ],
+  "phasedRouteHours": 84.5
+}

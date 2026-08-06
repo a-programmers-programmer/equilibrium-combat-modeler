@@ -27,6 +27,9 @@ import {
   Package,
   Crosshair,
   Info,
+  Route,
+  Timer,
+  TrendingUp,
 } from "lucide-react";
 import { PATHS, type Path, BLESSINGS, blessingAt, PATH_TIERS } from "@/lib/eq/blessings";
 import {
@@ -54,11 +57,20 @@ import {
   formatBuildShare,
   CROWN_PATHS,
 } from "@/lib/eq/lab";
+import {
+  SKILLS,
+  buildLeagueRoute,
+  topMethodMatrix,
+  chartAllSkills,
+  chartSkill,
+  leagueMultForRelicTier,
+  type SkillId,
+} from "@/lib/eq/xp";
 import { cn } from "@/lib/utils";
 import { SignedIn, SignedOut, UserButton } from "@/lib/auth/gates";
 import { useCurrentUserState } from "@/lib/auth/use-current-user";
 
-type Tab = "overview" | "build" | "lab" | "regions" | "items" | "catalog";
+type Tab = "overview" | "build" | "lab" | "regions" | "items" | "catalog" | "route";
 
 const ARCHETYPES: { id: BuildArchetype; label: string; hint: string }[] = [
   { id: "shield-tank", label: "Shield tank", hint: "75% Aegis" },
@@ -231,6 +243,7 @@ export function ModelerApp() {
     { id: "overview", label: "Overview", icon: Trophy },
     { id: "build", label: "Builder", icon: Layers },
     { id: "lab", label: "Lab", icon: FlaskConical },
+    { id: "route", label: "XP Route", icon: Route },
     { id: "regions", label: "Regions", icon: Map },
     { id: "items", label: "Items", icon: Package },
     { id: "catalog", label: "Blessings", icon: BookOpen },
@@ -1088,9 +1101,271 @@ export function ModelerApp() {
         </div>
       )}
 
+      {tab === "route" && <XpRoutePanel electives={electives} />}
+
       <footer className="mt-10 border-t border-border pt-4 text-center text-[11px] text-faint">
-        Fan-made Equilibrium modeler · relative DPS · not Jagex · not a live combat parse
+        Fan-made Equilibrium modeler · relative DPS · XP routes are peak-rate estimates · not Jagex
       </footer>
+    </div>
+  );
+}
+
+function fmtXpHr(n: number): string {
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(2)}m`;
+  if (n >= 1_000) return `${Math.round(n / 1_000)}k`;
+  return String(Math.round(n));
+}
+
+function fmtHours(h: number): string {
+  if (!Number.isFinite(h)) return "—";
+  if (h < 0.05) return "<3m";
+  if (h < 1) return `${Math.round(h * 60)}m`;
+  return `${h.toFixed(1)}h`;
+}
+
+function XpRoutePanel({ electives }: { electives: RegionId[] }) {
+  const [relicTier, setRelicTier] = useState(6);
+  const [skillFocus, setSkillFocus] = useState<SkillId>("necromancy");
+
+  const route = useMemo(
+    () =>
+      buildLeagueRoute({
+        combatPath: "necro",
+        electives: electives.length ? electives : ["asgarnia", "desert", "forinthry"],
+      }),
+    [electives],
+  );
+
+  const matrix = useMemo(
+    () => topMethodMatrix(electives.length ? electives : ["asgarnia", "desert", "forinthry"], relicTier),
+    [electives, relicTier],
+  );
+
+  const hours = useMemo(() => {
+    const e = electives.length ? electives : ["asgarnia", "desert", "forinthry"];
+    const targets: Partial<Record<SkillId, number>> = {};
+    for (const s of SKILLS) {
+      if ([
+        "necromancy",
+        "invention",
+        "slayer",
+        "herblore",
+        "farming",
+        "archaeology",
+        "dungeoneering",
+      ].includes(s.id))
+        targets[s.id] = Math.min(120, s.maxLevel);
+      else if (s.maxLevel >= 110) targets[s.id] = 110;
+      else targets[s.id] = 99;
+    }
+    return chartAllSkills(targets, e, relicTier, 1);
+  }, [electives, relicTier]);
+
+  const ladder = useMemo(() => {
+    const e = electives.length ? electives : ["asgarnia", "desert", "forinthry"];
+    const meta = SKILLS.find((s) => s.id === skillFocus)!;
+    const to = [
+      "necromancy",
+      "invention",
+      "slayer",
+      "herblore",
+      "farming",
+      "archaeology",
+      "dungeoneering",
+    ].includes(skillFocus)
+      ? Math.min(120, meta.maxLevel)
+      : meta.maxLevel >= 110
+        ? 110
+        : 99;
+    return chartSkill(skillFocus, 1, to, e, relicTier);
+  }, [skillFocus, electives, relicTier]);
+
+  const mult = leagueMultForRelicTier(relicTier);
+  const phasedH = route.reduce((a, p) => a + p.estimatedHours, 0);
+
+  return (
+    <div className="space-y-4">
+      <section className="panel p-4 sm:p-5">
+        <h2 className="mb-1 flex items-center gap-2 text-lg font-semibold">
+          <Route className="h-5 w-5 text-primary" />
+          Full-game XP route
+        </h2>
+        <p className="mb-4 text-sm text-muted">
+          Peak methods per level band × league XP mult (5×→8×→12×→16×). Rates are community-typical main-game peaks × mult — not lab-perfect.
+          Uses your region picks when set.
+        </p>
+        <div className="mb-4 flex flex-wrap items-center gap-3">
+          <label className="text-xs text-muted">Relic band for tables</label>
+          <div className="flex gap-1">
+            {[1, 2, 4, 6].map((t) => (
+              <button
+                key={t}
+                type="button"
+                onClick={() => setRelicTier(t)}
+                className={cn(
+                  "min-h-9 rounded-[var(--radius-sm)] px-3 text-sm font-medium",
+                  relicTier === t ? "bg-primary text-primary-fg" : "bg-surface-2 text-muted hover:text-fg",
+                )}
+              >
+                T{t} · {leagueMultForRelicTier(t)}×
+              </button>
+            ))}
+          </div>
+          <span className="text-xs text-faint">Active mult: {mult}×</span>
+        </div>
+        <div className="grid gap-2 sm:grid-cols-3">
+          <SummaryCard label="Phased route est." value={fmtHours(phasedH)} sub="Overlapping phases (not pure sequential)" accent />
+          <SummaryCard
+            label="Slowest cap skill"
+            value={hours[0]?.name ?? "—"}
+            sub={hours[0] ? `${fmtHours(hours[0].totalHours)} 1→${hours[0].to}` : "—"}
+          />
+          <SummaryCard
+            label="Electives used"
+            value={(electives.length ? electives : ["asgarnia", "desert", "forinthry"]).join(" · ")}
+            sub={electives.length ? "From Regions tab" : "Default combat package"}
+          />
+        </div>
+      </section>
+
+      <section className="panel p-4 sm:p-5">
+        <h2 className="mb-3 flex items-center gap-2 text-base font-semibold">
+          <Timer className="h-4 w-4 text-primary" />
+          Phased league path (necro BiS)
+        </h2>
+        <div className="space-y-3">
+          {route.map((p) => (
+            <div key={p.id} className="panel-inset p-3 sm:p-4">
+              <div className="flex flex-wrap items-start justify-between gap-2">
+                <h3 className="font-semibold text-fg">{p.title}</h3>
+                <span className="mono text-xs text-primary">{fmtHours(p.estimatedHours)}</span>
+              </div>
+              <p className="mt-1 text-sm text-muted">{p.goal}</p>
+              <ul className="mt-2 space-y-1.5">
+                {p.priorities.map((pr) => (
+                  <li key={pr.skill + pr.to} className="text-sm">
+                    <span className="font-medium text-fg">
+                      {pr.skill} → {pr.to}
+                    </span>
+                    <span className="text-muted"> · {pr.method}</span>
+                    <div className="text-xs text-faint">{pr.why}</div>
+                  </li>
+                ))}
+              </ul>
+              {p.notes.length > 0 && (
+                <ul className="mt-2 space-y-0.5 border-t border-border pt-2 text-xs text-muted">
+                  {p.notes.map((n) => (
+                    <li key={n}>• {n}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="panel p-4 sm:p-5">
+        <h2 className="mb-3 flex items-center gap-2 text-base font-semibold">
+          <TrendingUp className="h-4 w-4 text-primary" />
+          Hours to cap @ {mult}× (slowest first)
+        </h2>
+        <p className="mb-3 text-xs text-faint">
+          Pure sequential sum overstates real time — combat multi-trains and farming runs parallelize.
+        </p>
+        <div className="max-h-[28rem] overflow-auto">
+          <table className="w-full text-left text-sm">
+            <thead className="sticky top-0 bg-surface text-xs uppercase text-faint">
+              <tr>
+                <th className="py-1.5 pr-2">Skill</th>
+                <th className="py-1.5 pr-2">To</th>
+                <th className="py-1.5 pr-2">Hours</th>
+                <th className="py-1.5 pr-2">Peak XP/hr</th>
+                <th className="py-1.5">Late method</th>
+              </tr>
+            </thead>
+            <tbody>
+              {hours.map((s) => (
+                <tr
+                  key={s.skill}
+                  className="cursor-pointer border-t border-border/60 hover:bg-surface-2"
+                  onClick={() => setSkillFocus(s.skill)}
+                >
+                  <td className="py-1.5 pr-2 font-medium">{s.name}</td>
+                  <td className="mono py-1.5 pr-2 text-muted">{s.to}</td>
+                  <td className="mono py-1.5 pr-2 text-primary">{fmtHours(s.totalHours)}</td>
+                  <td className="mono py-1.5 pr-2">{fmtXpHr(s.peakXpHr)}</td>
+                  <td className="truncate py-1.5 text-xs text-muted">{s.bestLateMethod}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="panel p-4 sm:p-5">
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+          <h2 className="text-base font-semibold">Skill ladder detail</h2>
+          <select
+            className="min-h-10 rounded-[var(--radius-sm)] border border-border bg-surface-2 px-2 text-sm"
+            value={skillFocus}
+            onChange={(e) => setSkillFocus(e.target.value as SkillId)}
+          >
+            {SKILLS.map((s) => (
+              <option key={s.id} value={s.id}>
+                {s.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="space-y-1.5">
+          {ladder.map((st) => (
+            <div
+              key={st.method.id + st.levelFrom}
+              className="flex flex-wrap items-center justify-between gap-2 rounded-[var(--radius-sm)] border border-border px-3 py-2"
+            >
+              <div>
+                <span className="mono text-xs text-faint">
+                  {st.levelFrom}→{st.levelTo}
+                </span>
+                <div className="font-medium text-fg">{st.method.name}</div>
+                <div className="text-[11px] text-muted">
+                  {st.method.intensity}
+                  {st.method.notes ? ` · ${st.method.notes}` : ""}
+                </div>
+              </div>
+              <div className="text-right">
+                <div className="mono text-sm text-primary">{fmtXpHr(st.effectiveXpHr)}/hr</div>
+                <div className="text-xs text-muted">{fmtHours(st.hours)}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="panel p-4 sm:p-5">
+        <h2 className="mb-3 text-base font-semibold">All skills · top method by band @ {mult}×</h2>
+        <div className="space-y-4">
+          {matrix.map((row) => (
+            <div key={row.skill}>
+              <h3 className="mb-1 text-sm font-semibold text-fg">{row.name}</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs">
+                  <tbody>
+                    {row.bands.map((b) => (
+                      <tr key={b.range + b.method} className="border-t border-border/50">
+                        <td className="mono py-1 pr-3 text-faint">{b.range}</td>
+                        <td className="mono py-1 pr-3 text-primary">{fmtXpHr(b.xpHr)}</td>
+                        <td className="py-1 pr-3 text-muted">{b.intensity}</td>
+                        <td className="py-1">{b.method}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

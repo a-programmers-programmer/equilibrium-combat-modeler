@@ -10,4 +10,5 @@ dist/
 .output/
 screenshots/
 artifacts/*.png
+!artifacts/sim-results.json
 .node_modules.lock

@@ -66,6 +66,12 @@ import {
   leagueMultForRelicTier,
   type SkillId,
 } from "@/lib/eq/xp";
+import {
+  simulateLeagueRoute,
+  INVENTION_UNLOCK,
+  ANCIENT_INVENTION_UNLOCK,
+  type RegionTag,
+} from "@/lib/eq/sim";
 import { cn } from "@/lib/utils";
 import { SignedIn, SignedOut, UserButton } from "@/lib/auth/gates";
 import { useCurrentUserState } from "@/lib/auth/use-current-user";
@@ -1126,43 +1132,53 @@ function fmtHours(h: number): string {
 function XpRoutePanel({ electives }: { electives: RegionId[] }) {
   const [relicTier, setRelicTier] = useState(6);
   const [skillFocus, setSkillFocus] = useState<SkillId>("necromancy");
+  const [wantAncient, setWantAncient] = useState(false);
+
+  const eList = (
+    electives.length
+      ? electives
+      : wantAncient
+        ? (["asgarnia", "kandarin", "forinthry"] as RegionId[])
+        : (["asgarnia", "desert", "forinthry"] as RegionId[])
+  ) as unknown as RegionTag[];
+
+  const simRoute = useMemo(
+    () =>
+      simulateLeagueRoute({
+        electives: eList,
+        wantAncientInvention: wantAncient || eList.includes("kandarin"),
+      }),
+    // recompute when electives / ancient toggle change
+    [electives, wantAncient],
+  );
 
   const route = useMemo(
     () =>
       buildLeagueRoute({
         combatPath: "necro",
-        electives: electives.length ? electives : ["asgarnia", "desert", "forinthry"],
+        electives: eList as unknown as string[],
       }),
-    [electives],
+    [electives, wantAncient],
   );
 
-  const matrix = useMemo(
-    () => topMethodMatrix(electives.length ? electives : ["asgarnia", "desert", "forinthry"], relicTier),
-    [electives, relicTier],
-  );
+  const matrix = useMemo(() => topMethodMatrix(eList as unknown as string[], relicTier), [electives, wantAncient, relicTier]);
 
   const hours = useMemo(() => {
-    const e = electives.length ? electives : ["asgarnia", "desert", "forinthry"];
     const targets: Partial<Record<SkillId, number>> = {};
     for (const s of SKILLS) {
-      if ([
-        "necromancy",
-        "invention",
-        "slayer",
-        "herblore",
-        "farming",
-        "archaeology",
-        "dungeoneering",
-      ].includes(s.id))
+      if (
+        ["necromancy", "invention", "slayer", "herblore", "farming", "archaeology", "dungeoneering"].includes(
+          s.id,
+        )
+      )
         targets[s.id] = Math.min(120, s.maxLevel);
       else if (s.maxLevel >= 110) targets[s.id] = 110;
       else targets[s.id] = 99;
     }
-    return chartAllSkills(targets, e, relicTier, 1);
-  }, [electives, relicTier]);
+    return chartAllSkills(targets, eList as unknown as string[], relicTier, 1);
+  }, [electives, wantAncient, relicTier]);
 
   const ladder = useMemo(() => {
-    const e = electives.length ? electives : ["asgarnia", "desert", "forinthry"];
     const meta = SKILLS.find((s) => s.id === skillFocus)!;
     const to = [
       "necromancy",
@@ -1177,25 +1193,49 @@ function XpRoutePanel({ electives }: { electives: RegionId[] }) {
       : meta.maxLevel >= 110
         ? 110
         : 99;
-    return chartSkill(skillFocus, 1, to, e, relicTier);
-  }, [skillFocus, electives, relicTier]);
+    return chartSkill(skillFocus, 1, to, eList as unknown as string[], relicTier);
+  }, [skillFocus, electives, wantAncient, relicTier]);
 
   const mult = leagueMultForRelicTier(relicTier);
-  const phasedH = route.reduce((a, p) => a + p.estimatedHours, 0);
 
   return (
     <div className="space-y-4">
       <section className="panel p-4 sm:p-5">
         <h2 className="mb-1 flex items-center gap-2 text-lg font-semibold">
           <Route className="h-5 w-5 text-primary" />
-          Full-game XP route
+          Full-game XP route (requirement-gated sim)
         </h2>
-        <p className="mb-4 text-sm text-muted">
-          Peak methods per level band × league XP mult (5×→8×→12×→16×). Rates are community-typical main-game peaks × mult — not lab-perfect.
-          Uses your region picks when set.
+        <p className="mb-3 text-sm text-muted">
+          OOP sim: methods only run when skill / region / quest / flag requirements pass. Invention is not free.
         </p>
+
+        <div className="mb-4 grid gap-2 sm:grid-cols-2">
+          <div className="panel-inset p-3 text-sm">
+            <div className="text-xs font-semibold uppercase text-faint">Standard Invention</div>
+            <p className="mt-1 text-fg">{INVENTION_UNLOCK.describe()}</p>
+            <p className="mt-1 text-xs text-muted">
+              Guild = Falador / <strong>Asgarnia</strong>. Tutorial auto-completes once 80 Craft/Smith/Div met.
+            </p>
+          </div>
+          <div className="panel-inset p-3 text-sm">
+            <div className="text-xs font-semibold uppercase text-faint">Ancient Invention</div>
+            <p className="mt-1 text-fg">{ANCIENT_INVENTION_UNLOCK.describe()}</p>
+            <p className="mt-1 text-xs text-muted">
+              Stormguard = <strong>Kandarin</strong>. Asgarnia+Desert+Wildy never unlocks ancient gizmos.
+            </p>
+          </div>
+        </div>
+
         <div className="mb-4 flex flex-wrap items-center gap-3">
-          <label className="text-xs text-muted">Relic band for tables</label>
+          <label className="flex min-h-10 cursor-pointer items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={wantAncient}
+              onChange={(e) => setWantAncient(e.target.checked)}
+              className="h-4 w-4"
+            />
+            Prefer Ancient Invention (include Kandarin)
+          </label>
           <div className="flex gap-1">
             {[1, 2, 4, 6].map((t) => (
               <button
@@ -1211,67 +1251,93 @@ function XpRoutePanel({ electives }: { electives: RegionId[] }) {
               </button>
             ))}
           </div>
-          <span className="text-xs text-faint">Active mult: {mult}×</span>
         </div>
+
         <div className="grid gap-2 sm:grid-cols-3">
-          <SummaryCard label="Phased route est." value={fmtHours(phasedH)} sub="Overlapping phases (not pure sequential)" accent />
           <SummaryCard
-            label="Slowest cap skill"
-            value={hours[0]?.name ?? "—"}
-            sub={hours[0] ? `${fmtHours(hours[0].totalHours)} 1→${hours[0].to}` : "—"}
+            label="Simulated route"
+            value={fmtHours(simRoute.totalHours)}
+            sub={`Ancient: ${simRoute.finalInvention.ancient ? "YES" : "NO"}`}
+            accent
           />
           <SummaryCard
-            label="Electives used"
-            value={(electives.length ? electives : ["asgarnia", "desert", "forinthry"]).join(" · ")}
-            sub={electives.length ? "From Regions tab" : "Default combat package"}
+            label="Standard Invention"
+            value={simRoute.finalInvention.standard ? "Unlocked" : "Locked"}
+            sub={
+              simRoute.finalInvention.standard
+                ? "Asgarnia + 80s"
+                : simRoute.finalInvention.missingStandard.slice(0, 2).join(", ")
+            }
+          />
+          <SummaryCard
+            label="Electives in sim"
+            value={eList.join(" · ")}
+            sub={wantAncient ? "Ancient-priority" : "Regions tab / combat default"}
           />
         </div>
+        {!simRoute.finalInvention.ancient && (
+          <p className="mt-3 rounded-[var(--radius-sm)] border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-sm">
+            Ancient Invention blocked: {simRoute.finalInvention.missingAncient.join(" · ")}. Take{" "}
+            <strong>Kandarin</strong> instead of Desert if you want ancient gizmos.
+          </p>
+        )}
       </section>
 
       <section className="panel p-4 sm:p-5">
         <h2 className="mb-3 flex items-center gap-2 text-base font-semibold">
           <Timer className="h-4 w-4 text-primary" />
-          Phased league path (necro BiS)
+          Simulated phases (hard gates)
         </h2>
         <div className="space-y-3">
-          {route.map((p) => (
+          {simRoute.phases.map((p) => (
             <div key={p.id} className="panel-inset p-3 sm:p-4">
               <div className="flex flex-wrap items-start justify-between gap-2">
                 <h3 className="font-semibold text-fg">{p.title}</h3>
-                <span className="mono text-xs text-primary">{fmtHours(p.estimatedHours)}</span>
+                <span className="mono text-xs text-primary">{fmtHours(p.hours)}</span>
               </div>
-              <p className="mt-1 text-sm text-muted">{p.goal}</p>
-              <ul className="mt-2 space-y-1.5">
-                {p.priorities.map((pr) => (
-                  <li key={pr.skill + pr.to} className="text-sm">
-                    <span className="font-medium text-fg">
-                      {pr.skill} → {pr.to}
-                    </span>
-                    <span className="text-muted"> · {pr.method}</span>
-                    <div className="text-xs text-faint">{pr.why}</div>
-                  </li>
+              <div className="mt-1 flex flex-wrap gap-2 text-[11px]">
+                <span
+                  className={cn(
+                    "rounded px-1.5 py-0.5",
+                    p.invention.standard ? "bg-emerald-500/20 text-emerald-300" : "bg-red-500/20 text-red-300",
+                  )}
+                >
+                  Inv {p.invention.standard ? "ON" : "OFF"}
+                </span>
+                <span
+                  className={cn(
+                    "rounded px-1.5 py-0.5",
+                    p.invention.ancient ? "bg-emerald-500/20 text-emerald-300" : "bg-red-500/20 text-red-300",
+                  )}
+                >
+                  Ancient {p.invention.ancient ? "ON" : "OFF"}
+                </span>
+                <span className="text-faint">
+                  necro {p.levels.necromancy} · inv {p.levels.invention} · arch {p.levels.archaeology} · c/s/d{" "}
+                  {p.levels.crafting}/{p.levels.smithing}/{p.levels.divination}
+                </span>
+              </div>
+              <ul className="mt-2 max-h-40 space-y-0.5 overflow-y-auto text-xs text-muted">
+                {p.actions.slice(0, 18).map((a) => (
+                  <li key={a}>· {a}</li>
                 ))}
+                {p.actions.length > 18 && <li>… +{p.actions.length - 18} more</li>}
               </ul>
-              {p.notes.length > 0 && (
-                <ul className="mt-2 space-y-0.5 border-t border-border pt-2 text-xs text-muted">
-                  {p.notes.map((n) => (
-                    <li key={n}>• {n}</li>
-                  ))}
-                </ul>
-              )}
             </div>
           ))}
         </div>
+        <ul className="mt-3 space-y-1 text-xs text-faint">
+          {simRoute.notes.map((n) => (
+            <li key={n}>• {n}</li>
+          ))}
+        </ul>
       </section>
 
       <section className="panel p-4 sm:p-5">
         <h2 className="mb-3 flex items-center gap-2 text-base font-semibold">
           <TrendingUp className="h-4 w-4 text-primary" />
-          Hours to cap @ {mult}× (slowest first)
+          Hours to cap @ {mult}× (rate matrix)
         </h2>
-        <p className="mb-3 text-xs text-faint">
-          Pure sequential sum overstates real time — combat multi-trains and farming runs parallelize.
-        </p>
         <div className="max-h-[28rem] overflow-auto">
           <table className="w-full text-left text-sm">
             <thead className="sticky top-0 bg-surface text-xs uppercase text-faint">

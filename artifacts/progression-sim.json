@@ -1,0 +1,373 @@
+{
+  "generated": "2026-08-06T23:45:38.966Z",
+  "inventionUnlock": "crafting 80+ AND smithing 80+ AND divination 80+ AND region:asgarnia AND Invention tutorial (auto in league at 80s)",
+  "ancientUnlock": "invention 85+ AND archaeology 95+ AND region:kandarin AND Howl's Floating Workshop / Stormguard blueprints",
+  "combatRoute": {
+    "phases": [
+      {
+        "id": "p1",
+        "title": "Phase 1 — Free regions only",
+        "hours": 2.300128531746032,
+        "actions": [
+          "necromancy 1→20 via Necro quests + ritual ladder (0.01h)",
+          "necromancy 20→70 via Efficient rituals (0.29h)",
+          "necromancy 70→80 via Necro combat / Rasial (0.42h)",
+          "attack 1→30 via Low combat (chickens / cows / goblins) (0.11h)",
+          "attack 30→50 via Early free-region Slayer (0.22h)",
+          "attack 50→64 via Revolution combat camp (0.11h)",
+          "herblore 1→70 via Clean herbs + early potions (0.74h)",
+          "prayer 1→70 via Bones on altar (0.37h)",
+          "farming 1→50 via Herb + tree runs (0.14h)",
+          "Invention correctly BLOCKED: crafting 80+; smithing 80+; divination 80+; region:asgarnia; Invention tutorial (auto in league at 80s)"
+        ],
+        "invention": {
+          "standard": false,
+          "ancient": false,
+          "missingStandard": [
+            "crafting 80+",
+            "smithing 80+",
+            "divination 80+",
+            "region:asgarnia",
+            "Invention tutorial (auto in league at 80s)"
+          ],
+          "missingAncient": [
+            "invention 85+",
+            "archaeology 95+",
+            "region:kandarin",
+            "Howl's Floating Workshop / Stormguard blueprints"
+          ]
+        },
+        "levels": {
+          "necromancy": 80,
+          "invention": 1,
+          "crafting": 1,
+          "smithing": 1,
+          "divination": 1,
+          "archaeology": 1,
+          "herblore": 70,
+          "attack": 64,
+          "prayer": 70
+        }
+      },
+      {
+        "id": "p2",
+        "title": "Phase 2 — Asgarnia",
+        "hours": 7.323083107142858,
+        "actions": [
+          "Unlocked Asgarnia (Invention Guild, Artisans, Crafting Guild)",
+          "crafting 1→40 via Leather / jewellery (0.06h)",
+          "crafting 40→60 via Crafting Guild methods (0.11h)",
+          "crafting 60→80 via Urns / glass / high craft (0.61h)",
+          "smithing 1→30 via Bronze → steel (0.02h)",
+          "smithing 30→70 via Artisans' Workshop (0.26h)",
+          "smithing 70→80 via Corrupted / burial smithing (0.31h)",
+          "divination 1→70 via Wisps ladder (1.54h)",
+          "divination 70→80 via Incandescent / best wisp (0.78h)",
+          "Invention UNLOCKED (80s + Asgarnia + tutorial flag)",
+          "invention 1→80 via Disassemble + siphon (standard Invention) (0.83h)",
+          "necromancy 80→95 via Necro combat / Rasial (1.41h)",
+          "herblore 70→96 via Overloads / combos (1.40h)",
+          "Ancient Invention still LOCKED: invention 85+; archaeology 95+; region:kandarin; Howl's Floating Workshop / Stormguard blueprints"
+        ],
+        "invention": {
+          "standard": true,
+          "ancient": false,
+          "missingStandard": [],
+          "missingAncient": [
+            "invention 85+",
+            "archaeology 95+",
+            "region:kandarin",
+            "Howl's Floating Workshop / Stormguard blueprints"
+          ]
+        },
+        "levels": {
+          "necromancy": 95,
+          "invention": 80,
+          "crafting": 80,
+          "smithing": 80,
+          "divination": 80,
+          "archaeology": 1,
+          "herblore": 96,
+          "attack": 64,
+          "prayer": 70
+        }
+      },
+      {
+        "id": "p3",
+        "title": "Phase 3 — desert",
+        "hours": 6.315451109588207,
+        "actions": [
+          "Unlocked desert",
+          "archaeology 1→70 via Arch Guild + early sites (free) (0.61h)",
+          "archaeology 70→90 via Mid dig sites (region-dependent) (1.54h)",
+          "No Kandarin — Stormguard / Ancient Invention unavailable this phase"
+        ],
+        "invention": {
+          "standard": true,
+          "ancient": false,
+          "missingStandard": [],
+          "missingAncient": [
+            "invention 85+",
+            "archaeology 95+",
+            "region:kandarin",
+            "Howl's Floating Workshop / Stormguard blueprints"
+          ]
+        },
+        "levels": {
+          "necromancy": 95,
+          "invention": 80,
+          "crafting": 80,
+          "smithing": 80,
+          "divination": 80,
+          "archaeology": 90,
+          "herblore": 96,
+          "attack": 99,
+          "prayer": 70
+        }
+      },
+      {
+        "id": "p4",
+        "title": "Phase 4 — forinthry + max push",
+        "hours": 190.15535665687003,
+        "actions": [
+          "Unlocked forinthry; 16× XP",
+          "invention→120: 21.3h",
+          "necromancy→120: 9.9h",
+          "archaeology→120: 19.3h",
+          "dungeoneering→120: 16.0h",
+          "herblore→120: 7.4h",
+          "farming→120: 43.4h",
+          "slayer→120: 30.4h",
+          "runecrafting→110: 10.4h",
+          "mining→110: 7.0h",
+          "smithing→110: 4.6h",
+          "woodcutting→110: 8.7h",
+          "agility→99: 6.9h",
+          "thieving→99: 2.5h",
+          "construction→99: 1.6h",
+          "prayer→99: 0.6h",
+          "Final: Ancient Invention NO — region:kandarin; Howl's Floating Workshop / Stormguard blueprints"
+        ],
+        "invention": {
+          "standard": true,
+          "ancient": false,
+          "missingStandard": [],
+          "missingAncient": [
+            "region:kandarin",
+            "Howl's Floating Workshop / Stormguard blueprints"
+          ]
+        },
+        "levels": {
+          "necromancy": 120,
+          "invention": 120,
+          "crafting": 80,
+          "smithing": 110,
+          "divination": 80,
+          "archaeology": 120,
+          "herblore": 120,
+          "attack": 99,
+          "prayer": 99
+        }
+      }
+    ],
+    "totalHours": 206.09401940534713,
+    "finalInvention": {
+      "standard": true,
+      "ancient": false,
+      "missingStandard": [],
+      "missingAncient": [
+        "region:kandarin",
+        "Howl's Floating Workshop / Stormguard blueprints"
+      ]
+    },
+    "notes": [
+      "Invention Guild = Asgarnia (hard).",
+      "Ancient Invention / Stormguard = Kandarin (hard) — not free, not Asgarnia-only.",
+      "Invention tutorial auto-completes in Equilibrium once 80 Craft/Smith/Div + Asgarnia.",
+      "80 Craft/Smith/Div cannot be boosted.",
+      "Combat path electives: asgarnia, desert, forinthry — Ancient Invention LOCKED without Kandarin."
+    ]
+  },
+  "ancientRoute": {
+    "phases": [
+      {
+        "id": "p1",
+        "title": "Phase 1 — Free regions only",
+        "hours": 2.300128531746032,
+        "actions": [
+          "necromancy 1→20 via Necro quests + ritual ladder (0.01h)",
+          "necromancy 20→70 via Efficient rituals (0.29h)",
+          "necromancy 70→80 via Necro combat / Rasial (0.42h)",
+          "attack 1→30 via Low combat (chickens / cows / goblins) (0.11h)",
+          "attack 30→50 via Early free-region Slayer (0.22h)",
+          "attack 50→64 via Revolution combat camp (0.11h)",
+          "herblore 1→70 via Clean herbs + early potions (0.74h)",
+          "prayer 1→70 via Bones on altar (0.37h)",
+          "farming 1→50 via Herb + tree runs (0.14h)",
+          "Invention correctly BLOCKED: crafting 80+; smithing 80+; divination 80+; region:asgarnia; Invention tutorial (auto in league at 80s)"
+        ],
+        "invention": {
+          "standard": false,
+          "ancient": false,
+          "missingStandard": [
+            "crafting 80+",
+            "smithing 80+",
+            "divination 80+",
+            "region:asgarnia",
+            "Invention tutorial (auto in league at 80s)"
+          ],
+          "missingAncient": [
+            "invention 85+",
+            "archaeology 95+",
+            "region:kandarin",
+            "Howl's Floating Workshop / Stormguard blueprints"
+          ]
+        },
+        "levels": {
+          "necromancy": 80,
+          "invention": 1,
+          "crafting": 1,
+          "smithing": 1,
+          "divination": 1,
+          "archaeology": 1,
+          "herblore": 70,
+          "attack": 64,
+          "prayer": 70
+        }
+      },
+      {
+        "id": "p2",
+        "title": "Phase 2 — Asgarnia",
+        "hours": 7.323083107142858,
+        "actions": [
+          "Unlocked Asgarnia (Invention Guild, Artisans, Crafting Guild)",
+          "crafting 1→40 via Leather / jewellery (0.06h)",
+          "crafting 40→60 via Crafting Guild methods (0.11h)",
+          "crafting 60→80 via Urns / glass / high craft (0.61h)",
+          "smithing 1→30 via Bronze → steel (0.02h)",
+          "smithing 30→70 via Artisans' Workshop (0.26h)",
+          "smithing 70→80 via Corrupted / burial smithing (0.31h)",
+          "divination 1→70 via Wisps ladder (1.54h)",
+          "divination 70→80 via Incandescent / best wisp (0.78h)",
+          "Invention UNLOCKED (80s + Asgarnia + tutorial flag)",
+          "invention 1→80 via Disassemble + siphon (standard Invention) (0.83h)",
+          "necromancy 80→95 via Necro combat / Rasial (1.41h)",
+          "herblore 70→96 via Overloads / combos (1.40h)",
+          "Ancient Invention still LOCKED: invention 85+; archaeology 95+; region:kandarin; Howl's Floating Workshop / Stormguard blueprints"
+        ],
+        "invention": {
+          "standard": true,
+          "ancient": false,
+          "missingStandard": [],
+          "missingAncient": [
+            "invention 85+",
+            "archaeology 95+",
+            "region:kandarin",
+            "Howl's Floating Workshop / Stormguard blueprints"
+          ]
+        },
+        "levels": {
+          "necromancy": 95,
+          "invention": 80,
+          "crafting": 80,
+          "smithing": 80,
+          "divination": 80,
+          "archaeology": 1,
+          "herblore": 96,
+          "attack": 64,
+          "prayer": 70
+        }
+      },
+      {
+        "id": "p3",
+        "title": "Phase 3 — kandarin",
+        "hours": 9.373116506413604,
+        "actions": [
+          "Unlocked kandarin",
+          "archaeology 1→70 via Arch Guild + early sites (free) (0.61h)",
+          "archaeology 70→95 via Stormguard Citadel excavation (1.91h)",
+          "invention 80→85 via Disassemble + siphon (standard Invention) (0.35h)",
+          "Ancient Invention UNLOCKED (Stormguard / Howl's)",
+          "invention 85→99 via Ancient gizmo discovery / crafting XP (2.33h)"
+        ],
+        "invention": {
+          "standard": true,
+          "ancient": true,
+          "missingStandard": [],
+          "missingAncient": []
+        },
+        "levels": {
+          "necromancy": 95,
+          "invention": 99,
+          "crafting": 80,
+          "smithing": 80,
+          "divination": 80,
+          "archaeology": 95,
+          "herblore": 96,
+          "attack": 99,
+          "prayer": 70
+        }
+      },
+      {
+        "id": "p4",
+        "title": "Phase 4 — forinthry + max push",
+        "hours": 182.8703870828373,
+        "actions": [
+          "Unlocked forinthry; 16× XP",
+          "invention→120: 16.3h",
+          "necromancy→120: 9.9h",
+          "archaeology→120: 17.1h",
+          "dungeoneering→120: 16.0h",
+          "herblore→120: 7.4h",
+          "farming→120: 43.4h",
+          "slayer→120: 30.4h",
+          "runecrafting→110: 10.4h",
+          "mining→110: 7.0h",
+          "smithing→110: 4.6h",
+          "woodcutting→110: 8.7h",
+          "agility→99: 6.9h",
+          "thieving→99: 2.5h",
+          "construction→99: 1.6h",
+          "prayer→99: 0.6h",
+          "Final: Ancient Invention YES"
+        ],
+        "invention": {
+          "standard": true,
+          "ancient": true,
+          "missingStandard": [],
+          "missingAncient": []
+        },
+        "levels": {
+          "necromancy": 120,
+          "invention": 120,
+          "crafting": 80,
+          "smithing": 110,
+          "divination": 80,
+          "archaeology": 120,
+          "herblore": 120,
+          "attack": 99,
+          "prayer": 99
+        }
+      }
+    ],
+    "totalHours": 201.8667152281398,
+    "finalInvention": {
+      "standard": true,
+      "ancient": true,
+      "missingStandard": [],
+      "missingAncient": []
+    },
+    "notes": [
+      "Invention Guild = Asgarnia (hard).",
+      "Ancient Invention / Stormguard = Kandarin (hard) — not free, not Asgarnia-only.",
+      "Invention tutorial auto-completes in Equilibrium once 80 Craft/Smith/Div + Asgarnia.",
+      "80 Craft/Smith/Div cannot be boosted.",
+      "Ancient path electives: asgarnia, kandarin, forinthry"
+    ]
+  },
+  "conclusion": {
+    "standardInvention": "Requires Asgarnia + 80 Craft/Smith/Div (tutorial auto)",
+    "ancientInvention": "Requires Kandarin (Stormguard) + 85 Invention + 95 Archaeology + Howl's workshop. Combat package Asgarnia+Desert+Forinthry CANNOT unlock Ancient Invention.",
+    "recommendation": "BiS combat electives trade Ancient Invention for Desert gear. Take Kandarin instead of Desert if ancient gizmos are priority."
+  }
+}

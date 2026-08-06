@@ -128,14 +128,19 @@ function modeForArchetype(a: BuildArchetype): OffhandMode {
   return "dual";
 }
 
+function offhandFromLoadout(loadout: ResolvedLoadout): Offhand {
+  if (loadout.pieces.some((p) => p.kind === "shield")) return "shield";
+  if (loadout.pieces.some((p) => p.kind === "defender")) return "defender";
+  return "none";
+}
+
 export function loadoutToSnapshot(loadout: ResolvedLoadout): GearSnapshot {
-  // Genesis bonus ≈ jump from current weapon tier toward T120 (~+15–25% weapon AD)
   const genesisAdBonus = Math.round(loadout.totalWeaponAd * 0.22 + (120 - loadout.weaponTier) * 8);
   return {
     armour: loadout.totalArmour,
     baselineAd: loadout.totalWeaponAd,
     baseLp: loadout.totalLp,
-    prayer: loadout.totalPrayer + 12, // curses residual
+    prayer: loadout.totalPrayer + 12,
     genesisAdBonus: Math.max(400, genesisAdBonus),
     weaponTier: loadout.weaponTier,
     source: `regions:${loadout.unlocked.join("+")} · ${loadout.mode}`,
@@ -148,20 +153,28 @@ export function gearFromRegions(
   electives: readonly RegionId[],
   style: Style,
   archetype: BuildArchetype,
-): { snapshot: GearSnapshot; loadout: ResolvedLoadout } {
+): { snapshot: GearSnapshot; loadout: ResolvedLoadout; offhand: Offhand } {
   const unlocked = unlockedFromElectives(electives);
   const loadout = resolveLoadout(unlocked, style, modeForArchetype(archetype));
-  return { snapshot: loadoutToSnapshot(loadout), loadout };
+  return {
+    snapshot: loadoutToSnapshot(loadout),
+    loadout,
+    offhand: offhandFromLoadout(loadout),
+  };
 }
 
 export function gearFromPackage(
   pkg: RegionPackage,
   style: Style,
   archetype: BuildArchetype,
-): { snapshot: GearSnapshot; loadout: ResolvedLoadout } {
+): { snapshot: GearSnapshot; loadout: ResolvedLoadout; offhand: Offhand } {
   const unlocked = unlockedFromPackage(pkg);
   const loadout = resolveLoadout(unlocked, style, modeForArchetype(archetype));
-  return { snapshot: loadoutToSnapshot(loadout), loadout };
+  return {
+    snapshot: loadoutToSnapshot(loadout),
+    loadout,
+    offhand: offhandFromLoadout(loadout),
+  };
 }
 
 function snapshotFromStage(stage: GearStage, style: Style, archetype: BuildArchetype): GearSnapshot {

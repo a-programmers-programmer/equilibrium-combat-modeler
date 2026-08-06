@@ -164,6 +164,8 @@ export interface CombatItem {
   lp?: number;
   /** Prayer bonus */
   prayer?: number;
+  /** True for two-handed weapons (no off-hand allowed) */
+  twoHanded?: boolean;
   notes?: string;
 }
 
@@ -267,6 +269,7 @@ export const ITEMS: readonly CombatItem[] = [
     kind: "none",
     requires: [],
     abilityDamage: 2688,
+    twoHanded: true,
     notes: "Zamorak front — accessible from free path content",
   },
   {
@@ -278,6 +281,7 @@ export const ITEMS: readonly CombatItem[] = [
     kind: "none",
     requires: ["desert"],
     abilityDamage: 2458,
+    twoHanded: true,
   },
   {
     id: "mw-2h",
@@ -288,6 +292,7 @@ export const ITEMS: readonly CombatItem[] = [
     kind: "none",
     requires: ["asgarnia"],
     abilityDamage: 2450,
+    twoHanded: true,
   },
   {
     id: "drygore-oh",
@@ -331,6 +336,7 @@ export const ITEMS: readonly CombatItem[] = [
     kind: "none",
     requires: [],
     abilityDamage: 2688,
+    twoHanded: true,
     notes: "Kerapac — Misthalin",
   },
   {
@@ -342,6 +348,7 @@ export const ITEMS: readonly CombatItem[] = [
     kind: "none",
     requires: ["desert"],
     abilityDamage: 1400,
+    twoHanded: true,
   },
   {
     id: "nox-staff",
@@ -352,6 +359,7 @@ export const ITEMS: readonly CombatItem[] = [
     kind: "none",
     requires: ["morytania"],
     abilityDamage: 2450,
+    twoHanded: true,
   },
   {
     id: "seismic-singularity",
@@ -394,6 +402,7 @@ export const ITEMS: readonly CombatItem[] = [
     kind: "none",
     requires: [],
     abilityDamage: 2688,
+    twoHanded: true,
     notes: "Zemouregal & Vorkath path — Misthalin",
   },
   {
@@ -405,6 +414,7 @@ export const ITEMS: readonly CombatItem[] = [
     kind: "none",
     requires: ["desert"],
     abilityDamage: 2458,
+    twoHanded: true,
   },
   {
     id: "nox-bow",
@@ -415,6 +425,7 @@ export const ITEMS: readonly CombatItem[] = [
     kind: "none",
     requires: ["morytania"],
     abilityDamage: 2450,
+    twoHanded: true,
   },
   {
     id: "blightbound",
@@ -445,6 +456,7 @@ export const ITEMS: readonly CombatItem[] = [
     kind: "none",
     requires: ["forinthry"],
     abilityDamage: 2450,
+    twoHanded: true,
   },
 
   // ─── Tank armour (style-agnostic armour rating for Aegis) ───
@@ -947,6 +959,7 @@ function styleMatch(item: CombatItem, style: CombatStyle): boolean {
 /**
  * Greedy best-in-slot from accessible items for a style + offhand mode.
  * Body set items are whole-set proxies (one body entry covers armour set).
+ * Enforces 2H vs dual/shield/defender mutual exclusion.
  */
 export function resolveLoadout(
   unlocked: readonly RegionId[],
@@ -966,17 +979,32 @@ export function resolveLoadout(
     return [...candidates].sort((a, b) => score(b) - score(a) || b.tier - a.tier)[0];
   };
 
-  // Weapon
+  const is2h = (w: CombatItem) => !!w.twoHanded;
+
   const weapons = pool.filter((i) => i.slot === "weapon");
-  const prefer2h = mode === "2h";
-  const weapon = pickBest(
-    weapons.filter((w) => (prefer2h ? (w.abilityDamage ?? 0) > 2400 || w.name.includes("2H") || w.name.includes("Staff") || w.name.includes("Bow") || w.name.includes("Scythe") || w.name.includes("Ek-ZekKil") || w.name.includes("godsword") || w.name.includes("godbow") : true)),
-    (i) => (i.abilityDamage ?? 0) + i.tier * 2,
-  );
+
+  let weapon: CombatItem | undefined;
+  if (mode === "2h") {
+    weapon = pickBest(
+      weapons.filter((w) => is2h(w)),
+      (i) => (i.abilityDamage ?? 0) + i.tier * 2,
+    );
+    if (!weapon) weapon = pickBest(weapons, (i) => (i.abilityDamage ?? 0) + i.tier * 2);
+  } else {
+    // shield / defender / dual: prefer 1H main-hand
+    const oneHand = weapons.filter((w) => !is2h(w));
+    weapon = pickBest(oneHand, (i) => (i.abilityDamage ?? 0) + i.tier * 2);
+    if (!weapon) {
+      weapon = pickBest(weapons, (i) => (i.abilityDamage ?? 0) + i.tier * 2);
+      if (weapon && is2h(weapon)) notes.push("No 1H BiS — using 2H (off-hand disabled)");
+    }
+  }
+
   if (weapon) pieces.push(weapon);
   else missing.push("weapon");
 
-  // Armour set (body slot proxies full set)
+  const weaponIs2h = weapon ? is2h(weapon) : false;
+
   const bodies = pool.filter((i) => i.slot === "body");
   const wantTank = mode === "shield";
   const body = pickBest(bodies, (i) => {
@@ -988,9 +1016,8 @@ export function resolveLoadout(
   if (body) pieces.push(body);
   else missing.push("armour set");
 
-  // Off-hand
-  if (mode === "2h") {
-    notes.push("2H weapon — no off-hand (Aegis limited to 25% if no shield)");
+  if (weaponIs2h || mode === "2h") {
+    notes.push("2H weapon — no off-hand");
   } else if (mode === "dual") {
     const ohWep = pickBest(
       pool.filter((i) => i.slot === "offhand" && i.kind === "none" && (i.abilityDamage ?? 0) > 0),
@@ -1001,22 +1028,20 @@ export function resolveLoadout(
   } else if (mode === "defender") {
     const def = pickBest(
       pool.filter((i) => i.slot === "offhand" && i.kind === "defender"),
-      (i) => (i.armour ?? 0) + (i.abilityDamage ?? 0),
+      (i) => (i.armour ?? 0) + (i.abilityDamage ?? 0) * 0.5,
     );
     if (def) pieces.push(def);
     else {
-      // fallback dual
       const ohWep = pickBest(
-        pool.filter((i) => i.slot === "offhand" && (i.abilityDamage ?? 0) > 0),
+        pool.filter((i) => i.slot === "offhand" && i.kind === "none" && (i.abilityDamage ?? 0) > 0),
         (i) => i.abilityDamage ?? 0,
       );
       if (ohWep) {
         pieces.push(ohWep);
-        notes.push("No defender available — fell back to dual-wield OH");
+        notes.push("No defender available — dual-wield OH");
       } else missing.push("defender");
     }
   } else {
-    // shield
     const shield = pickBest(
       pool.filter((i) => i.slot === "offhand" && i.kind === "shield"),
       (i) => (i.armour ?? 0) * 2 + (i.lp ?? 0),
@@ -1025,37 +1050,32 @@ export function resolveLoadout(
     else missing.push("shield");
   }
 
-  // Boots
   const boots = pickBest(
     pool.filter((i) => i.slot === "boots"),
     (i) => (i.armour ?? 0) + (i.lp ?? 0) + i.tier,
   );
   if (boots) pieces.push(boots);
 
-  // Ring
   const ring = pickBest(
     pool.filter((i) => i.slot === "ring"),
     (i) => i.tier + (i.prayer ?? 0),
   );
   if (ring) pieces.push(ring);
 
-  // Cape
   const cape = pickBest(
     pool.filter((i) => i.slot === "cape"),
     (i) => i.tier + (i.armour ?? 0),
   );
   if (cape) pieces.push(cape);
 
-  // Amulet
   const amulet = pickBest(
     pool.filter((i) => i.slot === "amulet"),
     (i) => i.tier + (i.prayer ?? 0) * 10,
   );
   if (amulet) pieces.push(amulet);
 
-  // Base player armour/LP not from our set proxies
-  const baseArmour = 400; // jewellery-less residual / prayer book etc.
-  const baseLp = 9900; // ~99 con base-ish for model
+  const baseArmour = 400;
+  const baseLp = 9900;
 
   let totalArmour = baseArmour;
   let totalWeaponAd = 0;
@@ -1071,23 +1091,22 @@ export function resolveLoadout(
     if (p.slot === "weapon") weaponTier = Math.max(weaponTier, p.tier);
   }
 
-  // Scale weapon AD into "baseline ability damage" comparable to old stages:
-  // dual-wield T95 necro ~ omni+lantern ≈ 3675 raw; old endgame baseline was ~3800.
-  // Use weapon sum * style factor + level pad.
-  const levelPad = 900; // levels / overloads / auras residual
-  totalWeaponAd = Math.round(totalWeaponAd + levelPad);
+  // 2H single-weapon kits: slight AD pad so they compete with dual fairer
+  if (weaponIs2h) totalWeaponAd = Math.round(totalWeaponAd * 1.05);
+
+  totalWeaponAd = Math.round(totalWeaponAd + 900);
 
   if (!unlocked.includes("forinthry") && !unlocked.includes("asgarnia")) {
     notes.push("No Wilderness/Asgarnia — limited high-end shields & jewellery");
   }
-  if (mode === "shield" && !pieces.some((p) => p.kind === "shield")) {
+  if (mode === "shield" && !pieces.some((p) => p.kind === "shield") && !weaponIs2h) {
     notes.push("WARNING: no shield in loadout — Aegis only 25%");
   }
 
   return {
     unlocked: [...unlocked],
     style,
-    mode,
+    mode: weaponIs2h ? "2h" : mode,
     pieces,
     totalArmour,
     totalWeaponAd,

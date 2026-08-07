@@ -1,0 +1,918 @@
+{
+  "generated": "2026-08-07T02:28:18.065Z",
+  "freeOnlyAccess": [
+    {
+      "id": "none",
+      "name": "No familiar",
+      "level": 1,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 1+"
+    },
+    {
+      "id": "spirit-terrorbird",
+      "name": "Spirit terrorbird",
+      "level": 52,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 52+"
+    },
+    {
+      "id": "war-tortoise",
+      "name": "War tortoise",
+      "level": 67,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 67+"
+    },
+    {
+      "id": "hellhound",
+      "name": "Hellhound",
+      "level": 45,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 45+"
+    },
+    {
+      "id": "bunyip",
+      "name": "Bunyip",
+      "level": 68,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 68+"
+    },
+    {
+      "id": "unicorn-stallion",
+      "name": "Unicorn stallion",
+      "level": 88,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 88+"
+    },
+    {
+      "id": "spirit-kyatt",
+      "name": "Spirit kyatt",
+      "level": 57,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 57+"
+    },
+    {
+      "id": "arctic-bear",
+      "name": "Arctic bear",
+      "level": 71,
+      "soft": false,
+      "hard": false,
+      "missingSoft": [
+        "region:fremennik"
+      ],
+      "missingHard": [
+        "region:fremennik"
+      ],
+      "req": "summoning 71+ AND region:fremennik"
+    },
+    {
+      "id": "giant-wolpertinger",
+      "name": "Giant wolpertinger",
+      "level": 92,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 92+"
+    },
+    {
+      "id": "lava-titan",
+      "name": "Lava titan",
+      "level": 83,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 83+"
+    },
+    {
+      "id": "swamp-titan",
+      "name": "Swamp titan",
+      "level": 85,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 85+"
+    },
+    {
+      "id": "geyser-titan",
+      "name": "Geyser titan",
+      "level": 89,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 89+"
+    },
+    {
+      "id": "obsidian-golem",
+      "name": "Obsidian golem",
+      "level": 73,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 73+ AND region:karamja"
+    },
+    {
+      "id": "iron-titan",
+      "name": "Iron titan",
+      "level": 95,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 95+"
+    },
+    {
+      "id": "steel-titan",
+      "name": "Steel titan",
+      "level": 99,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 99+"
+    },
+    {
+      "id": "pack-yak",
+      "name": "Pack yak",
+      "level": 96,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 96+"
+    },
+    {
+      "id": "kalgerion-demon",
+      "name": "Kal'gerion demon",
+      "level": 90,
+      "soft": false,
+      "hard": false,
+      "missingSoft": [
+        "region:forinthry"
+      ],
+      "missingHard": [
+        "region:forinthry",
+        "unlocked:dungeoneering-kalg"
+      ],
+      "req": "summoning 90+ AND region:forinthry AND unlocked:dungeoneering-kalg"
+    },
+    {
+      "id": "ice-nihil",
+      "name": "Ice nihil",
+      "level": 87,
+      "soft": false,
+      "hard": false,
+      "missingSoft": [
+        "region:forinthry"
+      ],
+      "missingHard": [
+        "region:forinthry",
+        "killed:nihil",
+        "unlocked:nihil-pouches"
+      ],
+      "req": "summoning 87+ AND region:forinthry AND killed:nihil AND unlocked:nihil-pouches"
+    },
+    {
+      "id": "blood-nihil",
+      "name": "Blood nihil",
+      "level": 87,
+      "soft": false,
+      "hard": false,
+      "missingSoft": [
+        "region:forinthry"
+      ],
+      "missingHard": [
+        "region:forinthry",
+        "killed:nihil",
+        "unlocked:nihil-pouches"
+      ],
+      "req": "summoning 87+ AND region:forinthry AND killed:nihil AND unlocked:nihil-pouches"
+    },
+    {
+      "id": "smoke-nihil",
+      "name": "Smoke nihil",
+      "level": 87,
+      "soft": false,
+      "hard": false,
+      "missingSoft": [
+        "region:forinthry"
+      ],
+      "missingHard": [
+        "region:forinthry",
+        "killed:nihil",
+        "unlocked:nihil-pouches"
+      ],
+      "req": "summoning 87+ AND region:forinthry AND killed:nihil AND unlocked:nihil-pouches"
+    },
+    {
+      "id": "shadow-nihil",
+      "name": "Shadow nihil",
+      "level": 87,
+      "soft": false,
+      "hard": false,
+      "missingSoft": [
+        "region:forinthry"
+      ],
+      "missingHard": [
+        "region:forinthry",
+        "killed:nihil",
+        "unlocked:nihil-pouches"
+      ],
+      "req": "summoning 87+ AND region:forinthry AND killed:nihil AND unlocked:nihil-pouches"
+    },
+    {
+      "id": "ripper-demon",
+      "name": "Ripper demon (binding contract)",
+      "level": 96,
+      "soft": false,
+      "hard": false,
+      "missingSoft": [
+        "region:forinthry",
+        "ancient-summoning/binding-contract path"
+      ],
+      "missingHard": [
+        "region:forinthry",
+        "unlocked:binding-ripper"
+      ],
+      "req": "summoning 96+ AND region:forinthry AND unlocked:ancient-summoning AND unlocked:binding-contracts AND unlocked:binding-ripper AND Ancient Summoning OR Contract Claws auto"
+    },
+    {
+      "id": "blood-reaver",
+      "name": "Blood reaver (binding contract)",
+      "level": 96,
+      "soft": false,
+      "hard": false,
+      "missingSoft": [
+        "region:forinthry",
+        "ancient-summoning/binding-contract path"
+      ],
+      "missingHard": [
+        "region:forinthry"
+      ],
+      "req": "summoning 96+ AND region:forinthry AND unlocked:ancient-summoning AND unlocked:binding-contracts AND Ancient Summoning OR Contract Claws auto"
+    }
+  ],
+  "forinthryAccess": [
+    {
+      "id": "none",
+      "name": "No familiar",
+      "level": 1,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 1+"
+    },
+    {
+      "id": "spirit-terrorbird",
+      "name": "Spirit terrorbird",
+      "level": 52,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 52+"
+    },
+    {
+      "id": "war-tortoise",
+      "name": "War tortoise",
+      "level": 67,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 67+"
+    },
+    {
+      "id": "hellhound",
+      "name": "Hellhound",
+      "level": 45,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 45+"
+    },
+    {
+      "id": "bunyip",
+      "name": "Bunyip",
+      "level": 68,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 68+"
+    },
+    {
+      "id": "unicorn-stallion",
+      "name": "Unicorn stallion",
+      "level": 88,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 88+"
+    },
+    {
+      "id": "spirit-kyatt",
+      "name": "Spirit kyatt",
+      "level": 57,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 57+"
+    },
+    {
+      "id": "arctic-bear",
+      "name": "Arctic bear",
+      "level": 71,
+      "soft": false,
+      "hard": false,
+      "missingSoft": [
+        "region:fremennik"
+      ],
+      "missingHard": [
+        "region:fremennik"
+      ],
+      "req": "summoning 71+ AND region:fremennik"
+    },
+    {
+      "id": "giant-wolpertinger",
+      "name": "Giant wolpertinger",
+      "level": 92,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 92+"
+    },
+    {
+      "id": "lava-titan",
+      "name": "Lava titan",
+      "level": 83,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 83+"
+    },
+    {
+      "id": "swamp-titan",
+      "name": "Swamp titan",
+      "level": 85,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 85+"
+    },
+    {
+      "id": "geyser-titan",
+      "name": "Geyser titan",
+      "level": 89,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 89+"
+    },
+    {
+      "id": "obsidian-golem",
+      "name": "Obsidian golem",
+      "level": 73,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 73+ AND region:karamja"
+    },
+    {
+      "id": "iron-titan",
+      "name": "Iron titan",
+      "level": 95,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 95+"
+    },
+    {
+      "id": "steel-titan",
+      "name": "Steel titan",
+      "level": 99,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 99+"
+    },
+    {
+      "id": "pack-yak",
+      "name": "Pack yak",
+      "level": 96,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 96+"
+    },
+    {
+      "id": "kalgerion-demon",
+      "name": "Kal'gerion demon",
+      "level": 90,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 90+ AND region:forinthry AND unlocked:dungeoneering-kalg"
+    },
+    {
+      "id": "ice-nihil",
+      "name": "Ice nihil",
+      "level": 87,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 87+ AND region:forinthry AND killed:nihil AND unlocked:nihil-pouches"
+    },
+    {
+      "id": "blood-nihil",
+      "name": "Blood nihil",
+      "level": 87,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 87+ AND region:forinthry AND killed:nihil AND unlocked:nihil-pouches"
+    },
+    {
+      "id": "smoke-nihil",
+      "name": "Smoke nihil",
+      "level": 87,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 87+ AND region:forinthry AND killed:nihil AND unlocked:nihil-pouches"
+    },
+    {
+      "id": "shadow-nihil",
+      "name": "Shadow nihil",
+      "level": 87,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 87+ AND region:forinthry AND killed:nihil AND unlocked:nihil-pouches"
+    },
+    {
+      "id": "ripper-demon",
+      "name": "Ripper demon (binding contract)",
+      "level": 96,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 96+ AND region:forinthry AND unlocked:ancient-summoning AND unlocked:binding-contracts AND unlocked:binding-ripper AND Ancient Summoning OR Contract Claws auto"
+    },
+    {
+      "id": "blood-reaver",
+      "name": "Blood reaver (binding contract)",
+      "level": 96,
+      "soft": true,
+      "hard": true,
+      "missingSoft": [],
+      "missingHard": [],
+      "req": "summoning 96+ AND region:forinthry AND unlocked:ancient-summoning AND unlocked:binding-contracts AND Ancient Summoning OR Contract Claws auto"
+    }
+  ],
+  "freeRipper": {
+    "style": "necromancy",
+    "packageId": "free-only|sum99",
+    "summoning": 99,
+    "relic": "devout",
+    "familiar": "ripper-demon",
+    "totalDps": 58758.50018229167,
+    "famDps": 0,
+    "playerDps": 58758.50018229167,
+    "locked": true,
+    "dmg30": 2503112.1077656248
+  },
+  "freeSteel": {
+    "style": "necromancy",
+    "packageId": "free-only|sum99",
+    "summoning": 99,
+    "relic": "devout",
+    "familiar": "steel-titan",
+    "totalDps": 61901.54018229167,
+    "famDps": 3143.04,
+    "playerDps": 58758.50018229167,
+    "locked": false,
+    "dmg30": 2637005.611765625
+  },
+  "forinRipper": {
+    "style": "necromancy",
+    "packageId": "forinthry-asgarnia-anach|sum99",
+    "summoning": 99,
+    "relic": "devout",
+    "familiar": "ripper-demon",
+    "totalDps": 66653.04275446429,
+    "famDps": 6636.24,
+    "playerDps": 60016.80275446429,
+    "locked": false,
+    "dmg30": 2839419.6213401784
+  },
+  "topLegal": [
+    {
+      "style": "melee",
+      "packageId": "mory-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "devout+infernal-fire(rejuv)",
+      "familiar": "ripper-demon",
+      "totalDps": 76729.13347598215,
+      "famDps": 6636.24,
+      "playerDps": 70092.89347598214,
+      "locked": false,
+      "dmg30": 3959223.287360679
+    },
+    {
+      "style": "melee",
+      "packageId": "mory-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "devout+infernal-fire(rejuv)",
+      "familiar": "ice-nihil",
+      "totalDps": 75400.34139932187,
+      "famDps": 1045.8000000000002,
+      "playerDps": 74354.54139932187,
+      "locked": false,
+      "dmg30": 3890657.6162050087
+    },
+    {
+      "style": "melee",
+      "packageId": "mory-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "devout+infernal-fire(rejuv)",
+      "familiar": "blood-nihil",
+      "totalDps": 75194.54139932187,
+      "famDps": 840,
+      "playerDps": 74354.54139932187,
+      "locked": false,
+      "dmg30": 3880038.336205008
+    },
+    {
+      "style": "melee",
+      "packageId": "mory-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "devout+infernal-fire(rejuv)",
+      "familiar": "smoke-nihil",
+      "totalDps": 75194.54139932187,
+      "famDps": 840,
+      "playerDps": 74354.54139932187,
+      "locked": false,
+      "dmg30": 3880038.336205008
+    },
+    {
+      "style": "melee",
+      "packageId": "mory-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "devout+infernal-fire(rejuv)",
+      "familiar": "shadow-nihil",
+      "totalDps": 75194.54139932187,
+      "famDps": 840,
+      "playerDps": 74354.54139932187,
+      "locked": false,
+      "dmg30": 3880038.336205008
+    },
+    {
+      "style": "melee",
+      "packageId": "desert-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "devout+infernal-fire(rejuv)",
+      "familiar": "ripper-demon",
+      "totalDps": 74963.02490175597,
+      "famDps": 6636.24,
+      "playerDps": 68326.78490175596,
+      "locked": false,
+      "dmg30": 3868092.0849306076
+    },
+    {
+      "style": "melee",
+      "packageId": "mory-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "devout+infernal-fire(rejuv)",
+      "familiar": "kalgerion-demon",
+      "totalDps": 74701.2802802616,
+      "famDps": 2505.6,
+      "playerDps": 72195.6802802616,
+      "locked": false,
+      "dmg30": 3854586.062461499
+    },
+    {
+      "style": "melee",
+      "packageId": "mory-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "infernal-fire",
+      "familiar": "ice-nihil",
+      "totalDps": 74516.24139932187,
+      "famDps": 161.70000000000002,
+      "playerDps": 74354.54139932187,
+      "locked": false,
+      "dmg30": 3845038.0562050077
+    },
+    {
+      "style": "melee",
+      "packageId": "mory-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "infernal-fire",
+      "familiar": "blood-nihil",
+      "totalDps": 74501.54139932187,
+      "famDps": 147,
+      "playerDps": 74354.54139932187,
+      "locked": false,
+      "dmg30": 3844279.536205008
+    },
+    {
+      "style": "melee",
+      "packageId": "mory-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "infernal-fire",
+      "familiar": "smoke-nihil",
+      "totalDps": 74501.54139932187,
+      "famDps": 147,
+      "playerDps": 74354.54139932187,
+      "locked": false,
+      "dmg30": 3844279.536205008
+    },
+    {
+      "style": "melee",
+      "packageId": "mory-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "infernal-fire",
+      "familiar": "shadow-nihil",
+      "totalDps": 74501.54139932187,
+      "famDps": 147,
+      "playerDps": 74354.54139932187,
+      "locked": false,
+      "dmg30": 3844279.536205008
+    },
+    {
+      "style": "melee",
+      "packageId": "mory-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "devout+infernal-fire(rejuv)",
+      "familiar": "blood-reaver",
+      "totalDps": 73750.99134550178,
+      "famDps": 2256.24,
+      "playerDps": 71494.75134550178,
+      "locked": false,
+      "dmg30": 3805551.153427892
+    },
+    {
+      "style": "melee",
+      "packageId": "desert-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "devout+infernal-fire(rejuv)",
+      "familiar": "ice-nihil",
+      "totalDps": 73526.85342378274,
+      "famDps": 1045.8000000000002,
+      "playerDps": 72481.05342378274,
+      "locked": false,
+      "dmg30": 3793985.6366671897
+    },
+    {
+      "style": "melee",
+      "packageId": "desert-asgarnia-forinthry|sum90",
+      "summoning": 90,
+      "relic": "devout+infernal-fire(rejuv)",
+      "familiar": "ice-nihil",
+      "totalDps": 73447.62615105546,
+      "famDps": 966.5727272727272,
+      "playerDps": 72481.05342378274,
+      "locked": false,
+      "dmg30": 3789897.5093944613
+    },
+    {
+      "style": "melee",
+      "packageId": "desert-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "devout+infernal-fire(rejuv)",
+      "familiar": "blood-nihil",
+      "totalDps": 73321.05342378274,
+      "famDps": 840,
+      "playerDps": 72481.05342378274,
+      "locked": false,
+      "dmg30": 3783366.356667189
+    },
+    {
+      "style": "melee",
+      "packageId": "desert-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "devout+infernal-fire(rejuv)",
+      "familiar": "smoke-nihil",
+      "totalDps": 73321.05342378274,
+      "famDps": 840,
+      "playerDps": 72481.05342378274,
+      "locked": false,
+      "dmg30": 3783366.356667189
+    },
+    {
+      "style": "melee",
+      "packageId": "desert-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "devout+infernal-fire(rejuv)",
+      "familiar": "shadow-nihil",
+      "totalDps": 73321.05342378274,
+      "famDps": 840,
+      "playerDps": 72481.05342378274,
+      "locked": false,
+      "dmg30": 3783366.356667189
+    },
+    {
+      "style": "melee",
+      "packageId": "desert-asgarnia-forinthry|sum90",
+      "summoning": 90,
+      "relic": "devout+infernal-fire(rejuv)",
+      "familiar": "blood-nihil",
+      "totalDps": 73257.41706014637,
+      "famDps": 776.3636363636363,
+      "playerDps": 72481.05342378274,
+      "locked": false,
+      "dmg30": 3780082.7203035527
+    },
+    {
+      "style": "melee",
+      "packageId": "desert-asgarnia-forinthry|sum90",
+      "summoning": 90,
+      "relic": "devout+infernal-fire(rejuv)",
+      "familiar": "smoke-nihil",
+      "totalDps": 73257.41706014637,
+      "famDps": 776.3636363636363,
+      "playerDps": 72481.05342378274,
+      "locked": false,
+      "dmg30": 3780082.7203035527
+    },
+    {
+      "style": "melee",
+      "packageId": "desert-asgarnia-forinthry|sum90",
+      "summoning": 90,
+      "relic": "devout+infernal-fire(rejuv)",
+      "familiar": "shadow-nihil",
+      "totalDps": 73257.41706014637,
+      "famDps": 776.3636363636363,
+      "playerDps": 72481.05342378274,
+      "locked": false,
+      "dmg30": 3780082.7203035527
+    },
+    {
+      "style": "melee",
+      "packageId": "mory-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "devout+infernal-fire(rejuv)",
+      "familiar": "steel-titan",
+      "totalDps": 73235.93347598214,
+      "famDps": 3143.04,
+      "playerDps": 70092.89347598214,
+      "locked": false,
+      "dmg30": 3778974.167360678
+    },
+    {
+      "style": "melee",
+      "packageId": "desert-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "devout+infernal-fire(rejuv)",
+      "familiar": "kalgerion-demon",
+      "totalDps": 72882.18844880865,
+      "famDps": 2505.6,
+      "playerDps": 70376.58844880864,
+      "locked": false,
+      "dmg30": 3760720.9239585265
+    },
+    {
+      "style": "melee",
+      "packageId": "desert-asgarnia-forinthry|sum90",
+      "summoning": 90,
+      "relic": "devout+infernal-fire(rejuv)",
+      "familiar": "kalgerion-demon",
+      "totalDps": 72692.37026699046,
+      "famDps": 2315.781818181818,
+      "playerDps": 70376.58844880864,
+      "locked": false,
+      "dmg30": 3750926.3057767074
+    },
+    {
+      "style": "melee",
+      "packageId": "desert-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "infernal-fire",
+      "familiar": "ice-nihil",
+      "totalDps": 72642.75342378273,
+      "famDps": 161.70000000000002,
+      "playerDps": 72481.05342378274,
+      "locked": false,
+      "dmg30": 3748366.076667189
+    },
+    {
+      "style": "melee",
+      "packageId": "desert-asgarnia-forinthry|sum90",
+      "summoning": 90,
+      "relic": "infernal-fire",
+      "familiar": "ice-nihil",
+      "totalDps": 72642.75342378273,
+      "famDps": 161.70000000000002,
+      "playerDps": 72481.05342378274,
+      "locked": false,
+      "dmg30": 3748366.076667189
+    },
+    {
+      "style": "melee",
+      "packageId": "desert-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "infernal-fire",
+      "familiar": "blood-nihil",
+      "totalDps": 72628.05342378274,
+      "famDps": 147,
+      "playerDps": 72481.05342378274,
+      "locked": false,
+      "dmg30": 3747607.556667189
+    },
+    {
+      "style": "melee",
+      "packageId": "desert-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "infernal-fire",
+      "familiar": "smoke-nihil",
+      "totalDps": 72628.05342378274,
+      "famDps": 147,
+      "playerDps": 72481.05342378274,
+      "locked": false,
+      "dmg30": 3747607.556667189
+    },
+    {
+      "style": "melee",
+      "packageId": "desert-asgarnia-forinthry|sum99",
+      "summoning": 99,
+      "relic": "infernal-fire",
+      "familiar": "shadow-nihil",
+      "totalDps": 72628.05342378274,
+      "famDps": 147,
+      "playerDps": 72481.05342378274,
+      "locked": false,
+      "dmg30": 3747607.556667189
+    },
+    {
+      "style": "melee",
+      "packageId": "desert-asgarnia-forinthry|sum90",
+      "summoning": 90,
+      "relic": "infernal-fire",
+      "familiar": "blood-nihil",
+      "totalDps": 72628.05342378274,
+      "famDps": 147,
+      "playerDps": 72481.05342378274,
+      "locked": false,
+      "dmg30": 3747607.556667189
+    },
+    {
+      "style": "melee",
+      "packageId": "desert-asgarnia-forinthry|sum90",
+      "summoning": 90,
+      "relic": "infernal-fire",
+      "familiar": "smoke-nihil",
+      "totalDps": 72628.05342378274,
+      "famDps": 147,
+      "playerDps": 72481.05342378274,
+      "locked": false,
+      "dmg30": 3747607.556667189
+    }
+  ],
+  "conclusion": {
+    "freePathBiSFamiliar": "Steel titan at 99 Summoning (or Iron titan at 95). Ripper LOCKED without Forinthry.",
+    "forinthryBiS": "Ripper demon + Devout once 96 Summoning + binding contract farmed.",
+    "levelGates": "sum50 free → hellhound only; sum70 → mid titans; sum99 → steel titan."
+  }
+}

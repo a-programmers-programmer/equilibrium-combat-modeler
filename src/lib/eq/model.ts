@@ -110,6 +110,13 @@ export interface ModelInput {
   relic?: RelicId;
   /** Secondary relic if Rejuvenated double-dip */
   relicSecondary?: RelicId | null;
+  /**
+   * Player snapshot for familiar/scroll requirement gates.
+   * If omitted, builds one from baneRegions + summoningLevel (soft access).
+   */
+  summoningPlayer?: PlayerSnapshot;
+  /** hard = full flags; soft = region+level; ignore = no gates (debug only) */
+  familiarAccess?: "soft" | "hard" | "ignore";
 }
 
 export interface DamageBreakdown {
@@ -692,25 +699,62 @@ export function modelCombat(input: ModelInput): ModelResult {
   const famId = input.familiar ?? "none";
   const famDef = FAMILIAR_BY_ID[famId] ?? FAMILIAR_BY_ID.none!;
   const sumLvl = input.summoningLevel ?? 99;
+
+  // Build / use player snapshot so Summoning requirements are enforced
+  const sumPlayer: PlayerSnapshot =
+    input.summoningPlayer ??
+    ({
+      levels: {
+        summoning: sumLvl,
+        attack: 99,
+        strength: 99,
+        defence: 99,
+        magic: 99,
+        ranged: 99,
+        necromancy: 99,
+      },
+      regions: new Set<RegionTag>(
+        input.baneRegions ?? [
+          "free",
+          "misthalin",
+          "havenhythe",
+          "karamja",
+        ],
+      ),
+      quests: new Set<string>(),
+      flags: new Set<string>(["league:contract-claws-auto"]),
+      relicTier: 6,
+    } satisfies PlayerSnapshot);
+
+  // Ensure summoning level on snapshot matches
+  if ((sumPlayer.levels.summoning ?? 1) < sumLvl) {
+    sumPlayer.levels = { ...sumPlayer.levels, summoning: sumLvl };
+  }
+
   const famResult = modelFamiliarDps(famDef, {
     summoningLevel: sumLvl,
     devout: relicStack.devout,
     divineDruid: relicStack.divineDruid,
+    player: sumPlayer,
+    accessMode: input.familiarAccess ?? "soft",
   });
-  // Nihil-style player mult stacks with relics
-  playerDpsMult *= famResult.playerDamageMult;
-  if (famResult.playerAccuracyMult > 1) {
-    // soft accuracy → small dps
-    playerDpsMult *= 1 + (famResult.playerAccuracyMult - 1) * 0.4;
+  // Nihil-style player mult stacks with relics — only if familiar unlocked
+  if (!famResult.locked) {
+    playerDpsMult *= famResult.playerDamageMult;
+    if (famResult.playerAccuracyMult > 1) {
+      playerDpsMult *= 1 + (famResult.playerAccuracyMult - 1) * 0.4;
+    }
   }
-  if (famResult.familiarDps > 0) {
+  if (famResult.locked) {
+    warnings.push(
+      `Familiar LOCKED (${famDef.name}): ${famResult.missing.join(", ") || famDef.describeReq?.() || "requirements"}`,
+    );
+    flags.push(`Familiar locked: ${famDef.name}`);
+  } else if (famResult.familiarDps > 0) {
     flags.push(
       `Familiar: ${famResult.name} ${Math.round(famResult.familiarDps)} dps` +
         (relicStack.devout ? ` (Devout ×${famResult.devoutMult.toFixed(2)})` : ""),
     );
-  }
-  if (!famResult.accessible && famId !== "none") {
-    warnings.push(`Familiar ${famDef.name} may be locked: ${famResult.missing.join(", ")}`);
   }
 
   const playerDpsRaw =

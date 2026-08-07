@@ -1,0 +1,24 @@
+<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420">
+<rect width="100%" height="100%" fill="#0f172a"/>
+<text x="450" y="28" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="600" font-family="system-ui,sans-serif">Damage dimensions — fight-length|melee|15s</text>
+<text x="450" y="48" text-anchor="middle" fill="#64748b" font-size="11" font-family="system-ui,sans-serif">Total 133,704 DPS · Elder overloads + weapon poison+++ · Ripper demon (binding contract)</text><text x="12" y="82" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">coreAbility</text>
+  <rect x="140" y="70" width="520" height="16" rx="3" fill="#38bdf8"/>
+  <text x="670" y="82" fill="#e2e8f0" font-size="10" font-family="system-ui,sans-serif">68,860 (36.6%)</text><text x="12" y="104" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">procBurst</text>
+  <rect x="140" y="92" width="247.00000000000003" height="16" rx="3" fill="#f472b6"/>
+  <text x="397" y="104" fill="#e2e8f0" font-size="10" font-family="system-ui,sans-serif">32,708 (17.4%)</text><text x="12" y="126" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">ultDuty</text>
+  <rect x="140" y="114" width="214.9286090111355" height="16" rx="3" fill="#fbbf24"/>
+  <text x="364.9286090111355" y="126" fill="#e2e8f0" font-size="10" font-family="system-ui,sans-serif">28,461 (15.1%)</text><text x="12" y="148" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">relicPlayer</text>
+  <rect x="140" y="136" width="146.37456530688505" height="16" rx="3" fill="#4ade80"/>
+  <text x="296.3745653068851" y="148" fill="#e2e8f0" font-size="10" font-family="system-ui,sans-serif">19,383 (10.3%)</text><text x="12" y="170" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">potionBoost</text>
+  <rect x="140" y="158" width="111.5362318840579" height="16" rx="3" fill="#a78bfa"/>
+  <text x="261.5362318840579" y="170" fill="#e2e8f0" font-size="10" font-family="system-ui,sans-serif">14,770 (7.9%)</text><text x="12" y="192" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">onHitBonus</text>
+  <rect x="140" y="180" width="51.99999999999999" height="16" rx="3" fill="#fb923c"/>
+  <text x="202" y="192" fill="#e2e8f0" font-size="10" font-family="system-ui,sans-serif">6,886 (3.7%)</text><text x="12" y="214" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">familiar</text>
+  <rect x="140" y="202" width="50.11419636442034" height="16" rx="3" fill="#2dd4bf"/>
+  <text x="200.11419636442034" y="214" fill="#e2e8f0" font-size="10" font-family="system-ui,sans-serif">6,636 (3.5%)</text><text x="12" y="236" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">specialAttack</text>
+  <rect x="140" y="224" width="36.11111111111111" height="16" rx="3" fill="#e879f9"/>
+  <text x="186.11111111111111" y="236" fill="#e2e8f0" font-size="10" font-family="system-ui,sans-serif">4,782 (2.5%)</text><text x="12" y="258" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">poison</text>
+  <rect x="140" y="246" width="22.23295682292363" height="16" rx="3" fill="#94a3b8"/>
+  <text x="172.23295682292363" y="258" fill="#e2e8f0" font-size="10" font-family="system-ui,sans-serif">2,944 (1.6%)</text><text x="12" y="280" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">bleedDot</text>
+  <rect x="140" y="268" width="20.023953755731714" height="16" rx="3" fill="#f87171"/>
+  <text x="170.02395375573172" y="280" fill="#e2e8f0" font-size="10" font-family="system-ui,sans-serif">2,652 (1.4%)</text></svg>

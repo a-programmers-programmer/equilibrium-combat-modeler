@@ -54,6 +54,19 @@ import {
   stackRelicPlayerMult,
   RELIC_BY_ID,
 } from "./sim/relics";
+import {
+  type PotionProfile,
+  POTION_BY_ID,
+  weaponPoisonBase,
+  envenomedPoisonMult,
+  styleBleedDotDps,
+  conjureDps,
+  specialAttackDps,
+  ultDutyMult,
+  assembleShares,
+  type DimensionSlice,
+  type DamageDimensionId,
+} from "./sim/dimensions";
 
 export interface GearSnapshot {
   armour: number;
@@ -117,6 +130,19 @@ export interface ModelInput {
   summoningPlayer?: PlayerSnapshot;
   /** hard = full flags; soft = region+level; ignore = no gates (debug only) */
   familiarAccess?: "soft" | "hard" | "ignore";
+  /**
+   * Potion / consumable profile id (see POTION_PROFILES).
+   * Default: elder-ovl when herbloreLevel >= 106, else overload / super-sets.
+   */
+  potionProfile?: string;
+  /** Fight length for ult duty-cycle modeling (seconds). Default 60. */
+  fightSeconds?: number;
+  /** Include style DoT / bleed dimension explicitly */
+  modelDots?: boolean;
+  /** Include weapon specials EV */
+  modelSpecials?: boolean;
+  /** Include necro conjures */
+  modelConjures?: boolean;
 }
 
 export interface DamageBreakdown {
@@ -127,7 +153,14 @@ export interface DamageBreakdown {
   lightOfSaradomin: number;
   splashBonus: number;
   tearingGrasps: number;
+  poison: number;
+  bleedDot: number;
+  specialAttack: number;
+  conjure: number;
+  barkscalesGrasp: number;
   other: number;
+  /** Full multi-dimension slices (post-mult attribution where possible) */
+  dimensions?: DimensionSlice[];
 }
 
 export interface ModelResult {
@@ -150,10 +183,16 @@ export interface ModelResult {
     cdrMultiplier: number;
   };
   dps: number;
+  /** Player + familiar */
+  totalDps?: number;
   vsBaseline: number;
   breakdown: DamageBreakdown;
   flags: string[];
   warnings: string[];
+  /** Potion profile used */
+  potions?: PotionProfile;
+  /** Dimension shares for UI / plots */
+  dimensions?: DimensionSlice[];
   /** Bane/affinity application */
   bane?: {
     mult: number;
@@ -402,10 +441,32 @@ export function modelCombat(input: ModelInput): ModelResult {
   }
 
   let maxLp = baseLp;
-  if (input.powerburst) {
-    maxLp = floor(baseLp * 1.15);
-    flags.push("Powerburst EV");
+  // Resolve potion profile early — affects AD, LP (powerburst), poison, density
+  const potionId =
+    input.potionProfile ??
+    (input.herbloreLevel >= 106
+      ? "elder-ovl"
+      : input.herbloreLevel >= 96
+        ? "overload"
+        : input.herbloreLevel >= 55
+          ? "super-sets"
+          : "none");
+  const potions: PotionProfile = POTION_BY_ID[potionId] ?? POTION_BY_ID.none!;
+  if (input.herbloreLevel < potions.herbloreRequired && potions.id !== "none") {
+    warnings.push(
+      `Potion ${potions.name} needs Herb ${potions.herbloreRequired} (have ${input.herbloreLevel}) — still modeling as available for leagues EV`,
+    );
   }
+  flags.push(`Potions: ${potions.name}`);
+
+  const powerburstOn = input.powerburst || potions.powerburstLp > 1;
+  if (powerburstOn) {
+    maxLp = floor(baseLp * Math.max(1.15, potions.powerburstLp));
+    flags.push("Powerburst / potion LP EV");
+  }
+  // Overload AD applied to baseline before aegis-scale? Model as post-base pre-aegis mult
+  ad = floor(ad * potions.adMult);
+  if (potions.adMult > 1) flags.push(`OVL/AD potion ×${potions.adMult}`);
 
   let aegisAd = 0;
   if (has("teragards-aegis")) {
@@ -438,6 +499,7 @@ export function modelCombat(input: ModelInput): ModelResult {
     densityMult *= 1.18;
     flags.push("Avernic free windows");
   }
+  densityMult *= potions.adrenDensity;
 
   let cdrMult = 1;
   if (has("sacred-fervor")) {
@@ -520,29 +582,102 @@ export function modelCombat(input: ModelInput): ModelResult {
   }
 
   let tearingGrasps = 0;
+  let barkscalesGrasp = 0;
   if (has("tearing-thorns")) {
     const graspsPerSec = (hitsPerSec * style.dotDensity * 1.5) / 5;
     tearingGrasps = (maxLp * 0.25 + ad * 1.0) * graspsPerSec * havocMult;
+    // Poison portion of Grasp (80–120% AD)
+    barkscalesGrasp += ad * 1.0 * graspsPerSec * 0.5 * havocMult;
     if (flatPerHit > 0) bigBonedFlat += flatPerHit * graspsPerSec;
-    flags.push("Tearing Thorns DoTs");
+    flags.push("Tearing Thorns DoTs + Grasp poison");
+  }
+  if (has("barkscales")) {
+    // Retaliate Grasp every ~5 reductions — model as low passive rate in active combat
+    const graspRate = 0.08; // per second EV while tanking/hitting
+    barkscalesGrasp += ad * 1.0 * graspRate * havocMult;
+    flags.push("Barkscales Grasp poison EV");
+  }
+
+  // ── Poison dimension (weapon + Envenomed + blessing poison) ──
+  const wpnPoison = weaponPoisonBase(
+    potions.poisonTier,
+    ad,
+    hitsPerSec,
+    style.dotDensity,
+  );
+  const envMult = envenomedPoisonMult(input.herbloreLevel, has("envenomed"));
+  let poison = wpnPoison.dps * envMult;
+  // Envenomed also scales blessing poison from grasps
+  poison += barkscalesGrasp * (envMult - 1); // only the envenomed uplift on grasp poison
+  // Base grasp poison counted in tearing/barkscales; envenomed boosts all poison
+  if (has("envenomed") && (poison > 0 || barkscalesGrasp > 0 || tearingGrasps > 0)) {
+    // Apply full envenomed to weapon poison already; boost grasp poison body
+    poison += barkscalesGrasp * Math.min(envMult, 2.5) * 0.35;
+    flags.push(`Envenomed poison ×${envMult.toFixed(2)} (Herb ${input.herbloreLevel})`);
+  }
+  if (wpnPoison.dps > 0) flags.push(`Weapon poison: ${wpnPoison.label}`);
+
+  // ── Style DoTs / bleeds ──
+  const modelDots = input.modelDots !== false;
+  let bleedDot = 0;
+  if (modelDots) {
+    const bd = styleBleedDotDps(
+      input.style,
+      ad,
+      hitsPerSec,
+      style.dotDensity,
+      has("tearing-thorns"),
+      havocMult,
+    );
+    bleedDot = bd.dps;
+    for (const s of bd.sources) flags.push(s);
+  }
+
+  // ── Specials ──
+  const modelSpecs = input.modelSpecials !== false;
+  let specialAttack = 0;
+  if (modelSpecs) {
+    const sp = specialAttackDps(
+      input.style,
+      ad,
+      densityMult,
+      potions.adrenPotsPerMin,
+      has("avernic-rampage"),
+    );
+    specialAttack = sp.dps * critMult * havocMult;
+    for (const s of sp.sources) flags.push(s);
+  }
+
+  // ── Conjures (necro) ──
+  const modelConj = input.modelConjures !== false;
+  let conjure = 0;
+  if (modelConj) {
+    const cj = conjureDps(
+      input.style,
+      ad,
+      has("genesis-essence"),
+      has("power-archive"),
+    );
+    conjure = cj.dps * critMult * havocMult;
+    for (const s of cj.sources) flags.push(s);
   }
 
   let other = 0;
   if (has("steadfast-will")) {
     other += armour * 4 * 0.15;
-    flags.push("Steadfast Will (partial)");
+    flags.push("Steadfast Will bash/reflect EV");
   }
   if (has("demons-mark")) {
     other += coreAbility * 0.05;
     flags.push("Demon's Mark accuracy");
   }
-  if (has("envenomed")) {
-    other += ad * 0.08 * hitsPerSec * (1.5 + 0.02 * input.herbloreLevel) * style.dotDensity;
-    flags.push("Envenomed poison");
-  }
-  if (has("power-archive")) {
+  // envenomed residual was previously in other — moved to poison
+  if (has("power-archive") && conjure === 0) {
     other += coreAbility * 0.1;
     flags.push("Power Archive perks");
+  } else if (has("power-archive")) {
+    other += coreAbility * 0.06;
+    flags.push("Power Archive perks (conjure separate)");
   }
   if (has("chaotic-insight")) {
     other += coreAbility * 0.08;
@@ -656,6 +791,8 @@ export function modelCombat(input: ModelInput): ModelResult {
   }
 
   const baneTotalMult = baneDmg.mult * baneAcc;
+  // Snapshot pre-bane for dimension attribution
+  const preBaneCore = coreAbility;
   if (baneTotalMult > 1.001) {
     coreAbility *= baneTotalMult;
     cindersOnHit *= baneTotalMult;
@@ -663,6 +800,11 @@ export function modelCombat(input: ModelInput): ModelResult {
     lightOfSaradomin *= baneTotalMult;
     splashBonus *= baneTotalMult;
     tearingGrasps *= baneTotalMult;
+    poison *= baneTotalMult;
+    bleedDot *= baneTotalMult;
+    specialAttack *= baneTotalMult;
+    conjure *= baneTotalMult;
+    barkscalesGrasp *= baneTotalMult;
     other *= baneTotalMult;
     bigBonedFlat *= 1 + (baneAcc - 1);
     for (const a of baneDmg.applied) {
@@ -676,6 +818,42 @@ export function modelCombat(input: ModelInput): ModelResult {
     );
   }
 
+  const fightSeconds = input.fightSeconds ?? 60;
+  const ult = ultDutyMult(input.style, has("higher-power"), fightSeconds);
+  // Ult applies to ability package, not poison/familiar
+  const ultMult = ult.mult;
+  for (const s of ult.sources) flags.push(s);
+
+  const abilityPackagePreUlt =
+    coreAbility +
+    cindersOnHit +
+    inferno +
+    lightOfSaradomin +
+    splashBonus +
+    tearingGrasps +
+    specialAttack +
+    conjure +
+    other;
+  const abilityAfterUlt = abilityPackagePreUlt * ultMult;
+  // Ult uplift attributed later
+  const ultUplift = abilityAfterUlt - abilityPackagePreUlt;
+
+  // Scale core-like pieces by ult for final sum
+  coreAbility *= ultMult;
+  cindersOnHit *= ultMult;
+  inferno *= ultMult;
+  lightOfSaradomin *= ultMult;
+  splashBonus *= ultMult;
+  tearingGrasps *= ultMult;
+  specialAttack *= ultMult;
+  conjure *= ultMult;
+  other *= ultMult;
+  // flat, poison, bleed: partial ult interaction
+  bigBonedFlat *= 1 + (ultMult - 1) * 0.5;
+  bleedDot *= 1 + (ultMult - 1) * 0.7;
+  // poison ticks don't crit/ult hard
+  // barkscales already in poison path partially
+
   const breakdown: DamageBreakdown = {
     coreAbility,
     bigBonedFlat,
@@ -684,6 +862,11 @@ export function modelCombat(input: ModelInput): ModelResult {
     lightOfSaradomin,
     splashBonus,
     tearingGrasps,
+    poison,
+    bleedDot,
+    specialAttack,
+    conjure,
+    barkscalesGrasp,
     other,
   };
 
@@ -765,11 +948,141 @@ export function modelCombat(input: ModelInput): ModelResult {
     lightOfSaradomin +
     splashBonus +
     tearingGrasps +
+    poison +
+    bleedDot +
+    specialAttack +
+    conjure +
+    barkscalesGrasp * 0.5 + // remainder of grasp not double-counted heavily with poison
     other;
 
   // Relic + nihil player mult; familiar is ADDITIVE (not Big-Boned, not player ability)
+  const dpsPreRelic = playerDpsRaw;
   const dps = playerDpsRaw * playerDpsMult;
+  const relicUplift = dps - dpsPreRelic;
   const totalDps = dps + famResult.familiarDps;
+
+  // Bane uplift for dimension chart (approx from pre-bane core)
+  const baneUplift =
+    baneTotalMult > 1.001
+      ? (preBaneCore * baneTotalMult - preBaneCore) * playerDpsMult * ultMult
+      : 0;
+
+  // Potion AD uplift isolated: compare as fraction of AD-scaled pieces
+  const potionAdShare = potions.adMult > 1 ? 1 - 1 / potions.adMult : 0;
+  const potionBoostDps =
+    (coreAbility + cindersOnHit + inferno + specialAttack + conjure) *
+    potionAdShare *
+    playerDpsMult;
+
+  const dimRaw: Omit<DimensionSlice, "share">[] = [
+    {
+      id: "coreAbility",
+      label: "Core abilities",
+      dps: coreAbility * playerDpsMult,
+      notes: [],
+      sources: ["ability hits"],
+    },
+    {
+      id: "onHitBonus",
+      label: "On-hit (Cinders)",
+      dps: cindersOnHit * playerDpsMult,
+      notes: [],
+      sources: has("abyssal-cinders") ? ["Abyssal Cinders +15%"] : [],
+    },
+    {
+      id: "procBurst",
+      label: "Proc bursts",
+      dps: (inferno + lightOfSaradomin + tearingGrasps * 0.4) * playerDpsMult,
+      notes: [],
+      sources: ["Inferno", "Light", "Grasp burst"],
+    },
+    {
+      id: "flatPerHit",
+      label: "Flat per hit (Big Boned)",
+      dps: bigBonedFlat * playerDpsMult,
+      notes: [],
+      sources: has("big-boned") ? ["5% max LP"] : [],
+    },
+    {
+      id: "poison",
+      label: "Poison",
+      dps: (poison + barkscalesGrasp * 0.5) * playerDpsMult,
+      notes: [wpnPoison.label, has("envenomed") ? `Envenomed ×${envMult.toFixed(2)}` : ""],
+      sources: ["weapon poison", "Envenomed", "Grasp poison"],
+    },
+    {
+      id: "bleedDot",
+      label: "Style DoTs",
+      dps: bleedDot * playerDpsMult,
+      notes: [],
+      sources: [`${input.style} bleeds/DoTs`],
+    },
+    {
+      id: "potionBoost",
+      label: "Potion AD uplift",
+      dps: potionBoostDps,
+      notes: [potions.name],
+      sources: [potions.name],
+    },
+    {
+      id: "familiar",
+      label: "Familiar",
+      dps: famResult.familiarDps,
+      notes: famResult.locked ? ["LOCKED"] : [],
+      sources: [famResult.name],
+    },
+    {
+      id: "conjure",
+      label: "Conjures",
+      dps: conjure * playerDpsMult,
+      notes: [],
+      sources: input.style === "necromancy" ? ["conjures"] : [],
+    },
+    {
+      id: "specialAttack",
+      label: "Weapon specials",
+      dps: specialAttack * playerDpsMult,
+      notes: [],
+      sources: ["specs", "avernic", "adren pots"],
+    },
+    {
+      id: "prayer",
+      label: "Prayer / Light scale",
+      dps: lightOfSaradomin * playerDpsMult * 0.15, // prayer portion already in light; small attribute
+      notes: [`prayer bonus ${prayer}`],
+      sources: ["prayer scaling on Light"],
+    },
+    {
+      id: "baneAffinity",
+      label: "Bane / affinity",
+      dps: baneUplift,
+      notes: baneDmg.applied.map((a) => a.name),
+      sources: baneDmg.applied.map((a) => `${a.name} vs ${a.tag}`),
+    },
+    {
+      id: "relicPlayer",
+      label: "Relic player mult",
+      dps: relicUplift,
+      notes: relicStack.flags,
+      sources: [String(input.relic ?? "none"), String(input.relicSecondary ?? "")],
+    },
+    {
+      id: "multiSplash",
+      label: "Splash Zone",
+      dps: splashBonus * playerDpsMult,
+      notes: [],
+      sources: has("splash-zone") ? ["Splash Zone"] : [],
+    },
+    {
+      id: "ultDuty",
+      label: "Ultimate windows",
+      dps: ultUplift * playerDpsMult,
+      notes: ult.sources,
+      sources: ult.sources,
+    },
+  ];
+  const dimensions = assembleShares(dimRaw);
+  breakdown.dimensions = dimensions;
 
   const baseHits = style.hitsPerSecond;
   const baselineDps = gear.baselineAd * avgPct * baseHits * (1 + 0.15 * 0.45);
@@ -809,6 +1122,8 @@ export function modelCombat(input: ModelInput): ModelResult {
     breakdown,
     flags,
     warnings,
+    potions,
+    dimensions,
     bane: {
       mult: baneDmg.mult,
       accuracyFactor: baneAcc,

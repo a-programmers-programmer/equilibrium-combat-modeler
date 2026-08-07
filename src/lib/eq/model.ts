@@ -67,6 +67,13 @@ import {
   type DimensionSlice,
   type DamageDimensionId,
 } from "./sim/dimensions";
+import {
+  modelPoisonStack,
+  POISON_KIT_BY_ID,
+  type PoisonKitId,
+  type PoisonGearFlags,
+  type WeaponPoisonTier,
+} from "./sim/poison";
 
 export interface GearSnapshot {
   armour: number;
@@ -143,6 +150,17 @@ export interface ModelInput {
   modelSpecials?: boolean;
   /** Include necro conjures */
   modelConjures?: boolean;
+  /**
+   * Full poison kit (cinderbane, blowpipe, laniakea, kwuarm, reaver).
+   * See POISON_KITS. Overrides simple potion.poisonTier when set.
+   */
+  poisonKit?: PoisonKitId;
+  /** Explicit poison gear flags (overrides kit gear if both set partially) */
+  poisonGear?: Partial<PoisonGearFlags>;
+  /** Force weapon poison tier 0–4 */
+  weaponPoisonTier?: WeaponPoisonTier;
+  /** Target poison immune (Envenomed strips) */
+  targetPoisonImmune?: boolean;
 }
 
 export interface DamageBreakdown {
@@ -598,24 +616,72 @@ export function modelCombat(input: ModelInput): ModelResult {
     flags.push("Barkscales Grasp poison EV");
   }
 
-  // ── Poison dimension (weapon + Envenomed + blessing poison) ──
-  const wpnPoison = weaponPoisonBase(
-    potions.poisonTier,
-    ad,
-    hitsPerSec,
-    style.dotDensity,
+  // ── Poison dimension (full stack: Cinderbane / Blowpipe / Laniakea / Kwuarm / Envenomed) ──
+  const kit = input.poisonKit ? POISON_KIT_BY_ID[input.poisonKit] : undefined;
+  const wpTier: WeaponPoisonTier =
+    input.weaponPoisonTier ??
+    kit?.weaponPoisonTier ??
+    (potions.poisonTier as WeaponPoisonTier);
+  const poisonGear: PoisonGearFlags = {
+    cinderbaneGloves: kit?.gear.cinderbaneGloves ?? false,
+    laniakeaSpear: kit?.gear.laniakeaSpear ?? false,
+    upgradedBoneBlowpipe: kit?.gear.upgradedBoneBlowpipe ?? false,
+    kwuarmStacks: kit?.gear.kwuarmStacks ?? 0,
+    bloodReaver:
+      kit?.gear.bloodReaver ||
+      input.familiar === "blood-reaver" ||
+      false,
+    targetPoisonImmune: input.targetPoisonImmune ?? kit?.gear.targetPoisonImmune ?? false,
+    ...input.poisonGear,
+  };
+  // Regions for poison gear gates
+  const poisonRegions = new Set<RegionTag>(
+    input.baneRegions ?? ["free", "misthalin", "havenhythe", "karamja"],
   );
-  const envMult = envenomedPoisonMult(input.herbloreLevel, has("envenomed"));
-  let poison = wpnPoison.dps * envMult;
-  // Envenomed also scales blessing poison from grasps
-  poison += barkscalesGrasp * (envMult - 1); // only the envenomed uplift on grasp poison
-  // Base grasp poison counted in tearing/barkscales; envenomed boosts all poison
-  if (has("envenomed") && (poison > 0 || barkscalesGrasp > 0 || tearingGrasps > 0)) {
-    // Apply full envenomed to weapon poison already; boost grasp poison body
-    poison += barkscalesGrasp * Math.min(envMult, 2.5) * 0.35;
-    flags.push(`Envenomed poison ×${envMult.toFixed(2)} (Herb ${input.herbloreLevel})`);
+  if (input.summoningPlayer?.regions) {
+    for (const r of input.summoningPlayer.regions) poisonRegions.add(r);
   }
-  if (wpnPoison.dps > 0) flags.push(`Weapon poison: ${wpnPoison.label}`);
+
+  const poisonResult = modelPoisonStack({
+    abilityDamage: ad,
+    hitsPerSecond: hitsPerSec,
+    style: input.style,
+    weaponPoisonTier: wpTier,
+    herbloreLevel: input.herbloreLevel,
+    hasEnvenomed: has("envenomed"),
+    gear: poisonGear,
+    multiHitFactor:
+      1 +
+      style.multiHitShare * 0.5 +
+      (has("splash-zone") ? input.multiContentWeight * 0.3 : 0),
+    regions: poisonRegions,
+  });
+
+  let poison = poisonResult.dps;
+  for (const f of poisonResult.flags) flags.push(f);
+  for (const w of poisonResult.warnings) warnings.push(w);
+
+  // Blessing Grasp poison (Tearing Thorns / Barkscales) — separate, then Envenomed scales
+  let graspPoison = barkscalesGrasp;
+  if (has("envenomed") && graspPoison > 0) {
+    const env = 1.5 + 0.02 * input.herbloreLevel;
+    graspPoison *= env;
+    poison += graspPoison * 0.35; // portion already partly in tearingGrasps body
+  } else {
+    poison += graspPoison * 0.25;
+  }
+
+  // Legacy simple WP if no kit and no cinderbane path — poisonResult already covers WP-only
+  if (poison === 0 && potions.poisonTier > 0) {
+    const wpnPoison = weaponPoisonBase(
+      potions.poisonTier,
+      ad,
+      hitsPerSec,
+      style.dotDensity,
+    );
+    const envMult = envenomedPoisonMult(input.herbloreLevel, has("envenomed"));
+    poison = wpnPoison.dps * envMult;
+  }
 
   // ── Style DoTs / bleeds ──
   const modelDots = input.modelDots !== false;
@@ -1005,10 +1071,10 @@ export function modelCombat(input: ModelInput): ModelResult {
     },
     {
       id: "poison",
-      label: "Poison",
+      label: "Poison (full stack)",
       dps: (poison + barkscalesGrasp * 0.5) * playerDpsMult,
-      notes: [wpnPoison.label, has("envenomed") ? `Envenomed ×${envMult.toFixed(2)}` : ""],
-      sources: ["weapon poison", "Envenomed", "Grasp poison"],
+      notes: poisonResult.flags.slice(0, 4),
+      sources: poisonResult.sources.map((s) => s.label),
     },
     {
       id: "bleedDot",
@@ -1124,6 +1190,13 @@ export function modelCombat(input: ModelInput): ModelResult {
     warnings,
     potions,
     dimensions,
+    poisonStack: {
+      dps: poisonResult.dps,
+      effectiveTier: poisonResult.effectiveTier,
+      applyChance: poisonResult.applyChance,
+      sources: poisonResult.sources,
+      gearStatus: poisonResult.gearStatus,
+    },
     bane: {
       mult: baneDmg.mult,
       accuracyFactor: baneAcc,

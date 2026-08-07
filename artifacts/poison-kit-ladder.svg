@@ -1,0 +1,25 @@
+<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" width="900" height="340" viewBox="0 0 900 340">
+<rect width="100%" height="100%" fill="#0f172a"/>
+<text x="450" y="28" text-anchor="middle" fill="#e2e8f0" font-size="15" font-weight="600" font-family="system-ui,sans-serif">Poison kit ladder (Tirannwn+Anachronia, Envenomed melee)</text>
+<text x="450" y="46" text-anchor="middle" fill="#64748b" font-size="11" font-family="system-ui,sans-serif">Cinderbane · Laniakea · Blowpipe · Kwuarm · WP+++ · Envenomed</text><text x="12" y="74" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">none</text>
+  <rect x="160" y="60" width="431.9244130248678" height="20" rx="3" fill="#334155"/>
+  <rect x="160" y="60" width="16.30040491008977" height="20" rx="3" fill="#4ade80"/>
+  <text x="601.9244130248678" y="74" fill="#e2e8f0" font-size="10">63,155 (pois 2,383)</text><text x="12" y="110" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">wp-only</text>
+  <rect x="160" y="96" width="450.1666819268929" height="20" rx="3" fill="#334155"/>
+  <rect x="160" y="96" width="34.54267381211484" height="20" rx="3" fill="#4ade80"/>
+  <text x="620.1666819268929" y="110" fill="#e2e8f0" font-size="10">65,822 (pois 5,051)</text><text x="12" y="146" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">wp-cinder</text>
+  <rect x="160" y="132" width="485.7695100673452" height="20" rx="3" fill="#334155"/>
+  <rect x="160" y="132" width="70.14550195256713" height="20" rx="3" fill="#4ade80"/>
+  <text x="655.7695100673452" y="146" fill="#e2e8f0" font-size="10">71,028 (pois 10,257)</text><text x="12" y="182" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">full-melee-poison</text>
+  <rect x="160" y="168" width="500" height="20" rx="3" fill="#334155"/>
+  <rect x="160" y="168" width="84.37599188522186" height="20" rx="3" fill="#4ade80"/>
+  <text x="670" y="182" fill="#e2e8f0" font-size="10">73,109 (pois 12,337)</text><text x="12" y="218" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">full-ranged-blowpipe</text>
+  <rect x="160" y="204" width="480.3850003630975" height="20" rx="3" fill="#334155"/>
+  <rect x="160" y="204" width="64.7609922483194" height="20" rx="3" fill="#4ade80"/>
+  <text x="650.3850003630976" y="218" fill="#e2e8f0" font-size="10">70,241 (pois 9,469)</text><text x="12" y="254" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">cinder-only</text>
+  <rect x="160" y="240" width="460.97522625134286" height="20" rx="3" fill="#334155"/>
+  <rect x="160" y="240" width="45.35121813656471" height="20" rx="3" fill="#4ade80"/>
+  <text x="630.9752262513429" y="254" fill="#e2e8f0" font-size="10">67,403 (pois 6,631)</text><text x="12" y="290" fill="#94a3b8" font-size="11" font-family="system-ui,sans-serif">reaver-cinder</text>
+  <rect x="160" y="276" width="474.5077723536119" height="20" rx="3" fill="#334155"/>
+  <rect x="160" y="276" width="81.4343718086173" height="20" rx="3" fill="#4ade80"/>
+  <text x="644.5077723536119" y="290" fill="#e2e8f0" font-size="10">69,381 (pois 11,907)</text></svg>

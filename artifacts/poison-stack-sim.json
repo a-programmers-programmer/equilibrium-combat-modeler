@@ -1,0 +1,331 @@
+{
+  "generated": "2026-08-07T06:27:26.079Z",
+  "top": [
+    {
+      "kit": "full-melee-poison",
+      "regions": "poison-max",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 128910.37684136552,
+      "poison": 5650.352474429518,
+      "poisonShare": 0.03232811403143908,
+      "cinder": "active",
+      "notes": "Weapon poison T4→eff T5; Cinderbane gloves; Laniakea's spear; Kwuarm incense ×4"
+    },
+    {
+      "kit": "wp-cinder",
+      "regions": "poison-max",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 127729.22971394242,
+      "poison": 4469.205347006399,
+      "poisonShare": 0.025770982484632554,
+      "cinder": "active",
+      "notes": "Weapon poison T4→eff T5; Cinderbane gloves; Kwuarm incense ×4"
+    },
+    {
+      "kit": "full-ranged-blowpipe",
+      "regions": "poison-max",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 127282.30917924177,
+      "poison": 4022.2848123057597,
+      "poisonShare": 0.02326298028754572,
+      "cinder": "active",
+      "notes": "Weapon poison T4→eff T5; Cinderbane gloves; Kwuarm incense ×4; Upgraded Bone Blowpipe"
+    },
+    {
+      "kit": "reaver-cinder",
+      "regions": "poison-max",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 126591.63560993163,
+      "poison": 5379.135555656902,
+      "poisonShare": 0.03067000361141778,
+      "cinder": "active",
+      "notes": "Weapon poison T4→eff T5; Cinderbane gloves; Kwuarm incense ×4; Blood reaver"
+    },
+    {
+      "kit": "none",
+      "regions": "wazzy",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 126204.164911736,
+      "poison": 2944.1405448000005,
+      "poisonShare": 0.01715076364800838,
+      "cinder": "off",
+      "notes": ""
+    },
+    {
+      "kit": "cinder-only",
+      "regions": "wazzy",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 126204.164911736,
+      "poison": 2944.1405448000005,
+      "poisonShare": 0.01715076364800838,
+      "cinder": "unavailable",
+      "notes": ""
+    },
+    {
+      "kit": "none",
+      "regions": "poison-max",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 126204.164911736,
+      "poison": 2944.1405448000005,
+      "poisonShare": 0.01715076364800838,
+      "cinder": "off",
+      "notes": ""
+    },
+    {
+      "kit": "full-melee-poison",
+      "regions": "wazzy",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 125737.5186353852,
+      "poison": 2477.4942684492003,
+      "poisonShare": 0.014477727293921574,
+      "cinder": "unavailable",
+      "notes": "Weapon poison T4→eff T4; Laniakea's spear; Kwuarm incense ×4"
+    },
+    {
+      "kit": "cinder-only",
+      "regions": "poison-max",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 125671.27547312721,
+      "poison": 2411.2511061911996,
+      "poisonShare": 0.01409691169263196,
+      "cinder": "active",
+      "notes": "Weapon poison T0→eff T2; Cinderbane gloves; Kwuarm incense ×2"
+    },
+    {
+      "kit": "wp-cinder",
+      "regions": "wazzy",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 124925.56673228,
+      "poison": 1665.5423653439998,
+      "poisonShare": 0.00978644390875599,
+      "cinder": "unavailable",
+      "notes": "Weapon poison T4→eff T4; Kwuarm incense ×4"
+    },
+    {
+      "kit": "full-ranged-blowpipe",
+      "regions": "wazzy",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 124925.56673228,
+      "poison": 1665.5423653439998,
+      "poisonShare": 0.00978644390875599,
+      "cinder": "unavailable",
+      "notes": "Weapon poison T4→eff T4; Kwuarm incense ×4; Upgraded Bone Blowpipe"
+    },
+    {
+      "kit": "wp-only",
+      "regions": "wazzy",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 124774.153789976,
+      "poison": 1514.12942304,
+      "poisonShare": 0.008905899210810047,
+      "cinder": "off",
+      "notes": "Weapon poison T4→eff T4"
+    },
+    {
+      "kit": "wp-only",
+      "regions": "poison-max",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 124774.153789976,
+      "poison": 1514.12942304,
+      "poisonShare": 0.008905899210810047,
+      "cinder": "off",
+      "notes": "Weapon poison T4→eff T4"
+    },
+    {
+      "kit": "reaver-cinder",
+      "regions": "wazzy",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 123217.14684520276,
+      "poison": 2004.6467909280382,
+      "poisonShare": 0.011692843697198961,
+      "cinder": "unavailable",
+      "notes": "Weapon poison T4→eff T4; Kwuarm incense ×4; Blood reaver"
+    },
+    {
+      "kit": "none",
+      "regions": "starter",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 119567.924911736,
+      "poison": 2944.1405448000005,
+      "poisonShare": 0.017840451950128348,
+      "cinder": "off",
+      "notes": ""
+    },
+    {
+      "kit": "cinder-only",
+      "regions": "starter",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 119567.924911736,
+      "poison": 2944.1405448000005,
+      "poisonShare": 0.017840451950128348,
+      "cinder": "unavailable",
+      "notes": ""
+    },
+    {
+      "kit": "reaver-cinder",
+      "regions": "starter",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 118589.12435804191,
+      "poison": 1965.3399911059196,
+      "poisonShare": 0.011991237682655947,
+      "cinder": "unavailable",
+      "notes": "Weapon poison T4→eff T4; Kwuarm incense ×4; Blood reaver"
+    },
+    {
+      "kit": "wp-cinder",
+      "regions": "starter",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 118289.32673228,
+      "poison": 1665.5423653439998,
+      "poisonShare": 0.010183534740987836,
+      "cinder": "unavailable",
+      "notes": "Weapon poison T4→eff T4; Kwuarm incense ×4"
+    },
+    {
+      "kit": "full-melee-poison",
+      "regions": "starter",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 118289.32673228,
+      "poison": 1665.5423653439998,
+      "poisonShare": 0.010183534740987836,
+      "cinder": "unavailable",
+      "notes": "Weapon poison T4→eff T4; Kwuarm incense ×4"
+    },
+    {
+      "kit": "full-ranged-blowpipe",
+      "regions": "starter",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 118289.32673228,
+      "poison": 1665.5423653439998,
+      "poisonShare": 0.010183534740987836,
+      "cinder": "unavailable",
+      "notes": "Weapon poison T4→eff T4; Kwuarm incense ×4; Upgraded Bone Blowpipe"
+    },
+    {
+      "kit": "wp-only",
+      "regions": "starter",
+      "style": "melee",
+      "blessing": "crit-cinders",
+      "total": 118137.913789976,
+      "poison": 1514.12942304,
+      "poisonShare": 0.00926764739755186,
+      "cinder": "off",
+      "notes": "Weapon poison T4→eff T4"
+    },
+    {
+      "kit": "full-melee-poison",
+      "regions": "poison-max",
+      "style": "necromancy",
+      "blessing": "crit-cinders",
+      "total": 106272.96286175848,
+      "poison": 5116.492747647751,
+      "poisonShare": 0.036965105303805014,
+      "cinder": "active",
+      "notes": "Weapon poison T4→eff T5; Cinderbane gloves; Laniakea's spear; Kwuarm incense ×4"
+    },
+    {
+      "kit": "wp-cinder",
+      "regions": "poison-max",
+      "style": "necromancy",
+      "blessing": "crit-cinders",
+      "total": 105203.4135303293,
+      "poison": 4046.943416218559,
+      "poisonShare": 0.029500666073245328,
+      "cinder": "active",
+      "notes": "Weapon poison T4→eff T5; Cinderbane gloves; Kwuarm incense ×4"
+    },
+    {
+      "kit": "full-ranged-blowpipe",
+      "regions": "poison-max",
+      "style": "necromancy",
+      "blessing": "crit-cinders",
+      "total": 104798.71918870743,
+      "poison": 3642.249074596703,
+      "poisonShare": 0.026641181528300955,
+      "cinder": "active",
+      "notes": "Weapon poison T4→eff T5; Cinderbane gloves; Kwuarm incense ×4; Upgraded Bone Blowpipe"
+    },
+    {
+      "kit": "none",
+      "regions": "wazzy",
+      "style": "necromancy",
+      "blessing": "crit-cinders",
+      "total": 103987.30468947074,
+      "poison": 2830.83457536,
+      "poisonShare": 0.020848715374438557,
+      "cinder": "off",
+      "notes": ""
+    }
+  ],
+  "ladder": [
+    {
+      "id": "none",
+      "name": "No poison gear",
+      "total": 63154.925628417135,
+      "poison": 2383.4051254485007
+    },
+    {
+      "id": "wp-only",
+      "name": "Weapon poison+++ only",
+      "total": 65822.26533198386,
+      "poison": 5050.74482901522
+    },
+    {
+      "id": "wp-cinder",
+      "name": "WP+++ + Cinderbanes + Kwuarm4",
+      "total": 71028.02332011158,
+      "poison": 10256.502817142937
+    },
+    {
+      "id": "full-melee-poison",
+      "name": "WP+++ + Cinder + Laniakea + Kwuarm4",
+      "total": 73108.77056720226,
+      "poison": 12337.250064233609
+    },
+    {
+      "id": "full-ranged-blowpipe",
+      "name": "Upgraded Bone Blowpipe + WP+++ + Cinder",
+      "total": 70240.71355094214,
+      "poison": 9469.193047973493
+    },
+    {
+      "id": "cinder-only",
+      "name": "Cinderbanes only (no WP potion)",
+      "total": 67402.66410634715,
+      "poison": 6631.143603378502
+    },
+    {
+      "id": "reaver-cinder",
+      "name": "WP+++ + Cinder + Blood reaver",
+      "total": 69381.3597227089,
+      "poison": 11907.133609680892
+    }
+  ],
+  "conclusions": {
+    "cinderbaneRegion": "Tirannwn (Lost Grove/Solak) required",
+    "laniakeaRegion": "Anachronia",
+    "fullStackPoisonShare": "~12–15% of total with Envenomed",
+    "blowpipeNote": "Upgraded Bone Blowpipe halves poison dmg / doubles rate; softens Cinderbane package",
+    "withoutTirannwn": "Cinderbanes locked — WP+++ only"
+  }
+}

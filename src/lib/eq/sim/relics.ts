@@ -17,6 +17,8 @@
  * (2+ same path → that God; 1 of each → Balance). See blessings.ts.
  *
  * Archaeology "relic powers" unlocked by Antiquarian are a different system.
+ *
+ * Tier numbers follow Wazzy Leagues Hub estimates (wazzy-tiers.ts).
  */
 
 export type RelicId =
@@ -188,7 +190,7 @@ export const RELICS: readonly RelicDef[] = [
   {
     id: "assassins-insight",
     name: "Assassin's Insight",
-    assumedTier: 2,
+    assumedTier: 3,
     assumedTierSource: "guess",
     combatRank: "C",
     skills: ["slayer"],
@@ -207,7 +209,7 @@ export const RELICS: readonly RelicDef[] = [
   {
     id: "voidwalker",
     name: "Voidwalker",
-    assumedTier: 2,
+    assumedTier: 3,
     assumedTierSource: "guess",
     combatRank: "D",
     skills: ["divination"],
@@ -226,7 +228,7 @@ export const RELICS: readonly RelicDef[] = [
   {
     id: "perkfection",
     name: "Perkfection",
-    assumedTier: 3,
+    assumedTier: 6,
     assumedTierSource: "guess",
     combatRank: "A",
     skills: ["invention"],
@@ -245,7 +247,7 @@ export const RELICS: readonly RelicDef[] = [
   {
     id: "icyenic-faith",
     name: "Icyenic Faith",
-    assumedTier: 3,
+    assumedTier: 7,
     assumedTierSource: "guess",
     combatRank: "A",
     skills: ["prayer"],
@@ -264,7 +266,7 @@ export const RELICS: readonly RelicDef[] = [
   {
     id: "production-master",
     name: "Production Master",
-    assumedTier: 3,
+    assumedTier: 5,
     assumedTierSource: "guess",
     combatRank: "D",
     skills: ["artisan"],
@@ -283,7 +285,7 @@ export const RELICS: readonly RelicDef[] = [
   {
     id: "devout",
     name: "Devout",
-    assumedTier: 4,
+    assumedTier: 5,
     assumedTierSource: "guess",
     combatRank: "S",
     skills: ["summoning"],
@@ -306,7 +308,7 @@ export const RELICS: readonly RelicDef[] = [
   {
     id: "naragi-edict",
     name: "Naragi Edict",
-    assumedTier: 4,
+    assumedTier: 7,
     assumedTierSource: "guess",
     combatRank: "S",
     skills: ["combat"],
@@ -344,7 +346,7 @@ export const RELICS: readonly RelicDef[] = [
   {
     id: "infernal-fire",
     name: "Infernal Fire",
-    assumedTier: 5,
+    assumedTier: 7,
     assumedTierSource: "guess",
     combatRank: "S",
     skills: ["combat"],
@@ -363,7 +365,7 @@ export const RELICS: readonly RelicDef[] = [
   {
     id: "rejuvenated",
     name: "Rejuvenated",
-    assumedTier: 5,
+    assumedTier: 6,
     assumedTierSource: "guess",
     combatRank: "S",
     skills: [],
@@ -402,7 +404,7 @@ export const RELICS: readonly RelicDef[] = [
   {
     id: "crystal-grace",
     name: "Crystal Grace",
-    assumedTier: 6,
+    assumedTier: 4,
     assumedTierSource: "guess",
     combatRank: "C",
     skills: [],
@@ -421,7 +423,7 @@ export const RELICS: readonly RelicDef[] = [
   {
     id: "superheated",
     name: "Superheated",
-    assumedTier: 6,
+    assumedTier: 2,
     assumedTierSource: "guess",
     combatRank: "D",
     skills: ["smithing", "firemaking"],
@@ -440,7 +442,7 @@ export const RELICS: readonly RelicDef[] = [
   {
     id: "natures-network",
     name: "Nature's Network",
-    assumedTier: 6,
+    assumedTier: 3,
     assumedTierSource: "guess",
     combatRank: "D",
     skills: ["farming"],
@@ -459,7 +461,7 @@ export const RELICS: readonly RelicDef[] = [
   {
     id: "transmutation",
     name: "Transmutation",
-    assumedTier: 7,
+    assumedTier: 4,
     assumedTierSource: "guess",
     combatRank: "D",
     skills: [],
@@ -477,7 +479,7 @@ export const RELICS: readonly RelicDef[] = [
   {
     id: "animal-wrangler",
     name: "Animal Wrangler",
-    assumedTier: 7,
+    assumedTier: 2,
     assumedTierSource: "guess",
     combatRank: "D",
     skills: ["hunter"],
@@ -637,23 +639,25 @@ export function validateRelicLoadout(loadout: RelicLoadout): ValidatedRelics {
       "Devout+Infernal both active — valid when on different tiers (assumed T4+T5); no prior-relic affinity required by wiki",
     );
   }
-  if (active.includes("devout") && active.includes("naragi-edict")) {
-    const d = RELIC_BY_ID.devout!;
-    const n = RELIC_BY_ID["naragi-edict"]!;
-    if (d.assumedTier === n.assumedTier) {
-      errors.push(
-        `Devout and Naragi Edict both assumed T${d.assumedTier} — mutually exclusive (one pick per tier)`,
-      );
-    }
+  // T7 mutual exclusion among combat apex picks
+  const t7Combat = (["infernal-fire", "naragi-edict", "icyenic-faith"] as RelicId[]).filter((id) =>
+    active.includes(id),
+  );
+  if (t7Combat.length > 1) {
+    errors.push(
+      `T7 combat relics are mutually exclusive (Wazzy): picked ${t7Combat.join(" + ")}`,
+    );
   }
-  if (active.includes("infernal-fire") && active.includes("rejuvenated")) {
-    const i = RELIC_BY_ID["infernal-fire"]!;
-    const r = RELIC_BY_ID.rejuvenated!;
-    if (i.assumedTier === r.assumedTier) {
-      errors.push(
-        `Infernal Fire and Rejuvenated both assumed T${i.assumedTier} — cannot pick both on same tier`,
-      );
-    }
+  // T5: Devout vs Production Master vs Clues
+  const t5Combat = (["devout", "production-master", "clue-connoisseur"] as RelicId[]).filter((id) =>
+    active.includes(id),
+  );
+  if (t5Combat.length > 1) {
+    errors.push(`T5 relics mutually exclusive: ${t5Combat.join(" + ")}`);
+  }
+  // T6: Rejuvenated vs Perkfection
+  if (active.includes("rejuvenated") && active.includes("perkfection")) {
+    errors.push("T6 Rejuvenated and Perkfection are mutually exclusive (Wazzy map)");
   }
 
   let mult = 1;
@@ -765,61 +769,57 @@ export function legalCombatLoadouts(): {
   loadout: RelicLoadout;
   validation: ValidatedRelics;
 }[] {
+  // Tiers per Wazzy Hub: T5 Devout, T6 Rejuv/Perk, T7 Infernal|Naragi|Icyenic
   const specs: { id: string; label: string; loadout: RelicLoadout }[] = [
     {
       id: "devout-only",
-      label: "T4 Devout only",
-      loadout: { byTier: { 4: "devout" } },
+      label: "T5 Devout only",
+      loadout: { byTier: { 5: "devout" } },
     },
     {
       id: "infernal-only",
-      label: "T5 Infernal only",
-      loadout: { byTier: { 5: "infernal-fire" } },
+      label: "T7 Infernal only",
+      loadout: { byTier: { 7: "infernal-fire" } },
     },
     {
       id: "icyenic-only",
-      label: "T3 Icyenic only",
-      loadout: { byTier: { 3: "icyenic-faith" } },
+      label: "T7 Icyenic only",
+      loadout: { byTier: { 7: "icyenic-faith" } },
     },
     {
       id: "devout-plus-infernal",
-      label: "T4 Devout + T5 Infernal (no Rejuv needed)",
-      loadout: { byTier: { 4: "devout", 5: "infernal-fire" } },
+      label: "T5 Devout + T7 Infernal (no Rejuv needed)",
+      loadout: { byTier: { 5: "devout", 7: "infernal-fire" } },
     },
     {
-      id: "icyenic-devout-infernal",
-      label: "T3 Icyenic + T4 Devout + T5 Infernal",
-      loadout: {
-        byTier: { 3: "icyenic-faith", 4: "devout", 5: "infernal-fire" },
-      },
+      id: "devout-plus-icyenic",
+      label: "T5 Devout + T7 Icyenic",
+      loadout: { byTier: { 5: "devout", 7: "icyenic-faith" } },
+    },
+    {
+      id: "devout-plus-naragi",
+      label: "T5 Devout + T7 Naragi",
+      loadout: { byTier: { 5: "devout", 7: "naragi-edict" } },
     },
     {
       id: "perk-devout-infernal",
-      label: "T3 Perkfection + T4 Devout + T5 Infernal",
+      label: "T5 Devout + T6 Perkfection + T7 Infernal",
       loadout: {
-        byTier: { 3: "perkfection", 4: "devout", 5: "infernal-fire" },
+        byTier: { 5: "devout", 6: "perkfection", 7: "infernal-fire" },
       },
     },
     {
-      id: "rejuv-reclaim-devout",
-      label: "T4 Naragi + T5 Rejuvenated → reclaim Devout",
+      id: "rejuv-reclaim-druid-icyenic",
+      label: "Wazzy: T6 Rejuv→Divine Druid + T7 Icyenic",
       loadout: {
-        byTier: { 4: "naragi-edict", 5: "rejuvenated" },
-        rejuvenatedExtra: { fromTier: 4, relic: "devout" },
+        byTier: { 6: "rejuvenated", 7: "icyenic-faith" },
+        rejuvenatedExtra: { fromTier: 2, relic: "divine-druid" },
       },
     },
     {
-      id: "rejuv-reclaim-icyenic",
-      label: "T3 Perkfection + T4 Devout + T5 Rejuvenated → Icyenic",
-      loadout: {
-        byTier: { 3: "perkfection", 4: "devout", 5: "rejuvenated" },
-        rejuvenatedExtra: { fromTier: 3, relic: "icyenic-faith" },
-      },
-    },
-    {
-      id: "invalid-same-tier-devout-naragi",
-      label: "INVALID T4 Devout+Naragi",
-      loadout: { byTier: { 4: "devout" } },
+      id: "invalid-t7-infernal-icyenic",
+      label: "INVALID T7 Infernal+Icyenic",
+      loadout: { byTier: { 7: "infernal-fire" } }, // cannot both
     },
     {
       id: "none",
@@ -861,14 +861,13 @@ export function combatRelicCombos(_includeRejuvDouble = true): {
     out.push({ primary: p, secondary: null, label: p, valid: true });
   }
   const pairs: [RelicId, RelicId][] = [
-    ["devout", "infernal-fire"],
-    ["icyenic-faith", "devout"],
-    ["icyenic-faith", "infernal-fire"],
-    ["perkfection", "devout"],
-    ["perkfection", "infernal-fire"],
-    ["divine-druid", "devout"],
+    ["devout", "infernal-fire"], // T5+T7
+    ["devout", "icyenic-faith"],
+    ["devout", "naragi-edict"],
+    ["perkfection", "devout"], // T6+T5
+    ["perkfection", "infernal-fire"], // T6+T7
+    ["divine-druid", "devout"], // T2+T5
     ["divine-druid", "infernal-fire"],
-    ["naragi-edict", "infernal-fire"],
   ];
   for (const [a, b] of pairs) {
     const s = stackRelicPlayerMult(a, b);
@@ -880,9 +879,9 @@ export function combatRelicCombos(_includeRejuvDouble = true): {
     });
   }
   out.push({
-    primary: "devout",
-    secondary: "naragi-edict",
-    label: "INVALID:devout+naragi(same-tier)",
+    primary: "infernal-fire",
+    secondary: "icyenic-faith",
+    label: "INVALID:infernal+icyenic(same-T7)",
     valid: false,
   });
   out.push({

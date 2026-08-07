@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="280" viewBox="0 0 720 280">
+  <rect width="100%" height="100%" fill="#0f172a"/>
+  <text x="360" y="28" text-anchor="middle" fill="#e2e8f0" font-size="15" font-weight="600" font-family="system-ui,sans-serif">Best legal endgame total DPS by style (Wazzy tiers)</text><text x="12" y="68" fill="#94a3b8" font-size="12" font-family="system-ui,sans-serif">melee</text>
+  <rect x="100" y="50" width="449.544587539003" height="28" rx="4" fill="#38bdf8"/>
+  <text x="559.544587539003" y="68" fill="#e2e8f0" font-size="11" font-family="system-ui,sans-serif">72,777 · devout-infernal</text><text x="12" y="118" fill="#94a3b8" font-size="12" font-family="system-ui,sans-serif">necromancy</text>
+  <rect x="100" y="100" width="480" height="28" rx="4" fill="#38bdf8"/>
+  <text x="590" y="118" fill="#e2e8f0" font-size="11" font-family="system-ui,sans-serif">77,707 · perk-devout-infernal</text><text x="12" y="168" fill="#94a3b8" font-size="12" font-family="system-ui,sans-serif">magic</text>
+  <rect x="100" y="150" width="372.42358899776445" height="28" rx="4" fill="#38bdf8"/>
+  <text x="482.42358899776445" y="168" fill="#e2e8f0" font-size="11" font-family="system-ui,sans-serif">60,291 · devout-infernal</text><text x="12" y="218" fill="#94a3b8" font-size="12" font-family="system-ui,sans-serif">ranged</text>
+  <rect x="100" y="200" width="357.14624012296787" height="28" rx="4" fill="#38bdf8"/>
+  <text x="467.14624012296787" y="218" fill="#e2e8f0" font-size="11" font-family="system-ui,sans-serif">57,818 · devout-infernal</text></svg>

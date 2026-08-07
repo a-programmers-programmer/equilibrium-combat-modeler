@@ -1,0 +1,2293 @@
+{
+  "source": "https://docs.google.com/document/d/e/2PACX-1vRFLz-cmfOVWYvWeJ5sW7CgrsMEXO4wSzlNg2UNkMDN_oZMNXnhjJxlJJ36za4i9fwx3W9QmvVZd-HW/pub",
+  "tiers": {
+    "1": {
+      "relics": [
+        "endless-harvest",
+        "survivalist",
+        "golden-touch"
+      ],
+      "confidence": "confirmed",
+      "notes": "Wiki confirmed T1"
+    },
+    "2": {
+      "relics": [
+        "superheated",
+        "divine-druid",
+        "animal-wrangler"
+      ],
+      "confidence": "estimated",
+      "notes": "Wazzy: Superheated? Divine Druid? Animal Wrangler?"
+    },
+    "3": {
+      "relics": [
+        "assassins-insight",
+        "natures-network",
+        "voidwalker"
+      ],
+      "confidence": "estimated",
+      "notes": "Wazzy: Assassin's Insight, Nature's Network (bold if Prif), Voidwalker"
+    },
+    "4": {
+      "relics": [
+        "crystal-grace",
+        "transmutation",
+        "antiquarian"
+      ],
+      "confidence": "estimated",
+      "notes": "Wazzy: Crystal Grace? Transmutation? Antiquarian?"
+    },
+    "5": {
+      "relics": [
+        "devout",
+        "production-master",
+        "clue-connoisseur"
+      ],
+      "confidence": "estimated",
+      "notes": "Wazzy: Devout? Production Master? Clue Connoisseur"
+    },
+    "6": {
+      "relics": [
+        "rejuvenated",
+        "perkfection"
+      ],
+      "confidence": "estimated",
+      "notes": "Wazzy: Rejuvenated? Perkfection? (only 2 listed)"
+    },
+    "7": {
+      "relics": [
+        "infernal-fire",
+        "naragi-edict",
+        "icyenic-faith"
+      ],
+      "confidence": "estimated",
+      "notes": "Wazzy: Infernal Fire, Naragi Edict, Icyenic Faith — combat apex tier"
+    }
+  },
+  "routes": [
+    {
+      "id": "devout-infernal",
+      "label": "T5 Devout + T7 Infernal (Ripper path)",
+      "validation": {
+        "active": [
+          "survivalist",
+          "divine-druid",
+          "voidwalker",
+          "antiquarian",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "mult": 1.2998880000000002,
+        "devout": true,
+        "divineDruid": true,
+        "valid": true,
+        "errors": [],
+        "flags": [
+          "Relic: Survivalist",
+          "Relic: Divine Druid",
+          "Relic: Voidwalker",
+          "Relic: Antiquarian",
+          "Relic: Devout",
+          "Relic: Perkfection",
+          "Relic: Infernal Fire"
+        ],
+        "notes": [
+          "Devout+Infernal both active — valid when on different tiers (assumed T4+T5); no prior-relic affinity required by wiki",
+          "Prior-relic affinity: none configured (wiki documents no combat-relic prerequisites)"
+        ]
+      }
+    },
+    {
+      "id": "devout-icyenic",
+      "label": "T5 Devout + T7 Icyenic (Wazzy T7 pick style)",
+      "validation": {
+        "active": [
+          "survivalist",
+          "divine-druid",
+          "voidwalker",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "icyenic-faith"
+        ],
+        "mult": 1.3060569599999998,
+        "devout": true,
+        "divineDruid": true,
+        "valid": true,
+        "errors": [],
+        "flags": [
+          "Relic: Survivalist",
+          "Relic: Divine Druid",
+          "Relic: Voidwalker",
+          "Relic: Crystal Grace",
+          "Relic: Devout",
+          "Relic: Perkfection",
+          "Relic: Icyenic Faith"
+        ],
+        "notes": [
+          "Prior-relic affinity: none configured (wiki documents no combat-relic prerequisites)"
+        ]
+      }
+    },
+    {
+      "id": "devout-naragi",
+      "label": "T5 Devout + T7 Naragi",
+      "validation": {
+        "active": [
+          "survivalist",
+          "divine-druid",
+          "voidwalker",
+          "antiquarian",
+          "devout",
+          "perkfection",
+          "naragi-edict"
+        ],
+        "mult": 1.2337920000000002,
+        "devout": true,
+        "divineDruid": true,
+        "valid": true,
+        "errors": [],
+        "flags": [
+          "Relic: Survivalist",
+          "Relic: Divine Druid",
+          "Relic: Voidwalker",
+          "Relic: Antiquarian",
+          "Relic: Devout",
+          "Relic: Perkfection",
+          "Relic: Naragi Edict"
+        ],
+        "notes": [
+          "Prior-relic affinity: none configured (wiki documents no combat-relic prerequisites)"
+        ]
+      }
+    },
+    {
+      "id": "prod-infernal",
+      "label": "T5 Production + T7 Infernal (no Devout)",
+      "validation": {
+        "active": [
+          "survivalist",
+          "superheated",
+          "voidwalker",
+          "antiquarian",
+          "production-master",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "mult": 1.2744,
+        "devout": false,
+        "divineDruid": false,
+        "valid": true,
+        "errors": [],
+        "flags": [
+          "Relic: Survivalist",
+          "Relic: Superheated",
+          "Relic: Voidwalker",
+          "Relic: Antiquarian",
+          "Relic: Production Master",
+          "Relic: Perkfection",
+          "Relic: Infernal Fire"
+        ],
+        "notes": [
+          "Prior-relic affinity: none configured (wiki documents no combat-relic prerequisites)"
+        ]
+      }
+    },
+    {
+      "id": "prod-icyenic",
+      "label": "T5 Production + T7 Icyenic",
+      "validation": {
+        "active": [
+          "survivalist",
+          "superheated",
+          "voidwalker",
+          "antiquarian",
+          "production-master",
+          "perkfection",
+          "icyenic-faith"
+        ],
+        "mult": 1.2312,
+        "devout": false,
+        "divineDruid": false,
+        "valid": true,
+        "errors": [],
+        "flags": [
+          "Relic: Survivalist",
+          "Relic: Superheated",
+          "Relic: Voidwalker",
+          "Relic: Antiquarian",
+          "Relic: Production Master",
+          "Relic: Perkfection",
+          "Relic: Icyenic Faith"
+        ],
+        "notes": [
+          "Prior-relic affinity: none configured (wiki documents no combat-relic prerequisites)"
+        ]
+      }
+    },
+    {
+      "id": "rejuv-druid-icyenic",
+      "label": "Wazzy personal: Rejuv→Druid + T7 Icyenic",
+      "validation": {
+        "active": [
+          "survivalist",
+          "superheated",
+          "voidwalker",
+          "antiquarian",
+          "production-master",
+          "rejuvenated",
+          "icyenic-faith",
+          "divine-druid"
+        ],
+        "mult": 1.1627999999999998,
+        "devout": false,
+        "divineDruid": true,
+        "valid": true,
+        "errors": [],
+        "flags": [
+          "Relic: Survivalist",
+          "Relic: Superheated",
+          "Relic: Voidwalker",
+          "Relic: Antiquarian",
+          "Relic: Production Master",
+          "Relic: Rejuvenated",
+          "Relic: Icyenic Faith",
+          "Relic: Divine Druid"
+        ],
+        "notes": [
+          "Rejuvenated T6 → extra Divine Druid from T2",
+          "Prior-relic affinity: none configured (wiki documents no combat-relic prerequisites)"
+        ]
+      }
+    },
+    {
+      "id": "perk-devout-infernal",
+      "label": "T5 Devout + T6 Perk + T7 Infernal",
+      "validation": {
+        "active": [
+          "endless-harvest",
+          "divine-druid",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "mult": 1.3924400256,
+        "devout": true,
+        "divineDruid": true,
+        "valid": true,
+        "errors": [],
+        "flags": [
+          "Relic: Endless Harvest",
+          "Relic: Divine Druid",
+          "Relic: Assassin's Insight",
+          "Relic: Crystal Grace",
+          "Relic: Devout",
+          "Relic: Perkfection",
+          "Relic: Infernal Fire"
+        ],
+        "notes": [
+          "Devout+Infernal both active — valid when on different tiers (assumed T4+T5); no prior-relic affinity required by wiki",
+          "Prior-relic affinity: none configured (wiki documents no combat-relic prerequisites)"
+        ]
+      }
+    },
+    {
+      "id": "no-combat-relics",
+      "label": "Baseline skilling (starter regions, no T5/T7 combat)",
+      "validation": {
+        "active": [
+          "survivalist",
+          "superheated",
+          "voidwalker",
+          "antiquarian",
+          "production-master",
+          "perkfection",
+          "naragi-edict"
+        ],
+        "mult": 1.2096000000000002,
+        "devout": false,
+        "divineDruid": false,
+        "valid": true,
+        "errors": [],
+        "flags": [
+          "Relic: Survivalist",
+          "Relic: Superheated",
+          "Relic: Voidwalker",
+          "Relic: Antiquarian",
+          "Relic: Production Master",
+          "Relic: Perkfection",
+          "Relic: Naragi Edict"
+        ],
+        "notes": [
+          "Prior-relic affinity: none configured (wiki documents no combat-relic prerequisites)"
+        ]
+      }
+    }
+  ],
+  "endgameTop": [
+    {
+      "route": "perk-devout-infernal",
+      "label": "T5 Devout + T6 Perk + T7 Infernal",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "endless-harvest",
+        "divine-druid",
+        "assassins-insight",
+        "crystal-grace",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "style": "necromancy",
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "asgarnia",
+        "desert"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 6636.24,
+      "playerDps": 71070.75796199999,
+      "totalDps": 77706.997962,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "unholy-critual",
+        "perfidious",
+        "sacred-fervor",
+        "chaotic-insight"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Chaos",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "unholy-critual",
+          "perfidious",
+          "sacred-fervor",
+          "chaotic-insight"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Chaos (from T5–T7 picks [Balance, Chaos, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "route": "devout-infernal",
+      "label": "T5 Devout + T7 Infernal (Ripper path)",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "divine-druid",
+        "voidwalker",
+        "antiquarian",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "style": "necromancy",
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "desert",
+        "anachronia"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 6636.24,
+      "playerDps": 70757.74015340775,
+      "totalDps": 77393.98015340776,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "perfidious",
+        "sacred-fervor",
+        "power-archive"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Balance",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "perfidious",
+          "sacred-fervor",
+          "power-archive"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Balance (from T5–T7 picks [Balance, Order, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "route": "prod-infernal",
+      "label": "T5 Production + T7 Infernal (no Devout)",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "superheated",
+        "voidwalker",
+        "antiquarian",
+        "production-master",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "style": "necromancy",
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "desert",
+        "anachronia"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 797.16,
+      "playerDps": 76418.35936568037,
+      "totalDps": 77215.51936568037,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "perfidious",
+        "sacred-fervor",
+        "power-archive"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Balance",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "perfidious",
+          "sacred-fervor",
+          "power-archive"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Balance (from T5–T7 picks [Balance, Order, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "route": "devout-icyenic",
+      "label": "T5 Devout + T7 Icyenic (Wazzy T7 pick style)",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "divine-druid",
+        "voidwalker",
+        "crystal-grace",
+        "devout",
+        "perkfection",
+        "icyenic-faith"
+      ],
+      "style": "necromancy",
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "desert",
+        "anachronia"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 6636.24,
+      "playerDps": 68359.17269058037,
+      "totalDps": 74995.41269058037,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "perfidious",
+        "sacred-fervor",
+        "power-archive"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Balance",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "perfidious",
+          "sacred-fervor",
+          "power-archive"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Balance (from T5–T7 picks [Balance, Order, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "route": "devout-naragi",
+      "label": "T5 Devout + T7 Naragi",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "divine-druid",
+        "voidwalker",
+        "antiquarian",
+        "devout",
+        "perkfection",
+        "naragi-edict"
+      ],
+      "style": "necromancy",
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "desert",
+        "anachronia"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 6636.24,
+      "playerDps": 67159.88895916668,
+      "totalDps": 73796.12895916669,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "perfidious",
+        "sacred-fervor",
+        "power-archive"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Balance",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "perfidious",
+          "sacred-fervor",
+          "power-archive"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Balance (from T5–T7 picks [Balance, Order, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "route": "devout-infernal",
+      "label": "T5 Devout + T7 Infernal (Ripper path)",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "divine-druid",
+        "voidwalker",
+        "antiquarian",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "style": "melee",
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "desert",
+        "anachronia"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 6636.24,
+      "playerDps": 66140.34405775298,
+      "totalDps": 72776.58405775299,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "perfidious",
+        "sacred-fervor",
+        "power-archive"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Balance",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "perfidious",
+          "sacred-fervor",
+          "power-archive"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Balance (from T5–T7 picks [Balance, Order, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "route": "prod-infernal",
+      "label": "T5 Production + T7 Infernal (no Devout)",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "superheated",
+        "voidwalker",
+        "antiquarian",
+        "production-master",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "style": "melee",
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "desert",
+        "anachronia"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 797.16,
+      "playerDps": 71431.57158237322,
+      "totalDps": 72228.73158237322,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "perfidious",
+        "sacred-fervor",
+        "power-archive"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Balance",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "perfidious",
+          "sacred-fervor",
+          "power-archive"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Balance (from T5–T7 picks [Balance, Order, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "route": "no-combat-relics",
+      "label": "Baseline skilling (starter regions, no T5/T7 combat)",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "superheated",
+        "voidwalker",
+        "antiquarian",
+        "production-master",
+        "perkfection",
+        "naragi-edict"
+      ],
+      "style": "necromancy",
+      "hour": 50,
+      "sum": 99,
+      "electives": [],
+      "familiar": "Steel titan",
+      "famDps": 423.36,
+      "playerDps": 71074.28182050001,
+      "totalDps": 71497.64182050001,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "perfidious",
+        "sacred-fervor",
+        "power-archive"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Balance",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "perfidious",
+          "sacred-fervor",
+          "power-archive"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Balance (from T5–T7 picks [Balance, Order, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "route": "rejuv-druid-icyenic",
+      "label": "Wazzy personal: Rejuv→Druid + T7 Icyenic",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "superheated",
+        "voidwalker",
+        "antiquarian",
+        "production-master",
+        "rejuvenated",
+        "icyenic-faith",
+        "divine-druid"
+      ],
+      "style": "necromancy",
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "desert",
+        "anachronia"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 1016.925,
+      "playerDps": 69726.35614439196,
+      "totalDps": 70743.28114439196,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "perfidious",
+        "sacred-fervor",
+        "power-archive"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Balance",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "perfidious",
+          "sacred-fervor",
+          "power-archive"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Balance (from T5–T7 picks [Balance, Order, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "route": "perk-devout-infernal",
+      "label": "T5 Devout + T6 Perk + T7 Infernal",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "endless-harvest",
+        "divine-druid",
+        "assassins-insight",
+        "crystal-grace",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "style": "melee",
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "asgarnia",
+        "desert"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 6636.24,
+      "playerDps": 64064.830979624996,
+      "totalDps": 70701.070979625,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "unholy-critual",
+        "perfidious",
+        "sacred-fervor",
+        "chaotic-insight"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Chaos",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "unholy-critual",
+          "perfidious",
+          "sacred-fervor",
+          "chaotic-insight"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Chaos (from T5–T7 picks [Balance, Chaos, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "route": "devout-icyenic",
+      "label": "T5 Devout + T7 Icyenic (Wazzy T7 pick style)",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "divine-druid",
+        "voidwalker",
+        "crystal-grace",
+        "devout",
+        "perkfection",
+        "icyenic-faith"
+      ],
+      "style": "melee",
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "desert",
+        "anachronia"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 6636.24,
+      "playerDps": 63898.29849647322,
+      "totalDps": 70534.53849647322,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "perfidious",
+        "sacred-fervor",
+        "power-archive"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Balance",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "perfidious",
+          "sacred-fervor",
+          "power-archive"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Balance (from T5–T7 picks [Balance, Order, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "route": "devout-naragi",
+      "label": "T5 Devout + T7 Naragi",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "divine-druid",
+        "voidwalker",
+        "antiquarian",
+        "devout",
+        "perkfection",
+        "naragi-edict"
+      ],
+      "style": "melee",
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "desert",
+        "anachronia"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 6636.24,
+      "playerDps": 62777.27571583335,
+      "totalDps": 69413.51571583335,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "perfidious",
+        "sacred-fervor",
+        "power-archive"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Balance",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "perfidious",
+          "sacred-fervor",
+          "power-archive"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Balance (from T5–T7 picks [Balance, Order, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "route": "rejuv-druid-icyenic",
+      "label": "Wazzy personal: Rejuv→Druid + T7 Icyenic",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "superheated",
+        "voidwalker",
+        "antiquarian",
+        "production-master",
+        "rejuvenated",
+        "icyenic-faith",
+        "divine-druid"
+      ],
+      "style": "melee",
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "desert",
+        "anachronia"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 1016.925,
+      "playerDps": 65176.264466402674,
+      "totalDps": 66193.18946640268,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "perfidious",
+        "sacred-fervor",
+        "power-archive"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Balance",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "perfidious",
+          "sacred-fervor",
+          "power-archive"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Balance (from T5–T7 picks [Balance, Order, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "route": "no-combat-relics",
+      "label": "Baseline skilling (starter regions, no T5/T7 combat)",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "superheated",
+        "voidwalker",
+        "antiquarian",
+        "production-master",
+        "perkfection",
+        "naragi-edict"
+      ],
+      "style": "melee",
+      "hour": 50,
+      "sum": 99,
+      "electives": [],
+      "familiar": "Steel titan",
+      "famDps": 423.36,
+      "playerDps": 60830.42110830002,
+      "totalDps": 61253.78110830002,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "perfidious",
+        "sacred-fervor",
+        "power-archive"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Balance",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "perfidious",
+          "sacred-fervor",
+          "power-archive"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Balance (from T5–T7 picks [Balance, Order, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "route": "devout-infernal",
+      "label": "T5 Devout + T7 Infernal (Ripper path)",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "divine-druid",
+        "voidwalker",
+        "antiquarian",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "style": "magic",
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "desert",
+        "anachronia"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 6636.24,
+      "playerDps": 53655.25806510418,
+      "totalDps": 60291.49806510418,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "perfidious",
+        "sacred-fervor",
+        "power-archive"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Balance",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "perfidious",
+          "sacred-fervor",
+          "power-archive"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Balance (from T5–T7 picks [Balance, Order, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "route": "prod-icyenic",
+      "label": "T5 Production + T7 Icyenic",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "superheated",
+        "voidwalker",
+        "antiquarian",
+        "production-master",
+        "perkfection",
+        "icyenic-faith"
+      ],
+      "style": "necromancy",
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "desert",
+        "anachronia"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 797.16,
+      "playerDps": 59421.30036269143,
+      "totalDps": 60218.46036269143,
+      "blessings": [
+        "teragards-aegis",
+        "striking-light",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "tempered-heart",
+        "sacred-fervor",
+        "genesis-essence"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Order",
+        "activeIds": [
+          "teragards-aegis",
+          "striking-light",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "tempered-heart",
+          "sacred-fervor",
+          "genesis-essence"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Order, Order]) — path-affined, not free choice",
+          "God T8 = Order (from T5–T7 picks [Balance, Order, Order]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "route": "prod-infernal",
+      "label": "T5 Production + T7 Infernal (no Devout)",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "superheated",
+        "voidwalker",
+        "antiquarian",
+        "production-master",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "style": "magic",
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "desert",
+        "anachronia"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 797.16,
+      "playerDps": 57947.67871031251,
+      "totalDps": 58744.83871031251,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "perfidious",
+        "sacred-fervor",
+        "power-archive"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Balance",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "perfidious",
+          "sacred-fervor",
+          "power-archive"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Balance (from T5–T7 picks [Balance, Order, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "route": "devout-icyenic",
+      "label": "T5 Devout + T7 Icyenic (Wazzy T7 pick style)",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "divine-druid",
+        "voidwalker",
+        "crystal-grace",
+        "devout",
+        "perkfection",
+        "icyenic-faith"
+      ],
+      "style": "magic",
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "desert",
+        "anachronia"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 6636.24,
+      "playerDps": 51836.435757812505,
+      "totalDps": 58472.6757578125,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "perfidious",
+        "sacred-fervor",
+        "power-archive"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Balance",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "perfidious",
+          "sacred-fervor",
+          "power-archive"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Balance (from T5–T7 picks [Balance, Order, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "route": "devout-infernal",
+      "label": "T5 Devout + T7 Infernal (Ripper path)",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "divine-druid",
+        "voidwalker",
+        "antiquarian",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "style": "ranged",
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "desert",
+        "anachronia"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 6636.24,
+      "playerDps": 51182.01448619047,
+      "totalDps": 57818.25448619047,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "perfidious",
+        "sacred-fervor",
+        "power-archive"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Balance",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "perfidious",
+          "sacred-fervor",
+          "power-archive"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Balance (from T5–T7 picks [Balance, Order, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "route": "devout-naragi",
+      "label": "T5 Devout + T7 Naragi",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "divine-druid",
+        "voidwalker",
+        "antiquarian",
+        "devout",
+        "perkfection",
+        "naragi-edict"
+      ],
+      "style": "magic",
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "desert",
+        "anachronia"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 6636.24,
+      "playerDps": 50927.02460416668,
+      "totalDps": 57563.26460416668,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "perfidious",
+        "sacred-fervor",
+        "power-archive"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Balance",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "perfidious",
+          "sacred-fervor",
+          "power-archive"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Balance (from T5–T7 picks [Balance, Order, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    }
+  ],
+  "series": [
+    {
+      "id": "devout-infernal",
+      "name": "T5 Devout + T7 Infernal (Ripper path)",
+      "color": "#f472b6",
+      "points": [
+        {
+          "hour": 0,
+          "total": 51838.02283894345,
+          "fam": 0,
+          "sum": 40,
+          "electives": "starter"
+        },
+        {
+          "hour": 4,
+          "total": 53500.47406733631,
+          "fam": 0,
+          "sum": 40,
+          "electives": "starter"
+        },
+        {
+          "hour": 8,
+          "total": 61245.49367740575,
+          "fam": 249.44444444444446,
+          "sum": 70,
+          "electives": "starter"
+        },
+        {
+          "hour": 12,
+          "total": 62349.46826075398,
+          "fam": 249.44444444444446,
+          "sum": 70,
+          "electives": "forinthry"
+        },
+        {
+          "hour": 16,
+          "total": 66193.04148158658,
+          "fam": 2315.781818181818,
+          "sum": 90,
+          "electives": "forinthry"
+        },
+        {
+          "hour": 20,
+          "total": 66152.84447780684,
+          "fam": 2315.781818181818,
+          "sum": 90,
+          "electives": "forinthry"
+        },
+        {
+          "hour": 24,
+          "total": 72609.00223957117,
+          "fam": 6468.658181818182,
+          "sum": 96,
+          "electives": "forinthry+desert"
+        },
+        {
+          "hour": 28,
+          "total": 72609.00223957117,
+          "fam": 6468.658181818182,
+          "sum": 96,
+          "electives": "forinthry+desert"
+        },
+        {
+          "hour": 32,
+          "total": 72609.00223957117,
+          "fam": 6468.658181818182,
+          "sum": 96,
+          "electives": "forinthry+desert+anachronia"
+        },
+        {
+          "hour": 40,
+          "total": 72776.58405775299,
+          "fam": 6636.24,
+          "sum": 99,
+          "electives": "forinthry+desert+anachronia"
+        },
+        {
+          "hour": 50,
+          "total": 72776.58405775299,
+          "fam": 6636.24,
+          "sum": 99,
+          "electives": "forinthry+desert+anachronia"
+        },
+        {
+          "hour": 60,
+          "total": 72776.58405775299,
+          "fam": 6636.24,
+          "sum": 99,
+          "electives": "forinthry+desert+anachronia"
+        },
+        {
+          "hour": 80,
+          "total": 72776.58405775299,
+          "fam": 6636.24,
+          "sum": 99,
+          "electives": "forinthry+desert+anachronia"
+        }
+      ]
+    },
+    {
+      "id": "devout-icyenic",
+      "name": "T5 Devout + T7 Icyenic (Wazzy T7 pick style)",
+      "color": "#38bdf8",
+      "points": [
+        {
+          "hour": 0,
+          "total": 50080.80172575892,
+          "fam": 0,
+          "sum": 40,
+          "electives": "starter"
+        },
+        {
+          "hour": 4,
+          "total": 51686.898675223216,
+          "fam": 0,
+          "sum": 40,
+          "electives": "starter"
+        },
+        {
+          "hour": 8,
+          "total": 59177.83099154265,
+          "fam": 249.44444444444446,
+          "sum": 70,
+          "electives": "starter"
+        },
+        {
+          "hour": 12,
+          "total": 60244.38270765874,
+          "fam": 249.44444444444446,
+          "sum": 70,
+          "electives": "forinthry"
+        },
+        {
+          "hour": 16,
+          "total": 64027.71064553896,
+          "fam": 2315.781818181818,
+          "sum": 90,
+          "electives": "forinthry"
+        },
+        {
+          "hour": 20,
+          "total": 63988.87625205682,
+          "fam": 2315.781818181818,
+          "sum": 90,
+          "electives": "forinthry"
+        },
+        {
+          "hour": 24,
+          "total": 70366.9566782914,
+          "fam": 6468.658181818182,
+          "sum": 96,
+          "electives": "forinthry+desert"
+        },
+        {
+          "hour": 28,
+          "total": 70366.9566782914,
+          "fam": 6468.658181818182,
+          "sum": 96,
+          "electives": "forinthry+desert"
+        },
+        {
+          "hour": 32,
+          "total": 70366.9566782914,
+          "fam": 6468.658181818182,
+          "sum": 96,
+          "electives": "forinthry+desert+anachronia"
+        },
+        {
+          "hour": 40,
+          "total": 70534.53849647322,
+          "fam": 6636.24,
+          "sum": 99,
+          "electives": "forinthry+desert+anachronia"
+        },
+        {
+          "hour": 50,
+          "total": 70534.53849647322,
+          "fam": 6636.24,
+          "sum": 99,
+          "electives": "forinthry+desert+anachronia"
+        },
+        {
+          "hour": 60,
+          "total": 70534.53849647322,
+          "fam": 6636.24,
+          "sum": 99,
+          "electives": "forinthry+desert+anachronia"
+        },
+        {
+          "hour": 80,
+          "total": 70534.53849647322,
+          "fam": 6636.24,
+          "sum": 99,
+          "electives": "forinthry+desert+anachronia"
+        }
+      ]
+    },
+    {
+      "id": "perk-devout-infernal",
+      "name": "T5 Devout + T6 Perk + T7 Infernal",
+      "color": "#a78bfa",
+      "points": [
+        {
+          "hour": 0,
+          "total": 51361.1023625625,
+          "fam": 0,
+          "sum": 40,
+          "electives": "starter"
+        },
+        {
+          "hour": 4,
+          "total": 52731.54684375,
+          "fam": 0,
+          "sum": 40,
+          "electives": "starter"
+        },
+        {
+          "hour": 8,
+          "total": 59364.94398756944,
+          "fam": 249.44444444444446,
+          "sum": 70,
+          "electives": "starter"
+        },
+        {
+          "hour": 12,
+          "total": 60584.38652744444,
+          "fam": 249.44444444444446,
+          "sum": 70,
+          "electives": "forinthry"
+        },
+        {
+          "hour": 16,
+          "total": 64438.0324208787,
+          "fam": 2315.781818181818,
+          "sum": 90,
+          "electives": "forinthry"
+        },
+        {
+          "hour": 20,
+          "total": 64432.198500878694,
+          "fam": 2315.781818181818,
+          "sum": 90,
+          "electives": "forinthry"
+        },
+        {
+          "hour": 24,
+          "total": 67432.66211456819,
+          "fam": 6468.658181818182,
+          "sum": 96,
+          "electives": "forinthry+asgarnia"
+        },
+        {
+          "hour": 28,
+          "total": 67432.66211456819,
+          "fam": 6468.658181818182,
+          "sum": 96,
+          "electives": "forinthry+asgarnia"
+        },
+        {
+          "hour": 32,
+          "total": 70533.48916144318,
+          "fam": 6468.658181818182,
+          "sum": 96,
+          "electives": "forinthry+asgarnia+desert"
+        },
+        {
+          "hour": 40,
+          "total": 70701.070979625,
+          "fam": 6636.24,
+          "sum": 99,
+          "electives": "forinthry+asgarnia+desert"
+        },
+        {
+          "hour": 50,
+          "total": 70701.070979625,
+          "fam": 6636.24,
+          "sum": 99,
+          "electives": "forinthry+asgarnia+desert"
+        },
+        {
+          "hour": 60,
+          "total": 70701.070979625,
+          "fam": 6636.24,
+          "sum": 99,
+          "electives": "forinthry+asgarnia+desert"
+        },
+        {
+          "hour": 80,
+          "total": 70701.070979625,
+          "fam": 6636.24,
+          "sum": 99,
+          "electives": "forinthry+asgarnia+desert"
+        }
+      ]
+    },
+    {
+      "id": "rejuv-druid-icyenic",
+      "name": "Wazzy personal: Rejuv→Druid + T7 Icyenic",
+      "color": "#fbbf24",
+      "points": [
+        {
+          "hour": 0,
+          "total": 51082.4177602741,
+          "fam": 0,
+          "sum": 40,
+          "electives": "starter"
+        },
+        {
+          "hour": 4,
+          "total": 52720.636648727675,
+          "fam": 0,
+          "sum": 40,
+          "electives": "starter"
+        },
+        {
+          "hour": 8,
+          "total": 60161.95427804017,
+          "fam": 55,
+          "sum": 70,
+          "electives": "starter"
+        },
+        {
+          "hour": 12,
+          "total": 61249.83702847858,
+          "fam": 55,
+          "sum": 70,
+          "electives": "forinthry"
+        },
+        {
+          "hour": 16,
+          "total": 63355.66740390428,
+          "fam": 409.49999999999994,
+          "sum": 90,
+          "electives": "forinthry"
+        },
+        {
+          "hour": 20,
+          "total": 63316.0563225525,
+          "fam": 409.49999999999994,
+          "sum": 90,
+          "electives": "forinthry"
+        },
+        {
+          "hour": 24,
+          "total": 66193.18946640268,
+          "fam": 1016.925,
+          "sum": 96,
+          "electives": "forinthry+desert"
+        },
+        {
+          "hour": 28,
+          "total": 66193.18946640268,
+          "fam": 1016.925,
+          "sum": 96,
+          "electives": "forinthry+desert"
+        },
+        {
+          "hour": 32,
+          "total": 66193.18946640268,
+          "fam": 1016.925,
+          "sum": 96,
+          "electives": "forinthry+desert+anachronia"
+        },
+        {
+          "hour": 40,
+          "total": 66193.18946640268,
+          "fam": 1016.925,
+          "sum": 99,
+          "electives": "forinthry+desert+anachronia"
+        },
+        {
+          "hour": 50,
+          "total": 66193.18946640268,
+          "fam": 1016.925,
+          "sum": 99,
+          "electives": "forinthry+desert+anachronia"
+        },
+        {
+          "hour": 60,
+          "total": 66193.18946640268,
+          "fam": 1016.925,
+          "sum": 99,
+          "electives": "forinthry+desert+anachronia"
+        },
+        {
+          "hour": 80,
+          "total": 66193.18946640268,
+          "fam": 1016.925,
+          "sum": 99,
+          "electives": "forinthry+desert+anachronia"
+        }
+      ]
+    },
+    {
+      "id": "prod-infernal",
+      "name": "T5 Production + T7 Infernal (no Devout)",
+      "color": "#4ade80",
+      "points": [
+        {
+          "hour": 0,
+          "total": 55985.06466605893,
+          "fam": 0,
+          "sum": 40,
+          "electives": "starter"
+        },
+        {
+          "hour": 4,
+          "total": 57780.51199272322,
+          "fam": 0,
+          "sum": 40,
+          "electives": "starter"
+        },
+        {
+          "hour": 8,
+          "total": 65930.73317159821,
+          "fam": 55,
+          "sum": 70,
+          "electives": "starter"
+        },
+        {
+          "hour": 12,
+          "total": 67123.02572161429,
+          "fam": 55,
+          "sum": 70,
+          "electives": "forinthry"
+        },
+        {
+          "hour": 16,
+          "total": 69352.84043647714,
+          "fam": 365.40000000000003,
+          "sum": 90,
+          "electives": "forinthry"
+        },
+        {
+          "hour": 20,
+          "total": 69309.427672395,
+          "fam": 365.40000000000003,
+          "sum": 90,
+          "electives": "forinthry"
+        },
+        {
+          "hour": 24,
+          "total": 72228.73158237322,
+          "fam": 797.16,
+          "sum": 96,
+          "electives": "forinthry+desert"
+        },
+        {
+          "hour": 28,
+          "total": 72228.73158237322,
+          "fam": 797.16,
+          "sum": 96,
+          "electives": "forinthry+desert"
+        },
+        {
+          "hour": 32,
+          "total": 72228.73158237322,
+          "fam": 797.16,
+          "sum": 96,
+          "electives": "forinthry+desert+anachronia"
+        },
+        {
+          "hour": 40,
+          "total": 72228.73158237322,
+          "fam": 797.16,
+          "sum": 99,
+          "electives": "forinthry+desert+anachronia"
+        },
+        {
+          "hour": 50,
+          "total": 72228.73158237322,
+          "fam": 797.16,
+          "sum": 99,
+          "electives": "forinthry+desert+anachronia"
+        },
+        {
+          "hour": 60,
+          "total": 72228.73158237322,
+          "fam": 797.16,
+          "sum": 99,
+          "electives": "forinthry+desert+anachronia"
+        },
+        {
+          "hour": 80,
+          "total": 72228.73158237322,
+          "fam": 797.16,
+          "sum": 99,
+          "electives": "forinthry+desert+anachronia"
+        }
+      ]
+    },
+    {
+      "id": "no-combat-relics",
+      "name": "Baseline skilling (starter regions, no T5/T7 combat)",
+      "color": "#64748b",
+      "points": [
+        {
+          "hour": 0,
+          "total": 53138.36646270001,
+          "fam": 0,
+          "sum": 40,
+          "electives": "starter"
+        },
+        {
+          "hour": 4,
+          "total": 54842.51985750002,
+          "fam": 0,
+          "sum": 40,
+          "electives": "starter"
+        },
+        {
+          "hour": 8,
+          "total": 62581.11962050001,
+          "fam": 55,
+          "sum": 70,
+          "electives": "starter"
+        },
+        {
+          "hour": 12,
+          "total": 61913.11717630002,
+          "fam": 55,
+          "sum": 70,
+          "electives": "starter"
+        },
+        {
+          "hour": 16,
+          "total": 61374.26820750003,
+          "fam": 199.5,
+          "sum": 90,
+          "electives": "starter"
+        },
+        {
+          "hour": 20,
+          "total": 61029.92110830002,
+          "fam": 199.5,
+          "sum": 90,
+          "electives": "starter"
+        },
+        {
+          "hour": 24,
+          "total": 61132.82110830002,
+          "fam": 302.40000000000003,
+          "sum": 96,
+          "electives": "starter"
+        },
+        {
+          "hour": 28,
+          "total": 61132.82110830002,
+          "fam": 302.40000000000003,
+          "sum": 96,
+          "electives": "starter"
+        },
+        {
+          "hour": 32,
+          "total": 61132.82110830002,
+          "fam": 302.40000000000003,
+          "sum": 96,
+          "electives": "starter"
+        },
+        {
+          "hour": 40,
+          "total": 61253.78110830002,
+          "fam": 423.36,
+          "sum": 99,
+          "electives": "starter"
+        },
+        {
+          "hour": 50,
+          "total": 61253.78110830002,
+          "fam": 423.36,
+          "sum": 99,
+          "electives": "starter"
+        },
+        {
+          "hour": 60,
+          "total": 61253.78110830002,
+          "fam": 423.36,
+          "sum": 99,
+          "electives": "starter"
+        },
+        {
+          "hour": 80,
+          "total": 61253.78110830002,
+          "fam": 423.36,
+          "sum": 99,
+          "electives": "starter"
+        }
+      ]
+    }
+  ],
+  "styleBars": [
+    {
+      "style": "melee",
+      "route": "devout-infernal",
+      "label": "T5 Devout + T7 Infernal (Ripper path)",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "divine-druid",
+        "voidwalker",
+        "antiquarian",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "desert",
+        "anachronia"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 6636.24,
+      "playerDps": 66140.34405775298,
+      "totalDps": 72776.58405775299,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "perfidious",
+        "sacred-fervor",
+        "power-archive"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Balance",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "perfidious",
+          "sacred-fervor",
+          "power-archive"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Balance (from T5–T7 picks [Balance, Order, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "style": "necromancy",
+      "route": "perk-devout-infernal",
+      "label": "T5 Devout + T6 Perk + T7 Infernal",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "endless-harvest",
+        "divine-druid",
+        "assassins-insight",
+        "crystal-grace",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "asgarnia",
+        "desert"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 6636.24,
+      "playerDps": 71070.75796199999,
+      "totalDps": 77706.997962,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "unholy-critual",
+        "perfidious",
+        "sacred-fervor",
+        "chaotic-insight"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Chaos",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "unholy-critual",
+          "perfidious",
+          "sacred-fervor",
+          "chaotic-insight"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Chaos (from T5–T7 picks [Balance, Chaos, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "style": "magic",
+      "route": "devout-infernal",
+      "label": "T5 Devout + T7 Infernal (Ripper path)",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "divine-druid",
+        "voidwalker",
+        "antiquarian",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "desert",
+        "anachronia"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 6636.24,
+      "playerDps": 53655.25806510418,
+      "totalDps": 60291.49806510418,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "perfidious",
+        "sacred-fervor",
+        "power-archive"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Balance",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "perfidious",
+          "sacred-fervor",
+          "power-archive"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Balance (from T5–T7 picks [Balance, Order, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    },
+    {
+      "style": "ranged",
+      "route": "devout-infernal",
+      "label": "T5 Devout + T7 Infernal (Ripper path)",
+      "valid": true,
+      "errors": [],
+      "active": [
+        "survivalist",
+        "divine-druid",
+        "voidwalker",
+        "antiquarian",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "hour": 50,
+      "sum": 99,
+      "electives": [
+        "forinthry",
+        "desert",
+        "anachronia"
+      ],
+      "familiar": "Ripper demon (binding contract)",
+      "famDps": 6636.24,
+      "playerDps": 51182.01448619047,
+      "totalDps": 57818.25448619047,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "steadfast-will",
+        "true-equilibrium",
+        "lord-of-light",
+        "perfidious",
+        "sacred-fervor",
+        "power-archive"
+      ],
+      "god": {
+        "valid": true,
+        "god4": "Order",
+        "god8": "Balance",
+        "activeIds": [
+          "teragards-aegis",
+          "abyssal-cinders",
+          "steadfast-will",
+          "true-equilibrium",
+          "lord-of-light",
+          "perfidious",
+          "sacred-fervor",
+          "power-archive"
+        ],
+        "notes": [
+          "God T4 = Order (from T1–T3 picks [Order, Chaos, Order]) — path-affined, not free choice",
+          "God T8 = Balance (from T5–T7 picks [Balance, Order, Chaos]) — path-affined, not free choice",
+          "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites."
+        ]
+      }
+    }
+  ],
+  "conclusions": {
+    "freeMeans": "starter regions (Misthalin/Havenhythe/Karamja), NOT free-to-play",
+    "bestCombatRelicPair": "T5 Devout + T7 Infernal (or Icyenic) — different tiers",
+    "cannot": "Infernal+Icyenic same T7; Rejuvenated does not unlock same-tier second pick",
+    "regions": "Forinthry required for Ripper; starter-only → Steel titan with Devout",
+    "wazzyPersonal": "Survivalist→Superheated→Voidwalker→Antiquarian→Production→Rejuv(Druid)→Icyenic"
+  }
+}

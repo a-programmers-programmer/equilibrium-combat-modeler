@@ -1,0 +1,410 @@
+{
+  "tradeoff": {
+    "melee": {
+      "power": {
+        "ad": 5453.76,
+        "armour": 1600,
+        "mult": 1.1856
+      },
+      "tank": {
+        "ad": 5817.6975,
+        "armour": 2850,
+        "mult": 1.0506
+      },
+      "mixed": {
+        "ad": 5967.000000000001,
+        "armour": 2550,
+        "mult": 1.1232000000000002
+      },
+      "winner": "mixed"
+    },
+    "magic": {
+      "power": {
+        "ad": 5405.92,
+        "armour": 1600,
+        "mult": 1.1752
+      },
+      "tank": {
+        "ad": 5817.6975,
+        "armour": 2850,
+        "mult": 1.0506
+      },
+      "mixed": {
+        "ad": 5911.75,
+        "armour": 2550,
+        "mult": 1.1128
+      },
+      "winner": "mixed"
+    },
+    "ranged": {
+      "power": {
+        "ad": 5405.92,
+        "armour": 1600,
+        "mult": 1.1752
+      },
+      "tank": {
+        "ad": 5817.6975,
+        "armour": 2850,
+        "mult": 1.0506
+      },
+      "mixed": {
+        "ad": 5911.75,
+        "armour": 2550,
+        "mult": 1.1128
+      },
+      "winner": "mixed"
+    },
+    "necromancy": {
+      "power": {
+        "ad": 5358.08,
+        "armour": 1600,
+        "mult": 1.1648
+      },
+      "tank": {
+        "ad": 5817.6975,
+        "armour": 2850,
+        "mult": 1.0506
+      },
+      "mixed": {
+        "ad": 5911.75,
+        "armour": 2550,
+        "mult": 1.1128
+      },
+      "winner": "mixed"
+    }
+  },
+  "top": [
+    {
+      "profile": "mixed-aegis-power",
+      "style": "melee",
+      "aegis": true,
+      "total": 153165.44948925328,
+      "ad": 8950,
+      "armour": 2950,
+      "styleMult": 1.08,
+      "setMult": 1.1534400000000002,
+      "aegisAd": 2212
+    },
+    {
+      "profile": "masterwork-tank",
+      "style": "melee",
+      "aegis": true,
+      "total": 152747.22077073704,
+      "ad": 8924,
+      "armour": 2950,
+      "styleMult": 1.06,
+      "setMult": 1.1718,
+      "aegisAd": 2212
+    },
+    {
+      "profile": "cryptbloom-tank",
+      "style": "melee",
+      "aegis": true,
+      "total": 148114.53342717225,
+      "ad": 8636,
+      "armour": 2950,
+      "styleMult": 1.01,
+      "setMult": 1.19016,
+      "aegisAd": 2212
+    },
+    {
+      "profile": "tank-aegis",
+      "style": "melee",
+      "aegis": true,
+      "total": 142999.27448531947,
+      "ad": 8318,
+      "armour": 2950,
+      "styleMult": 1.02,
+      "setMult": 1.1350800000000003,
+      "aegisAd": 2212
+    },
+    {
+      "profile": "cryptbloom-tank",
+      "style": "magic",
+      "aegis": true,
+      "total": 139514.9759375233,
+      "ad": 8907,
+      "armour": 2950,
+      "styleMult": 1.05,
+      "setMult": 1.19016,
+      "aegisAd": 2212
+    },
+    {
+      "profile": "mixed-aegis-power",
+      "style": "magic",
+      "aegis": true,
+      "total": 137904.03802878552,
+      "ad": 8797,
+      "armour": 2950,
+      "styleMult": 1.07,
+      "setMult": 1.1534400000000002,
+      "aegisAd": 2212
+    },
+    {
+      "profile": "hybrid-cinder",
+      "style": "melee",
+      "aegis": true,
+      "total": 134335.56527482293,
+      "ad": 7801,
+      "armour": 2550,
+      "styleMult": 1.1,
+      "setMult": 1.1350800000000003,
+      "aegisAd": 1275
+    },
+    {
+      "profile": "masterwork-tank",
+      "style": "magic",
+      "aegis": true,
+      "total": 132617.23271010967,
+      "ad": 8436,
+      "armour": 2950,
+      "styleMult": 1.01,
+      "setMult": 1.1718,
+      "aegisAd": 2212
+    },
+    {
+      "profile": "anima-core",
+      "style": "melee",
+      "aegis": true,
+      "total": 130909.30692697813,
+      "ad": 7588,
+      "armour": 2550,
+      "styleMult": 1.07,
+      "setMult": 1.1350800000000003,
+      "aegisAd": 1275
+    },
+    {
+      "profile": "mixed-aegis-power",
+      "style": "ranged",
+      "aegis": true,
+      "total": 130353.43651334,
+      "ad": 8797,
+      "armour": 2950,
+      "styleMult": 1.07,
+      "setMult": 1.1534400000000002,
+      "aegisAd": 2212
+    },
+    {
+      "profile": "tank-aegis",
+      "style": "magic",
+      "aegis": true,
+      "total": 129922.57293549372,
+      "ad": 8252,
+      "armour": 2950,
+      "styleMult": 1.02,
+      "setMult": 1.1350800000000003,
+      "aegisAd": 2212
+    },
+    {
+      "profile": "cryptbloom-tank",
+      "style": "ranged",
+      "aegis": true,
+      "total": 127196.31093626202,
+      "ad": 8568,
+      "armour": 2950,
+      "styleMult": 1.01,
+      "setMult": 1.19016,
+      "aegisAd": 2212
+    },
+    {
+      "profile": "masterwork-tank",
+      "style": "ranged",
+      "aegis": true,
+      "total": 125376.48309270614,
+      "ad": 8436,
+      "armour": 2950,
+      "styleMult": 1.01,
+      "setMult": 1.1718,
+      "aegisAd": 2212
+    },
+    {
+      "profile": "power-bis",
+      "style": "melee",
+      "aegis": true,
+      "total": 124126.04070934824,
+      "ad": 7196,
+      "armour": 2000,
+      "styleMult": 1.14,
+      "setMult": 1.1534400000000002,
+      "aegisAd": 500
+    },
+    {
+      "profile": "tank-aegis",
+      "style": "ranged",
+      "aegis": true,
+      "total": 122839.75337138587,
+      "ad": 8252,
+      "armour": 2950,
+      "styleMult": 1.02,
+      "setMult": 1.1350800000000003,
+      "aegisAd": 2212
+    },
+    {
+      "profile": "hybrid-cinder",
+      "style": "magic",
+      "aegis": true,
+      "total": 120907.75311838902,
+      "ad": 7659,
+      "armour": 2550,
+      "styleMult": 1.09,
+      "setMult": 1.1350800000000003,
+      "aegisAd": 1275
+    },
+    {
+      "profile": "anima-core",
+      "style": "magic",
+      "aegis": true,
+      "total": 118857.46850726819,
+      "ad": 7519,
+      "armour": 2550,
+      "styleMult": 1.07,
+      "setMult": 1.1350800000000003,
+      "aegisAd": 1275
+    },
+    {
+      "profile": "tectonic-power",
+      "style": "magic",
+      "aegis": true,
+      "total": 115166.64779971317,
+      "ad": 7298,
+      "armour": 2000,
+      "styleMult": 1.15,
+      "setMult": 1.1718,
+      "aegisAd": 500
+    },
+    {
+      "profile": "power-mid",
+      "style": "melee",
+      "aegis": true,
+      "total": 114538.95162336002,
+      "ad": 6600,
+      "armour": 2000,
+      "styleMult": 1.08,
+      "setMult": 1.1167200000000002,
+      "aegisAd": 500
+    },
+    {
+      "profile": "hybrid-cinder",
+      "style": "ranged",
+      "aegis": true,
+      "total": 114333.91464995689,
+      "ad": 7659,
+      "armour": 2550,
+      "styleMult": 1.09,
+      "setMult": 1.1350800000000003,
+      "aegisAd": 1275
+    }
+  ],
+  "meleeAegis": [
+    {
+      "profile": "mixed-aegis-power",
+      "style": "melee",
+      "aegis": true,
+      "total": 153165.44948925328,
+      "ad": 8950,
+      "armour": 2950,
+      "styleMult": 1.08,
+      "setMult": 1.1534400000000002,
+      "aegisAd": 2212
+    },
+    {
+      "profile": "masterwork-tank",
+      "style": "melee",
+      "aegis": true,
+      "total": 152747.22077073704,
+      "ad": 8924,
+      "armour": 2950,
+      "styleMult": 1.06,
+      "setMult": 1.1718,
+      "aegisAd": 2212
+    },
+    {
+      "profile": "cryptbloom-tank",
+      "style": "melee",
+      "aegis": true,
+      "total": 148114.53342717225,
+      "ad": 8636,
+      "armour": 2950,
+      "styleMult": 1.01,
+      "setMult": 1.19016,
+      "aegisAd": 2212
+    },
+    {
+      "profile": "tank-aegis",
+      "style": "melee",
+      "aegis": true,
+      "total": 142999.27448531947,
+      "ad": 8318,
+      "armour": 2950,
+      "styleMult": 1.02,
+      "setMult": 1.1350800000000003,
+      "aegisAd": 2212
+    },
+    {
+      "profile": "hybrid-cinder",
+      "style": "melee",
+      "aegis": true,
+      "total": 134335.56527482293,
+      "ad": 7801,
+      "armour": 2550,
+      "styleMult": 1.1,
+      "setMult": 1.1350800000000003,
+      "aegisAd": 1275
+    },
+    {
+      "profile": "anima-core",
+      "style": "melee",
+      "aegis": true,
+      "total": 130909.30692697813,
+      "ad": 7588,
+      "armour": 2550,
+      "styleMult": 1.07,
+      "setMult": 1.1350800000000003,
+      "aegisAd": 1275
+    },
+    {
+      "profile": "power-bis",
+      "style": "melee",
+      "aegis": true,
+      "total": 124126.04070934824,
+      "ad": 7196,
+      "armour": 2000,
+      "styleMult": 1.14,
+      "setMult": 1.1534400000000002,
+      "aegisAd": 500
+    },
+    {
+      "profile": "power-mid",
+      "style": "melee",
+      "aegis": true,
+      "total": 114538.95162336002,
+      "ad": 6600,
+      "armour": 2000,
+      "styleMult": 1.08,
+      "setMult": 1.1167200000000002,
+      "aegisAd": 500
+    },
+    {
+      "profile": "sirenic-power",
+      "style": "melee",
+      "aegis": true,
+      "total": 112560.40807037917,
+      "ad": 6477,
+      "armour": 2000,
+      "styleMult": 1.01,
+      "setMult": 1.1718,
+      "aegisAd": 500
+    },
+    {
+      "profile": "tectonic-power",
+      "style": "melee",
+      "aegis": true,
+      "total": 112560.40807037917,
+      "ad": 6477,
+      "armour": 2000,
+      "styleMult": 1.01,
+      "setMult": 1.1718,
+      "aegisAd": 500
+    }
+  ]
+}

@@ -74,6 +74,12 @@ import {
   type PoisonGearFlags,
   type WeaponPoisonTier,
 } from "./sim/poison";
+import {
+  resolveArmourBonuses,
+  type ArmourProfileId,
+  type ArmourResolveResult,
+  ARMOUR_BY_ID,
+} from "./sim/armour";
 
 export interface GearSnapshot {
   armour: number;
@@ -86,6 +92,12 @@ export interface GearSnapshot {
   source: string;
   pieces?: { name: string; slot: string }[];
   notes?: string[];
+  /** Armour profile for style dmg / set effects (optional) */
+  armourProfileId?: ArmourProfileId;
+  /** Explicit style damage mult from power armour (default from profile) */
+  styleDamageMult?: number;
+  /** Set effect mult */
+  setEffectMult?: number;
   /** Bane stack from OOP loadout (ammo + affinity weapons) */
   bane?: {
     mult: number;
@@ -161,6 +173,11 @@ export interface ModelInput {
   weaponPoisonTier?: WeaponPoisonTier;
   /** Target poison immune (Envenomed strips) */
   targetPoisonImmune?: boolean;
+  /**
+   * Armour package profile — power vs tank vs hybrid.
+   * Default: auto from style + offhand + Aegis presence.
+   */
+  armourProfile?: ArmourProfileId;
 }
 
 export interface DamageBreakdown {
@@ -436,6 +453,34 @@ export function modelCombat(input: ModelInput): ModelResult {
   }
   flags.push(`Gear: ${gear.source} (T${gear.weaponTier})`);
 
+  // Armour package (power/tank/hybrid) — style dmg + set effects + prayer/LP
+  let armourRes = resolveArmourBonuses({
+    profileId: input.armourProfile ?? gear.armourProfileId,
+    style: input.style,
+    offhand,
+    hasAegis: has("teragards-aegis"),
+    hasChaoticInsight: has("chaotic-insight"),
+    armourOverride: gear.armour > 0 ? gear.armour : undefined,
+    prayerOverride: gear.prayer > 0 ? gear.prayer : undefined,
+  });
+  // Prefer profile armour when snapshot is abstract stage (no explicit pieces)
+  if (!input.gear?.pieces?.length && !gear.armourProfileId && input.armourProfile) {
+    armour = armourRes.totalArmour;
+  } else if (!input.gear && !gear.source.startsWith("stage:")) {
+    // keep loadout armour
+  } else if (!input.gear) {
+    // stage fallback: blend stage armour with profile if profile forced
+    if (input.armourProfile) armour = armourRes.totalArmour;
+  }
+  // Always take profile prayer/LP bonuses as additive floor when higher
+  if (armourRes.prayerBonus > prayer) prayer = armourRes.prayerBonus;
+  baseLp += armourRes.lpBonus;
+  // Style damage mult applied after Aegis AD stack (below)
+  const styleDmgMult =
+    gear.styleDamageMult ?? armourRes.styleDamageMult;
+  const setEffMult = gear.setEffectMult ?? armourRes.setEffectMult * armourRes.chaoticInsightMult;
+  for (const f of armourRes.flags) flags.push(f);
+
   if (has("true-equilibrium")) {
     const stacks = Math.max(1, Math.min(3, uniq));
     ad += 75 * stacks;
@@ -490,7 +535,7 @@ export function modelCombat(input: ModelInput): ModelResult {
   if (has("teragards-aegis")) {
     aegisAd = aegisBonus(armour, offhand);
     ad += aegisAd;
-    flags.push(`Aegis +${aegisAd} AD (${offhand})`);
+    flags.push(`Aegis +${aegisAd} AD from ${armour} armour (${offhand})`);
   }
 
   if (has("higher-power")) {
@@ -503,6 +548,16 @@ export function modelCombat(input: ModelInput): ModelResult {
     ad += gear.genesisAdBonus;
     flags.push("Genesis T120 weapons");
   }
+
+  // Power armour style damage bonuses + set effects (on top of weapon AD + Aegis)
+  const adBeforeArmourBonus = ad;
+  ad = floor(ad * styleDmgMult * setEffMult);
+  if (styleDmgMult * setEffMult > 1.001) {
+    flags.push(
+      `Armour dmg/set ×${(styleDmgMult * setEffMult).toFixed(3)} (AD ${adBeforeArmourBonus}→${ad})`,
+    );
+  }
+  const armourBonusAd = ad - adBeforeArmourBonus;
 
   let densityMult = 1;
   if (has("adrenaline-junkie")) {
@@ -1146,6 +1201,21 @@ export function modelCombat(input: ModelInput): ModelResult {
       notes: ult.sources,
       sources: ult.sources,
     },
+    {
+      id: "armourBonus",
+      label: "Armour style dmg / sets",
+      // Attribute fraction of ability package to armour mult uplift
+      dps:
+        playerDpsMult *
+        (coreAbility + cindersOnHit + inferno + specialAttack + conjure) *
+        (1 - 1 / Math.max(1.001, styleDmgMult * setEffMult)),
+      notes: [
+        `style ×${styleDmgMult.toFixed(3)}`,
+        `set ×${setEffMult.toFixed(3)}`,
+        armourRes.profile.name,
+      ],
+      sources: [armourRes.profile.name, ...armourRes.profile.setEffectNotes],
+    },
   ];
   const dimensions = assembleShares(dimRaw);
   breakdown.dimensions = dimensions;
@@ -1190,6 +1260,17 @@ export function modelCombat(input: ModelInput): ModelResult {
     warnings,
     potions,
     dimensions,
+    armourBonuses: {
+      profile: armourRes.profile.id,
+      profileName: armourRes.profile.name,
+      totalArmour: armour,
+      styleDamageMult: styleDmgMult,
+      setEffectMult: setEffMult,
+      abilityMult: styleDmgMult * setEffMult,
+      aegisAd,
+      armourBonusAd,
+      prayerBonus: prayer,
+    },
     poisonStack: {
       dps: poisonResult.dps,
       effectiveTier: poisonResult.effectiveTier,

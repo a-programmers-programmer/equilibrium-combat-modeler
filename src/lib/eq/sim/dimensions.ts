@@ -37,7 +37,8 @@ export type DamageDimensionId =
   | "baneAffinity"
   | "relicPlayer"
   | "multiSplash"
-  | "ultDuty";
+  | "ultDuty"
+  | "armourBonus";
 
 export const ALL_DIMENSIONS: readonly DamageDimensionId[] = [
   "coreAbility",
@@ -55,6 +56,7 @@ export const ALL_DIMENSIONS: readonly DamageDimensionId[] = [
   "relicPlayer",
   "multiSplash",
   "ultDuty",
+  "armourBonus",
 ] as const;
 
 export interface DimensionSlice {
@@ -299,5 +301,6 @@ export function dimensionLabels(): Record<DamageDimensionId, string> {
     relicPlayer: "Relic player mult uplift",
     multiSplash: "Splash Zone multi",
     ultDuty: "Ultimate windows",
+    armourBonus: "Armour style dmg / set effects",
   };
 }

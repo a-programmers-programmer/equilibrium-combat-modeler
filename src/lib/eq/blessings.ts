@@ -387,3 +387,42 @@ export function pathColor(path: Path): string {
   if (path === "Balance") return "var(--color-balance)";
   return "var(--color-chaos)";
 }
+
+/**
+ * Blessing path-affinity rules (THIS is the "must align prior picks" system).
+ * God T4 = majority of T1–T3 path picks (2+ same → that path; 1 each → Balance).
+ * God T8 = majority of T5–T7 path picks.
+ * You cannot freely choose a God blessing independent of prior path affinity.
+ */
+export function validateBlessingPathAffinity(picks: readonly Path[]): {
+  valid: boolean;
+  god4: Path | null;
+  god8: Path | null;
+  activeIds: string[];
+  notes: string[];
+} {
+  const notes: string[] = [];
+  const active = activeBlessings(picks);
+  const god4 = picks.length >= 3 ? deriveGodPath(picks.slice(0, 3)) : null;
+  const god8 = picks.length >= 6 ? deriveGodPath(picks.slice(3, 6)) : null;
+  if (god4) {
+    notes.push(
+      `God T4 = ${god4} (from T1–T3 picks [${picks.slice(0, 3).join(", ")}]) — path-affined, not free choice`,
+    );
+  }
+  if (god8) {
+    notes.push(
+      `God T8 = ${god8} (from T5–T7 picks [${picks.slice(3, 6).join(", ")}]) — path-affined, not free choice`,
+    );
+  }
+  notes.push(
+    "Relics do not use this path system; do not confuse blessing affinity with relic prerequisites.",
+  );
+  return {
+    valid: true,
+    god4,
+    god8,
+    activeIds: active.map((b) => b.id),
+    notes,
+  };
+}

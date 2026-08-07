@@ -1,18 +1,22 @@
 /**
  * Equilibrium League relics — ONE pick per tier permanently.
  *
- * Rejuvenated (wiki): "Allows the player to pick another relic from any of the
- * previous tiers." That is NOT "take any two combat relics." It means:
- *   - You pick Rejuvenated as your choice on some tier T
- *   - You then get ONE extra relic from tiers 1..T-1 (a relic you skipped earlier)
+ * ## Restrictions that EXIST (wiki)
+ * 1. One relic per tier (permanent for that tier).
+ * 2. Tiers unlock by league points sequentially (T1→T7).
+ * 3. Rejuvenated: claim ONE extra relic from a *previous* tier only.
+ * 4. Tier passives apply regardless of which relic you pick on that tier.
  *
- * You still cannot take two relics from the SAME tier. Devout + Infernal Fire
- * only works if they sit on different tiers AND one was skipped then claimed
- * via Rejuvenated on a later tier.
+ * ## Restrictions that do NOT appear on wiki (as of pre-launch)
+ * - No "must pick relic A before relic B" affinity chains between combat relics.
+ * - No path/Order/Chaos affinity on *relics* (that system is for *blessings*).
+ * - Most combat relics still "Unknown Tier" → we use assumedTier guesses.
  *
- * Pre-launch most combat relics are "Unknown Tier" — we assign assumedTier
- * for modeling (documented guesses) and only allow Rejuvenated doubles that
- * satisfy previous-tier rules.
+ * ## Do not confuse with Blessings
+ * Blessing God tiers (T4/T8) ARE path-affined: majority of prior picks
+ * (2+ same path → that God; 1 of each → Balance). See blessings.ts.
+ *
+ * Archaeology "relic powers" unlocked by Antiquarian are a different system.
  */
 
 export type RelicId =
@@ -38,6 +42,21 @@ export type RelicId =
   | "clue-connoisseur"
   | "none";
 
+/** Explicit restriction types for validation / UI. */
+export type RelicRestriction =
+  | { kind: "one-per-tier" }
+  | { kind: "tier-unlock"; minTier: number }
+  | { kind: "rejuvenated-previous-tier-only" }
+  | {
+      kind: "requires-prior-relics";
+      /** empty for all current Equilibrium combat relics (wiki has none) */
+      anyOf: RelicId[];
+      allOf: RelicId[];
+      note: string;
+    }
+  | { kind: "mutually-exclusive-same-tier"; peers: RelicId[] }
+  | { kind: "assumed-tier-guess"; tier: number };
+
 export interface RelicDef {
   id: RelicId;
   name: string;
@@ -53,14 +72,41 @@ export interface RelicDef {
   notes: string;
   effects: string[];
   tags: string[];
+  /**
+   * Prior-relic affinity requirements.
+   * Wiki currently lists NONE for Equilibrium combat relics — kept empty
+   * so the engine can grow when Jagex documents chains.
+   */
+  requiresPriorAnyOf: RelicId[];
+  requiresPriorAllOf: RelicId[];
+  restrictions: RelicRestriction[];
+}
+
+function baseRestrictions(
+  id: RelicId,
+  tier: number,
+  source: "wiki" | "guess",
+  peersOnTier: RelicId[],
+): RelicRestriction[] {
+  const r: RelicRestriction[] = [
+    { kind: "one-per-tier" },
+    { kind: "tier-unlock", minTier: tier },
+    { kind: "mutually-exclusive-same-tier", peers: peersOnTier.filter((p) => p !== id) },
+  ];
+  if (source === "guess") r.push({ kind: "assumed-tier-guess", tier });
+  if (id === "rejuvenated") r.push({ kind: "rejuvenated-previous-tier-only" });
+  r.push({
+    kind: "requires-prior-relics",
+    anyOf: [],
+    allOf: [],
+    note: "No prior-relic affinity documented on wiki for this relic",
+  });
+  return r;
 }
 
 /**
  * Assumed tier map (UPDATE WHEN WIKI CONFIRMS):
  * T1 wiki: Endless Harvest | Survivalist | Golden Touch
- * Guess packing combat relics across T2–T7 so Rejuvenated is meaningful.
- * Critical: Devout and Infernal Fire are on DIFFERENT assumed tiers so a
- * Rejuvenated double is *possible* but costs the Rejuvenated tier slot.
  */
 export const RELICS: readonly RelicDef[] = [
   {
@@ -74,6 +120,13 @@ export const RELICS: readonly RelicDef[] = [
     notes: "T1 gathering",
     effects: ["Auto-bank resources"],
     tags: ["skilling"],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: baseRestrictions("endless-harvest", 1, "wiki", [
+      "endless-harvest",
+      "survivalist",
+      "golden-touch",
+    ]),
   },
   {
     id: "survivalist",
@@ -86,6 +139,13 @@ export const RELICS: readonly RelicDef[] = [
     notes: "T1 gathering",
     effects: ["Double resources"],
     tags: ["skilling"],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: baseRestrictions("survivalist", 1, "wiki", [
+      "endless-harvest",
+      "survivalist",
+      "golden-touch",
+    ]),
   },
   {
     id: "golden-touch",
@@ -98,6 +158,13 @@ export const RELICS: readonly RelicDef[] = [
     notes: "T1 agility/thieving",
     effects: ["Goldenhawk boots"],
     tags: ["skilling"],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: baseRestrictions("golden-touch", 1, "wiki", [
+      "endless-harvest",
+      "survivalist",
+      "golden-touch",
+    ]),
   },
   {
     id: "divine-druid",
@@ -110,6 +177,13 @@ export const RELICS: readonly RelicDef[] = [
     notes: "ASSUMED T2 — scrolls/herblore",
     effects: ["10 scrolls per pouch", "Charm 5×", "Skill boost familiars ×3"],
     tags: ["summoning", "scrolls", "herblore"],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: baseRestrictions("divine-druid", 2, "guess", [
+      "divine-druid",
+      "assassins-insight",
+      "voidwalker",
+    ]),
   },
   {
     id: "assassins-insight",
@@ -122,6 +196,13 @@ export const RELICS: readonly RelicDef[] = [
     notes: "ASSUMED T2 — slayer",
     effects: ["Corrupted slayer helm effects", "Elite 5×"],
     tags: ["slayer"],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: baseRestrictions("assassins-insight", 2, "guess", [
+      "divine-druid",
+      "assassins-insight",
+      "voidwalker",
+    ]),
   },
   {
     id: "voidwalker",
@@ -134,6 +215,13 @@ export const RELICS: readonly RelicDef[] = [
     notes: "ASSUMED T2 — utility",
     effects: ["Teleports / void shards"],
     tags: ["utility"],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: baseRestrictions("voidwalker", 2, "guess", [
+      "divine-druid",
+      "assassins-insight",
+      "voidwalker",
+    ]),
   },
   {
     id: "perkfection",
@@ -146,6 +234,13 @@ export const RELICS: readonly RelicDef[] = [
     notes: "ASSUMED T3 — invention perks",
     effects: ["Helpful perks +20%", "Toolbox gizmos", "No charge"],
     tags: ["invention", "perks"],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: baseRestrictions("perkfection", 3, "guess", [
+      "perkfection",
+      "icyenic-faith",
+      "production-master",
+    ]),
   },
   {
     id: "icyenic-faith",
@@ -158,6 +253,13 @@ export const RELICS: readonly RelicDef[] = [
     notes: "ASSUMED T3 — prayer combat",
     effects: ["Tome prayer→AD/crit", "100% protect + SS"],
     tags: ["prayer", "dps"],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: baseRestrictions("icyenic-faith", 3, "guess", [
+      "perkfection",
+      "icyenic-faith",
+      "production-master",
+    ]),
   },
   {
     id: "production-master",
@@ -170,6 +272,13 @@ export const RELICS: readonly RelicDef[] = [
     notes: "ASSUMED T3 — skilling",
     effects: ["Production"],
     tags: ["skilling"],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: baseRestrictions("production-master", 3, "guess", [
+      "perkfection",
+      "icyenic-faith",
+      "production-master",
+    ]),
   },
   {
     id: "devout",
@@ -186,6 +295,13 @@ export const RELICS: readonly RelicDef[] = [
       "Combat familiars up to +500% at 99 Summoning",
     ],
     tags: ["summoning", "familiar-dps", "scrolls"],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: baseRestrictions("devout", 4, "guess", [
+      "devout",
+      "naragi-edict",
+      "antiquarian",
+    ]),
   },
   {
     id: "naragi-edict",
@@ -198,6 +314,13 @@ export const RELICS: readonly RelicDef[] = [
     notes: "ASSUMED T4 — mutually exclusive with Devout if same tier!",
     effects: ["255 combat duty cycle", "Pocket combat stats"],
     tags: ["combat", "burst"],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: baseRestrictions("naragi-edict", 4, "guess", [
+      "devout",
+      "naragi-edict",
+      "antiquarian",
+    ]),
   },
   {
     id: "antiquarian",
@@ -207,9 +330,16 @@ export const RELICS: readonly RelicDef[] = [
     combatRank: "D",
     skills: ["archaeology"],
     playerDpsMult: 1,
-    notes: "ASSUMED T4 — archaeology",
-    effects: ["Archaeology"],
+    notes: "ASSUMED T4 — archaeology (unlocks Archaeology relic *powers*, different system)",
+    effects: ["All Archaeology relics after tutorial"],
     tags: ["skilling"],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: baseRestrictions("antiquarian", 4, "guess", [
+      "devout",
+      "naragi-edict",
+      "antiquarian",
+    ]),
   },
   {
     id: "infernal-fire",
@@ -222,6 +352,13 @@ export const RELICS: readonly RelicDef[] = [
     notes: "ASSUMED T5 — Death Mark execute",
     effects: ["Death Mark 100% — kill at 20% HP", "Pocket bonuses"],
     tags: ["combat", "execute"],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: baseRestrictions("infernal-fire", 5, "guess", [
+      "infernal-fire",
+      "rejuvenated",
+      "clue-connoisseur",
+    ]),
   },
   {
     id: "rejuvenated",
@@ -232,9 +369,16 @@ export const RELICS: readonly RelicDef[] = [
     skills: [],
     playerDpsMult: 1,
     notes:
-      "ASSUMED T5 — pick ONE extra relic from tiers 1–4 only (previous tiers). Competes with Infernal Fire on this assumed tier.",
+      "ASSUMED T5 — pick ONE extra relic from tiers 1–4 only. Competes with Infernal if same tier.",
     effects: ["Pick another relic from any previous tier"],
     tags: ["meta", "combo"],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: baseRestrictions("rejuvenated", 5, "guess", [
+      "infernal-fire",
+      "rejuvenated",
+      "clue-connoisseur",
+    ]),
   },
   {
     id: "clue-connoisseur",
@@ -247,6 +391,13 @@ export const RELICS: readonly RelicDef[] = [
     notes: "ASSUMED T5",
     effects: ["Clues"],
     tags: ["skilling"],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: baseRestrictions("clue-connoisseur", 5, "guess", [
+      "infernal-fire",
+      "rejuvenated",
+      "clue-connoisseur",
+    ]),
   },
   {
     id: "crystal-grace",
@@ -257,8 +408,15 @@ export const RELICS: readonly RelicDef[] = [
     skills: [],
     playerDpsMult: 1.04,
     notes: "ASSUMED T6",
-    effects: ["Unknown combat-adjacent"],
+    effects: ["Spell unlocks / RC / necro rituals"],
     tags: ["utility"],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: baseRestrictions("crystal-grace", 6, "guess", [
+      "crystal-grace",
+      "superheated",
+      "natures-network",
+    ]),
   },
   {
     id: "superheated",
@@ -271,6 +429,13 @@ export const RELICS: readonly RelicDef[] = [
     notes: "ASSUMED T6 skilling",
     effects: ["Smithing/FM"],
     tags: ["skilling"],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: baseRestrictions("superheated", 6, "guess", [
+      "crystal-grace",
+      "superheated",
+      "natures-network",
+    ]),
   },
   {
     id: "natures-network",
@@ -283,6 +448,13 @@ export const RELICS: readonly RelicDef[] = [
     notes: "ASSUMED T6",
     effects: ["Farming/tele"],
     tags: ["skilling"],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: baseRestrictions("natures-network", 6, "guess", [
+      "crystal-grace",
+      "superheated",
+      "natures-network",
+    ]),
   },
   {
     id: "transmutation",
@@ -295,6 +467,12 @@ export const RELICS: readonly RelicDef[] = [
     notes: "ASSUMED T7",
     effects: ["Skilling"],
     tags: ["skilling"],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: baseRestrictions("transmutation", 7, "guess", [
+      "transmutation",
+      "animal-wrangler",
+    ]),
   },
   {
     id: "animal-wrangler",
@@ -307,6 +485,12 @@ export const RELICS: readonly RelicDef[] = [
     notes: "ASSUMED T7",
     effects: ["Hunter"],
     tags: ["skilling"],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: baseRestrictions("animal-wrangler", 7, "guess", [
+      "transmutation",
+      "animal-wrangler",
+    ]),
   },
   {
     id: "none",
@@ -319,6 +503,9 @@ export const RELICS: readonly RelicDef[] = [
     notes: "Baseline",
     effects: [],
     tags: [],
+    requiresPriorAnyOf: [],
+    requiresPriorAllOf: [],
+    restrictions: [],
   },
 ];
 
@@ -327,13 +514,7 @@ export const RELIC_BY_ID: Readonly<Record<string, RelicDef>> = Object.fromEntrie
 );
 
 export interface RelicLoadout {
-  /** One pick per tier 1..7 (null = not yet unlocked) */
   byTier: Partial<Record<number, RelicId>>;
-  /**
-   * If some tier picked rejuvenated, the extra previous-tier relic claimed.
-   * Must be from a tier < rejuvenatedTier and not already the pick on that tier
-   * (it's the alternate from that tier).
-   */
   rejuvenatedExtra?: { fromTier: number; relic: RelicId };
 }
 
@@ -348,7 +529,6 @@ export interface ValidatedRelics {
   notes: string[];
 }
 
-/** Active relic ids from a loadout (tier picks + optional Rejuvenated extra). */
 export function activeRelicsFromLoadout(loadout: RelicLoadout): RelicId[] {
   const ids: RelicId[] = [];
   for (let t = 1; t <= 7; t++) {
@@ -359,19 +539,38 @@ export function activeRelicsFromLoadout(loadout: RelicLoadout): RelicId[] {
   return ids;
 }
 
-/**
- * Validate Rejuvenated rules:
- * - At most one relic per tier in byTier
- * - If Rejuvenated is picked on tier T, extra must be from tier < T
- * - Extra cannot be the same id as the original pick on that tier (you take the other option)
- * - Extra's assumedTier must match fromTier
- */
+/** Check requiresPriorAnyOf / AllOf against already-active lower-tier picks. */
+function checkPriorRequirements(
+  relicId: RelicId,
+  alreadyActive: readonly RelicId[],
+): string[] {
+  const def = RELIC_BY_ID[relicId];
+  if (!def) return [`Unknown relic ${relicId}`];
+  const errs: string[] = [];
+  if (def.requiresPriorAllOf.length) {
+    for (const need of def.requiresPriorAllOf) {
+      if (!alreadyActive.includes(need)) {
+        errs.push(`${def.name} requires prior relic ${need} (allOf)`);
+      }
+    }
+  }
+  if (def.requiresPriorAnyOf.length) {
+    if (!def.requiresPriorAnyOf.some((n) => alreadyActive.includes(n))) {
+      errs.push(
+        `${def.name} requires one of prior relics: ${def.requiresPriorAnyOf.join(", ")}`,
+      );
+    }
+  }
+  return errs;
+}
+
 export function validateRelicLoadout(loadout: RelicLoadout): ValidatedRelics {
   const errors: string[] = [];
   const notes: string[] = [];
   const flags: string[] = [];
 
-  // Check tier uniqueness of definitions
+  // Sequential: for each tier in order, prior requirements vs earlier picks
+  const earlier: RelicId[] = [];
   for (let t = 1; t <= 7; t++) {
     const id = loadout.byTier[t];
     if (!id || id === "none") continue;
@@ -380,14 +579,13 @@ export function validateRelicLoadout(loadout: RelicLoadout): ValidatedRelics {
       errors.push(`Unknown relic ${id} on T${t}`);
       continue;
     }
-    if (def.assumedTier !== t && def.id !== "rejuvenated") {
-      // allow only if assumed matches — rejuvenated always on its tier
-      if (def.assumedTier !== t) {
-        notes.push(
-          `WARN: ${def.name} assumed T${def.assumedTier} but slotted on T${t} (${def.assumedTierSource})`,
-        );
-      }
+    if (def.assumedTier !== t) {
+      notes.push(
+        `WARN: ${def.name} assumed T${def.assumedTier} but slotted on T${t} (${def.assumedTierSource})`,
+      );
     }
+    errors.push(...checkPriorRequirements(id, earlier));
+    earlier.push(id);
   }
 
   let rejTier: number | null = null;
@@ -412,13 +610,17 @@ export function validateRelicLoadout(loadout: RelicLoadout): ValidatedRelics {
           `Extra ${def.name} is assumed T${def.assumedTier}, not T${fromTier}`,
         );
       }
-      // Cannot be same as what you already picked on that tier
       if (loadout.byTier[fromTier] === relic) {
         errors.push(
           `Already picked ${relic} on T${fromTier} — Rejuvenated must take a different relic from a previous tier`,
         );
       }
-      // Same-tier exclusivity: extra is from previous tier's options you skipped
+      // Prior reqs for the reclaimed relic vs what was active before Rejuvenated tier
+      const beforeRej = earlier.filter((id) => {
+        const d = RELIC_BY_ID[id];
+        return d && d.assumedTier < rejTier!;
+      });
+      errors.push(...checkPriorRequirements(relic, beforeRej));
       notes.push(
         `Rejuvenated T${rejTier} → extra ${def?.name ?? relic} from T${fromTier}`,
       );
@@ -426,19 +628,16 @@ export function validateRelicLoadout(loadout: RelicLoadout): ValidatedRelics {
   }
 
   const active = activeRelicsFromLoadout(loadout);
-  // Duplicate active ids?
   if (new Set(active).size !== active.length) {
     errors.push("Duplicate active relics");
   }
 
-  // Devout + Infernal both active?
   if (active.includes("devout") && active.includes("infernal-fire")) {
     notes.push(
-      "Devout+Infernal both active — valid when on different tiers (assumed T4+T5); Rejuvenated not required for that pair",
+      "Devout+Infernal both active — valid when on different tiers (assumed T4+T5); no prior-relic affinity required by wiki",
     );
   }
   if (active.includes("devout") && active.includes("naragi-edict")) {
-    // both assumed T4 — INVALID without tier reassignment
     const d = RELIC_BY_ID.devout!;
     const n = RELIC_BY_ID["naragi-edict"]!;
     if (d.assumedTier === n.assumedTier) {
@@ -469,6 +668,16 @@ export function validateRelicLoadout(loadout: RelicLoadout): ValidatedRelics {
     if (def) flags.push(`Relic: ${def.name}`);
   }
 
+  // Transparency: no prior-affinity chains loaded
+  const withPriors = RELICS.filter(
+    (r) => r.requiresPriorAnyOf.length || r.requiresPriorAllOf.length,
+  );
+  if (withPriors.length === 0) {
+    notes.push(
+      "Prior-relic affinity: none configured (wiki documents no combat-relic prerequisites)",
+    );
+  }
+
   return {
     active,
     mult,
@@ -481,7 +690,6 @@ export function validateRelicLoadout(loadout: RelicLoadout): ValidatedRelics {
   };
 }
 
-/** Single primary relic (no double). */
 export function stackRelicPlayerMult(
   primary: RelicId,
   secondary: RelicId | null = null,
@@ -494,8 +702,6 @@ export function stackRelicPlayerMult(
   errors: string[];
   notes: string[];
 } {
-  // Legacy API: interpret secondary as Rejuvenated extra when primary isn't rejuvenated
-  // NEW RULES: if both set, try to build a valid loadout
   if (!secondary || secondary === "none") {
     const def = RELIC_BY_ID[primary] ?? RELIC_BY_ID.none!;
     return {
@@ -509,7 +715,6 @@ export function stackRelicPlayerMult(
     };
   }
 
-  // Build assumed loadout: place each on its assumed tier; if conflict, invalid
   const byTier: Partial<Record<number, RelicId>> = {};
   const a = RELIC_BY_ID[primary]!;
   const b = RELIC_BY_ID[secondary]!;
@@ -526,7 +731,6 @@ export function stackRelicPlayerMult(
     errors.push(
       `${a.name} and ${b.name} are both assumed T${a.assumedTier} — cannot both be active (one pick per tier). Rejuvenated does NOT merge same-tier picks.`,
     );
-    // still compute mult for "what if" but mark invalid
     return {
       mult: a.playerDpsMult * b.playerDpsMult,
       devout: primary === "devout" || secondary === "devout",
@@ -539,7 +743,6 @@ export function stackRelicPlayerMult(
       ],
     };
   } else {
-    // Different tiers — both as normal picks (no Rejuvenated needed)
     byTier[a.assumedTier] = primary;
     byTier[b.assumedTier] = secondary;
   }
@@ -556,18 +759,6 @@ export function stackRelicPlayerMult(
   };
 }
 
-/**
- * Legal combat-oriented loadouts under assumed tiers.
- * Rejuvenated path: pick Rejuvenated on T5 → reclaim Devout (T4) while taking
- * something else on T4 was skipped... Actually if Rejuvenated is T5 and Infernal
- * is also T5, you MUST choose: Infernal OR Rejuvenated, not both.
- *
- * Valid high-combat paths:
- * - T4 Devout, T5 Infernal (no Rejuvenated) — BOTH if different tiers ✓
- * - T4 Naragi, T5 Infernal
- * - T4 Devout, T5 Rejuvenated → extra Icyenic (T3) or Perkfection (T3)
- * - T3 Icyenic, T4 Devout, T5 Infernal
- */
 export function legalCombatLoadouts(): {
   id: string;
   label: string;
@@ -611,7 +802,7 @@ export function legalCombatLoadouts(): {
     },
     {
       id: "rejuv-reclaim-devout",
-      label: "T4 Naragi + T5 Rejuvenated → reclaim Devout? INVALID same as need Devout on T4",
+      label: "T4 Naragi + T5 Rejuvenated → reclaim Devout",
       loadout: {
         byTier: { 4: "naragi-edict", 5: "rejuvenated" },
         rejuvenatedExtra: { fromTier: 4, relic: "devout" },
@@ -628,7 +819,7 @@ export function legalCombatLoadouts(): {
     {
       id: "invalid-same-tier-devout-naragi",
       label: "INVALID T4 Devout+Naragi",
-      loadout: { byTier: { 4: "devout" } }, // can't put both
+      loadout: { byTier: { 4: "devout" } },
     },
     {
       id: "none",
@@ -637,23 +828,12 @@ export function legalCombatLoadouts(): {
     },
   ];
 
-  // Fix rejuv reclaim devout: extra from T4 while T4 is Naragi — valid Rejuvenated pattern
-  specs[6] = {
-    id: "rejuv-reclaim-devout",
-    label: "T4 Naragi + T5 Rejuvenated → reclaim Devout (valid)",
-    loadout: {
-      byTier: { 4: "naragi-edict", 5: "rejuvenated" },
-      rejuvenatedExtra: { fromTier: 4, relic: "devout" },
-    },
-  };
-
   return specs.map((s) => ({
     ...s,
     validation: validateRelicLoadout(s.loadout),
   }));
 }
 
-/** @deprecated use legalCombatLoadouts — kept for old sims */
 export const COMBAT_RELIC_PICKS: readonly RelicId[] = [
   "devout",
   "divine-druid",
@@ -665,27 +845,30 @@ export const COMBAT_RELIC_PICKS: readonly RelicId[] = [
   "none",
 ];
 
-/** Only VALID doubles under assumed tiers (no fake same-tier stacks). */
 export function combatRelicCombos(_includeRejuvDouble = true): {
   primary: RelicId;
   secondary: RelicId | null;
   label: string;
   valid: boolean;
 }[] {
-  const out: { primary: RelicId; secondary: RelicId | null; label: string; valid: boolean }[] = [];
+  const out: {
+    primary: RelicId;
+    secondary: RelicId | null;
+    label: string;
+    valid: boolean;
+  }[] = [];
   for (const p of COMBAT_RELIC_PICKS) {
     out.push({ primary: p, secondary: null, label: p, valid: true });
   }
-  // Different-tier pairs (valid without Rejuvenated)
   const pairs: [RelicId, RelicId][] = [
-    ["devout", "infernal-fire"], // T4 + T5
-    ["icyenic-faith", "devout"], // T3 + T4
-    ["icyenic-faith", "infernal-fire"], // T3 + T5
+    ["devout", "infernal-fire"],
+    ["icyenic-faith", "devout"],
+    ["icyenic-faith", "infernal-fire"],
     ["perkfection", "devout"],
     ["perkfection", "infernal-fire"],
-    ["divine-druid", "devout"], // T2 + T4
+    ["divine-druid", "devout"],
     ["divine-druid", "infernal-fire"],
-    ["naragi-edict", "infernal-fire"], // T4 + T5
+    ["naragi-edict", "infernal-fire"],
   ];
   for (const [a, b] of pairs) {
     const s = stackRelicPlayerMult(a, b);
@@ -696,14 +879,12 @@ export function combatRelicCombos(_includeRejuvDouble = true): {
       valid: s.valid,
     });
   }
-  // INVALID same-tier (for documentation in sims)
   out.push({
     primary: "devout",
     secondary: "naragi-edict",
     label: "INVALID:devout+naragi(same-tier)",
     valid: false,
   });
-  // Rejuvenated: T5 Rejuv reclaiming T3 Icyenic while T4 Devout
   out.push({
     primary: "rejuvenated",
     secondary: "icyenic-faith",
@@ -711,4 +892,32 @@ export function combatRelicCombos(_includeRejuvDouble = true): {
     valid: true,
   });
   return out;
+}
+
+/** Human-readable restriction report for UI / FAQ. */
+export function relicRestrictionReport(): {
+  summary: string;
+  enforced: string[];
+  notOnWiki: string[];
+  priorAffinityConfigured: number;
+} {
+  const priorAffinityConfigured = RELICS.filter(
+    (r) => r.requiresPriorAnyOf.length || r.requiresPriorAllOf.length,
+  ).length;
+  return {
+    summary:
+      "Relics: one-per-tier + Rejuvenated previous-tier only. No wiki prior-relic affinity chains. Blessing God tiers use path affinity (separate system).",
+    enforced: [
+      "One relic pick per tier",
+      "Rejuvenated → previous tiers only",
+      "Same assumed-tier mutual exclusion",
+      "requiresPriorAnyOf/AllOf hooks (currently empty lists)",
+      "Blessing God T4/T8 path majority (in blessings.ts, not here)",
+    ],
+    notOnWiki: [
+      "No documented 'must pick relic X before relic Y' for combat relics",
+      "Most combat relic tier numbers still Unknown (assumedTier is a guess)",
+    ],
+    priorAffinityConfigured,
+  };
 }

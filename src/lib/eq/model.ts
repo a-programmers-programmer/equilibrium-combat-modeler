@@ -35,6 +35,14 @@ import {
   type RegionTag,
 } from "./sim/requirements";
 import type { SkillId } from "./xp";
+import {
+  type TargetTag,
+  type BanePiece,
+  baneDamageMult,
+  baneAccuracyDpsFactor,
+  pickBaneLoadout,
+  BANE_CATALOG,
+} from "./sim/bane";
 
 export interface GearSnapshot {
   armour: number;
@@ -62,6 +70,18 @@ export interface ModelInput {
   powerburst: boolean;
   /** When set, overrides stage armour/AD/LP from region-resolved gear */
   gear?: GearSnapshot;
+  /**
+   * Target tags for bane/affinity weapons (dragon, mage-class, etc.).
+   * Default: general (no bane mult).
+   */
+  targetTags?: TargetTag[];
+  /**
+   * Explicit bane pieces (ammo + affinity weapons). If omitted and targetTags
+   * are non-general, auto-picks best accessible bane for style from free+endgame unlocks.
+   */
+  baneGear?: BanePiece[];
+  /** Soft region set for auto bane pick (default: all free + common electives) */
+  baneRegions?: RegionTag[];
 }
 
 export interface DamageBreakdown {
@@ -99,6 +119,14 @@ export interface ModelResult {
   breakdown: DamageBreakdown;
   flags: string[];
   warnings: string[];
+  /** Bane/affinity application */
+  bane?: {
+    mult: number;
+    accuracyFactor: number;
+    pieces: string[];
+    applied: { name: string; tag: string; mult: number }[];
+    targetTags: TargetTag[];
+  };
 }
 
 function floor(n: number): number {
@@ -437,6 +465,87 @@ export function modelCombat(input: ModelInput): ModelResult {
     warnings.push(`Weapon only T${gear.weaponTier} — region locks may be limiting BiS`);
   }
 
+  // ── Bane / affinity (dragonbane, hexhunter, terrasaur, inquisitor, Leng) ──
+  const targetTags: TargetTag[] = input.targetTags?.length
+    ? [...input.targetTags]
+    : ["general"];
+  let banePieces: BanePiece[] = input.baneGear !== undefined ? [...input.baneGear] : [];
+  if (
+    input.baneGear === undefined &&
+    !(targetTags.length === 1 && targetTags[0] === "general")
+  ) {
+    const regions = new Set<RegionTag>(
+      input.baneRegions ?? [
+        "free",
+        "misthalin",
+        "havenhythe",
+        "karamja",
+        "asgarnia",
+        "desert",
+        "forinthry",
+        "anachronia",
+        "fremennik",
+        "morytania",
+        "kandarin",
+        "tirannwn",
+      ],
+    );
+    const levels: Partial<Record<SkillId, number>> = {
+      attack: 99,
+      strength: 99,
+      defence: 99,
+      magic: 99,
+      ranged: 99,
+      necromancy: 99,
+      smithing: 99,
+      crafting: 99,
+      hunter: 99,
+      runecrafting: 99,
+    };
+    const snap: PlayerSnapshot = {
+      levels,
+      regions,
+      quests: new Set(["ritual-of-the-mahjarrat"]),
+      flags: new Set([
+        "unlocked:tune-bane",
+        "unlocked:dinarrows",
+        "unlocked:jas-anima",
+        "killed:soulgazer",
+        "unlocked:hexhunter-imbue",
+        "unlocked:bgh-t3",
+        "unlocked:inquisitor-assemble",
+        "unlocked:inq-imbue",
+        "unlocked:glacor-front",
+        "unlocked:leng-core",
+      ]),
+      relicTier: 6,
+    };
+    banePieces = pickBaneLoadout(input.style, targetTags, snap);
+  }
+
+  const baneDmg = baneDamageMult(banePieces, targetTags);
+  const baneAcc = baneAccuracyDpsFactor(banePieces, targetTags);
+  const baneTotalMult = baneDmg.mult * baneAcc;
+  if (baneTotalMult > 1.001) {
+    coreAbility *= baneTotalMult;
+    cindersOnHit *= baneTotalMult;
+    inferno *= baneTotalMult;
+    lightOfSaradomin *= baneTotalMult;
+    splashBonus *= baneTotalMult;
+    tearingGrasps *= baneTotalMult;
+    other *= baneTotalMult;
+    // flat BB also scales slightly with better hit rate
+    bigBonedFlat *= 1 + (baneAcc - 1);
+    for (const a of baneDmg.applied) {
+      flags.push(`Bane: ${a.name} ×${a.mult.toFixed(3)} vs ${a.tag}`);
+    }
+    if (baneAcc > 1.001) flags.push(`Bane accuracy EV ×${baneAcc.toFixed(3)}`);
+  } else if (targetTags.some((t) => t !== "general") && banePieces.length === 0) {
+    warnings.push(
+      `Target tags [${targetTags.join(",")}] but no accessible bane gear for ${input.style}`,
+    );
+  }
+
   const breakdown: DamageBreakdown = {
     coreAbility,
     bigBonedFlat,
@@ -495,6 +604,13 @@ export function modelCombat(input: ModelInput): ModelResult {
     breakdown,
     flags,
     warnings,
+    bane: {
+      mult: baneDmg.mult,
+      accuracyFactor: baneAcc,
+      pieces: banePieces.map((b) => b.name),
+      applied: baneDmg.applied,
+      targetTags,
+    },
   };
 }
 

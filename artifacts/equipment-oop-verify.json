@@ -1,0 +1,181 @@
+{
+  "generated": "2026-08-07T00:05:02.052Z",
+  "stats": {
+    "total": 353,
+    "bySlot": {
+      "material": 34,
+      "offhand": 23,
+      "unknown": 92,
+      "weapon": 68,
+      "boots": 22,
+      "gloves": 13,
+      "helmet": 16,
+      "legs": 6,
+      "body": 37,
+      "amulet": 6,
+      "ring": 15,
+      "codex": 17,
+      "cape": 4
+    },
+    "byRegion": {
+      "karamja": 9,
+      "morytania": 33,
+      "forinthry": 52,
+      "misthalin": 51,
+      "desert": 95,
+      "asgarnia": 46,
+      "fremennik": 10,
+      "kandarin": 13,
+      "anachronia": 35,
+      "tirannwn": 5
+    },
+    "withSkills": 171,
+    "withFlags": 101,
+    "wikiGenerated": 286,
+    "handCurated": 67
+  },
+  "sampleReqs": [
+    {
+      "id": "omni-guard",
+      "name": "Omni guard (T95)",
+      "req": "region:misthalin OR region:free OR region:havenhythe OR region:karamja AND necromancy 95+ AND killed:rasial",
+      "regions": [],
+      "skillReqs": [
+        {
+          "skill": "necromancy",
+          "level": 95
+        }
+      ],
+      "flags": [
+        "killed:rasial"
+      ],
+      "quests": []
+    },
+    {
+      "id": "seismic-wand",
+      "name": "Seismic wand",
+      "req": "region:asgarnia AND magic 90+ AND killed:vorago",
+      "regions": [
+        "asgarnia"
+      ],
+      "skillReqs": [
+        {
+          "skill": "magic",
+          "level": 90
+        }
+      ],
+      "flags": [
+        "killed:vorago"
+      ],
+      "quests": []
+    },
+    {
+      "id": "trimmed-mw",
+      "name": "Trimmed masterwork melee set",
+      "req": "region:morytania AND region:asgarnia AND defence 82+ AND smithing 90+",
+      "regions": [
+        "morytania",
+        "asgarnia"
+      ],
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 82
+        },
+        {
+          "skill": "smithing",
+          "level": 90
+        }
+      ],
+      "flags": [],
+      "quests": []
+    },
+    {
+      "id": "malevolent-kiteshield",
+      "name": "Malevolent kiteshield",
+      "req": "region:morytania AND killed:rots",
+      "regions": [
+        "morytania"
+      ],
+      "skillReqs": [],
+      "flags": [
+        "killed:rots"
+      ],
+      "quests": []
+    },
+    {
+      "id": "essence-of-finality",
+      "name": "Essence of Finality amulet",
+      "req": "region:asgarnia AND killed:vorago",
+      "regions": [
+        "asgarnia"
+      ],
+      "skillReqs": [],
+      "flags": [
+        "killed:vorago"
+      ],
+      "quests": []
+    },
+    {
+      "id": "chaotic-rapier",
+      "name": "Chaotic rapier",
+      "req": "region:forinthry AND attack 80+",
+      "regions": [
+        "forinthry"
+      ],
+      "skillReqs": [
+        {
+          "skill": "attack",
+          "level": 80
+        }
+      ],
+      "flags": [],
+      "quests": []
+    },
+    {
+      "id": "asc-xbow",
+      "name": "Ascension crossbow",
+      "req": "region:kandarin AND ranged 90+",
+      "regions": [
+        "kandarin"
+      ],
+      "skillReqs": [
+        {
+          "skill": "ranged",
+          "level": 90
+        }
+      ],
+      "flags": [],
+      "quests": []
+    },
+    {
+      "id": "achto",
+      "name": "Achtó armour pieces",
+      "req": "region:desert AND defence 80+",
+      "regions": [
+        "desert"
+      ],
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 80
+        }
+      ],
+      "flags": [],
+      "quests": []
+    }
+  ],
+  "regionCounts": {
+    "karamja": 9,
+    "morytania": 33,
+    "forinthry": 52,
+    "misthalin": 51,
+    "desert": 95,
+    "asgarnia": 46,
+    "fremennik": 10,
+    "kandarin": 13,
+    "anachronia": 35,
+    "tirannwn": 5,
+    "free-path": 22
+  }
+}

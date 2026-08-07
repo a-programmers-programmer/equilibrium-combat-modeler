@@ -1,0 +1,6351 @@
+{
+  "generated": "2026-08-07T00:02:58.956Z",
+  "count": 297,
+  "byRegion": {
+    "karamja": 10,
+    "morytania": 29,
+    "forinthry": 48,
+    "misthalin": 53,
+    "desert": 86,
+    "asgarnia": 35,
+    "fremennik": 6,
+    "kandarin": 11,
+    "anachronia": 32,
+    "tirannwn": 4
+  },
+  "bySlot": {
+    "material": 35,
+    "offhand": 12,
+    "unknown": 92,
+    "weapon": 53,
+    "boots": 17,
+    "gloves": 13,
+    "helmet": 16,
+    "legs": 6,
+    "body": 20,
+    "amulet": 3,
+    "ring": 12,
+    "codex": 17,
+    "cape": 1
+  },
+  "items": [
+    {
+      "id": "abomination-cape",
+      "name": "Abomination cape",
+      "slot": "material",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "karamja"
+      ],
+      "source": "Abomination",
+      "rarity": "1/11570",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Abomination @ karamja (1/11570)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "abyssal-orb",
+      "name": "Abyssal orb",
+      "slot": "offhand",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania",
+        "forinthry"
+      ],
+      "source": "Abyssal demon",
+      "rarity": "1/6104",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 600,
+      "notes": "Wiki source: Abyssal demon @ morytania (1/6104)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "abyssal-scourge",
+      "name": "Abyssal scourge",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin",
+        "forinthry"
+      ],
+      "source": "Abyssal lord (off task) | Abyssal lord (on task)",
+      "rarity": "1/10000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Abyssal lord (off task) @ misthalin (1/10000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "abyssal-wand",
+      "name": "Abyssal wand",
+      "slot": "weapon",
+      "style": "magic",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania",
+        "forinthry"
+      ],
+      "source": "Abyssal demon",
+      "rarity": "1/6104",
+      "skillReqs": [
+        {
+          "skill": "magic",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Abyssal demon @ morytania (1/6104)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "abyssal-whip",
+      "name": "Abyssal whip",
+      "slot": "weapon",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania",
+        "forinthry"
+      ],
+      "source": "Abyssal demon",
+      "rarity": "1/1024",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Abyssal demon @ morytania (1/1024)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "achto-primeval-boots",
+      "name": "Achto Primeval boots",
+      "slot": "boots",
+      "style": "all",
+      "tier": 90,
+      "kind": "tank",
+      "regions": [
+        "desert"
+      ],
+      "source": "Beastmaster Durzag",
+      "rarity": "9/180",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 80
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 225,
+      "notes": "Wiki source: Beastmaster Durzag @ desert (9/180)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "achto-primeval-gloves",
+      "name": "Achto Primeval gloves",
+      "slot": "gloves",
+      "style": "all",
+      "tier": 90,
+      "kind": "tank",
+      "regions": [
+        "desert"
+      ],
+      "source": "Beastmaster Durzag",
+      "rarity": "9/180",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 80
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 225,
+      "notes": "Wiki source: Beastmaster Durzag @ desert (9/180)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "achto-primeval-mask",
+      "name": "Achto Primeval mask",
+      "slot": "helmet",
+      "style": "all",
+      "tier": 90,
+      "kind": "tank",
+      "regions": [
+        "desert"
+      ],
+      "source": "Beastmaster Durzag",
+      "rarity": "9/180",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 80
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 225,
+      "notes": "Wiki source: Beastmaster Durzag @ desert (9/180)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "achto-primeval-robe-legs",
+      "name": "Achto Primeval robe legs",
+      "slot": "legs",
+      "style": "all",
+      "tier": 90,
+      "kind": "tank",
+      "regions": [
+        "desert"
+      ],
+      "source": "Yakamaru",
+      "rarity": "6/120",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 80
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 225,
+      "notes": "Wiki source: Yakamaru @ desert (6/120)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "achto-primeval-robe-top",
+      "name": "Achto Primeval robe top",
+      "slot": "body",
+      "style": "all",
+      "tier": 90,
+      "kind": "tank",
+      "regions": [
+        "desert"
+      ],
+      "source": "Yakamaru",
+      "rarity": "6/120",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 80
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 1080,
+      "notes": "Wiki source: Yakamaru @ desert (6/120)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "achto-tempest-body",
+      "name": "Achto Tempest body",
+      "slot": "body",
+      "style": "all",
+      "tier": 90,
+      "kind": "tank",
+      "regions": [
+        "desert"
+      ],
+      "source": "Yakamaru",
+      "rarity": "6/120",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 80
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 1080,
+      "notes": "Wiki source: Yakamaru @ desert (6/120)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "achto-tempest-boots",
+      "name": "Achto Tempest boots",
+      "slot": "boots",
+      "style": "all",
+      "tier": 90,
+      "kind": "tank",
+      "regions": [
+        "desert"
+      ],
+      "source": "Beastmaster Durzag",
+      "rarity": "9/180",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 80
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 225,
+      "notes": "Wiki source: Beastmaster Durzag @ desert (9/180)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "achto-tempest-chaps",
+      "name": "Achto Tempest chaps",
+      "slot": "legs",
+      "style": "all",
+      "tier": 90,
+      "kind": "tank",
+      "regions": [
+        "desert"
+      ],
+      "source": "Yakamaru",
+      "rarity": "6/120",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 80
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 225,
+      "notes": "Wiki source: Yakamaru @ desert (6/120)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "achto-tempest-cowl",
+      "name": "Achto Tempest cowl",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 90,
+      "kind": "tank",
+      "regions": [
+        "desert"
+      ],
+      "source": "Beastmaster Durzag",
+      "rarity": "9/180",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Beastmaster Durzag @ desert (9/180)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "achto-tempest-gloves",
+      "name": "Achto Tempest gloves",
+      "slot": "gloves",
+      "style": "all",
+      "tier": 90,
+      "kind": "tank",
+      "regions": [
+        "desert"
+      ],
+      "source": "Beastmaster Durzag",
+      "rarity": "9/180",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 80
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 225,
+      "notes": "Wiki source: Beastmaster Durzag @ desert (9/180)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "achto-teralith-boots",
+      "name": "Achto Teralith boots",
+      "slot": "boots",
+      "style": "all",
+      "tier": 90,
+      "kind": "tank",
+      "regions": [
+        "desert"
+      ],
+      "source": "Beastmaster Durzag",
+      "rarity": "9/180",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 80
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 225,
+      "notes": "Wiki source: Beastmaster Durzag @ desert (9/180)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "achto-teralith-cuirass",
+      "name": "Achto Teralith cuirass",
+      "slot": "body",
+      "style": "all",
+      "tier": 90,
+      "kind": "tank",
+      "regions": [
+        "desert"
+      ],
+      "source": "Yakamaru",
+      "rarity": "6/120",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 80
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 1080,
+      "notes": "Wiki source: Yakamaru @ desert (6/120)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "achto-teralith-gauntlets",
+      "name": "Achto Teralith gauntlets",
+      "slot": "gloves",
+      "style": "all",
+      "tier": 90,
+      "kind": "tank",
+      "regions": [
+        "desert"
+      ],
+      "source": "Beastmaster Durzag",
+      "rarity": "9/180",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 80
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 225,
+      "notes": "Wiki source: Beastmaster Durzag @ desert (9/180)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "achto-teralith-helmet",
+      "name": "Achto Teralith helmet",
+      "slot": "helmet",
+      "style": "all",
+      "tier": 90,
+      "kind": "tank",
+      "regions": [
+        "desert"
+      ],
+      "source": "Beastmaster Durzag",
+      "rarity": "9/180",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 80
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 225,
+      "notes": "Wiki source: Beastmaster Durzag @ desert (9/180)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "achto-teralith-leggings",
+      "name": "Achto Teralith leggings",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 90,
+      "kind": "tank",
+      "regions": [
+        "desert"
+      ],
+      "source": "Yakamaru",
+      "rarity": "6/120",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Yakamaru @ desert (6/120)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "ahrims-hood",
+      "name": "Ahrim's hood",
+      "slot": "helmet",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "The Barrows Brothers",
+      "rarity": "7/2628",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: The Barrows Brothers @ morytania (7/2628)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "amulet-of-souls",
+      "name": "Amulet of souls",
+      "slot": "amulet",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "GWD2 / Soul Reaver",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: GWD2 / Soul Reaver @ asgarnia",
+      "wikiGenerated": true
+    },
+    {
+      "id": "amulets",
+      "name": "amulets",
+      "slot": "amulet",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Commander Zilyana",
+      "rarity": "1/384",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:zilyana"
+      ],
+      "notes": "Wiki source: Commander Zilyana @ asgarnia (1/384)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "ancient-emblem",
+      "name": "Ancient emblem",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Nex",
+      "rarity": "1/50",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:nex"
+      ],
+      "notes": "Wiki source: Nex @ asgarnia (1/50)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "ancient-hilt",
+      "name": "Ancient hilt",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "TzKal-Zuk (hard mode)",
+      "rarity": "1/30",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:zuk"
+      ],
+      "notes": "Wiki source: TzKal-Zuk (hard mode) @ misthalin (1/30)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "annihilation",
+      "name": "Annihilation",
+      "slot": "weapon",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Wilderness slayer chest",
+      "rarity": "11/1000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Wilderness slayer chest @ forinthry (11/1000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "araxxis-eye",
+      "name": "Araxxi's eye",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "Araxxi",
+      "rarity": "1/240",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:araxxi"
+      ],
+      "notes": "Wiki source: Araxxi @ morytania (1/240)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "araxxis-fang",
+      "name": "Araxxi's fang",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "Araxxi",
+      "rarity": "1/240",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:araxxi"
+      ],
+      "notes": "Wiki source: Araxxi @ morytania (1/240)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "araxxis-web",
+      "name": "Araxxi's web",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "Araxxi",
+      "rarity": "1/240",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:araxxi"
+      ],
+      "notes": "Wiki source: Araxxi @ morytania (1/240)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "arcane-sigil",
+      "name": "Arcane sigil",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Corporeal Beast",
+      "rarity": "1/1024",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Corporeal Beast @ forinthry (1/1024)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "archers-ring",
+      "name": "Archers' ring",
+      "slot": "ring",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "fremennik"
+      ],
+      "source": "Dagannoth Supreme",
+      "rarity": "1/128",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Dagannoth Supreme @ fremennik (1/128)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "armadyl-crossbow",
+      "name": "Armadyl crossbow",
+      "slot": "weapon",
+      "style": "ranged",
+      "tier": 80,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Commander Zilyana",
+      "rarity": "1/768",
+      "skillReqs": [
+        {
+          "skill": "ranged",
+          "level": 80
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:zilyana"
+      ],
+      "abilityDamage": 1400,
+      "notes": "Wiki source: Commander Zilyana @ asgarnia (1/768)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "armadyl-equipment",
+      "name": "Armadyl equipment",
+      "slot": "body",
+      "style": "melee",
+      "tier": 80,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Kree'arra",
+      "rarity": "1/384",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 70
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:kree"
+      ],
+      "armour": 640,
+      "notes": "Wiki source: Kree'arra @ asgarnia (1/384)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "armadyl-hilt",
+      "name": "Armadyl hilt",
+      "slot": "unknown",
+      "style": "melee",
+      "tier": 80,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "God Wars Dungeon",
+      "rarity": "1/512",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: God Wars Dungeon @ asgarnia (1/512)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "ascension-signet-i",
+      "name": "Ascension signet I",
+      "slot": "material",
+      "style": "ranged",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "kandarin"
+      ],
+      "source": "Legiones",
+      "rarity": "1/50",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:legiones"
+      ],
+      "notes": "Wiki source: Legiones @ kandarin (1/50)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "ascension-signet-ii",
+      "name": "Ascension signet II",
+      "slot": "material",
+      "style": "ranged",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "kandarin"
+      ],
+      "source": "Legiones",
+      "rarity": "1/50",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:legiones"
+      ],
+      "notes": "Wiki source: Legiones @ kandarin (1/50)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "ascension-signet-iii",
+      "name": "Ascension signet III",
+      "slot": "material",
+      "style": "ranged",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "kandarin"
+      ],
+      "source": "Legiones",
+      "rarity": "1/50",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:legiones"
+      ],
+      "notes": "Wiki source: Legiones @ kandarin (1/50)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "ascension-signet-iv",
+      "name": "Ascension signet IV",
+      "slot": "material",
+      "style": "ranged",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "kandarin"
+      ],
+      "source": "Legiones",
+      "rarity": "1/50",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:legiones"
+      ],
+      "notes": "Wiki source: Legiones @ kandarin (1/50)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "ascension-signet-v",
+      "name": "Ascension signet V",
+      "slot": "material",
+      "style": "ranged",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "kandarin"
+      ],
+      "source": "Legiones",
+      "rarity": "1/50",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:legiones"
+      ],
+      "notes": "Wiki source: Legiones @ kandarin (1/50)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "ascension-signet-vi",
+      "name": "Ascension signet VI",
+      "slot": "material",
+      "style": "ranged",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "kandarin"
+      ],
+      "source": "Legiones",
+      "rarity": "1/50",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:legiones"
+      ],
+      "notes": "Wiki source: Legiones @ kandarin (1/50)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "bandos-equipment",
+      "name": "Bandos equipment",
+      "slot": "body",
+      "style": "melee",
+      "tier": 80,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "General Graardor",
+      "rarity": "1/384",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 70
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:graardor"
+      ],
+      "armour": 640,
+      "notes": "Wiki source: General Graardor @ asgarnia (1/384)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "bandos-hilt",
+      "name": "Bandos hilt",
+      "slot": "unknown",
+      "style": "melee",
+      "tier": 80,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "God Wars Dungeon",
+      "rarity": "1/512",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: God Wars Dungeon @ asgarnia (1/512)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "berserker-ring",
+      "name": "Berserker ring",
+      "slot": "ring",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "fremennik"
+      ],
+      "source": "Dagannoth Rex",
+      "rarity": "1/128",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Dagannoth Rex @ fremennik (1/128)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "black-mask",
+      "name": "Black mask",
+      "slot": "helmet",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "Cave horror, Unspeakable horror",
+      "rarity": "1/512",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Cave horror, Unspeakable horror @ morytania (1/512)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "blade-of-avaryss",
+      "name": "Blade of Avaryss",
+      "slot": "weapon",
+      "style": "ranged",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "The Twin Furies",
+      "rarity": "6/256",
+      "skillReqs": [
+        {
+          "skill": "ranged",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: The Twin Furies @ desert (6/256)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "blade-of-nymora",
+      "name": "Blade of Nymora",
+      "slot": "weapon",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "The Twin Furies",
+      "rarity": "6/256",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: The Twin Furies @ desert (6/256)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "blast-diffusion-boots-off-task",
+      "name": "Blast diffusion boots (off task)",
+      "slot": "boots",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Lampenflora",
+      "rarity": "1/16000",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Lampenflora @ anachronia (1/16000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "blast-diffusion-boots-on-task",
+      "name": "Blast diffusion boots (on task)",
+      "slot": "boots",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Lampenflora",
+      "rarity": "4/16000",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Lampenflora @ anachronia (4/16000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "blightbound-crossbow",
+      "name": "Blightbound crossbow",
+      "slot": "weapon",
+      "style": "ranged",
+      "tier": 92,
+      "kind": "none",
+      "regions": [
+        "tirannwn"
+      ],
+      "source": "Solak, Guardian of the Grove",
+      "rarity": "1/400",
+      "skillReqs": [
+        {
+          "skill": "ranged",
+          "level": 92
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:solak"
+      ],
+      "abilityDamage": 2250,
+      "notes": "Wiki source: Solak, Guardian of the Grove @ tirannwn (1/400)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "blood-necklace-shard",
+      "name": "Blood necklace shard",
+      "slot": "material",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "tirannwn"
+      ],
+      "source": "Edimmu",
+      "rarity": "1/512",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Edimmu @ tirannwn (1/512)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "blowpipe-chitin",
+      "name": "Blowpipe chitin",
+      "slot": "weapon",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Dinosaurs (Slayer assignment)",
+      "rarity": "4/20000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Dinosaurs (Slayer assignment) @ anachronia (4/20000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "blowpipe-feather",
+      "name": "Blowpipe feather",
+      "slot": "weapon",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Dinosaurs (Slayer assignment)",
+      "rarity": "4/20000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Dinosaurs (Slayer assignment) @ anachronia (4/20000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "blowpipe-fins",
+      "name": "Blowpipe fins",
+      "slot": "weapon",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Dinosaurs (Slayer assignment)",
+      "rarity": "4/20000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Dinosaurs (Slayer assignment) @ anachronia (4/20000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "body",
+      "name": "body",
+      "slot": "body",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "Celestial dragon",
+      "rarity": "1/5120",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 600,
+      "notes": "Wiki source: Celestial dragon @ morytania (1/5120)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "bone-blowpipe",
+      "name": "Bone blowpipe",
+      "slot": "weapon",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Dinosaurs (Slayer assignment)",
+      "rarity": "4/20000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Dinosaurs (Slayer assignment) @ anachronia (4/20000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "boots-of-tumekens-resplendence",
+      "name": "Boots of Tumeken's resplendence",
+      "slot": "boots",
+      "style": "necromancy",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Amascut the Devourer",
+      "rarity": "1/600",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        },
+        {
+          "skill": "necromancy",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "armour": 188,
+      "notes": "Wiki source: Amascut the Devourer @ desert (1/600)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "bow-of-the-last-guardian",
+      "name": "Bow of the Last Guardian",
+      "slot": "weapon",
+      "style": "ranged",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Zemouregal & Vorkath path",
+      "twoHanded": true,
+      "skillReqs": [
+        {
+          "skill": "ranged",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 990,
+      "notes": "Wiki source: Zemouregal & Vorkath path @ misthalin",
+      "wikiGenerated": true
+    },
+    {
+      "id": "camel-staff-off-task",
+      "name": "Camel staff (off task)",
+      "slot": "weapon",
+      "style": "magic",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Camel Warrior",
+      "rarity": "1/10000",
+      "skillReqs": [
+        {
+          "skill": "magic",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Camel Warrior @ desert (1/10000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "camel-staff-on-task",
+      "name": "Camel staff (on task)",
+      "slot": "weapon",
+      "style": "magic",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Camel Warrior",
+      "rarity": "1/2000",
+      "skillReqs": [
+        {
+          "skill": "magic",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Camel Warrior @ desert (1/2000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "cape",
+      "name": "cape",
+      "slot": "material",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "Celestial dragon",
+      "rarity": "1/5120",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Celestial dragon @ morytania (1/5120)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "celestial-handwraps",
+      "name": "Celestial handwraps",
+      "slot": "gloves",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "Celestial dragon",
+      "rarity": "1/2056",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Celestial dragon @ morytania (1/2056)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "champions-ring",
+      "name": "Champion's ring",
+      "slot": "ring",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Orikalka",
+      "rarity": "1/200",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Orikalka @ anachronia (1/200)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "channellers-ring",
+      "name": "Channeller's ring",
+      "slot": "ring",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Pthentraken",
+      "rarity": "1/200",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Pthentraken @ anachronia (1/200)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "chaotic-rapier",
+      "name": "Chaotic rapier",
+      "slot": "weapon",
+      "style": "melee",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Dungeoneering reward shop",
+      "skillReqs": [
+        {
+          "skill": "attack",
+          "level": 90
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 2050,
+      "notes": "Wiki source: Dungeoneering reward shop @ forinthry",
+      "wikiGenerated": true
+    },
+    {
+      "id": "chaps",
+      "name": "chaps",
+      "slot": "legs",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "Celestial dragon",
+      "rarity": "1/5120",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Celestial dragon @ morytania (1/5120)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "crest-of-seren",
+      "name": "Crest of Seren",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Helwyr",
+      "rarity": "6/256",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Helwyr @ desert (6/256)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "crest-of-sliske",
+      "name": "Crest of Sliske",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Gregorovic",
+      "rarity": "3/128",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Gregorovic @ desert (3/128)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "crest-of-zamorak",
+      "name": "Crest of Zamorak",
+      "slot": "unknown",
+      "style": "melee",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "The Twin Furies",
+      "rarity": "6/256",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: The Twin Furies @ desert (6/256)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "crest-of-zaros",
+      "name": "Crest of Zaros",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Vindicta & Gorvek",
+      "rarity": "1/51",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Vindicta & Gorvek @ desert (1/51)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "croesus-foultorch",
+      "name": "Croesus foultorch",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Croesus (60 contribution) | Croesus (420+ contribution)",
+      "rarity": "1/5400",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Croesus (60 contribution) @ misthalin (1/5400)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "croesus-spore-sack",
+      "name": "Croesus spore sack",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Croesus (60 contribution) | Croesus (420+ contribution)",
+      "rarity": "1/5400",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Croesus (60 contribution) @ misthalin (1/5400)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "croesus-sporehammer",
+      "name": "Croesus sporehammer",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Croesus (60 contribution) | Croesus (420+ contribution)",
+      "rarity": "1/5400",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Croesus (60 contribution) @ misthalin (1/5400)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "cryptbloom-armour-incomplete",
+      "name": "Cryptbloom armour (incomplete)",
+      "slot": "body",
+      "style": "magic",
+      "tier": 95,
+      "kind": "tank",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Croesus (60 contribution) | Croesus (420+ contribution)",
+      "rarity": "1/5400",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 85
+        },
+        {
+          "skill": "magic",
+          "level": 90
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 1140,
+      "notes": "Wiki source: Croesus (60 contribution) @ misthalin (1/5400)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "cryptbloom-armour-set",
+      "name": "Cryptbloom armour set",
+      "slot": "body",
+      "style": "magic",
+      "tier": 95,
+      "kind": "tank",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Croesus",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 85
+        },
+        {
+          "skill": "magic",
+          "level": 90
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 1140,
+      "notes": "Wiki source: Croesus @ misthalin",
+      "wikiGenerated": true
+    },
+    {
+      "id": "dark-bow",
+      "name": "Dark bow",
+      "slot": "weapon",
+      "style": "ranged",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania",
+        "forinthry"
+      ],
+      "source": "Dark beast",
+      "rarity": "1/1024",
+      "skillReqs": [
+        {
+          "skill": "ranged",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Dark beast @ morytania (1/1024)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "death-guard-t90",
+      "name": "Death Guard (T90)",
+      "slot": "unknown",
+      "style": "necromancy",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Necromancy talent / Kili",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Necromancy talent / Kili @ misthalin",
+      "wikiGenerated": true
+    },
+    {
+      "id": "deathdealer-robe-set",
+      "name": "Deathdealer robe set",
+      "slot": "body",
+      "style": "necromancy",
+      "tier": 75,
+      "kind": "power",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Necromancy talent / Kili",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        },
+        {
+          "skill": "necromancy",
+          "level": 75
+        }
+      ],
+      "quests": [
+        "necromancy-questline"
+      ],
+      "flags": [],
+      "armour": 600,
+      "notes": "Wiki source: Necromancy talent / Kili @ misthalin",
+      "wikiGenerated": true
+    },
+    {
+      "id": "deathwarden-robe-set",
+      "name": "Deathwarden robe set",
+      "slot": "offhand",
+      "style": "necromancy",
+      "tier": 90,
+      "kind": "shield",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Necromancy talent / Kili",
+      "skillReqs": [
+        {
+          "skill": "necromancy",
+          "level": 90
+        }
+      ],
+      "quests": [
+        "necromancy-questline"
+      ],
+      "flags": [],
+      "abilityDamage": 0,
+      "armour": 400,
+      "notes": "Wiki source: Necromancy talent / Kili @ misthalin",
+      "wikiGenerated": true
+    },
+    {
+      "id": "decimation",
+      "name": "Decimation",
+      "slot": "weapon",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Wilderness slayer chest",
+      "rarity": "11/1000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Wilderness slayer chest @ forinthry (11/1000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "demon-slayer-equipment",
+      "name": "Demon slayer equipment",
+      "slot": "body",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Kal'gerion demon",
+      "rarity": "1/896",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 600,
+      "notes": "Wiki source: Kal'gerion demon @ forinthry (1/896)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "devourers-guard",
+      "name": "Devourer's Guard",
+      "slot": "weapon",
+      "style": "necromancy",
+      "tier": 95,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Amascut the Devourer",
+      "rarity": "1/600",
+      "skillReqs": [
+        {
+          "skill": "necromancy",
+          "level": 95
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "abilityDamage": 2450,
+      "notes": "Wiki source: Amascut the Devourer @ desert (1/600)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "devourers-nexus-100",
+      "name": "Devourer's Nexus (100%)",
+      "slot": "unknown",
+      "style": "necromancy",
+      "tier": 95,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Amascut the Devourer",
+      "rarity": "1/280",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "notes": "Wiki source: Amascut the Devourer @ desert (1/280)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "devourers-nexus-1000",
+      "name": "Devourer's Nexus (1000%)",
+      "slot": "unknown",
+      "style": "necromancy",
+      "tier": 95,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Amascut the Devourer",
+      "rarity": "1/140",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "notes": "Wiki source: Amascut the Devourer @ desert (1/140)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "devourers-nexus-2000",
+      "name": "Devourer's Nexus (2000%+)",
+      "slot": "unknown",
+      "style": "necromancy",
+      "tier": 95,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Amascut the Devourer",
+      "rarity": "1/100",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "notes": "Wiki source: Amascut the Devourer @ desert (1/100)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "devourers-nexus-500",
+      "name": "Devourer's Nexus (500%)",
+      "slot": "unknown",
+      "style": "necromancy",
+      "tier": 95,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Amascut the Devourer",
+      "rarity": "1/240",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "notes": "Wiki source: Amascut the Devourer @ desert (1/240)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "devourers-nexus-750",
+      "name": "Devourer's Nexus (750%)",
+      "slot": "unknown",
+      "style": "necromancy",
+      "tier": 95,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Amascut the Devourer",
+      "rarity": "1/200",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "notes": "Wiki source: Amascut the Devourer @ desert (1/200)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "devourers-nexus-normal-mode",
+      "name": "Devourer's Nexus (Normal Mode)",
+      "slot": "unknown",
+      "style": "necromancy",
+      "tier": 95,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Amascut the Devourer",
+      "rarity": "1/750",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "notes": "Wiki source: Amascut the Devourer @ desert (1/750)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "dharoks",
+      "name": "Dharok's",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "The Barrows Brothers",
+      "rarity": "7/1752",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: The Barrows Brothers @ morytania (7/1752)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "divert-ability-codex",
+      "name": "Divert ability codex",
+      "slot": "codex",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Raksha, the Shadow Colossus",
+      "rarity": "1/325",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Raksha, the Shadow Colossus @ anachronia (1/325)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "divine-rage-prayer-codex",
+      "name": "Divine Rage prayer codex",
+      "slot": "codex",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Sanctum of Rebirth bosses | Sanctum of Rebirth bosses (hard mode)",
+      "rarity": "1/250",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Sanctum of Rebirth bosses @ misthalin (1/250)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "divine-sigil",
+      "name": "Divine sigil",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Corporeal Beast",
+      "rarity": "1/1024",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Corporeal Beast @ forinthry (1/1024)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "dormant-anima-core-body",
+      "name": "Dormant anima core body",
+      "slot": "material",
+      "style": "all",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Gregorovic | Helwyr | The Twin Furies | Vindicta & Gorvek",
+      "rarity": "3/128",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Gregorovic @ desert (3/128)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "dormant-anima-core-helm",
+      "name": "Dormant anima core helm",
+      "slot": "material",
+      "style": "all",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Gregorovic | Helwyr | The Twin Furies | Vindicta & Gorvek",
+      "rarity": "3/128",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Gregorovic @ desert (3/128)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "dormant-anima-core-legs",
+      "name": "Dormant anima core legs",
+      "slot": "material",
+      "style": "all",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Gregorovic | Helwyr | The Twin Furies | Vindicta & Gorvek",
+      "rarity": "3/128",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Gregorovic @ desert (3/128)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "dragon-2h-sword",
+      "name": "Dragon 2h sword",
+      "slot": "weapon",
+      "style": "all",
+      "tier": 70,
+      "kind": "none",
+      "regions": [
+        "asgarnia",
+        "desert"
+      ],
+      "source": "Giant mole (Normal Mode) | Giant mole (Hard Mode) | Kalphite Queen",
+      "rarity": "1/520",
+      "twoHanded": true,
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 990,
+      "notes": "Wiki source: Giant mole (Normal Mode) @ asgarnia (1/520)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "dragon-chainbody",
+      "name": "Dragon chainbody",
+      "slot": "body",
+      "style": "all",
+      "tier": 70,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Kalphite Queen",
+      "rarity": "1/128",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 60
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 560,
+      "notes": "Wiki source: Kalphite Queen @ desert (1/128)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "dragon-full-helm",
+      "name": "Dragon full helm",
+      "slot": "helmet",
+      "style": "all",
+      "tier": 70,
+      "kind": "none",
+      "regions": [
+        "karamja"
+      ],
+      "source": "Abomination",
+      "rarity": "1/1000",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 60
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 175,
+      "notes": "Wiki source: Abomination @ karamja (1/1000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "dragon-harpoon",
+      "name": "Dragon harpoon",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 70,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Flesh-hatcher Mhekarnahz",
+      "rarity": "1/128",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Flesh-hatcher Mhekarnahz @ forinthry (1/128)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "dragon-hatchet",
+      "name": "Dragon hatchet",
+      "slot": "helmet",
+      "style": "all",
+      "tier": 70,
+      "kind": "none",
+      "regions": [
+        "fremennik"
+      ],
+      "source": "Dagannoth Kings",
+      "rarity": "1/128",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 60
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 175,
+      "notes": "Wiki source: Dagannoth Kings @ fremennik (1/128)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "dragon-kiteshield",
+      "name": "Dragon kiteshield",
+      "slot": "offhand",
+      "style": "all",
+      "tier": 70,
+      "kind": "shield",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Queen Black Dragon",
+      "rarity": "2/253",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 0,
+      "armour": 150,
+      "notes": "Wiki source: Queen Black Dragon @ asgarnia (2/253)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "dragon-mattock",
+      "name": "Dragon mattock",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 70,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Anachronia Big Game Hunter",
+      "rarity": "1/101",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Anachronia Big Game Hunter @ anachronia (1/101)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "dragon-pickaxe",
+      "name": "Dragon pickaxe",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 70,
+      "kind": "none",
+      "regions": [
+        "fremennik"
+      ],
+      "source": "Chaos Giant | Chaos Dwarf Battlefield",
+      "rarity": "1/1000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Chaos Giant @ fremennik (1/1000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "dragon-rider-boots",
+      "name": "Dragon Rider boots",
+      "slot": "boots",
+      "style": "all",
+      "tier": 70,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "King Black Dragon",
+      "rarity": "1/2000",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 60
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 175,
+      "notes": "Wiki source: King Black Dragon @ forinthry (1/2000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "dragon-rider-gloves",
+      "name": "Dragon Rider gloves",
+      "slot": "gloves",
+      "style": "all",
+      "tier": 70,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "King Black Dragon",
+      "rarity": "1/2000",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 60
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 175,
+      "notes": "Wiki source: King Black Dragon @ forinthry (1/2000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "dragon-rider-helm",
+      "name": "Dragon Rider helm",
+      "slot": "helmet",
+      "style": "all",
+      "tier": 70,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "Celestial dragon",
+      "rarity": "1/5120",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 60
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 175,
+      "notes": "Wiki source: Celestial dragon @ morytania (1/5120)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "dragon-rider-lance",
+      "name": "Dragon Rider lance",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 70,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Vindicta & Gorvek",
+      "rarity": "1/51",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Vindicta & Gorvek @ desert (1/51)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "drygore-longsword",
+      "name": "Drygore longsword",
+      "slot": "weapon",
+      "style": "melee",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Kalphite King",
+      "rarity": "1/42",
+      "skillReqs": [
+        {
+          "skill": "attack",
+          "level": 90
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 2050,
+      "notes": "Wiki source: Kalphite King @ desert (1/42)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "drygore-mace",
+      "name": "Drygore mace",
+      "slot": "weapon",
+      "style": "melee",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Kalphite King",
+      "rarity": "1/42",
+      "skillReqs": [
+        {
+          "skill": "attack",
+          "level": 90
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 2050,
+      "notes": "Wiki source: Kalphite King @ desert (1/42)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "drygore-rapier",
+      "name": "Drygore rapier",
+      "slot": "weapon",
+      "style": "melee",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Kalphite King",
+      "rarity": "1/42",
+      "skillReqs": [
+        {
+          "skill": "attack",
+          "level": 90
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 2050,
+      "notes": "Wiki source: Kalphite King @ desert (1/42)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "dwarf-multicannon-upgrade-kit",
+      "name": "Dwarf multicannon upgrade kit",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Nodon hunter, Nodon artificer, Nodon guard, Siege engine",
+      "rarity": "1/2,133",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Nodon hunter, Nodon artificer, Nodon guard, Siege engine @ misthalin (1/2,133)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "eclipsed-soul-prayer-codex",
+      "name": "Eclipsed Soul prayer codex",
+      "slot": "codex",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Gate of Elidinis",
+      "rarity": "1/480",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Gate of Elidinis @ misthalin (1/480)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "ek-zekkil",
+      "name": "Ek-ZekKil",
+      "slot": "unknown",
+      "style": "melee",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Zamorak, Lord of Chaos",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:kril"
+      ],
+      "notes": "Wiki source: Zamorak, Lord of Chaos @ misthalin",
+      "wikiGenerated": true
+    },
+    {
+      "id": "eldritch-crossbow-limb",
+      "name": "Eldritch crossbow limb",
+      "slot": "weapon",
+      "style": "ranged",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "The Ambassador",
+      "rarity": "1/55",
+      "skillReqs": [
+        {
+          "skill": "ranged",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: The Ambassador @ forinthry (1/55)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "eldritch-crossbow-mechanism",
+      "name": "Eldritch crossbow mechanism",
+      "slot": "weapon",
+      "style": "ranged",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "The Ambassador",
+      "rarity": "1/55",
+      "skillReqs": [
+        {
+          "skill": "ranged",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: The Ambassador @ forinthry (1/55)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "eldritch-crossbow-stock",
+      "name": "Eldritch crossbow stock",
+      "slot": "weapon",
+      "style": "ranged",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "The Ambassador",
+      "rarity": "1/55",
+      "skillReqs": [
+        {
+          "skill": "ranged",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: The Ambassador @ forinthry (1/55)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "elysian-sigil",
+      "name": "Elysian sigil",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Corporeal Beast",
+      "rarity": "1/1024",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Corporeal Beast @ forinthry (1/1024)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "emberkeen-boots",
+      "name": "Emberkeen boots",
+      "slot": "boots",
+      "style": "all",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Arch-Glacor",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 80
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:arch-glacor"
+      ],
+      "armour": 225,
+      "notes": "Wiki source: Arch-Glacor @ forinthry",
+      "wikiGenerated": true
+    },
+    {
+      "id": "erethdors-grimoire",
+      "name": "Erethdor's grimoire",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "tirannwn"
+      ],
+      "source": "Solak, Guardian of the Grove",
+      "rarity": "1/200",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:solak"
+      ],
+      "notes": "Wiki source: Solak, Guardian of the Grove @ tirannwn (1/200)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "essence-of-finality-amulet",
+      "name": "Essence of Finality amulet",
+      "slot": "amulet",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Vorago",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:vorago"
+      ],
+      "notes": "Wiki source: Vorago @ asgarnia",
+      "wikiGenerated": true
+    },
+    {
+      "id": "fire-cape",
+      "name": "Fire cape",
+      "slot": "material",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "karamja"
+      ],
+      "source": "TzHaar Fight Cave",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: TzHaar Fight Cave @ karamja",
+      "wikiGenerated": true
+    },
+    {
+      "id": "first-necromancers-equipment",
+      "name": "First Necromancer's equipment",
+      "slot": "body",
+      "style": "necromancy",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Rasial, the First Necromancer",
+      "rarity": "1/640",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        },
+        {
+          "skill": "necromancy",
+          "level": 75
+        }
+      ],
+      "quests": [
+        "necromancy-questline"
+      ],
+      "flags": [
+        "killed:rasial"
+      ],
+      "armour": 600,
+      "notes": "Wiki source: Rasial, the First Necromancer @ misthalin (1/640)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "fleeting-boots",
+      "name": "Fleeting boots",
+      "slot": "boots",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Raksha, the Shadow Colossus",
+      "rarity": "1/130",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Raksha, the Shadow Colossus @ anachronia (1/130)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "focus-sight-off-task",
+      "name": "Focus sight (off task)",
+      "slot": "material",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Desert strykewyrm",
+      "rarity": "1/512",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Desert strykewyrm @ desert (1/512)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "focus-sight-on-task",
+      "name": "Focus sight (on task)",
+      "slot": "material",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Desert strykewyrm",
+      "rarity": "1/256",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Desert strykewyrm @ desert (1/256)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "fractured-armadyl-symbol",
+      "name": "Fractured Armadyl symbol",
+      "slot": "unknown",
+      "style": "magic",
+      "tier": 80,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Kerapac, the bound (hard mode)",
+      "rarity": "1/133",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:kerapac"
+      ],
+      "notes": "Wiki source: Kerapac, the bound (hard mode) @ misthalin (1/133)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "fractured-stabilisation-gem",
+      "name": "Fractured stabilisation gem",
+      "slot": "unknown",
+      "style": "magic",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Kerapac, the bound (hard mode)",
+      "rarity": "1/133",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:kerapac"
+      ],
+      "notes": "Wiki source: Kerapac, the bound (hard mode) @ misthalin (1/133)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "fractured-staff-of-armadyl",
+      "name": "Fractured Staff of Armadyl",
+      "slot": "weapon",
+      "style": "magic",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Kerapac",
+      "twoHanded": true,
+      "skillReqs": [
+        {
+          "skill": "magic",
+          "level": 90
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:kerapac"
+      ],
+      "abilityDamage": 2255,
+      "notes": "Wiki source: Kerapac @ misthalin",
+      "wikiGenerated": true
+    },
+    {
+      "id": "ganodermic-boots",
+      "name": "Ganodermic boots",
+      "slot": "boots",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Ganodermic runt | Ganodermic beast",
+      "rarity": "1/200",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Ganodermic runt @ misthalin (1/200)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "ganodermic-gloves",
+      "name": "Ganodermic gloves",
+      "slot": "gloves",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Ganodermic runt | Ganodermic beast",
+      "rarity": "1/200",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Ganodermic runt @ misthalin (1/200)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "gemstone-boots",
+      "name": "Gemstone boots",
+      "slot": "boots",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "karamja",
+        "forinthry"
+      ],
+      "source": "Dragonstone dragon",
+      "rarity": "1/5000",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Dragonstone dragon @ karamja (1/5000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "gemstone-gauntlets",
+      "name": "Gemstone gauntlets",
+      "slot": "gloves",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "karamja",
+        "forinthry"
+      ],
+      "source": "Dragonstone dragon",
+      "rarity": "1/5000",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Dragonstone dragon @ karamja (1/5000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "gemstone-greaves",
+      "name": "Gemstone greaves",
+      "slot": "boots",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "karamja",
+        "forinthry"
+      ],
+      "source": "Onyx dragon",
+      "rarity": "1/5000",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Onyx dragon @ karamja (1/5000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "gemstone-hauberk",
+      "name": "Gemstone hauberk",
+      "slot": "body",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "karamja",
+        "forinthry"
+      ],
+      "source": "Hydrix dragon",
+      "rarity": "1/2500",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 600,
+      "notes": "Wiki source: Hydrix dragon @ karamja (1/2500)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "gemstone-helm",
+      "name": "Gemstone helm",
+      "slot": "helmet",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "karamja",
+        "forinthry"
+      ],
+      "source": "Onyx dragon",
+      "rarity": "1/5000",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Onyx dragon @ karamja (1/5000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "glaiven-boots",
+      "name": "Glaiven boots",
+      "slot": "boots",
+      "style": "all",
+      "tier": 85,
+      "kind": "none",
+      "regions": [
+        "misthalin",
+        "forinthry"
+      ],
+      "source": "Glacor",
+      "rarity": "1/1280",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:arch-glacor"
+      ],
+      "armour": 213,
+      "notes": "Wiki source: Glacor @ misthalin (1/1280)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "gloomfire-bow",
+      "name": "Gloomfire bow",
+      "slot": "weapon",
+      "style": "ranged",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Vault of Hereditas (100 loot) | Vault of Hereditas (500 loot)",
+      "rarity": "1/702",
+      "skillReqs": [
+        {
+          "skill": "ranged",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Vault of Hereditas (100 loot) @ desert (1/702)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "gloves-of-passage",
+      "name": "Gloves of passage",
+      "slot": "gloves",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Magister",
+      "rarity": "1/500",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Magister @ desert (1/500)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "gloves-of-tumekens-resplendence",
+      "name": "Gloves of Tumeken's resplendence",
+      "slot": "gloves",
+      "style": "necromancy",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Amascut the Devourer",
+      "rarity": "1/600",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        },
+        {
+          "skill": "necromancy",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "armour": 188,
+      "notes": "Wiki source: Amascut the Devourer @ desert (1/600)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "granite-legs",
+      "name": "Granite legs",
+      "slot": "legs",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Skeletal wyvern",
+      "rarity": "1/512",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Skeletal wyvern @ asgarnia (1/512)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "greater-barge-ability-codex",
+      "name": "Greater Barge ability codex",
+      "slot": "codex",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Black stone dragon",
+      "rarity": "1/83",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Black stone dragon @ forinthry (1/83)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "greater-chain-ability-codex",
+      "name": "Greater Chain ability codex",
+      "slot": "codex",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Raksha, the Shadow Colossus",
+      "rarity": "1/325",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Raksha, the Shadow Colossus @ anachronia (1/325)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "greater-concentrated-blast-ability-codex",
+      "name": "Greater Concentrated blast ability codex",
+      "slot": "codex",
+      "style": "magic",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Kerapac, the bound | Kerapac, the bound (hard mode)",
+      "rarity": "1,767,169/452,984,832",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:kerapac"
+      ],
+      "notes": "Wiki source: Kerapac, the bound @ misthalin (1,767,169/452,984,832)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "greater-flurry-ability-codex",
+      "name": "Greater Flurry ability codex",
+      "slot": "codex",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Astellarn",
+      "rarity": "1/83",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Astellarn @ forinthry (1/83)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "greater-fury-ability-codex",
+      "name": "Greater Fury ability codex",
+      "slot": "codex",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Verak Lith",
+      "rarity": "1/83",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Verak Lith @ forinthry (1/83)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "greater-ricochet-ability-codex",
+      "name": "Greater Ricochet ability codex",
+      "slot": "codex",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Raksha, the Shadow Colossus",
+      "rarity": "1/325",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Raksha, the Shadow Colossus @ anachronia (1/325)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "greater-sonic-wave-ability-codex",
+      "name": "Greater Sonic Wave ability codex",
+      "slot": "codex",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Risen ghost | Armoured phantom",
+      "rarity": "1/4608",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Risen ghost @ forinthry (1/4608)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "guthans-and-akrisaes-equipment",
+      "name": "Guthan's and Akrisae's equipment",
+      "slot": "body",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "The Barrows Brothers",
+      "rarity": "7/1752",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 600,
+      "notes": "Wiki source: The Barrows Brothers @ morytania (7/1752)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "hermodic-plate",
+      "name": "Hermodic plate",
+      "slot": "unknown",
+      "style": "necromancy",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Hermod, the Spirit of War",
+      "rarity": "1/10",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Hermod, the Spirit of War @ misthalin (1/10)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "hexcrest",
+      "name": "Hexcrest",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "kandarin"
+      ],
+      "source": "Jungle strykewyrm",
+      "rarity": "1/512",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Jungle strykewyrm @ kandarin (1/512)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "holy-elixir",
+      "name": "Holy elixir",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Corporeal Beast",
+      "rarity": "3/512",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Corporeal Beast @ forinthry (3/512)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "igneous-kal-zuk",
+      "name": "Igneous Kal-Zuk",
+      "slot": "cape",
+      "style": "all",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "karamja"
+      ],
+      "source": "TzKal-Zuk",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:zuk"
+      ],
+      "armour": 40,
+      "notes": "Wiki source: TzKal-Zuk @ karamja",
+      "wikiGenerated": true
+    },
+    {
+      "id": "imperium-core",
+      "name": "Imperium core",
+      "slot": "material",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Nex, Angel of Death",
+      "rarity": "1/1988",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:nex"
+      ],
+      "notes": "Wiki source: Nex, Angel of Death @ asgarnia (1/1988)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "invoke-lord-of-bones-incantation-codex",
+      "name": "Invoke Lord of Bones incantation codex",
+      "slot": "codex",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Zemouregal & Vorkath (hard mode)",
+      "rarity": "1/150",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Zemouregal & Vorkath (hard mode) @ misthalin (1/150)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "jaws-of-the-abyss",
+      "name": "Jaws of the Abyss",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin",
+        "forinthry"
+      ],
+      "source": "Abyssal beast (off task) | Abyssal beast (on task)",
+      "rarity": "1/5000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Abyssal beast (off task) @ misthalin (1/5000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "karils-coif",
+      "name": "Karil's coif",
+      "slot": "helmet",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "The Barrows Brothers",
+      "rarity": "7/2628",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: The Barrows Brothers @ morytania (7/2628)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "kerapacs-wrist-wraps",
+      "name": "Kerapac's wrist wraps",
+      "slot": "gloves",
+      "style": "magic",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Kerapac, the bound | Kerapac, the bound (hard mode)",
+      "rarity": "1,767,169/452,984,832",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        },
+        {
+          "skill": "magic",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:kerapac"
+      ],
+      "armour": 188,
+      "notes": "Wiki source: Kerapac, the bound @ misthalin (1,767,169/452,984,832)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "khopesh-of-elidinis",
+      "name": "Khopesh of Elidinis",
+      "slot": "weapon",
+      "style": "melee",
+      "tier": 92,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Gate of Elidinis",
+      "skillReqs": [
+        {
+          "skill": "attack",
+          "level": 90
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 2250,
+      "notes": "Wiki source: Gate of Elidinis @ misthalin",
+      "wikiGenerated": true
+    },
+    {
+      "id": "khopesh-of-tumeken",
+      "name": "Khopesh of Tumeken",
+      "slot": "weapon",
+      "style": "necromancy",
+      "tier": 92,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Gate of Elidinis",
+      "skillReqs": [
+        {
+          "skill": "necromancy",
+          "level": 92
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 2250,
+      "notes": "Wiki source: Gate of Elidinis @ misthalin",
+      "wikiGenerated": true
+    },
+    {
+      "id": "kinetic-cyclone-upgrade-kit",
+      "name": "Kinetic cyclone upgrade kit",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Nodon hunter, Nodon artificer, Nodon guard, Siege engine",
+      "rarity": "1/2,133",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Nodon hunter, Nodon artificer, Nodon guard, Siege engine @ misthalin (1/2,133)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "kit",
+      "name": "kit",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "Celestial dragon",
+      "rarity": "1/5120",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Celestial dragon @ morytania (1/5120)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "laceration-boots-off-task",
+      "name": "Laceration boots (off task)",
+      "slot": "boots",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Venomous dinosaur",
+      "rarity": "1/8000",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Venomous dinosaur @ anachronia (1/8000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "laceration-boots-on-task",
+      "name": "Laceration boots (on task)",
+      "slot": "boots",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Venomous dinosaur",
+      "rarity": "1/4000",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Venomous dinosaur @ anachronia (1/4000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "latent-offering",
+      "name": "Latent Offering",
+      "slot": "ring",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Gate of Elidinis",
+      "rarity": "1/71",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Gate of Elidinis @ misthalin (1/71)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "legatuss-emberstaff",
+      "name": "Legatus's Emberstaff",
+      "slot": "weapon",
+      "style": "magic",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Vault of Hereditas (100 loot) | Vault of Hereditas (500 loot)",
+      "rarity": "1/702",
+      "skillReqs": [
+        {
+          "skill": "magic",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Vault of Hereditas (100 loot) @ desert (1/702)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "linzas-equipment",
+      "name": "Linza's equipment",
+      "slot": "body",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "The Barrows Brothers",
+      "rarity": "1/480",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 600,
+      "notes": "Wiki source: The Barrows Brothers @ morytania (1/480)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "magma-core",
+      "name": "Magma core",
+      "slot": "material",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "TzKal-Zuk (hard mode)",
+      "rarity": "1/30",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:zuk"
+      ],
+      "notes": "Wiki source: TzKal-Zuk (hard mode) @ misthalin (1/30)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "magma-tempest-ability-codex",
+      "name": "Magma Tempest ability codex",
+      "slot": "codex",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "TzKal-Zuk (hard mode)",
+      "rarity": "1/50",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:zuk"
+      ],
+      "notes": "Wiki source: TzKal-Zuk (hard mode) @ misthalin (1/50)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "malevolent-kiteshield",
+      "name": "Malevolent kiteshield",
+      "slot": "offhand",
+      "style": "melee",
+      "tier": 90,
+      "kind": "shield",
+      "regions": [
+        "morytania"
+      ],
+      "source": "The Barrows: Rise of the Six",
+      "rarity": "1/240",
+      "skillReqs": [
+        {
+          "skill": "attack",
+          "level": 90
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:rots"
+      ],
+      "abilityDamage": 0,
+      "armour": 400,
+      "notes": "Wiki source: The Barrows: Rise of the Six @ morytania (1/240)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "mask-of-tumekens-resplendence",
+      "name": "Mask of Tumeken's resplendence",
+      "slot": "helmet",
+      "style": "necromancy",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Amascut the Devourer",
+      "rarity": "1/600",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        },
+        {
+          "skill": "necromancy",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "armour": 188,
+      "notes": "Wiki source: Amascut the Devourer @ desert (1/600)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "masutas-warspear",
+      "name": "Masuta's warspear",
+      "slot": "weapon",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Masuta the Ascended",
+      "rarity": "1/20",
+      "twoHanded": true,
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 990,
+      "notes": "Wiki source: Masuta the Ascended @ asgarnia (1/20)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "mazcab-ability-codex",
+      "name": "Mazcab ability codex",
+      "slot": "codex",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Beastmaster Durzag | Yakamaru",
+      "rarity": "1/31.6",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Beastmaster Durzag @ desert (1/31.6)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "memory-dowser",
+      "name": "Memory dowser",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Gate of Elidinis",
+      "rarity": "1/480",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Gate of Elidinis @ misthalin (1/480)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "merciless-kiteshield",
+      "name": "Merciless kiteshield",
+      "slot": "offhand",
+      "style": "all",
+      "tier": 75,
+      "kind": "shield",
+      "regions": [
+        "morytania"
+      ],
+      "source": "The Barrows: Rise of the Six",
+      "rarity": "1/240",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:rots"
+      ],
+      "abilityDamage": 0,
+      "armour": 300,
+      "notes": "Wiki source: The Barrows: Rise of the Six @ morytania (1/240)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "misalionars-death-mask",
+      "name": "Misalionar's death mask",
+      "slot": "helmet",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Vault of Hereditas (100 loot) | Vault of Hereditas (500 loot)",
+      "rarity": "1/702",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Vault of Hereditas (100 loot) @ desert (1/702)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "morrigans-coif",
+      "name": "Morrigan's coif",
+      "slot": "helmet",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Revenants",
+      "rarity": "1/9272",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Revenants @ forinthry (1/9272)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "nodon-spike-harness",
+      "name": "Nodon spike harness",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Asuran Arsenal (100 loot) | Asuran Arsenal (500 loot)",
+      "rarity": "1/585",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Asuran Arsenal (100 loot) @ anachronia (1/585)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "obliteration",
+      "name": "Obliteration",
+      "slot": "weapon",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Wilderness slayer chest",
+      "rarity": "11/1000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Wilderness slayer chest @ forinthry (11/1000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "obsidian-blade",
+      "name": "Obsidian blade",
+      "slot": "weapon",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "TzKal-Zuk (hard mode)",
+      "rarity": "1/30",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:zuk"
+      ],
+      "abilityDamage": 900,
+      "notes": "Wiki source: TzKal-Zuk (hard mode) @ misthalin (1/30)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "occultists-ring",
+      "name": "Occultist's ring",
+      "slot": "ring",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Osseous",
+      "rarity": "2/399",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Osseous @ anachronia (2/399)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "ode-to-deceit",
+      "name": "Ode to Deceit",
+      "slot": "unknown",
+      "style": "necromancy",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Nakatra, Devourer Eternal | Nakatra, Devourer Eternal (hard mode)",
+      "rarity": "1/150",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "notes": "Wiki source: Nakatra, Devourer Eternal @ misthalin (1/150)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "off-hand-armadyl-crossbow",
+      "name": "Off-hand Armadyl crossbow",
+      "slot": "weapon",
+      "style": "ranged",
+      "tier": 80,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Commander Zilyana",
+      "rarity": "1/768",
+      "skillReqs": [
+        {
+          "skill": "ranged",
+          "level": 80
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:zilyana"
+      ],
+      "abilityDamage": 1400,
+      "notes": "Wiki source: Commander Zilyana @ asgarnia (1/768)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "off-hand-blightbound-crossbow",
+      "name": "Off-hand Blightbound crossbow",
+      "slot": "weapon",
+      "style": "ranged",
+      "tier": 92,
+      "kind": "none",
+      "regions": [
+        "tirannwn"
+      ],
+      "source": "Solak, Guardian of the Grove",
+      "rarity": "1/400",
+      "skillReqs": [
+        {
+          "skill": "ranged",
+          "level": 92
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:solak"
+      ],
+      "abilityDamage": 2250,
+      "notes": "Wiki source: Solak, Guardian of the Grove @ tirannwn (1/400)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "off-hand-drygore-longsword",
+      "name": "Off-hand drygore longsword",
+      "slot": "weapon",
+      "style": "melee",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Kalphite King",
+      "rarity": "1/42",
+      "skillReqs": [
+        {
+          "skill": "attack",
+          "level": 90
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 2050,
+      "notes": "Wiki source: Kalphite King @ desert (1/42)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "off-hand-drygore-mace",
+      "name": "Off-hand drygore mace",
+      "slot": "weapon",
+      "style": "melee",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Kalphite King",
+      "rarity": "1/42",
+      "skillReqs": [
+        {
+          "skill": "attack",
+          "level": 90
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 2050,
+      "notes": "Wiki source: Kalphite King @ desert (1/42)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "off-hand-drygore-rapier",
+      "name": "Off-hand drygore rapier",
+      "slot": "weapon",
+      "style": "melee",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Kalphite King",
+      "rarity": "1/42",
+      "skillReqs": [
+        {
+          "skill": "attack",
+          "level": 90
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 2050,
+      "notes": "Wiki source: Kalphite King @ desert (1/42)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "off-hand-ripper-claw",
+      "name": "Off-hand ripper claw",
+      "slot": "weapon",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Ripper demon",
+      "rarity": "1/10000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Ripper demon @ forinthry (1/10000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "off-hand-ripper-claw-off-task",
+      "name": "Off-hand ripper claw (off task)",
+      "slot": "weapon",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Ripper Demon",
+      "rarity": "1/10000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Ripper Demon @ desert (1/10000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "off-hand-ripper-claw-on-task",
+      "name": "Off-hand ripper claw (on task)",
+      "slot": "weapon",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Ripper Demon",
+      "rarity": "1/2000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Ripper Demon @ desert (1/2000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "off-hand-shadow-glaive",
+      "name": "Off-hand shadow glaive",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Gregorovic",
+      "rarity": "3/128",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Gregorovic @ desert (3/128)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "oldak-coil-upgrade-kit",
+      "name": "Oldak coil upgrade kit",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Nodon hunter, Nodon artificer, Nodon guard, Siege engine",
+      "rarity": "1/2,133",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Nodon hunter, Nodon artificer, Nodon guard, Siege engine @ misthalin (1/2,133)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "omni-guard",
+      "name": "Omni guard",
+      "slot": "weapon",
+      "style": "necromancy",
+      "tier": 95,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Rasial, the First Necromancer",
+      "skillReqs": [
+        {
+          "skill": "necromancy",
+          "level": 95
+        }
+      ],
+      "quests": [
+        "necromancy-questline"
+      ],
+      "flags": [
+        "killed:rasial"
+      ],
+      "abilityDamage": 2450,
+      "notes": "Wiki source: Rasial, the First Necromancer @ misthalin",
+      "wikiGenerated": true
+    },
+    {
+      "id": "orb-of-the-cywir-elders",
+      "name": "Orb of the Cywir elders",
+      "slot": "material",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Helwyr",
+      "rarity": "6/256",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Helwyr @ desert (6/256)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "perfect-chitin",
+      "name": "Perfect chitin",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Kalphite King",
+      "rarity": "1/50",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Kalphite King @ desert (1/50)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "pernix-cowl",
+      "name": "Pernix cowl",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 70,
+      "kind": "power",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Nex",
+      "rarity": "1/384",
+      "skillReqs": [],
+      "quests": [
+        "while-guthix-sleeps"
+      ],
+      "flags": [
+        "killed:nex"
+      ],
+      "notes": "Wiki source: Nex @ asgarnia (1/384)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "phylactery",
+      "name": "Phylactery",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Magister",
+      "rarity": "1/18",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Magister @ desert (1/18)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "pneumatic-gloves",
+      "name": "Pneumatic gloves",
+      "slot": "gloves",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "kandarin"
+      ],
+      "source": "Automaton Tracer",
+      "rarity": "1/1024",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Automaton Tracer @ kandarin (1/1024)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "polypore-stick",
+      "name": "Polypore Stick",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Ganodermic beast",
+      "rarity": "1/101",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Ganodermic beast @ misthalin (1/101)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "praesul-codex",
+      "name": "Praesul codex",
+      "slot": "codex",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Nex, Angel of Death",
+      "rarity": "1/252",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:nex"
+      ],
+      "notes": "Wiki source: Nex, Angel of Death @ asgarnia (1/252)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "ragefire-boots",
+      "name": "Ragefire boots",
+      "slot": "boots",
+      "style": "all",
+      "tier": 85,
+      "kind": "none",
+      "regions": [
+        "misthalin",
+        "forinthry"
+      ],
+      "source": "Glacor",
+      "rarity": "1/1280",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:arch-glacor"
+      ],
+      "armour": 213,
+      "notes": "Wiki source: Glacor @ misthalin (1/1280)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "reavers-ring",
+      "name": "Reaver's ring",
+      "slot": "ring",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Rex Matriarchs",
+      "rarity": "1/225",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:rex-matriarchs"
+      ],
+      "notes": "Wiki source: Rex Matriarchs @ anachronia (1/225)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "ring-of-death",
+      "name": "Ring of death",
+      "slot": "ring",
+      "style": "all",
+      "tier": 85,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "GWD2",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: GWD2 @ asgarnia",
+      "wikiGenerated": true
+    },
+    {
+      "id": "ripper-claw",
+      "name": "Ripper claw",
+      "slot": "weapon",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert",
+        "forinthry"
+      ],
+      "source": "Ripper Demon | Ripper demon",
+      "rarity": "1/10000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Ripper Demon @ desert (1/10000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "roar-of-awakening",
+      "name": "Roar of Awakening",
+      "slot": "unknown",
+      "style": "necromancy",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Nakatra, Devourer Eternal | Nakatra, Devourer Eternal (hard mode)",
+      "rarity": "1/150",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "notes": "Wiki source: Nakatra, Devourer Eternal @ misthalin (1/150)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "robe-bottom-of-tumekens-resplendence",
+      "name": "Robe bottom of Tumeken's resplendence",
+      "slot": "legs",
+      "style": "necromancy",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Amascut the Devourer",
+      "rarity": "1/600",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        },
+        {
+          "skill": "necromancy",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "armour": 188,
+      "notes": "Wiki source: Amascut the Devourer @ desert (1/600)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "robe-top-of-tumekens-resplendence",
+      "name": "Robe top of Tumeken's resplendence",
+      "slot": "body",
+      "style": "necromancy",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Amascut the Devourer",
+      "rarity": "1/600",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        },
+        {
+          "skill": "necromancy",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "armour": 600,
+      "notes": "Wiki source: Amascut the Devourer @ desert (1/600)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "royal-bolt-stabiliser",
+      "name": "Royal bolt stabiliser",
+      "slot": "unknown",
+      "style": "ranged",
+      "tier": 80,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Queen Black Dragon",
+      "rarity": "5/253",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Queen Black Dragon @ asgarnia (5/253)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "royal-frame",
+      "name": "Royal frame",
+      "slot": "unknown",
+      "style": "ranged",
+      "tier": 80,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Queen Black Dragon",
+      "rarity": "5/253",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Queen Black Dragon @ asgarnia (5/253)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "royal-sight",
+      "name": "Royal sight",
+      "slot": "unknown",
+      "style": "ranged",
+      "tier": 80,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Queen Black Dragon",
+      "rarity": "5/253",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Queen Black Dragon @ asgarnia (5/253)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "royal-torsion-spring",
+      "name": "Royal torsion spring",
+      "slot": "ring",
+      "style": "ranged",
+      "tier": 80,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Queen Black Dragon",
+      "rarity": "5/253",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Queen Black Dragon @ asgarnia (5/253)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "runic-attuner",
+      "name": "Runic attuner",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Gate of Elidinis",
+      "rarity": "1/480",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Gate of Elidinis @ misthalin (1/480)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "saradomin-hilt",
+      "name": "Saradomin hilt",
+      "slot": "unknown",
+      "style": "melee",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "God Wars Dungeon",
+      "rarity": "1/512",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: God Wars Dungeon @ asgarnia (1/512)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "saradomin-sword",
+      "name": "Saradomin sword",
+      "slot": "weapon",
+      "style": "melee",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Commander Zilyana",
+      "rarity": "1/384",
+      "skillReqs": [
+        {
+          "skill": "attack",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:zilyana"
+      ],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Commander Zilyana @ asgarnia (1/384)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "savage-plume",
+      "name": "Savage plume",
+      "slot": "material",
+      "style": "ranged",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Rex Matriarchs",
+      "rarity": "1/450",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:rex-matriarchs"
+      ],
+      "notes": "Wiki source: Rex Matriarchs @ anachronia (1/450)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "savage-spear-cap",
+      "name": "Savage spear cap",
+      "slot": "material",
+      "style": "ranged",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Rex Matriarchs",
+      "rarity": "1/450",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:rex-matriarchs"
+      ],
+      "notes": "Wiki source: Rex Matriarchs @ anachronia (1/450)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "savage-spear-shaft",
+      "name": "Savage spear shaft",
+      "slot": "material",
+      "style": "ranged",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Rex Matriarchs",
+      "rarity": "1/450",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:rex-matriarchs"
+      ],
+      "notes": "Wiki source: Rex Matriarchs @ anachronia (1/450)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "savage-spear-tip",
+      "name": "Savage spear tip",
+      "slot": "material",
+      "style": "ranged",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Rex Matriarchs",
+      "rarity": "1/450",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:rex-matriarchs"
+      ],
+      "notes": "Wiki source: Rex Matriarchs @ anachronia (1/450)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "scare-tactics",
+      "name": "Scare Tactics",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "Unspeakable horror",
+      "rarity": "1/256",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Unspeakable horror @ morytania (1/256)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "scripture-of-amascut",
+      "name": "Scripture of Amascut",
+      "slot": "unknown",
+      "style": "necromancy",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Sanctum of Rebirth bosses | Sanctum of Rebirth bosses (hard mode)",
+      "rarity": "1/250",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Sanctum of Rebirth bosses @ misthalin (1/250)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "scripture-of-bik",
+      "name": "Scripture of Bik",
+      "slot": "unknown",
+      "style": "magic",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Croesus (60 contribution) | Croesus (420+ contribution)",
+      "rarity": "1/5400",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Croesus (60 contribution) @ misthalin (1/5400)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "scripture-of-elidinis",
+      "name": "Scripture of Elidinis",
+      "slot": "unknown",
+      "style": "magic",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Gate of Elidinis",
+      "rarity": "1/480",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Gate of Elidinis @ misthalin (1/480)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "scripture-of-ful",
+      "name": "Scripture of Ful",
+      "slot": "unknown",
+      "style": "magic",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "TzKal-Zuk (hard mode)",
+      "rarity": "1/50",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:zuk"
+      ],
+      "notes": "Wiki source: TzKal-Zuk (hard mode) @ misthalin (1/50)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "scripture-of-jas",
+      "name": "Scripture of Jas",
+      "slot": "unknown",
+      "style": "magic",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Kerapac, the bound | Kerapac, the bound (hard mode)",
+      "rarity": "1,767,169/452,984,832",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:kerapac"
+      ],
+      "notes": "Wiki source: Kerapac, the bound @ misthalin (1,767,169/452,984,832)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "seers-ring",
+      "name": "Seers' ring",
+      "slot": "ring",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "fremennik"
+      ],
+      "source": "Dagannoth Prime",
+      "rarity": "1/128",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Dagannoth Prime @ fremennik (1/128)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "seismic-singularity",
+      "name": "Seismic singularity",
+      "slot": "offhand",
+      "style": "magic",
+      "tier": 90,
+      "kind": "shield",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Vorago | Vorago (Hard Mode)",
+      "rarity": "1/400",
+      "skillReqs": [
+        {
+          "skill": "magic",
+          "level": 90
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:vorago"
+      ],
+      "abilityDamage": 0,
+      "armour": 400,
+      "notes": "Wiki source: Vorago @ asgarnia (1/400)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "seismic-wand",
+      "name": "Seismic wand",
+      "slot": "weapon",
+      "style": "magic",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Vorago | Vorago (Hard Mode)",
+      "rarity": "1/400",
+      "skillReqs": [
+        {
+          "skill": "magic",
+          "level": 90
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:vorago"
+      ],
+      "abilityDamage": 2050,
+      "notes": "Wiki source: Vorago @ asgarnia (1/400)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "serenic-essence-hard-mode",
+      "name": "Serenic essence (Hard Mode)",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Helwyr",
+      "rarity": "1/44",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Helwyr @ desert (1/44)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "serenic-essence-normal-mode",
+      "name": "Serenic essence (Normal Mode)",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Helwyr",
+      "rarity": "1/64",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Helwyr @ desert (1/64)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "shadow-glaive",
+      "name": "Shadow glaive",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Gregorovic",
+      "rarity": "3/128",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Gregorovic @ desert (3/128)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "shadow-spike",
+      "name": "Shadow spike",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Raksha, the Shadow Colossus",
+      "rarity": "1/325",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Raksha, the Shadow Colossus @ anachronia (1/325)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "shard-of-genesis-essence",
+      "name": "Shard of Genesis Essence",
+      "slot": "material",
+      "style": "necromancy",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Nakatra, Devourer Eternal (hard mode)",
+      "rarity": "1/75",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "notes": "Wiki source: Nakatra, Devourer Eternal (hard mode) @ misthalin (1/75)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "shard-of-genesis-essence-100",
+      "name": "Shard of Genesis Essence (100%)",
+      "slot": "material",
+      "style": "necromancy",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Amascut the Devourer",
+      "rarity": "1/280",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "notes": "Wiki source: Amascut the Devourer @ desert (1/280)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "shard-of-genesis-essence-1000",
+      "name": "Shard of Genesis Essence (1000%)",
+      "slot": "material",
+      "style": "necromancy",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Amascut the Devourer",
+      "rarity": "1/140",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "notes": "Wiki source: Amascut the Devourer @ desert (1/140)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "shard-of-genesis-essence-2000",
+      "name": "Shard of Genesis Essence (2000%+)",
+      "slot": "material",
+      "style": "necromancy",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Amascut the Devourer",
+      "rarity": "1/100",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "notes": "Wiki source: Amascut the Devourer @ desert (1/100)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "shard-of-genesis-essence-500",
+      "name": "Shard of Genesis Essence (500%)",
+      "slot": "material",
+      "style": "necromancy",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Amascut the Devourer",
+      "rarity": "1/240",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "notes": "Wiki source: Amascut the Devourer @ desert (1/240)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "shard-of-genesis-essence-750",
+      "name": "Shard of Genesis Essence (750%)",
+      "slot": "material",
+      "style": "necromancy",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Amascut the Devourer",
+      "rarity": "1/200",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "notes": "Wiki source: Amascut the Devourer @ desert (1/200)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "skekas-hypnowand-base",
+      "name": "Skeka's hypnowand base",
+      "slot": "material",
+      "style": "magic",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Rex Matriarchs | Lampenflora | Anachronia Agility Course | Anachronia Big Game Hunter",
+      "rarity": "1/5000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:rex-matriarchs"
+      ],
+      "notes": "Wiki source: Rex Matriarchs @ anachronia (1/5000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "skekas-hypnowand-focus",
+      "name": "Skeka's hypnowand focus",
+      "slot": "material",
+      "style": "magic",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Rex Matriarchs | Lampenflora | Anachronia Agility Course | Anachronia Big Game Hunter",
+      "rarity": "7/5000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:rex-matriarchs"
+      ],
+      "notes": "Wiki source: Rex Matriarchs @ anachronia (7/5000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "skekas-hypnowand-handle",
+      "name": "Skeka's hypnowand handle",
+      "slot": "material",
+      "style": "magic",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Rex Matriarchs | Lampenflora | Anachronia Agility Course | Anachronia Big Game Hunter",
+      "rarity": "1/5000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:rex-matriarchs"
+      ],
+      "notes": "Wiki source: Rex Matriarchs @ anachronia (1/5000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "skekas-hypnowand-projector",
+      "name": "Skeka's hypnowand projector",
+      "slot": "material",
+      "style": "magic",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Rex Matriarchs | Lampenflora | Anachronia Agility Course | Anachronia Big Game Hunter",
+      "rarity": "1/5000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:rex-matriarchs"
+      ],
+      "notes": "Wiki source: Rex Matriarchs @ anachronia (1/5000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "sliskean-essence-hard-mode",
+      "name": "Sliskean essence (Hard Mode)",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Gregorovic",
+      "rarity": "1/44",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Gregorovic @ desert (1/44)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "sliskean-essence-normal-mode",
+      "name": "Sliskean essence (Normal Mode)",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Gregorovic",
+      "rarity": "1/64",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Gregorovic @ desert (1/64)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "soulbound-lantern",
+      "name": "Soulbound lantern",
+      "slot": "offhand",
+      "style": "necromancy",
+      "tier": 95,
+      "kind": "shield",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Rasial, the First Necromancer",
+      "skillReqs": [
+        {
+          "skill": "necromancy",
+          "level": 95
+        }
+      ],
+      "quests": [
+        "necromancy-questline"
+      ],
+      "flags": [
+        "killed:rasial"
+      ],
+      "abilityDamage": 0,
+      "armour": 400,
+      "notes": "Wiki source: Rasial, the First Necromancer @ misthalin",
+      "wikiGenerated": true
+    },
+    {
+      "id": "spectral-lens-off-task",
+      "name": "Spectral lens (off task)",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Profane Scabarite/Elite Profane Scabarite",
+      "rarity": "1/4096",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Profane Scabarite/Elite Profane Scabarite @ desert (1/4096)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "spectral-lens-on-task",
+      "name": "Spectral lens (on task)",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Profane Scabarite/Elite Profane Scabarite",
+      "rarity": "1/512",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Profane Scabarite/Elite Profane Scabarite @ desert (1/512)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "spectral-sigil",
+      "name": "Spectral sigil",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Corporeal Beast",
+      "rarity": "1/1024",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Corporeal Beast @ forinthry (1/1024)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "spider-leg-bottom",
+      "name": "Spider leg bottom",
+      "slot": "legs",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "Araxxi",
+      "rarity": "1/40",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:araxxi"
+      ],
+      "armour": 188,
+      "notes": "Wiki source: Araxxi @ morytania (1/40)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "spider-leg-middle",
+      "name": "Spider leg middle",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "Araxxi",
+      "rarity": "1/40",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:araxxi"
+      ],
+      "notes": "Wiki source: Araxxi @ morytania (1/40)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "spider-leg-top",
+      "name": "Spider leg top",
+      "slot": "body",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "Araxxi",
+      "rarity": "1/40",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:araxxi"
+      ],
+      "armour": 600,
+      "notes": "Wiki source: Araxxi @ morytania (1/40)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "spirit-shield",
+      "name": "Spirit shield",
+      "slot": "offhand",
+      "style": "all",
+      "tier": 75,
+      "kind": "shield",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Corporeal Beast",
+      "rarity": "8/512",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 0,
+      "armour": 300,
+      "notes": "Wiki source: Corporeal Beast @ forinthry (8/512)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "staff-of-armadyls-fractured-shaft",
+      "name": "Staff of Armadyl's fractured shaft",
+      "slot": "material",
+      "style": "magic",
+      "tier": 90,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Kerapac, the bound (hard mode)",
+      "rarity": "1/133",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:kerapac"
+      ],
+      "notes": "Wiki source: Kerapac, the bound (hard mode) @ misthalin (1/133)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "staff-of-light",
+      "name": "Staff of light",
+      "slot": "weapon",
+      "style": "magic",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Ice strykewyrm",
+      "rarity": "1/2000",
+      "twoHanded": true,
+      "skillReqs": [
+        {
+          "skill": "magic",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 990,
+      "notes": "Wiki source: Ice strykewyrm @ forinthry (1/2000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "stalkers-charm",
+      "name": "Stalker's charm",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Flesh-hatcher Mhekarnahz",
+      "rarity": "1/128",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Flesh-hatcher Mhekarnahz @ forinthry (1/128)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "stalkers-ring",
+      "name": "Stalker's ring",
+      "slot": "ring",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Rathis",
+      "rarity": "1/200",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Rathis @ anachronia (1/200)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "static-gloves",
+      "name": "Static gloves",
+      "slot": "gloves",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "kandarin"
+      ],
+      "source": "Automaton Guardian",
+      "rarity": "1/1024",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Automaton Guardian @ kandarin (1/1024)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "statiuss-full-helm",
+      "name": "Statius's full helm",
+      "slot": "helmet",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Revenants",
+      "rarity": "1/9272",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Revenants @ forinthry (1/9272)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "steadfast-boots",
+      "name": "Steadfast boots",
+      "slot": "boots",
+      "style": "all",
+      "tier": 85,
+      "kind": "none",
+      "regions": [
+        "misthalin",
+        "forinthry"
+      ],
+      "source": "Glacor",
+      "rarity": "1/1280",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:arch-glacor"
+      ],
+      "armour": 213,
+      "notes": "Wiki source: Glacor @ misthalin (1/1280)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "steam-battlestaff",
+      "name": "Steam battlestaff",
+      "slot": "weapon",
+      "style": "magic",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "K'ril Tsutsaroth",
+      "rarity": "1/512",
+      "skillReqs": [
+        {
+          "skill": "magic",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:kril"
+      ],
+      "abilityDamage": 900,
+      "notes": "Wiki source: K'ril Tsutsaroth @ asgarnia (1/512)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "stormguard-ancient-invention-access",
+      "name": "Stormguard / Ancient Invention access",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "kandarin"
+      ],
+      "source": "Stormguard Citadel Dig Site",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Stormguard Citadel Dig Site @ kandarin",
+      "wikiGenerated": true
+    },
+    {
+      "id": "subjugation-robe-armour",
+      "name": "Subjugation robe armour",
+      "slot": "body",
+      "style": "magic",
+      "tier": 80,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "K'ril Tsutsaroth",
+      "rarity": "1/512",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 70
+        },
+        {
+          "skill": "magic",
+          "level": 80
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:kril"
+      ],
+      "armour": 640,
+      "notes": "Wiki source: K'ril Tsutsaroth @ asgarnia (1/512)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "superior-long-bone",
+      "name": "Superior long bone",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Anachronia Big Game Hunter",
+      "rarity": "1/1000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Anachronia Big Game Hunter @ anachronia (1/1000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "telos",
+      "name": "Telos",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Telos, the Warden",
+      "rarity": "1/403.3",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:telos"
+      ],
+      "notes": "Wiki source: Telos, the Warden @ desert (1/403.3)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "the-warden-dormant-codex-100-claims",
+      "name": "the Warden Dormant/Codex (100% Claims)",
+      "slot": "codex",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Telos, the Warden",
+      "rarity": "1/756.1",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:telos"
+      ],
+      "notes": "Wiki source: Telos, the Warden @ desert (1/756.1)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "the-warden-dormant-codex-2449-claims",
+      "name": "the Warden Dormant/Codex (2449% Claims)",
+      "slot": "codex",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Telos, the Warden",
+      "rarity": "1/43.1",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:telos"
+      ],
+      "notes": "Wiki source: Telos, the Warden @ desert (1/43.1)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "the-warden-dormant-codex-999-claims",
+      "name": "the Warden Dormant/Codex (999% Claims)",
+      "slot": "codex",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Telos, the Warden",
+      "rarity": "1/109.2",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:telos"
+      ],
+      "notes": "Wiki source: Telos, the Warden @ desert (1/109.2)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "the-warden-orbs-100-claims",
+      "name": "the Warden Orbs (100% Claims)",
+      "slot": "offhand",
+      "style": "all",
+      "tier": 75,
+      "kind": "shield",
+      "regions": [
+        "desert"
+      ],
+      "source": "Telos, the Warden",
+      "rarity": "1/403.3",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:telos"
+      ],
+      "abilityDamage": 0,
+      "armour": 300,
+      "notes": "Wiki source: Telos, the Warden @ desert (1/403.3)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "the-warden-orbs-2449-claims",
+      "name": "the Warden Orbs (2449% Claims)",
+      "slot": "offhand",
+      "style": "all",
+      "tier": 75,
+      "kind": "shield",
+      "regions": [
+        "desert"
+      ],
+      "source": "Telos, the Warden",
+      "rarity": "1/23.0",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:telos"
+      ],
+      "abilityDamage": 0,
+      "armour": 300,
+      "notes": "Wiki source: Telos, the Warden @ desert (1/23.0)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "the-warden-orbs-999-claims",
+      "name": "the Warden Orbs (999% Claims)",
+      "slot": "offhand",
+      "style": "all",
+      "tier": 75,
+      "kind": "shield",
+      "regions": [
+        "desert"
+      ],
+      "source": "Telos, the Warden",
+      "rarity": "1/58.3",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:telos"
+      ],
+      "abilityDamage": 0,
+      "armour": 300,
+      "notes": "Wiki source: Telos, the Warden @ desert (1/58.3)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "torags",
+      "name": "Torag's",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "The Barrows Brothers",
+      "rarity": "7/1752",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: The Barrows Brothers @ morytania (7/1752)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "torva-full-helm",
+      "name": "Torva full helm",
+      "slot": "helmet",
+      "style": "melee",
+      "tier": 70,
+      "kind": "power",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Nex",
+      "rarity": "1/384",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 60
+        }
+      ],
+      "quests": [
+        "while-guthix-sleeps"
+      ],
+      "flags": [
+        "killed:nex"
+      ],
+      "armour": 175,
+      "notes": "Wiki source: Nex @ asgarnia (1/384)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "tracking-gloves",
+      "name": "Tracking gloves",
+      "slot": "gloves",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "kandarin"
+      ],
+      "source": "Automaton Generator",
+      "rarity": "1/1024",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Automaton Generator @ kandarin (1/1024)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "tribal-fin",
+      "name": "Tribal fin",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Anachronia Big Game Hunter",
+      "rarity": "1/1000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Anachronia Big Game Hunter @ anachronia (1/1000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "trimmed-masterwork-melee-set",
+      "name": "Trimmed masterwork melee set",
+      "slot": "body",
+      "style": "melee",
+      "tier": 95,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "Smithing + Malevolent",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 85
+        },
+        {
+          "skill": "smithing",
+          "level": 99
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 760,
+      "notes": "Wiki source: Smithing + Malevolent @ morytania",
+      "wikiGenerated": true
+    },
+    {
+      "id": "tumekens-light",
+      "name": "Tumeken's Light",
+      "slot": "unknown",
+      "style": "necromancy",
+      "tier": 95,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Amascut the Devourer",
+      "rarity": "1/600",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:amascut"
+      ],
+      "notes": "Wiki source: Amascut the Devourer @ desert (1/600)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "varanuss-mercy",
+      "name": "Varanus's Mercy",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Asuran Arsenal (100 loot) | Asuran Arsenal (500 loot)",
+      "rarity": "1/585",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Asuran Arsenal (100 loot) @ anachronia (1/585)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "vengeful-kiteshield",
+      "name": "Vengeful kiteshield",
+      "slot": "offhand",
+      "style": "all",
+      "tier": 75,
+      "kind": "shield",
+      "regions": [
+        "morytania"
+      ],
+      "source": "The Barrows: Rise of the Six",
+      "rarity": "1/240",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [
+        "killed:rots"
+      ],
+      "abilityDamage": 0,
+      "armour": 300,
+      "notes": "Wiki source: The Barrows: Rise of the Six @ morytania (1/240)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "veracs",
+      "name": "Verac's",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "morytania"
+      ],
+      "source": "The Barrows Brothers",
+      "rarity": "7/1752",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: The Barrows Brothers @ morytania (7/1752)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "vestas-chainbody",
+      "name": "Vesta's chainbody",
+      "slot": "body",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Revenants",
+      "rarity": "1/9272",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 600,
+      "notes": "Wiki source: Revenants @ forinthry (1/9272)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "virtus-mask",
+      "name": "Virtus mask",
+      "slot": "helmet",
+      "style": "magic",
+      "tier": 80,
+      "kind": "power",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Nex",
+      "rarity": "1/384",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 70
+        },
+        {
+          "skill": "magic",
+          "level": 80
+        }
+      ],
+      "quests": [
+        "while-guthix-sleeps"
+      ],
+      "flags": [
+        "killed:nex"
+      ],
+      "armour": 200,
+      "notes": "Wiki source: Nex @ asgarnia (1/384)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "volcanic-fragments",
+      "name": "Volcanic fragments",
+      "slot": "material",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "anachronia"
+      ],
+      "source": "Anachronia Big Game Hunter",
+      "rarity": "1/1000",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Anachronia Big Game Hunter @ anachronia (1/1000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "vorkaths-scale",
+      "name": "Vorkath's scale",
+      "slot": "material",
+      "style": "all",
+      "tier": 0,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Zemouregal & Vorkath (hard mode)",
+      "rarity": "1/150",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Zemouregal & Vorkath (hard mode) @ misthalin (1/150)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "vorkaths-spike",
+      "name": "Vorkath's spike",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "misthalin"
+      ],
+      "source": "Zemouregal & Vorkath (hard mode)",
+      "rarity": "1/15",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Zemouregal & Vorkath (hard mode) @ misthalin (1/15)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "wand-of-the-cywir-elders",
+      "name": "Wand of the Cywir elders",
+      "slot": "weapon",
+      "style": "magic",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Helwyr",
+      "rarity": "6/256",
+      "skillReqs": [
+        {
+          "skill": "magic",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Helwyr @ desert (6/256)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "wand-of-the-praesul",
+      "name": "Wand of the praesul",
+      "slot": "weapon",
+      "style": "magic",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Nex, Angel of Death",
+      "rarity": "1/1988",
+      "skillReqs": [
+        {
+          "skill": "magic",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:nex"
+      ],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Nex, Angel of Death @ asgarnia (1/1988)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "warrior-ring",
+      "name": "Warrior ring",
+      "slot": "ring",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "fremennik"
+      ],
+      "source": "Dagannoth Rex",
+      "rarity": "1/128",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Dagannoth Rex @ fremennik (1/128)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "whip-vine",
+      "name": "Whip vine",
+      "slot": "weapon",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "karamja"
+      ],
+      "source": "Mutated jadinko male | Mutated jadinko guard",
+      "rarity": "1/512",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Mutated jadinko male @ karamja (1/512)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "wyrm-heart",
+      "name": "Wyrm heart",
+      "slot": "unknown",
+      "style": "ranged",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Lava strykewyrm",
+      "rarity": "1/12288",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Lava strykewyrm @ forinthry (1/12288)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "wyrm-scalp",
+      "name": "Wyrm scalp",
+      "slot": "unknown",
+      "style": "ranged",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Lava strykewyrm",
+      "rarity": "1/12288",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Lava strykewyrm @ forinthry (1/12288)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "wyrm-spike",
+      "name": "Wyrm spike",
+      "slot": "unknown",
+      "style": "ranged",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Lava strykewyrm",
+      "rarity": "1/12288",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Lava strykewyrm @ forinthry (1/12288)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "wyvern-crossbow",
+      "name": "Wyvern crossbow",
+      "slot": "weapon",
+      "style": "ranged",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "asgarnia",
+        "forinthry"
+      ],
+      "source": "Wyvern (off task) | Wyvern (on task)",
+      "rarity": "1/10000",
+      "skillReqs": [
+        {
+          "skill": "ranged",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Wyvern (off task) @ asgarnia (1/10000)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "zamorak-hilt",
+      "name": "Zamorak hilt",
+      "slot": "unknown",
+      "style": "melee",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "God Wars Dungeon",
+      "rarity": "1/512",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: God Wars Dungeon @ asgarnia (1/512)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "zamorakian-essence-hard-mode",
+      "name": "Zamorakian essence (Hard Mode)",
+      "slot": "unknown",
+      "style": "melee",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "The Twin Furies",
+      "rarity": "1/44",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: The Twin Furies @ desert (1/44)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "zamorakian-essence-normal-mode",
+      "name": "Zamorakian essence (Normal Mode)",
+      "slot": "unknown",
+      "style": "melee",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "The Twin Furies",
+      "rarity": "1/64",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: The Twin Furies @ desert (1/64)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "zamorakian-spear",
+      "name": "Zamorakian spear",
+      "slot": "weapon",
+      "style": "melee",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "K'ril Tsutsaroth",
+      "rarity": "1/512",
+      "twoHanded": true,
+      "skillReqs": [
+        {
+          "skill": "attack",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:kril"
+      ],
+      "abilityDamage": 990,
+      "notes": "Wiki source: K'ril Tsutsaroth @ asgarnia (1/512)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "zarosian-essence-hard-mode",
+      "name": "Zarosian essence (Hard Mode)",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Vindicta & Gorvek",
+      "rarity": "1/44",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Vindicta & Gorvek @ desert (1/44)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "zarosian-essence-normal-mode",
+      "name": "Zarosian essence (Normal Mode)",
+      "slot": "unknown",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "desert"
+      ],
+      "source": "Vindicta & Gorvek",
+      "rarity": "1/64",
+      "skillReqs": [],
+      "quests": [],
+      "flags": [],
+      "notes": "Wiki source: Vindicta & Gorvek @ desert (1/64)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "zaryte-bow",
+      "name": "Zaryte bow",
+      "slot": "weapon",
+      "style": "ranged",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "asgarnia"
+      ],
+      "source": "Nex",
+      "rarity": "1/384",
+      "skillReqs": [
+        {
+          "skill": "ranged",
+          "level": 75
+        }
+      ],
+      "quests": [],
+      "flags": [
+        "killed:nex"
+      ],
+      "abilityDamage": 900,
+      "notes": "Wiki source: Nex @ asgarnia (1/384)",
+      "wikiGenerated": true
+    },
+    {
+      "id": "zuriels-hood",
+      "name": "Zuriel's hood",
+      "slot": "helmet",
+      "style": "all",
+      "tier": 75,
+      "kind": "none",
+      "regions": [
+        "forinthry"
+      ],
+      "source": "Revenants",
+      "rarity": "1/9272",
+      "skillReqs": [
+        {
+          "skill": "defence",
+          "level": 65
+        }
+      ],
+      "quests": [],
+      "flags": [],
+      "armour": 188,
+      "notes": "Wiki source: Revenants @ forinthry (1/9272)",
+      "wikiGenerated": true
+    }
+  ]
+}

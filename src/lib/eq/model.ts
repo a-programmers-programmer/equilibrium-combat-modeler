@@ -28,6 +28,13 @@ import {
   type RegionPackage,
   REGION_PACKAGES,
 } from "./items";
+import { resolveLoadoutOOP, type Equipment } from "./sim/equipment";
+import {
+  regionsFromElectives,
+  type PlayerSnapshot,
+  type RegionTag,
+} from "./sim/requirements";
+import type { SkillId } from "./xp";
 
 export interface GearSnapshot {
   armour: number;
@@ -149,13 +156,44 @@ export function loadoutToSnapshot(loadout: ResolvedLoadout): GearSnapshot {
   };
 }
 
+function playerSnapFromRegions(
+  unlocked: readonly RegionId[],
+  style: Style,
+): PlayerSnapshot {
+  // BiS planning assumes combat skills at weapon tier capability
+  const levels: Partial<Record<SkillId, number>> = {
+    attack: 99,
+    strength: 99,
+    defence: 99,
+    magic: 99,
+    ranged: 99,
+    necromancy: 99,
+    smithing: 99,
+    crafting: 99,
+    prayer: 99,
+  };
+  if (style === "necromancy") levels.necromancy = 99;
+  const regions = new Set<RegionTag>(["free", "misthalin", "havenhythe", "karamja"]);
+  for (const r of unlocked) regions.add(r as RegionTag);
+  return {
+    levels,
+    regions,
+    quests: new Set(),
+    flags: new Set(), // boss flags ignored via ignoreBossFlags in resolve
+    relicTier: 6,
+  };
+}
+
 export function gearFromRegions(
   electives: readonly RegionId[],
   style: Style,
   archetype: BuildArchetype,
 ): { snapshot: GearSnapshot; loadout: ResolvedLoadout; offhand: Offhand } {
   const unlocked = unlockedFromElectives(electives);
-  const loadout = resolveLoadout(unlocked, style, modeForArchetype(archetype));
+  const snap = playerSnapFromRegions(unlocked, style);
+  const loadout = resolveLoadoutOOP(snap, style, modeForArchetype(archetype), {
+    ignoreBossFlags: true,
+  });
   return {
     snapshot: loadoutToSnapshot(loadout),
     loadout,
@@ -169,7 +207,10 @@ export function gearFromPackage(
   archetype: BuildArchetype,
 ): { snapshot: GearSnapshot; loadout: ResolvedLoadout; offhand: Offhand } {
   const unlocked = unlockedFromPackage(pkg);
-  const loadout = resolveLoadout(unlocked, style, modeForArchetype(archetype));
+  const snap = playerSnapFromRegions(unlocked, style);
+  const loadout = resolveLoadoutOOP(snap, style, modeForArchetype(archetype), {
+    ignoreBossFlags: true,
+  });
   return {
     snapshot: loadoutToSnapshot(loadout),
     loadout,

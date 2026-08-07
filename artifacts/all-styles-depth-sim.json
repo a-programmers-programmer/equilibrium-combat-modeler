@@ -1,0 +1,715 @@
+{
+  "generated": "2026-08-07T01:32:45.126Z",
+  "note": "Deeper than necro-only: per-style package trees, multi-mode, 729-path free+BiS, HP crossover, mode sensitivity",
+  "coarseRows": 4620,
+  "trees": {
+    "necromancy": {
+      "style": "necromancy",
+      "freePeak": [
+        {
+          "name": "Omni guard",
+          "tier": 95,
+          "twoHanded": false,
+          "note": "Rasial — free Misthalin"
+        },
+        {
+          "name": "Soulbound lantern",
+          "tier": 95,
+          "twoHanded": false,
+          "note": "Rasial OH"
+        }
+      ],
+      "electiveBranches": [
+        {
+          "region": "desert",
+          "weapons": [
+            "Devourer's Guard",
+            "Tumeken resplendence set"
+          ],
+          "why": "Amascut sidegrade ~5%",
+          "priority": "B"
+        },
+        {
+          "region": "asgarnia",
+          "weapons": [
+            "RoD",
+            "Souls/EOF"
+          ],
+          "why": "Jewellery + Invention — not weapons",
+          "priority": "A"
+        }
+      ],
+      "recommendedElectives": [
+        "asgarnia",
+        "desert",
+        "forinthry"
+      ],
+      "customizationNotes": [
+        "Least region-dependent style: T95 weapons free.",
+        "Main customization is blessings + Aegis archetype, not weapon tree."
+      ],
+      "modesWorthTesting": [
+        "dual",
+        "shield"
+      ]
+    },
+    "melee": {
+      "style": "melee",
+      "freePeak": [
+        {
+          "name": "Ek-ZekKil",
+          "tier": 95,
+          "twoHanded": true,
+          "note": "Zamorak — free Misthalin 2H"
+        },
+        {
+          "name": "Khopesh of Elidinis + Tumeken",
+          "tier": 92,
+          "twoHanded": false,
+          "note": "Gate of Elidinis — free dual"
+        }
+      ],
+      "electiveBranches": [
+        {
+          "region": "desert",
+          "weapons": [
+            "Drygore set",
+            "Zaros godsword"
+          ],
+          "why": "T90 dual drygores / ZGS 2H — classic melee BiS branch",
+          "priority": "S"
+        },
+        {
+          "region": "morytania",
+          "weapons": [
+            "Nox scythe",
+            "Malevolent",
+            "RoTS kites"
+          ],
+          "why": "T90 2H scythe + tank kite for Aegis",
+          "priority": "A"
+        },
+        {
+          "region": "asgarnia",
+          "weapons": [
+            "Masterwork / TMW",
+            "GWD",
+            "RoD/EOF"
+          ],
+          "why": "TMW armour + jewellery + Invention",
+          "priority": "S"
+        },
+        {
+          "region": "forinthry",
+          "weapons": [
+            "Chaotics",
+            "Emberkeen"
+          ],
+          "why": "Mid T80 bridge + glacor boots",
+          "priority": "B"
+        },
+        {
+          "region": "anachronia",
+          "weapons": [
+            "Laceration boots",
+            "Reaver ring"
+          ],
+          "why": "Boot/ring power",
+          "priority": "B"
+        }
+      ],
+      "recommendedElectives": [
+        "asgarnia",
+        "desert",
+        "morytania"
+      ],
+      "customizationNotes": [
+        "Highly customizable: free EZK 2H vs free khopeshes vs Desert drygores vs Mory scythe.",
+        "Shield (TMW/Malevolent kite) vs dual vs 2H completely changes Aegis %.",
+        "Berserk duty cycle dominates short windows — pathing more sensitive than necro."
+      ],
+      "modesWorthTesting": [
+        "shield",
+        "dual",
+        "2h",
+        "defender"
+      ]
+    },
+    "magic": {
+      "style": "magic",
+      "freePeak": [
+        {
+          "name": "Fractured Staff of Armadyl",
+          "tier": 95,
+          "twoHanded": true,
+          "note": "Kerapac — free Misthalin 2H"
+        }
+      ],
+      "electiveBranches": [
+        {
+          "region": "asgarnia",
+          "weapons": [
+            "Seismic wand + singularity"
+          ],
+          "why": "Best dual magic — Vorago; also cryptbloom free but seismic needs Asg",
+          "priority": "S"
+        },
+        {
+          "region": "morytania",
+          "weapons": [
+            "Nox staff"
+          ],
+          "why": "T90 2H bridge / Araxxi",
+          "priority": "B"
+        },
+        {
+          "region": "desert",
+          "weapons": [
+            "Inquisitor staff"
+          ],
+          "why": "T80 2H niche (affinity)",
+          "priority": "C"
+        },
+        {
+          "region": "forinthry",
+          "weapons": [
+            "Tectonic crafts",
+            "ED magic"
+          ],
+          "why": "Power armour path",
+          "priority": "A"
+        }
+      ],
+      "recommendedElectives": [
+        "asgarnia",
+        "forinthry",
+        "morytania"
+      ],
+      "customizationNotes": [
+        "Free FSOA 2H is excellent — dual seismic requires Asgarnia and is a real fork.",
+        "Cryptbloom tank set is free Misthalin (Croesus) — Aegis magic is viable locked.",
+        "Sunshine vs Higher Power timing differs from Berserk/Living Death."
+      ],
+      "modesWorthTesting": [
+        "2h",
+        "dual",
+        "shield"
+      ]
+    },
+    "ranged": {
+      "style": "ranged",
+      "freePeak": [
+        {
+          "name": "Bow of the Last Guardian",
+          "tier": 95,
+          "twoHanded": true,
+          "note": "Vorkath path — free Misthalin 2H"
+        }
+      ],
+      "electiveBranches": [
+        {
+          "region": "desert",
+          "weapons": [
+            "Seren godbow"
+          ],
+          "why": "T92 2H alternative",
+          "priority": "A"
+        },
+        {
+          "region": "kandarin",
+          "weapons": [
+            "Ascension crossbows"
+          ],
+          "why": "T90 dual — Legiones; also Stormguard/Ancient Inv",
+          "priority": "A"
+        },
+        {
+          "region": "tirannwn",
+          "weapons": [
+            "Blightbound crossbows"
+          ],
+          "why": "T92 dual Solak line",
+          "priority": "A"
+        },
+        {
+          "region": "morytania",
+          "weapons": [
+            "Nox longbow"
+          ],
+          "why": "T90 2H Araxxi",
+          "priority": "B"
+        },
+        {
+          "region": "forinthry",
+          "weapons": [
+            "Eldritch crossbow",
+            "Sirenic"
+          ],
+          "why": "T90 2H + power armour",
+          "priority": "A"
+        },
+        {
+          "region": "asgarnia",
+          "weapons": [
+            "Elite sirenic",
+            "RoD/EOF"
+          ],
+          "why": "Craft upgrade + jewellery",
+          "priority": "S"
+        }
+      ],
+      "recommendedElectives": [
+        "asgarnia",
+        "forinthry",
+        "kandarin"
+      ],
+      "customizationNotes": [
+        "Most branched weapon tree: free BOLG 2H vs SGB vs Asc dual vs Blight dual vs Eldritch.",
+        "Region package choice changes style identity more than necro.",
+        "Death's Swiftness duty cycle + caroming/ECB specs need deeper path×weapon matrix."
+      ],
+      "modesWorthTesting": [
+        "2h",
+        "dual",
+        "shield"
+      ]
+    }
+  },
+  "electiveValue2mST": {
+    "melee": {
+      "freeDmg": 8495936,
+      "freePath": "OCOBCC",
+      "freeMode": "defender",
+      "freePieces": "Khopesh of Elidinis | Hybrid tank plate (free-path) | Khopesh of Tumeken | Ganodermic boots | Latent Offering | Igneous Kal-Zuk | Ganodermic gloves | Dragon full helm",
+      "bestDmg": 9444366,
+      "bestPkg": "des-mory-asg",
+      "bestPath": "OCOBOC",
+      "bestMode": "shield",
+      "bestPieces": "Khopesh of Elidinis | Trimmed masterwork melee set | Malevolent kiteshield | Achto Primeval boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Achto Primeval gloves | Achto Primeval mask",
+      "gainPct": 11.2
+    },
+    "magic": {
+      "freeDmg": 6780757,
+      "freePath": "OCOBOC",
+      "freeMode": "2h",
+      "freePieces": "Fractured Staff of Armadyl | Cryptbloom armour set | Ganodermic boots | Latent Offering | Igneous Kal-Zuk | Ganodermic gloves | Dragon full helm",
+      "bestDmg": 8105434,
+      "bestPkg": "asg-mory-for",
+      "bestPath": "OCOBOC",
+      "bestMode": "shield",
+      "bestPieces": "Seismic wand | Cryptbloom armour set | Merciless kiteshield | Emberkeen boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Celestial handwraps | Virtus mask",
+      "gainPct": 19.5
+    },
+    "ranged": {
+      "freeDmg": 6171939,
+      "freePath": "OCOBOC",
+      "freeMode": "2h",
+      "freePieces": "Bow of the Last Guardian | Elite dracolich set | Ganodermic boots | Latent Offering | Igneous Kal-Zuk | Ganodermic gloves | Dragon full helm",
+      "bestDmg": 7381858,
+      "bestPkg": "asg-tir-for",
+      "bestPath": "OCOBOC",
+      "bestMode": "shield",
+      "bestPieces": "Blightbound crossbow | Elite sirenic set | Divine spirit shield | Emberkeen boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Ganodermic gloves | Gemstone helm",
+      "gainPct": 19.6
+    },
+    "necromancy": {
+      "freeDmg": 8731873,
+      "freePath": "OCOBOC",
+      "freeMode": "shield",
+      "freePieces": "Omni guard (T95) | Deathwarden robe set (T90) | Ancient lantern (necro shield-like) | Ganodermic boots | Latent Offering | Igneous Kal-Zuk | Ganodermic gloves | Dragon full helm",
+      "bestDmg": 9228219,
+      "bestPkg": "asg-des-for",
+      "bestPath": "OCOBOC",
+      "bestMode": "shield",
+      "bestPieces": "Devourer's Guard | Achtó armour pieces | Divine spirit shield | Achto Primeval boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Achto Primeval gloves | Achto Primeval mask",
+      "gainPct": 5.7
+    }
+  },
+  "sweeps729_2mST": [
+    {
+      "style": "melee",
+      "packageId": "free",
+      "mode": "defender",
+      "code": "OCOBCC",
+      "dmg": 8495936,
+      "hasHP": false,
+      "blessings": "Teragard's Aegis · Abyssal Cinders · Steadfast Will · True Equilibrium · Unholy Critual · Perfidious · Sacred Fervor · Chaotic Insight",
+      "pieces": "Khopesh of Elidinis | Hybrid tank plate (free-path) | Khopesh of Tumeken | Ganodermic boots | Latent Offering | Igneous Kal-Zuk | Ganodermic gloves | Dragon full helm"
+    },
+    {
+      "style": "melee",
+      "packageId": "des-mory-asg",
+      "mode": "shield",
+      "code": "OCOBOC",
+      "dmg": 9444366,
+      "hasHP": false,
+      "blessings": "Teragard's Aegis · Abyssal Cinders · Steadfast Will · True Equilibrium · Lord of Light · Perfidious · Sacred Fervor · Power Archive",
+      "pieces": "Khopesh of Elidinis | Trimmed masterwork melee set | Malevolent kiteshield | Achto Primeval boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Achto Primeval gloves | Achto Primeval mask"
+    },
+    {
+      "style": "magic",
+      "packageId": "free",
+      "mode": "2h",
+      "code": "OCOBOC",
+      "dmg": 6780757,
+      "hasHP": false,
+      "blessings": "Teragard's Aegis · Abyssal Cinders · Steadfast Will · True Equilibrium · Lord of Light · Perfidious · Sacred Fervor · Power Archive",
+      "pieces": "Fractured Staff of Armadyl | Cryptbloom armour set | Ganodermic boots | Latent Offering | Igneous Kal-Zuk | Ganodermic gloves | Dragon full helm"
+    },
+    {
+      "style": "magic",
+      "packageId": "asg-mory-for",
+      "mode": "shield",
+      "code": "OCOBOC",
+      "dmg": 8105434,
+      "hasHP": false,
+      "blessings": "Teragard's Aegis · Abyssal Cinders · Steadfast Will · True Equilibrium · Lord of Light · Perfidious · Sacred Fervor · Power Archive",
+      "pieces": "Seismic wand | Cryptbloom armour set | Merciless kiteshield | Emberkeen boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Celestial handwraps | Virtus mask"
+    },
+    {
+      "style": "ranged",
+      "packageId": "free",
+      "mode": "2h",
+      "code": "OCOBOC",
+      "dmg": 6171939,
+      "hasHP": false,
+      "blessings": "Teragard's Aegis · Abyssal Cinders · Steadfast Will · True Equilibrium · Lord of Light · Perfidious · Sacred Fervor · Power Archive",
+      "pieces": "Bow of the Last Guardian | Elite dracolich set | Ganodermic boots | Latent Offering | Igneous Kal-Zuk | Ganodermic gloves | Dragon full helm"
+    },
+    {
+      "style": "ranged",
+      "packageId": "asg-tir-for",
+      "mode": "shield",
+      "code": "OCOBOC",
+      "dmg": 7381858,
+      "hasHP": false,
+      "blessings": "Teragard's Aegis · Abyssal Cinders · Steadfast Will · True Equilibrium · Lord of Light · Perfidious · Sacred Fervor · Power Archive",
+      "pieces": "Blightbound crossbow | Elite sirenic set | Divine spirit shield | Emberkeen boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Ganodermic gloves | Gemstone helm"
+    },
+    {
+      "style": "necromancy",
+      "packageId": "free",
+      "mode": "shield",
+      "code": "OCOBOC",
+      "dmg": 8731873,
+      "hasHP": false,
+      "blessings": "Teragard's Aegis · Abyssal Cinders · Steadfast Will · True Equilibrium · Lord of Light · Perfidious · Sacred Fervor · Power Archive",
+      "pieces": "Omni guard (T95) | Deathwarden robe set (T90) | Ancient lantern (necro shield-like) | Ganodermic boots | Latent Offering | Igneous Kal-Zuk | Ganodermic gloves | Dragon full helm"
+    },
+    {
+      "style": "necromancy",
+      "packageId": "asg-des-for",
+      "mode": "shield",
+      "code": "OCOBOC",
+      "dmg": 9228219,
+      "hasHP": false,
+      "blessings": "Teragard's Aegis · Abyssal Cinders · Steadfast Will · True Equilibrium · Lord of Light · Perfidious · Sacred Fervor · Power Archive",
+      "pieces": "Devourer's Guard | Achtó armour pieces | Divine spirit shield | Achto Primeval boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Achto Primeval gloves | Achto Primeval mask"
+    }
+  ],
+  "hpCrossover": {
+    "melee": {
+      "mode": "2h",
+      "pieces": [
+        "Ek-ZekKil (T95 2H)",
+        "Hybrid tank plate (free-path)",
+        "Ganodermic boots",
+        "Latent Offering",
+        "Igneous Kal-Zuk",
+        "Ganodermic gloves",
+        "Dragon full helm"
+      ],
+      "cross": [
+        {
+          "window": 30,
+          "winner": "KEEP_ULT",
+          "hp": 1413607,
+          "ult": 2239995
+        },
+        {
+          "window": 60,
+          "winner": "KEEP_ULT",
+          "hp": 2827214,
+          "ult": 3954894
+        },
+        {
+          "window": 120,
+          "winner": "KEEP_ULT",
+          "hp": 5654428,
+          "ult": 7009623
+        },
+        {
+          "window": 180,
+          "winner": "KEEP_ULT",
+          "hp": 8481642,
+          "ult": 9783050
+        },
+        {
+          "window": 300,
+          "winner": "KEEP_ULT",
+          "hp": 14136069,
+          "ult": 15367411
+        },
+        {
+          "window": 600,
+          "winner": "KEEP_ULT",
+          "hp": 28272139,
+          "ult": 28859476
+        }
+      ]
+    },
+    "magic": {
+      "mode": "2h",
+      "pieces": [
+        "Fractured Staff of Armadyl",
+        "Cryptbloom armour set",
+        "Ganodermic boots",
+        "Latent Offering",
+        "Igneous Kal-Zuk",
+        "Ganodermic gloves",
+        "Dragon full helm"
+      ],
+      "cross": [
+        {
+          "window": 30,
+          "winner": "KEEP_ULT",
+          "hp": 1406381,
+          "ult": 1969177
+        },
+        {
+          "window": 60,
+          "winner": "KEEP_ULT",
+          "hp": 2812762,
+          "ult": 3547060
+        },
+        {
+          "window": 120,
+          "winner": "KEEP_ULT",
+          "hp": 5625525,
+          "ult": 6423328
+        },
+        {
+          "window": 180,
+          "winner": "KEEP_ULT",
+          "hp": 8438287,
+          "ult": 9089975
+        },
+        {
+          "window": 300,
+          "winner": "KEEP_ULT",
+          "hp": 14063811,
+          "ult": 14451219
+        },
+        {
+          "window": 600,
+          "winner": "HIGHER_POWER",
+          "hp": 28127623,
+          "ult": 27504957
+        }
+      ]
+    },
+    "ranged": {
+      "mode": "2h",
+      "pieces": [
+        "Bow of the Last Guardian",
+        "Elite dracolich set",
+        "Ganodermic boots",
+        "Latent Offering",
+        "Igneous Kal-Zuk",
+        "Ganodermic gloves",
+        "Dragon full helm"
+      ],
+      "cross": [
+        {
+          "window": 30,
+          "winner": "KEEP_ULT",
+          "hp": 1253380,
+          "ult": 1797934
+        },
+        {
+          "window": 60,
+          "winner": "KEEP_ULT",
+          "hp": 2506761,
+          "ult": 3251423
+        },
+        {
+          "window": 120,
+          "winner": "KEEP_ULT",
+          "hp": 5013521,
+          "ult": 5912366
+        },
+        {
+          "window": 180,
+          "winner": "KEEP_ULT",
+          "hp": 7520282,
+          "ult": 8388784
+        },
+        {
+          "window": 300,
+          "winner": "KEEP_ULT",
+          "hp": 12533803,
+          "ult": 13366223
+        },
+        {
+          "window": 600,
+          "winner": "KEEP_ULT",
+          "hp": 25067606,
+          "ult": 25502281
+        }
+      ]
+    },
+    "necromancy": {
+      "mode": "dual",
+      "pieces": [
+        "Omni guard (T95)",
+        "Deathwarden robe set (T90)",
+        "Soulbound lantern (T95)",
+        "Ganodermic boots",
+        "Latent Offering",
+        "Igneous Kal-Zuk",
+        "Ganodermic gloves",
+        "Dragon full helm"
+      ],
+      "cross": [
+        {
+          "window": 30,
+          "winner": "KEEP_ULT",
+          "hp": 2056694,
+          "ult": 2539327
+        },
+        {
+          "window": 60,
+          "winner": "KEEP_ULT",
+          "hp": 4113388,
+          "ult": 4658055
+        },
+        {
+          "window": 120,
+          "winner": "KEEP_ULT",
+          "hp": 8226776,
+          "ult": 8595084
+        },
+        {
+          "window": 180,
+          "winner": "HIGHER_POWER",
+          "hp": 12340164,
+          "ult": 12306792
+        },
+        {
+          "window": 300,
+          "winner": "HIGHER_POWER",
+          "hp": 20566940,
+          "ult": 19760252
+        },
+        {
+          "window": 600,
+          "winner": "HIGHER_POWER",
+          "hp": 41133880,
+          "ult": 38018368
+        }
+      ]
+    }
+  },
+  "modeSensitivity": {
+    "melee": {
+      "shield": {
+        "path": "OCOBOC",
+        "dmg": 3018042,
+        "pieces": "Khopesh of Elidinis | Trimmed masterwork melee set | Malevolent kiteshield | Achto Primeval boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Achto Primeval gloves | Achto Primeval mask"
+      },
+      "defender": {
+        "path": "OCOBOC",
+        "dmg": 2800108,
+        "pieces": "Khopesh of Elidinis | Trimmed masterwork melee set | Kalphite defender / repayer | Achto Primeval boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Achto Primeval gloves | Achto Primeval mask"
+      },
+      "dual": {
+        "path": "OCOBOC",
+        "dmg": 2740431,
+        "pieces": "Khopesh of Elidinis | Trimmed masterwork melee set | Khopesh of Tumeken | Achto Primeval boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Achto Primeval gloves | Achto Primeval mask"
+      },
+      "2h": {
+        "path": "OCOBOC",
+        "dmg": 2505696,
+        "pieces": "Ek-ZekKil (T95 2H) | Trimmed masterwork melee set | Achto Primeval boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Achto Primeval gloves | Achto Primeval mask"
+      }
+    },
+    "magic": {
+      "shield": {
+        "path": "OCOBOC",
+        "dmg": 2484854,
+        "pieces": "Seismic wand | Cryptbloom armour set | Merciless kiteshield | Emberkeen boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Celestial handwraps | Virtus mask"
+      },
+      "dual": {
+        "path": "OCOBOC",
+        "dmg": 2238061,
+        "pieces": "Seismic wand | Cryptbloom armour set | Seismic singularity | Emberkeen boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Celestial handwraps | Virtus mask"
+      },
+      "2h": {
+        "path": "OCOBOC",
+        "dmg": 2139946,
+        "pieces": "Fractured Staff of Armadyl | Cryptbloom armour set | Emberkeen boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Celestial handwraps | Virtus mask"
+      }
+    },
+    "ranged": {
+      "shield": {
+        "path": "OCOBOC",
+        "dmg": 2244803,
+        "pieces": "Blightbound crossbow | Elite sirenic set | Divine spirit shield | Emberkeen boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Ganodermic gloves | Gemstone helm"
+      },
+      "2h": {
+        "path": "OCOBOC",
+        "dmg": 1933941,
+        "pieces": "Bow of the Last Guardian | Elite sirenic set | Emberkeen boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Ganodermic gloves | Gemstone helm"
+      },
+      "dual": {
+        "path": "OCOBOC",
+        "dmg": 1728706,
+        "pieces": "Blightbound crossbow | Elite sirenic set | Emberkeen boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Ganodermic gloves | Gemstone helm"
+      }
+    }
+  },
+  "globalWinners": {
+    "st30": {
+      "style": "melee",
+      "path": "OCOBOC",
+      "mode": "shield",
+      "packageId": "des-mory-asg",
+      "dmg": 3018042,
+      "pieces": "Khopesh of Elidinis | Trimmed masterwork melee set | Malevolent kiteshield | Achto Primeval boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Achto Primeval gloves | Achto Primeval mask",
+      "hasHP": false
+    },
+    "multi30": {
+      "style": "melee",
+      "path": "OCOBOC",
+      "mode": "shield",
+      "packageId": "des-mory-asg",
+      "dmg": 3527696,
+      "pieces": "Khopesh of Elidinis | Trimmed masterwork melee set | Malevolent kiteshield | Achto Primeval boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Achto Primeval gloves | Achto Primeval mask",
+      "hasHP": false
+    },
+    "st120": {
+      "style": "melee",
+      "path": "OCOBOC",
+      "mode": "shield",
+      "packageId": "des-mory-asg",
+      "dmg": 9444366,
+      "pieces": "Khopesh of Elidinis | Trimmed masterwork melee set | Malevolent kiteshield | Achto Primeval boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Achto Primeval gloves | Achto Primeval mask",
+      "hasHP": false
+    },
+    "st300": {
+      "style": "necromancy",
+      "path": "OCOBOC",
+      "mode": "shield",
+      "packageId": "asg-des-for",
+      "dmg": 21215841,
+      "pieces": "Devourer's Guard | Achtó armour pieces | Divine spirit shield | Achto Primeval boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Achto Primeval gloves | Achto Primeval mask",
+      "hasHP": false
+    }
+  },
+  "conclusion": {
+    "necro": "Least region-dependent — free Omni kit is complete; electives ~5%.",
+    "melee": "Most mode-sensitive — shield Aegis vs free EZK 2H vs Desert drygores; electives matter a lot.",
+    "magic": "Free FSOA 2H strong; Asgarnia seismic dual is the main fork.",
+    "ranged": "Most weapon-branch diversity (BOLG/SGB/Asc/Blight/ECB); package choice is identity."
+  }
+}

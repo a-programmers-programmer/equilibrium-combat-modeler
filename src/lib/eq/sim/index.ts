@@ -6,4 +6,6 @@ export * from "./equipment";
 export * from "./necro-ladder";
 export * from "./style-depth";
 export * from "./bane";
+export * from "./summoning";
+export * from "./relics";
 export { GENERATED_GEAR, GENERATED_GEAR_BY_ID } from "./equipment.generated";

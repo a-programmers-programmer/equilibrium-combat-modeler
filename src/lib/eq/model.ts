@@ -43,6 +43,17 @@ import {
   pickBaneLoadout,
   BANE_CATALOG,
 } from "./sim/bane";
+import {
+  type FamiliarId,
+  FAMILIAR_BY_ID,
+  modelFamiliarDps,
+  type FamiliarDpsResult,
+} from "./sim/summoning";
+import {
+  type RelicId,
+  stackRelicPlayerMult,
+  RELIC_BY_ID,
+} from "./sim/relics";
 
 export interface GearSnapshot {
   armour: number;
@@ -91,6 +102,14 @@ export interface ModelInput {
   baneGear?: BanePiece[];
   /** Soft region set for auto bane pick (default: all free + common electives) */
   baneRegions?: RegionTag[];
+  /** Combat familiar */
+  familiar?: FamiliarId;
+  /** Summoning level for Devout scaling (default 99) */
+  summoningLevel?: number;
+  /** Primary combat relic */
+  relic?: RelicId;
+  /** Secondary relic if Rejuvenated double-dip */
+  relicSecondary?: RelicId | null;
 }
 
 export interface DamageBreakdown {
@@ -136,6 +155,25 @@ export interface ModelResult {
     applied: { name: string; tag: string; mult: number }[];
     targetTags: TargetTag[];
   };
+  /** Familiar contribution */
+  familiar?: {
+    id: string;
+    name: string;
+    dps: number;
+    devoutMult: number;
+    scrollUptime: number;
+    playerDamageMult: number;
+  };
+  /** Relic contribution */
+  relics?: {
+    primary: string;
+    secondary: string | null;
+    playerMult: number;
+    devout: boolean;
+    divineDruid: boolean;
+  };
+  /** Total = player + familiar */
+  totalDps: number;
 }
 
 function floor(n: number): number {
@@ -642,7 +680,40 @@ export function modelCombat(input: ModelInput): ModelResult {
     other,
   };
 
-  const dps =
+
+  // ── Relics + Summoning familiars ──────────────────────────────────
+  const relicStack = stackRelicPlayerMult(
+    input.relic ?? "none",
+    input.relicSecondary ?? null,
+  );
+  let playerDpsMult = relicStack.mult;
+  for (const f of relicStack.flags) flags.push(f);
+
+  const famId = input.familiar ?? "none";
+  const famDef = FAMILIAR_BY_ID[famId] ?? FAMILIAR_BY_ID.none!;
+  const sumLvl = input.summoningLevel ?? 99;
+  const famResult = modelFamiliarDps(famDef, {
+    summoningLevel: sumLvl,
+    devout: relicStack.devout,
+    divineDruid: relicStack.divineDruid,
+  });
+  // Nihil-style player mult stacks with relics
+  playerDpsMult *= famResult.playerDamageMult;
+  if (famResult.playerAccuracyMult > 1) {
+    // soft accuracy → small dps
+    playerDpsMult *= 1 + (famResult.playerAccuracyMult - 1) * 0.4;
+  }
+  if (famResult.familiarDps > 0) {
+    flags.push(
+      `Familiar: ${famResult.name} ${Math.round(famResult.familiarDps)} dps` +
+        (relicStack.devout ? ` (Devout ×${famResult.devoutMult.toFixed(2)})` : ""),
+    );
+  }
+  if (!famResult.accessible && famId !== "none") {
+    warnings.push(`Familiar ${famDef.name} may be locked: ${famResult.missing.join(", ")}`);
+  }
+
+  const playerDpsRaw =
     coreAbility +
     bigBonedFlat +
     cindersOnHit +
@@ -651,6 +722,10 @@ export function modelCombat(input: ModelInput): ModelResult {
     splashBonus +
     tearingGrasps +
     other;
+
+  // Relic + nihil player mult; familiar is ADDITIVE (not Big-Boned, not player ability)
+  const dps = playerDpsRaw * playerDpsMult;
+  const totalDps = dps + famResult.familiarDps;
 
   const baseHits = style.hitsPerSecond;
   const baselineDps = gear.baselineAd * avgPct * baseHits * (1 + 0.15 * 0.45);
@@ -685,6 +760,7 @@ export function modelCombat(input: ModelInput): ModelResult {
       cdrMultiplier: cdrMult,
     },
     dps,
+    totalDps,
     vsBaseline: dps / Math.max(1, baselineDps),
     breakdown,
     flags,
@@ -695,6 +771,21 @@ export function modelCombat(input: ModelInput): ModelResult {
       pieces: banePieces.map((b) => b.name),
       applied: baneDmg.applied,
       targetTags,
+    },
+    familiar: {
+      id: famResult.familiarId,
+      name: famResult.name,
+      dps: famResult.familiarDps,
+      devoutMult: famResult.devoutMult,
+      scrollUptime: famResult.scrollUptime,
+      playerDamageMult: famResult.playerDamageMult,
+    },
+    relics: {
+      primary: input.relic ?? "none",
+      secondary: input.relicSecondary ?? null,
+      playerMult: relicStack.mult,
+      devout: relicStack.devout,
+      divineDruid: relicStack.divineDruid,
     },
   };
 }

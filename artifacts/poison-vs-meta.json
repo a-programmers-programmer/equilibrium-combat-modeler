@@ -1,0 +1,261 @@
+{
+  "rows": [
+    {
+      "label": "B. Meta melee + full poison gear (no Envenomed)",
+      "total": 120843.7645233572,
+      "player": 114207.52452335719,
+      "fam": 6636.24,
+      "poison": 5253.21566168256,
+      "poisonShare": 0.03220042800634222,
+      "core": 60130.90416479999,
+      "ad": 6680,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "true-equilibrium",
+        "perfidious",
+        "sacred-fervor"
+      ],
+      "god4": "Order",
+      "god8": "Chaos",
+      "weaponTier": 95,
+      "poisonGear": {
+        "cinderbane": "active",
+        "laniakea": "active",
+        "blowpipe": "off",
+        "kwuarm": 4
+      }
+    },
+    {
+      "label": "E. Meta + reaver-cinder (poison familiar)",
+      "total": 118390.69634882994,
+      "player": 116134.45634882993,
+      "fam": 2256.24,
+      "poison": 5001.061309921796,
+      "poisonShare": 0.030604499315729478,
+      "core": 61333.52224809599,
+      "ad": 6680,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "true-equilibrium",
+        "perfidious",
+        "sacred-fervor"
+      ],
+      "god4": "Order",
+      "god8": "Chaos",
+      "weaponTier": 95,
+      "poisonGear": {
+        "cinderbane": "active",
+        "laniakea": "off",
+        "blowpipe": "off",
+        "kwuarm": 4
+      }
+    },
+    {
+      "label": "A. Meta melee Aegis/Cinders/Perf + Ripper (no cinderbane)",
+      "total": 118327.75955607463,
+      "player": 111691.51955607462,
+      "fam": 6636.24,
+      "poison": 2737.2106944,
+      "poisonShare": 0.017081797592158218,
+      "core": 60130.90416479999,
+      "ad": 6680,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "true-equilibrium",
+        "perfidious",
+        "sacred-fervor"
+      ],
+      "god4": "Order",
+      "god8": "Chaos",
+      "weaponTier": 95,
+      "poisonGear": {
+        "cinderbane": "off",
+        "laniakea": "off",
+        "blowpipe": "off",
+        "kwuarm": 0
+      }
+    },
+    {
+      "label": "J. Meta melee WITHOUT Tirannwn (cinderbane locked)",
+      "total": 117893.91166101223,
+      "player": 111257.67166101222,
+      "fam": 6636.24,
+      "poison": 2303.3627993376,
+      "poisonShare": 0.014419327725147322,
+      "core": 60130.90416479999,
+      "ad": 6680,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "true-equilibrium",
+        "perfidious",
+        "sacred-fervor"
+      ],
+      "god4": "Order",
+      "god8": "Chaos",
+      "weaponTier": 95,
+      "poisonGear": {
+        "cinderbane": "unavailable",
+        "laniakea": "active",
+        "blowpipe": "off",
+        "kwuarm": 4
+      }
+    },
+    {
+      "label": "D. Hybrid Aegis/Cinders + T7 Envenomed + full poison",
+      "total": 112243.85627921199,
+      "player": 105607.61627921199,
+      "fam": 6636.24,
+      "poison": 23862.57486128699,
+      "poisonShare": 0.18326631004620075,
+      "core": 52391.768661,
+      "ad": 8201,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "envenomed",
+        "sacred-fervor"
+      ],
+      "god4": "Order",
+      "god8": "Balance",
+      "weaponTier": 95,
+      "poisonGear": {
+        "cinderbane": "active",
+        "laniakea": "active",
+        "blowpipe": "off",
+        "kwuarm": 4
+      }
+    },
+    {
+      "label": "F. Ranged BOLG meta (no poison kit)",
+      "total": 78988.88079814377,
+      "player": 72352.64079814377,
+      "fam": 6636.24,
+      "poison": 1770.9351736,
+      "poisonShare": 0.017168303001609715,
+      "core": 39000.958320625,
+      "ad": 5035,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "true-equilibrium",
+        "perfidious",
+        "sacred-fervor"
+      ],
+      "god4": "Order",
+      "god8": "Chaos",
+      "weaponTier": 95,
+      "poisonGear": {
+        "cinderbane": "off",
+        "laniakea": "off",
+        "blowpipe": "off",
+        "kwuarm": 0
+      }
+    },
+    {
+      "label": "G. Bone blowpipe T85 + cinder + poison (no Genesis)",
+      "total": 65876.89260571955,
+      "player": 59240.652605719544,
+      "fam": 6636.24,
+      "poison": 2016.03247388829,
+      "poisonShare": 0.023633389063418338,
+      "core": 31487.367541875003,
+      "ad": 4065,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "true-equilibrium",
+        "perfidious",
+        "sacred-fervor"
+      ],
+      "god4": "Order",
+      "god8": "Chaos",
+      "weaponTier": 85,
+      "poisonGear": {
+        "cinderbane": "active",
+        "laniakea": "off",
+        "blowpipe": "active",
+        "kwuarm": 4
+      }
+    },
+    {
+      "label": "H. Blowpipe under Genesis T120 treatment + full poison",
+      "total": 63944.75151366475,
+      "player": 57308.51151366475,
+      "fam": 6636.24,
+      "poison": 3425.8566295765477,
+      "poisonShare": 0.0439752497185739,
+      "core": 37552.14825336,
+      "ad": 6396,
+      "blessings": [
+        "teragards-aegis",
+        "abyssal-cinders",
+        "sacred-fervor",
+        "genesis-essence"
+      ],
+      "god4": "Order",
+      "god8": "Order",
+      "weaponTier": 120,
+      "poisonGear": {
+        "cinderbane": "active",
+        "laniakea": "off",
+        "blowpipe": "active",
+        "kwuarm": 4
+      }
+    },
+    {
+      "label": "C. Pure poison path (Envenomed/Thorns/BB) + full stack",
+      "total": 58660.474703779204,
+      "player": 52024.234703779206,
+      "fam": 6636.24,
+      "poison": 10305.024506282298,
+      "poisonShare": 0.1503905709061718,
+      "core": 22687.980020159997,
+      "ad": 4082,
+      "blessings": [
+        "big-boned",
+        "true-equilibrium",
+        "tearing-thorns",
+        "envenomed"
+      ],
+      "god4": "Balance",
+      "god8": "Balance",
+      "weaponTier": 95,
+      "poisonGear": {
+        "cinderbane": "active",
+        "laniakea": "active",
+        "blowpipe": "off",
+        "kwuarm": 4
+      }
+    },
+    {
+      "label": "I. Blowpipe Genesis T120 + Envenomed path",
+      "total": 50405.43777595251,
+      "player": 43769.19777595251,
+      "fam": 6636.24,
+      "poison": 7621.0812047768495,
+      "poisonShare": 0.1293572818785749,
+      "core": 21723.234602999997,
+      "ad": 4542,
+      "blessings": [
+        "big-boned",
+        "true-equilibrium",
+        "tearing-thorns",
+        "envenomed"
+      ],
+      "god4": "Balance",
+      "god8": "Balance",
+      "weaponTier": 120,
+      "poisonGear": {
+        "cinderbane": "active",
+        "laniakea": "off",
+        "blowpipe": "active",
+        "kwuarm": 4
+      }
+    }
+  ],
+  "note": "No real T120 blowpipe item — Genesis treats any weapon as T120"
+}

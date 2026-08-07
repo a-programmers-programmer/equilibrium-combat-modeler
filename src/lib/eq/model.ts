@@ -55,6 +55,15 @@ export interface GearSnapshot {
   source: string;
   pieces?: { name: string; slot: string }[];
   notes?: string[];
+  /** Bane stack from OOP loadout (ammo + affinity weapons) */
+  bane?: {
+    mult: number;
+    accuracyFactor: number;
+    pieceIds: string[];
+    pieceNames: string[];
+    applied: { name: string; tag: string; mult: number }[];
+    targetTags: TargetTag[];
+  };
 }
 
 export interface ModelInput {
@@ -157,9 +166,11 @@ export function resolveGods(picks: readonly Path[]): { god4: Path | null; god8: 
   };
 }
 
-function modeForArchetype(a: BuildArchetype): OffhandMode {
+function modeForArchetype(a: BuildArchetype, style?: Style): OffhandMode {
   if (a === "shield-tank") return "shield";
   if (a === "defender") return "defender";
+  // Ranged/magic BiS is typically 2H (BOLG/FSOA/hex/inq)
+  if (style === "ranged" || style === "magic") return "2h";
   return "dual";
 }
 
@@ -169,9 +180,19 @@ function offhandFromLoadout(loadout: ResolvedLoadout): Offhand {
   return "none";
 }
 
-export function loadoutToSnapshot(loadout: ResolvedLoadout): GearSnapshot {
+export function loadoutToSnapshot(
+  loadout: ResolvedLoadout & {
+    bane?: {
+      mult: number;
+      accuracyFactor: number;
+      applied: { name: string; tag: string; mult: number }[];
+      pieces: { id: string; name: string }[];
+      targetTags: TargetTag[];
+    };
+  },
+): GearSnapshot {
   const genesisAdBonus = Math.round(loadout.totalWeaponAd * 0.22 + (120 - loadout.weaponTier) * 8);
-  return {
+  const snap: GearSnapshot = {
     armour: loadout.totalArmour,
     baselineAd: loadout.totalWeaponAd,
     baseLp: loadout.totalLp,
@@ -182,13 +203,24 @@ export function loadoutToSnapshot(loadout: ResolvedLoadout): GearSnapshot {
     pieces: loadout.pieces.map((p) => ({ name: p.name, slot: p.slot })),
     notes: loadout.notes,
   };
+  if (loadout.bane && loadout.bane.mult > 1) {
+    snap.bane = {
+      mult: loadout.bane.mult,
+      accuracyFactor: loadout.bane.accuracyFactor,
+      pieceIds: loadout.bane.pieces.map((p) => p.id),
+      pieceNames: loadout.bane.pieces.map((p) => p.name),
+      applied: loadout.bane.applied,
+      targetTags: loadout.bane.targetTags,
+    };
+    snap.source += ` · bane×${loadout.bane.mult.toFixed(2)}`;
+  }
+  return snap;
 }
 
 function playerSnapFromRegions(
   unlocked: readonly RegionId[],
   style: Style,
 ): PlayerSnapshot {
-  // BiS planning assumes combat skills at weapon tier capability
   const levels: Partial<Record<SkillId, number>> = {
     attack: 99,
     strength: 99,
@@ -199,15 +231,27 @@ function playerSnapFromRegions(
     smithing: 99,
     crafting: 99,
     prayer: 99,
+    hunter: 99,
+    runecrafting: 99,
   };
-  if (style === "necromancy") levels.necromancy = 99;
   const regions = new Set<RegionTag>(["free", "misthalin", "havenhythe", "karamja"]);
   for (const r of unlocked) regions.add(r as RegionTag);
   return {
     levels,
     regions,
-    quests: new Set(),
-    flags: new Set(), // boss flags ignored via ignoreBossFlags in resolve
+    quests: new Set(["ritual-of-the-mahjarrat"]),
+    flags: new Set([
+      "unlocked:tune-bane",
+      "unlocked:dinarrows",
+      "unlocked:jas-anima",
+      "killed:soulgazer",
+      "unlocked:hexhunter-imbue",
+      "unlocked:bgh-t3",
+      "unlocked:inquisitor-assemble",
+      "unlocked:inq-imbue",
+      "unlocked:glacor-front",
+      "unlocked:leng-core",
+    ]),
     relicTier: 6,
   };
 }
@@ -216,11 +260,13 @@ export function gearFromRegions(
   electives: readonly RegionId[],
   style: Style,
   archetype: BuildArchetype,
+  targetTags?: TargetTag[],
 ): { snapshot: GearSnapshot; loadout: ResolvedLoadout; offhand: Offhand } {
   const unlocked = unlockedFromElectives(electives);
   const snap = playerSnapFromRegions(unlocked, style);
-  const loadout = resolveLoadoutOOP(snap, style, modeForArchetype(archetype), {
+  const loadout = resolveLoadoutOOP(snap, style, modeForArchetype(archetype, style), {
     ignoreBossFlags: true,
+    targetTags,
   });
   return {
     snapshot: loadoutToSnapshot(loadout),
@@ -233,11 +279,13 @@ export function gearFromPackage(
   pkg: RegionPackage,
   style: Style,
   archetype: BuildArchetype,
+  targetTags?: TargetTag[],
 ): { snapshot: GearSnapshot; loadout: ResolvedLoadout; offhand: Offhand } {
   const unlocked = unlockedFromPackage(pkg);
   const snap = playerSnapFromRegions(unlocked, style);
-  const loadout = resolveLoadoutOOP(snap, style, modeForArchetype(archetype), {
+  const loadout = resolveLoadoutOOP(snap, style, modeForArchetype(archetype, style), {
     ignoreBossFlags: true,
+    targetTags,
   });
   return {
     snapshot: loadoutToSnapshot(loadout),
@@ -465,13 +513,27 @@ export function modelCombat(input: ModelInput): ModelResult {
     warnings.push(`Weapon only T${gear.weaponTier} — region locks may be limiting BiS`);
   }
 
-  // ── Bane / affinity (dragonbane, hexhunter, terrasaur, inquisitor, Leng) ──
+  // ── Bane / affinity (OOP loadout snapshot OR explicit / auto-pick) ──
   const targetTags: TargetTag[] = input.targetTags?.length
     ? [...input.targetTags]
-    : ["general"];
+    : gear.bane?.targetTags?.length
+      ? [...gear.bane.targetTags]
+      : ["general"];
+
   let banePieces: BanePiece[] = input.baneGear !== undefined ? [...input.baneGear] : [];
+  let baneFromGear = false;
+
+  // Prefer bane resolved on GearSnapshot (from resolveLoadoutOOP)
+  if (input.baneGear === undefined && gear.bane && gear.bane.mult > 1) {
+    baneFromGear = true;
+  }
+
+  // Only auto-pick when no gear snapshot bane and no explicit baneGear.
+  // Never invent affinity mults for weapons not actually equipped.
   if (
     input.baneGear === undefined &&
+    !baneFromGear &&
+    !input.gear &&
     !(targetTags.length === 1 && targetTags[0] === "general")
   ) {
     const regions = new Set<RegionTag>(
@@ -523,8 +585,31 @@ export function modelCombat(input: ModelInput): ModelResult {
     banePieces = pickBaneLoadout(input.style, targetTags, snap);
   }
 
-  const baneDmg = baneDamageMult(banePieces, targetTags);
-  const baneAcc = baneAccuracyDpsFactor(banePieces, targetTags);
+  let baneDmg: { mult: number; applied: { name: string; tag: string; mult: number }[] };
+  let baneAcc: number;
+
+  if (baneFromGear && gear.bane) {
+    baneDmg = { mult: gear.bane.mult, applied: gear.bane.applied };
+    baneAcc = gear.bane.accuracyFactor;
+    banePieces = gear.bane.pieceNames.map((name, i) => ({
+      id: gear.bane!.pieceIds[i] ?? name,
+      name,
+      kind: "ammo-dragonbane" as const,
+      role: "ammo" as const,
+      style: "ranged" as const,
+      tier: 80,
+      vsTags: {} as BanePiece["vsTags"],
+      regions: [] as BanePiece["regions"],
+      skillReqs: [] as BanePiece["skillReqs"],
+      quests: [] as string[],
+      flags: [] as string[],
+      notes: "from-oop-loadout",
+    }));
+  } else {
+    baneDmg = baneDamageMult(banePieces, targetTags);
+    baneAcc = baneAccuracyDpsFactor(banePieces, targetTags);
+  }
+
   const baneTotalMult = baneDmg.mult * baneAcc;
   if (baneTotalMult > 1.001) {
     coreAbility *= baneTotalMult;
@@ -534,13 +619,13 @@ export function modelCombat(input: ModelInput): ModelResult {
     splashBonus *= baneTotalMult;
     tearingGrasps *= baneTotalMult;
     other *= baneTotalMult;
-    // flat BB also scales slightly with better hit rate
     bigBonedFlat *= 1 + (baneAcc - 1);
     for (const a of baneDmg.applied) {
       flags.push(`Bane: ${a.name} ×${a.mult.toFixed(3)} vs ${a.tag}`);
     }
     if (baneAcc > 1.001) flags.push(`Bane accuracy EV ×${baneAcc.toFixed(3)}`);
-  } else if (targetTags.some((t) => t !== "general") && banePieces.length === 0) {
+    if (baneFromGear) flags.push("Bane from OOP loadout");
+  } else if (targetTags.some((t) => t !== "general") && !baneFromGear && banePieces.length === 0) {
     warnings.push(
       `Target tags [${targetTags.join(",")}] but no accessible bane gear for ${input.style}`,
     );

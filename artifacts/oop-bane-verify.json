@@ -1,0 +1,1256 @@
+{
+  "stats": {
+    "total": 370,
+    "bySlot": {
+      "material": 34,
+      "offhand": 25,
+      "unknown": 92,
+      "weapon": 75,
+      "boots": 22,
+      "gloves": 13,
+      "helmet": 16,
+      "legs": 6,
+      "body": 37,
+      "amulet": 6,
+      "ring": 15,
+      "codex": 17,
+      "cape": 4,
+      "ammo": 8
+    },
+    "byRegion": {
+      "karamja": 9,
+      "morytania": 33,
+      "forinthry": 58,
+      "misthalin": 51,
+      "desert": 97,
+      "asgarnia": 46,
+      "fremennik": 16,
+      "kandarin": 13,
+      "anachronia": 36,
+      "tirannwn": 5
+    },
+    "withSkills": 188,
+    "withFlags": 118,
+    "withBane": 17,
+    "wikiGenerated": 286,
+    "handCurated": 67,
+    "banePieces": 17
+  },
+  "baneIds": [
+    "dragonbane-bolts",
+    "dragonbane-arrows",
+    "demonbane-bolts",
+    "abyssalbane-bolts",
+    "basiliskbane-bolts",
+    "wallasalkibane-bolts",
+    "jas-dragonbane-arrows",
+    "jas-demonbane-arrows",
+    "hexhunter-bow",
+    "hexhunter-bow-imbued",
+    "terrasaur-maul",
+    "inquisitor-staff",
+    "inquisitor-staff-imbued",
+    "dark-ice-shard",
+    "dark-ice-sliver",
+    "dark-shard-of-leng",
+    "dark-sliver-of-leng"
+  ],
+  "loadoutRows": [
+    {
+      "style": "ranged",
+      "target": "general",
+      "electives": [],
+      "mult": 1,
+      "pieces": [],
+      "weapon": "Bow of the Last Guardian"
+    },
+    {
+      "style": "ranged",
+      "target": "general",
+      "electives": [
+        "fremennik"
+      ],
+      "mult": 1,
+      "pieces": [],
+      "weapon": "Bow of the Last Guardian"
+    },
+    {
+      "style": "ranged",
+      "target": "general",
+      "electives": [
+        "forinthry",
+        "asgarnia"
+      ],
+      "mult": 1,
+      "pieces": [],
+      "weapon": "Bow of the Last Guardian"
+    },
+    {
+      "style": "ranged",
+      "target": "general",
+      "electives": [
+        "forinthry",
+        "asgarnia",
+        "fremennik"
+      ],
+      "mult": 1,
+      "pieces": [],
+      "weapon": "Bow of the Last Guardian"
+    },
+    {
+      "style": "ranged",
+      "target": "general",
+      "electives": [
+        "desert",
+        "anachronia",
+        "forinthry"
+      ],
+      "mult": 1,
+      "pieces": [],
+      "weapon": "Bow of the Last Guardian"
+    },
+    {
+      "style": "ranged",
+      "target": "dragon",
+      "electives": [],
+      "mult": 1.3,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas dragonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "target": "dragon",
+      "electives": [
+        "fremennik"
+      ],
+      "mult": 1.3,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas dragonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "target": "dragon",
+      "electives": [
+        "forinthry",
+        "asgarnia"
+      ],
+      "mult": 1.3,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas dragonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "target": "dragon",
+      "electives": [
+        "forinthry",
+        "asgarnia",
+        "fremennik"
+      ],
+      "mult": 1.3,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas dragonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "target": "dragon",
+      "electives": [
+        "desert",
+        "anachronia",
+        "forinthry"
+      ],
+      "mult": 1.3,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas dragonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "target": "dragon-mage",
+      "electives": [],
+      "mult": 1.3,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas dragonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "target": "dragon-mage",
+      "electives": [
+        "fremennik"
+      ],
+      "mult": 1.3,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas dragonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "target": "dragon-mage",
+      "electives": [
+        "forinthry",
+        "asgarnia"
+      ],
+      "mult": 1.3,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas dragonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "target": "dragon-mage",
+      "electives": [
+        "forinthry",
+        "asgarnia",
+        "fremennik"
+      ],
+      "mult": 1.3,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas dragonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "target": "dragon-mage",
+      "electives": [
+        "desert",
+        "anachronia",
+        "forinthry"
+      ],
+      "mult": 1.3,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas dragonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "target": "demon",
+      "electives": [],
+      "mult": 1.3,
+      "pieces": [
+        "Jas demonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas demonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "target": "demon",
+      "electives": [
+        "fremennik"
+      ],
+      "mult": 1.3,
+      "pieces": [
+        "Jas demonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas demonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "target": "demon",
+      "electives": [
+        "forinthry",
+        "asgarnia"
+      ],
+      "mult": 1.3,
+      "pieces": [
+        "Jas demonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas demonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "target": "demon",
+      "electives": [
+        "forinthry",
+        "asgarnia",
+        "fremennik"
+      ],
+      "mult": 1.3,
+      "pieces": [
+        "Jas demonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas demonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "target": "demon",
+      "electives": [
+        "desert",
+        "anachronia",
+        "forinthry"
+      ],
+      "mult": 1.3,
+      "pieces": [
+        "Jas demonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas demonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "target": "abyssal",
+      "electives": [
+        "fremennik"
+      ],
+      "mult": 1.25,
+      "pieces": [
+        "Abyssalbane bolts"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Abyssalbane bolts"
+    },
+    {
+      "style": "ranged",
+      "target": "abyssal",
+      "electives": [
+        "forinthry",
+        "asgarnia",
+        "fremennik"
+      ],
+      "mult": 1.25,
+      "pieces": [
+        "Abyssalbane bolts"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Abyssalbane bolts"
+    },
+    {
+      "style": "ranged",
+      "target": "basilisk",
+      "electives": [
+        "fremennik"
+      ],
+      "mult": 1.25,
+      "pieces": [
+        "Basiliskbane bolts"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Basiliskbane bolts"
+    },
+    {
+      "style": "ranged",
+      "target": "basilisk",
+      "electives": [
+        "forinthry",
+        "asgarnia",
+        "fremennik"
+      ],
+      "mult": 1.25,
+      "pieces": [
+        "Basiliskbane bolts"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Basiliskbane bolts"
+    },
+    {
+      "style": "ranged",
+      "target": "wallasalki",
+      "electives": [
+        "fremennik"
+      ],
+      "mult": 1.25,
+      "pieces": [
+        "Wallasalkibane bolts"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Wallasalkibane bolts"
+    },
+    {
+      "style": "ranged",
+      "target": "wallasalki",
+      "electives": [
+        "forinthry",
+        "asgarnia",
+        "fremennik"
+      ],
+      "mult": 1.25,
+      "pieces": [
+        "Wallasalkibane bolts"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Wallasalkibane bolts"
+    },
+    {
+      "style": "melee",
+      "target": "general",
+      "electives": [],
+      "mult": 1,
+      "pieces": [],
+      "weapon": "Khopesh of Elidinis"
+    },
+    {
+      "style": "melee",
+      "target": "general",
+      "electives": [
+        "fremennik"
+      ],
+      "mult": 1,
+      "pieces": [],
+      "weapon": "Khopesh of Elidinis"
+    },
+    {
+      "style": "melee",
+      "target": "general",
+      "electives": [
+        "forinthry",
+        "asgarnia"
+      ],
+      "mult": 1,
+      "pieces": [],
+      "weapon": "Dark Shard of Leng"
+    },
+    {
+      "style": "melee",
+      "target": "general",
+      "electives": [
+        "forinthry",
+        "asgarnia",
+        "fremennik"
+      ],
+      "mult": 1,
+      "pieces": [],
+      "weapon": "Dark Shard of Leng"
+    },
+    {
+      "style": "melee",
+      "target": "general",
+      "electives": [
+        "desert",
+        "anachronia",
+        "forinthry"
+      ],
+      "mult": 1,
+      "pieces": [],
+      "weapon": "Dark Shard of Leng"
+    },
+    {
+      "style": "melee",
+      "target": "glacor",
+      "electives": [
+        "forinthry",
+        "asgarnia"
+      ],
+      "mult": 1.2100000000000002,
+      "pieces": [
+        "Dark Shard of Leng",
+        "Dark Sliver of Leng"
+      ],
+      "weapon": "Dark Shard of Leng"
+    },
+    {
+      "style": "melee",
+      "target": "glacor",
+      "electives": [
+        "forinthry",
+        "asgarnia",
+        "fremennik"
+      ],
+      "mult": 1.2100000000000002,
+      "pieces": [
+        "Dark Shard of Leng",
+        "Dark Sliver of Leng"
+      ],
+      "weapon": "Dark Shard of Leng"
+    },
+    {
+      "style": "melee",
+      "target": "glacor",
+      "electives": [
+        "desert",
+        "anachronia",
+        "forinthry"
+      ],
+      "mult": 1.2100000000000002,
+      "pieces": [
+        "Dark Shard of Leng",
+        "Dark Sliver of Leng"
+      ],
+      "weapon": "Dark Shard of Leng"
+    },
+    {
+      "style": "magic",
+      "target": "general",
+      "electives": [],
+      "mult": 1,
+      "pieces": [],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "target": "general",
+      "electives": [
+        "fremennik"
+      ],
+      "mult": 1,
+      "pieces": [],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "target": "general",
+      "electives": [
+        "forinthry",
+        "asgarnia"
+      ],
+      "mult": 1,
+      "pieces": [],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "target": "general",
+      "electives": [
+        "forinthry",
+        "asgarnia",
+        "fremennik"
+      ],
+      "mult": 1,
+      "pieces": [],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "target": "general",
+      "electives": [
+        "desert",
+        "anachronia",
+        "forinthry"
+      ],
+      "mult": 1,
+      "pieces": [],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "necromancy",
+      "target": "general",
+      "electives": [],
+      "mult": 1,
+      "pieces": [],
+      "weapon": "Omni guard (T95)"
+    },
+    {
+      "style": "necromancy",
+      "target": "general",
+      "electives": [
+        "fremennik"
+      ],
+      "mult": 1,
+      "pieces": [],
+      "weapon": "Omni guard (T95)"
+    },
+    {
+      "style": "necromancy",
+      "target": "general",
+      "electives": [
+        "forinthry",
+        "asgarnia"
+      ],
+      "mult": 1,
+      "pieces": [],
+      "weapon": "Omni guard (T95)"
+    },
+    {
+      "style": "necromancy",
+      "target": "general",
+      "electives": [
+        "forinthry",
+        "asgarnia",
+        "fremennik"
+      ],
+      "mult": 1,
+      "pieces": [],
+      "weapon": "Omni guard (T95)"
+    },
+    {
+      "style": "necromancy",
+      "target": "general",
+      "electives": [
+        "desert",
+        "anachronia",
+        "forinthry"
+      ],
+      "mult": 1,
+      "pieces": [],
+      "weapon": "Devourer's Guard"
+    }
+  ],
+  "e2e": [
+    {
+      "style": "ranged",
+      "tags": "general",
+      "pkg": "free-only",
+      "dps": 41159,
+      "dmg30": 1234783,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Bow of the Last Guardian"
+    },
+    {
+      "style": "ranged",
+      "tags": "general",
+      "pkg": "forinthry-asgarnia-anach",
+      "dps": 42411,
+      "dmg30": 1272330,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Bow of the Last Guardian"
+    },
+    {
+      "style": "ranged",
+      "tags": "general",
+      "pkg": "desert-asgarnia-forinthry",
+      "dps": 44301,
+      "dmg30": 1329023,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Bow of the Last Guardian"
+    },
+    {
+      "style": "ranged",
+      "tags": "dragon",
+      "pkg": "free-only",
+      "dps": 55648,
+      "dmg30": 1669426,
+      "baneMult": 1.3,
+      "fromOOP": true,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas dragonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "tags": "dragon",
+      "pkg": "forinthry-asgarnia-anach",
+      "dps": 57340,
+      "dmg30": 1720190,
+      "baneMult": 1.3,
+      "fromOOP": true,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas dragonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "tags": "dragon",
+      "pkg": "desert-asgarnia-forinthry",
+      "dps": 59895,
+      "dmg30": 1796839,
+      "baneMult": 1.3,
+      "fromOOP": true,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas dragonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "tags": "dragon+mage-class",
+      "pkg": "free-only",
+      "dps": 55648,
+      "dmg30": 1669426,
+      "baneMult": 1.3,
+      "fromOOP": true,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas dragonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "tags": "dragon+mage-class",
+      "pkg": "forinthry-asgarnia-anach",
+      "dps": 57340,
+      "dmg30": 1720190,
+      "baneMult": 1.3,
+      "fromOOP": true,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas dragonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "tags": "dragon+mage-class",
+      "pkg": "desert-asgarnia-forinthry",
+      "dps": 59895,
+      "dmg30": 1796839,
+      "baneMult": 1.3,
+      "fromOOP": true,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian",
+      "ammo": "Jas dragonbane arrows"
+    },
+    {
+      "style": "ranged",
+      "tags": "melee-class",
+      "pkg": "free-only",
+      "dps": 41159,
+      "dmg30": 1234783,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian"
+    },
+    {
+      "style": "ranged",
+      "tags": "melee-class",
+      "pkg": "forinthry-asgarnia-anach",
+      "dps": 42411,
+      "dmg30": 1272330,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian"
+    },
+    {
+      "style": "ranged",
+      "tags": "melee-class",
+      "pkg": "desert-asgarnia-forinthry",
+      "dps": 44301,
+      "dmg30": 1329023,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian"
+    },
+    {
+      "style": "ranged",
+      "tags": "ranged-class",
+      "pkg": "free-only",
+      "dps": 41159,
+      "dmg30": 1234783,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian"
+    },
+    {
+      "style": "ranged",
+      "tags": "ranged-class",
+      "pkg": "forinthry-asgarnia-anach",
+      "dps": 42411,
+      "dmg30": 1272330,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian"
+    },
+    {
+      "style": "ranged",
+      "tags": "ranged-class",
+      "pkg": "desert-asgarnia-forinthry",
+      "dps": 44301,
+      "dmg30": 1329023,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian"
+    },
+    {
+      "style": "ranged",
+      "tags": "glacor",
+      "pkg": "free-only",
+      "dps": 41159,
+      "dmg30": 1234783,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian"
+    },
+    {
+      "style": "ranged",
+      "tags": "glacor",
+      "pkg": "forinthry-asgarnia-anach",
+      "dps": 42411,
+      "dmg30": 1272330,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian"
+    },
+    {
+      "style": "ranged",
+      "tags": "glacor",
+      "pkg": "desert-asgarnia-forinthry",
+      "dps": 44301,
+      "dmg30": 1329023,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [
+        "Jas dragonbane arrows"
+      ],
+      "weapon": "Bow of the Last Guardian"
+    },
+    {
+      "style": "melee",
+      "tags": "general",
+      "pkg": "free-only",
+      "dps": 50290,
+      "dmg30": 1508691,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Khopesh of Elidinis"
+    },
+    {
+      "style": "melee",
+      "tags": "general",
+      "pkg": "forinthry-asgarnia-anach",
+      "dps": 54265,
+      "dmg30": 1627942,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Dark Shard of Leng"
+    },
+    {
+      "style": "melee",
+      "tags": "general",
+      "pkg": "desert-asgarnia-forinthry",
+      "dps": 57904,
+      "dmg30": 1737122,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Dark Shard of Leng"
+    },
+    {
+      "style": "melee",
+      "tags": "dragon",
+      "pkg": "free-only",
+      "dps": 50290,
+      "dmg30": 1508691,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Khopesh of Elidinis"
+    },
+    {
+      "style": "melee",
+      "tags": "dragon",
+      "pkg": "forinthry-asgarnia-anach",
+      "dps": 54265,
+      "dmg30": 1627942,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Dark Shard of Leng"
+    },
+    {
+      "style": "melee",
+      "tags": "dragon",
+      "pkg": "desert-asgarnia-forinthry",
+      "dps": 57904,
+      "dmg30": 1737122,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Dark Shard of Leng"
+    },
+    {
+      "style": "melee",
+      "tags": "dragon+mage-class",
+      "pkg": "free-only",
+      "dps": 50290,
+      "dmg30": 1508691,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Khopesh of Elidinis"
+    },
+    {
+      "style": "melee",
+      "tags": "dragon+mage-class",
+      "pkg": "forinthry-asgarnia-anach",
+      "dps": 54265,
+      "dmg30": 1627942,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Dark Shard of Leng"
+    },
+    {
+      "style": "melee",
+      "tags": "dragon+mage-class",
+      "pkg": "desert-asgarnia-forinthry",
+      "dps": 57904,
+      "dmg30": 1737122,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Dark Shard of Leng"
+    },
+    {
+      "style": "melee",
+      "tags": "melee-class",
+      "pkg": "free-only",
+      "dps": 50290,
+      "dmg30": 1508691,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Khopesh of Elidinis"
+    },
+    {
+      "style": "melee",
+      "tags": "melee-class",
+      "pkg": "forinthry-asgarnia-anach",
+      "dps": 54265,
+      "dmg30": 1627942,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Dark Shard of Leng"
+    },
+    {
+      "style": "melee",
+      "tags": "melee-class",
+      "pkg": "desert-asgarnia-forinthry",
+      "dps": 57904,
+      "dmg30": 1737122,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Dark Shard of Leng"
+    },
+    {
+      "style": "melee",
+      "tags": "ranged-class",
+      "pkg": "free-only",
+      "dps": 56576,
+      "dmg30": 1697277,
+      "baneMult": 1.125,
+      "fromOOP": false,
+      "pieces": [
+        "Terrasaur maul"
+      ],
+      "weapon": "Khopesh of Elidinis"
+    },
+    {
+      "style": "melee",
+      "tags": "ranged-class",
+      "pkg": "forinthry-asgarnia-anach",
+      "dps": 61048,
+      "dmg30": 1831434,
+      "baneMult": 1.125,
+      "fromOOP": false,
+      "pieces": [
+        "Terrasaur maul"
+      ],
+      "weapon": "Dark Shard of Leng"
+    },
+    {
+      "style": "melee",
+      "tags": "ranged-class",
+      "pkg": "desert-asgarnia-forinthry",
+      "dps": 65142,
+      "dmg30": 1954262,
+      "baneMult": 1.125,
+      "fromOOP": false,
+      "pieces": [
+        "Terrasaur maul"
+      ],
+      "weapon": "Dark Shard of Leng"
+    },
+    {
+      "style": "melee",
+      "tags": "glacor",
+      "pkg": "free-only",
+      "dps": 60851,
+      "dmg30": 1825516,
+      "baneMult": 1.2100000000000002,
+      "fromOOP": false,
+      "pieces": [
+        "Dark Shard of Leng",
+        "Dark Sliver of Leng"
+      ],
+      "weapon": "Khopesh of Elidinis"
+    },
+    {
+      "style": "melee",
+      "tags": "glacor",
+      "pkg": "forinthry-asgarnia-anach",
+      "dps": 59691,
+      "dmg30": 1790736,
+      "baneMult": 1.1,
+      "fromOOP": true,
+      "pieces": [
+        "Dark Shard of Leng"
+      ],
+      "weapon": "Dark Shard of Leng"
+    },
+    {
+      "style": "melee",
+      "tags": "glacor",
+      "pkg": "desert-asgarnia-forinthry",
+      "dps": 63694,
+      "dmg30": 1910834,
+      "baneMult": 1.1,
+      "fromOOP": true,
+      "pieces": [
+        "Dark Shard of Leng"
+      ],
+      "weapon": "Dark Shard of Leng"
+    },
+    {
+      "style": "magic",
+      "tags": "general",
+      "pkg": "free-only",
+      "dps": 44704,
+      "dmg30": 1341131,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "tags": "general",
+      "pkg": "forinthry-asgarnia-anach",
+      "dps": 46020,
+      "dmg30": 1380611,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "tags": "general",
+      "pkg": "desert-asgarnia-forinthry",
+      "dps": 46420,
+      "dmg30": 1392592,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "tags": "dragon",
+      "pkg": "free-only",
+      "dps": 44704,
+      "dmg30": 1341131,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "tags": "dragon",
+      "pkg": "forinthry-asgarnia-anach",
+      "dps": 46020,
+      "dmg30": 1380611,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "tags": "dragon",
+      "pkg": "desert-asgarnia-forinthry",
+      "dps": 46420,
+      "dmg30": 1392592,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "tags": "dragon+mage-class",
+      "pkg": "free-only",
+      "dps": 44704,
+      "dmg30": 1341131,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "tags": "dragon+mage-class",
+      "pkg": "forinthry-asgarnia-anach",
+      "dps": 46020,
+      "dmg30": 1380611,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "tags": "dragon+mage-class",
+      "pkg": "desert-asgarnia-forinthry",
+      "dps": 46420,
+      "dmg30": 1392592,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "tags": "melee-class",
+      "pkg": "free-only",
+      "dps": 52528,
+      "dmg30": 1575829,
+      "baneMult": 1.175,
+      "fromOOP": false,
+      "pieces": [
+        "Inquisitor staff (imbued)"
+      ],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "tags": "melee-class",
+      "pkg": "forinthry-asgarnia-anach",
+      "dps": 54074,
+      "dmg30": 1622218,
+      "baneMult": 1.175,
+      "fromOOP": false,
+      "pieces": [
+        "Inquisitor staff (imbued)"
+      ],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "tags": "melee-class",
+      "pkg": "desert-asgarnia-forinthry",
+      "dps": 54543,
+      "dmg30": 1636295,
+      "baneMult": 1.175,
+      "fromOOP": false,
+      "pieces": [
+        "Inquisitor staff (imbued)"
+      ],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "tags": "ranged-class",
+      "pkg": "free-only",
+      "dps": 44704,
+      "dmg30": 1341131,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "tags": "ranged-class",
+      "pkg": "forinthry-asgarnia-anach",
+      "dps": 46020,
+      "dmg30": 1380611,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "tags": "ranged-class",
+      "pkg": "desert-asgarnia-forinthry",
+      "dps": 46420,
+      "dmg30": 1392592,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "tags": "glacor",
+      "pkg": "free-only",
+      "dps": 44704,
+      "dmg30": 1341131,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "tags": "glacor",
+      "pkg": "forinthry-asgarnia-anach",
+      "dps": 46020,
+      "dmg30": 1380611,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Fractured Staff of Armadyl"
+    },
+    {
+      "style": "magic",
+      "tags": "glacor",
+      "pkg": "desert-asgarnia-forinthry",
+      "dps": 46420,
+      "dmg30": 1392592,
+      "baneMult": 1,
+      "fromOOP": false,
+      "pieces": [],
+      "weapon": "Fractured Staff of Armadyl"
+    }
+  ],
+  "conclusion": "Bane is Equipment OOP (ammo/weapon slots, Requirement graph). resolveLoadoutOOP(targetTags) picks ammo + affinity swaps. gearFromPackage/Regions thread tags into GearSnapshot.bane. modelCombat consumes OOP bane."
+}

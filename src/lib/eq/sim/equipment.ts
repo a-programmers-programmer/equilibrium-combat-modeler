@@ -1,6 +1,7 @@
 /**
  * OOP equipment model — every piece has a Requirement graph.
- * Combines wiki-generated catalog + hand-curated combat BiS from items.ts.
+ * Combines wiki-generated catalog + hand-curated combat BiS + bane/affinity gear.
+ * Loadout resolution is target-aware (dragonbane, hexhunter, etc.).
  */
 
 import {
@@ -29,8 +30,15 @@ import {
 import {
   GENERATED_GEAR,
   type GeneratedGearDef,
-  type GenSlot,
 } from "./equipment.generated";
+import {
+  BANE_DEFS,
+  type BaneDef,
+  type TargetTag,
+  type BaneApplication,
+  stackBaneMults,
+  stackBaneAccuracy,
+} from "./bane";
 
 export type EquipSlot = ItemSlot | "material" | "codex" | "unknown";
 
@@ -55,6 +63,15 @@ export class Equipment {
   readonly quests: string[];
   readonly flags: string[];
 
+  /** Bane / affinity: damage mult by target tag (1.0 = none) */
+  readonly vsTags: Partial<Record<TargetTag, number>>;
+  /** Hit chance bonus by tag (0–1 scale, e.g. 0.3 = +30%) */
+  readonly hitChanceBonus: Partial<Record<TargetTag, number>>;
+  /** Only one piece per group applies (e.g. ranged-ammo) */
+  readonly exclusiveGroup?: string;
+  readonly baneKind?: string;
+  readonly isBane: boolean;
+
   constructor(opts: {
     id: string;
     name: string;
@@ -75,6 +92,10 @@ export class Equipment {
     flags?: string[];
     wikiGenerated?: boolean;
     extraReq?: Requirement;
+    vsTags?: Partial<Record<TargetTag, number>>;
+    hitChanceBonus?: Partial<Record<TargetTag, number>>;
+    exclusiveGroup?: string;
+    baneKind?: string;
   }) {
     this.id = opts.id;
     this.name = opts.name;
@@ -94,13 +115,16 @@ export class Equipment {
     this.skillReqs = opts.skillReqs ?? [];
     this.quests = opts.quests ?? [];
     this.flags = opts.flags ?? [];
+    this.vsTags = opts.vsTags ?? {};
+    this.hitChanceBonus = opts.hitChanceBonus ?? {};
+    this.exclusiveGroup = opts.exclusiveGroup;
+    this.baneKind = opts.baneKind;
+    this.isBane = Object.keys(this.vsTags).length > 0 || !!opts.baneKind;
 
     const parts: Requirement[] = [];
-    // All listed regions required (AND) — multi-region crafts
     for (const r of opts.regions) {
       parts.push(new RegionReq(r as RegionTag));
     }
-    // Free-path items with empty regions: need free starter access
     if (opts.regions.length === 0) {
       parts.push(
         new AnyReq([
@@ -118,8 +142,6 @@ export class Equipment {
       parts.push(new QuestReq(q, q));
     }
     for (const f of this.flags) {
-      // Boss kill flags are soft by default for loadout planning —
-      // use requireFlags=true on accessible check for hard mode
       parts.push(new FlagReq(f, f));
     }
     if (opts.extraReq) parts.push(opts.extraReq);
@@ -132,18 +154,26 @@ export class Equipment {
           : new AllReq(parts);
   }
 
-  /** Hard check including boss/quest flags. */
-  accessible(p: PlayerSnapshot, opts?: { ignoreBossFlags?: boolean }): boolean {
-    if (opts?.ignoreBossFlags) {
-      return this.accessibleIgnoringBossFlags(p);
+  /** Best single-tag mult this piece gives vs target set (1 if none). */
+  multVs(tags: readonly TargetTag[]): number {
+    const set = new Set(tags);
+    if (set.has("general") && set.size === 1) return 1;
+    let best = 1;
+    for (const [tag, m] of Object.entries(this.vsTags) as [TargetTag, number][]) {
+      if (set.has(tag) && m > best) best = m;
     }
+    return best;
+  }
+
+  appliesTo(tags: readonly TargetTag[]): boolean {
+    return this.multVs(tags) > 1;
+  }
+
+  accessible(p: PlayerSnapshot, opts?: { ignoreBossFlags?: boolean }): boolean {
+    if (opts?.ignoreBossFlags) return this.accessibleIgnoringBossFlags(p);
     return this.req.satisfied(p);
   }
 
-  /**
-   * Region + skill gates only (assume boss drops obtainable once region open).
-   * Used for BiS loadout planning mid-league.
-   */
   accessibleIgnoringBossFlags(p: PlayerSnapshot): boolean {
     for (const r of this.regions) {
       if (!new RegionReq(r as RegionTag).satisfied(p)) return false;
@@ -158,15 +188,6 @@ export class Equipment {
     }
     for (const s of this.skillReqs) {
       if ((p.levels[s.skill as SkillId] ?? 1) < s.level) return false;
-    }
-    for (const q of this.quests) {
-      // league often auto-completes quests on region unlock — soft unless explicit
-      if (q && !p.quests.has(q) && !p.regions.has(this.regions[0] as RegionTag)) {
-        // if we have the region, treat quest as auto
-        if (this.regions.length && this.regions.every((r) => p.regions.has(r as RegionTag))) {
-          continue;
-        }
-      }
     }
     return true;
   }
@@ -195,14 +216,15 @@ export class Equipment {
       lp: this.lp || undefined,
       prayer: this.prayer || undefined,
       twoHanded: this.twoHanded || undefined,
-      notes: `${this.notes}${this.source ? ` · ${this.source}` : ""}`,
+      notes: `${this.notes}${this.source ? ` · ${this.source}` : ""}${
+        this.isBane ? ` · bane:${JSON.stringify(this.vsTags)}` : ""
+      }`,
     };
   }
 }
 
 function fromGenerated(g: GeneratedGearDef): Equipment {
   let skillReqs = [...g.skillReqs];
-  // Ensure weapons always have a style skill gate (wiki inference sometimes misses)
   if (
     (g.slot === "weapon" || (g.slot === "offhand" && (g.abilityDamage ?? 0) > 0)) &&
     skillReqs.length === 0 &&
@@ -236,10 +258,9 @@ function fromGenerated(g: GeneratedGearDef): Equipment {
 }
 
 function fromHandItem(item: CombatItem): Equipment {
-  // Infer skill reqs from tier/style for hand catalog
   const skillReqs: { skill: string; level: number }[] = [];
   const t = Math.min(item.tier, 99);
-  if (item.slot === "weapon" || (item.slot === "offhand" && item.kind === "none")) {
+  if (item.slot === "weapon" || (item.slot === "offhand" && item.kind === "none") || item.slot === "ammo") {
     if (item.style === "melee") skillReqs.push({ skill: "attack", level: Math.min(t, 90) });
     if (item.style === "magic") skillReqs.push({ skill: "magic", level: Math.min(t, 95) });
     if (item.style === "ranged") skillReqs.push({ skill: "ranged", level: Math.min(t, 95) });
@@ -281,17 +302,44 @@ function fromHandItem(item: CombatItem): Equipment {
   });
 }
 
-/** Merged catalog: hand BiS overrides wiki on same id; wiki fills the rest. */
+function fromBaneDef(b: BaneDef): Equipment {
+  const slot: EquipSlot =
+    b.role === "ammo" ? "ammo" : b.role === "offhand" ? "offhand" : "weapon";
+  return new Equipment({
+    id: b.id,
+    name: b.name,
+    slot,
+    style: b.style,
+    tier: b.tier,
+    kind: "none",
+    twoHanded: b.twoHanded,
+    abilityDamage: b.abilityDamage ?? 0,
+    armour: b.armour ?? 0,
+    source: "bane-catalog",
+    notes: b.notes,
+    regions: b.regions,
+    skillReqs: b.skillReqs,
+    quests: b.quests,
+    flags: b.flags,
+    wikiGenerated: false,
+    vsTags: b.vsTags,
+    hitChanceBonus: b.hitChanceBonus,
+    exclusiveGroup: b.exclusiveGroup,
+    baneKind: b.kind,
+  });
+}
+
+/** Merged catalog: wiki → hand BiS → bane (bane wins on same id). */
 function buildCatalog(): Equipment[] {
   const byId = new Map<string, Equipment>();
-  // wiki first
   for (const g of GENERATED_GEAR) {
-    // skip pure unknown low-value noise with tier 0 materials kept
     byId.set(g.id, fromGenerated(g));
   }
-  // hand curated wins (combat model stats are trusted)
   for (const item of ITEMS) {
     byId.set(item.id, fromHandItem(item));
+  }
+  for (const b of BANE_DEFS) {
+    byId.set(b.id, fromBaneDef(b));
   }
   return [...byId.values()];
 }
@@ -302,13 +350,16 @@ export const EQUIPMENT_BY_ID: Readonly<Map<string, Equipment>> = new Map(
   EQUIPMENT_CATALOG.map((e) => [e.id, e]),
 );
 
+export const BANE_EQUIPMENT: readonly Equipment[] = EQUIPMENT_CATALOG.filter((e) => e.isBane);
+
 export function equipmentAccessible(
   p: PlayerSnapshot,
-  opts?: { combatOnly?: boolean; ignoreBossFlags?: boolean },
+  opts?: { combatOnly?: boolean; ignoreBossFlags?: boolean; includeAmmo?: boolean },
 ): Equipment[] {
   return EQUIPMENT_CATALOG.filter((e) => {
-    if (opts?.combatOnly && (e.slot === "material" || e.slot === "codex" || e.slot === "unknown")) {
-      return false;
+    if (opts?.combatOnly) {
+      if (e.slot === "material" || e.slot === "codex" || e.slot === "unknown") return false;
+      if (e.slot === "ammo" && !opts.includeAmmo) return false;
     }
     return opts?.ignoreBossFlags ? e.accessibleIgnoringBossFlags(p) : e.accessible(p);
   });
@@ -322,22 +373,47 @@ function is2h(e: Equipment): boolean {
   return e.twoHanded;
 }
 
+export interface LoadoutBaneInfo {
+  mult: number;
+  accuracyFactor: number;
+  applied: BaneApplication[];
+  pieces: Equipment[];
+  targetTags: TargetTag[];
+}
+
+export type ResolveLoadoutOpts = {
+  ignoreBossFlags?: boolean;
+  /** Target tags — enables ammo pick + affinity weapon swap when better EV */
+  targetTags?: TargetTag[];
+  /** Prefer affinity bane weapons even if raw AD lower (default true when tags set) */
+  preferBaneWeapons?: boolean;
+};
+
 /**
  * Requirement-aware BiS resolve — only pieces the player can equip.
+ * When targetTags set: picks best ammo + may swap to affinity weapons (hex/terra/inq/Leng).
  */
 export function resolveLoadoutOOP(
   player: PlayerSnapshot,
   style: Exclude<CombatStyle, "all">,
   mode: OffhandMode,
-  opts?: { ignoreBossFlags?: boolean },
-): ResolvedLoadout & { equipment: Equipment[]; blockedCandidates: { name: string; missing: string[] }[] } {
+  opts?: ResolveLoadoutOpts,
+): ResolvedLoadout & {
+  equipment: Equipment[];
+  bane: LoadoutBaneInfo;
+  blockedCandidates: { name: string; missing: string[] }[];
+} {
+  const targetTags: TargetTag[] = opts?.targetTags?.length ? [...opts.targetTags] : ["general"];
+  const preferBane = opts?.preferBaneWeapons ?? targetTags.some((t) => t !== "general");
+
   const pool = equipmentAccessible(player, {
     combatOnly: true,
     ignoreBossFlags: opts?.ignoreBossFlags ?? true,
+    includeAmmo: true,
   }).filter((e) => {
-    if (!styleMatch(e, style)) return false;
-    // drop non-equippable / junk inference
+    if (!styleMatch(e, style) && e.slot !== "ammo") return false;
     if (e.slot === "unknown" || e.slot === "material" || e.slot === "codex") return false;
+    if (e.slot === "ammo") return true;
     if (e.tier <= 0 && e.abilityDamage <= 0 && e.armour <= 0) return false;
     return true;
   });
@@ -355,10 +431,9 @@ export function resolveLoadoutOOP(
     return [...candidates].sort((a, b) => score(b) - score(a) || b.tier - a.tier)[0];
   };
 
-  // Track near-misses for debug
   for (const e of EQUIPMENT_CATALOG) {
-    if (!styleMatch(e, style)) continue;
-    if (e.slot !== "weapon" && e.slot !== "body" && e.slot !== "offhand") continue;
+    if (!styleMatch(e, style) && e.slot !== "ammo") continue;
+    if (e.slot !== "weapon" && e.slot !== "body" && e.slot !== "offhand" && e.slot !== "ammo") continue;
     if (opts?.ignoreBossFlags ? e.accessibleIgnoringBossFlags(player) : e.accessible(player)) continue;
     const miss = e.missing(player);
     if (miss.length && miss.length <= 4) {
@@ -366,22 +441,53 @@ export function resolveLoadoutOOP(
     }
   }
 
+  // ── Weapon: general BiS vs affinity bane EV ──────────────────────
   const weapons = pool.filter((e) => e.slot === "weapon");
+  const scoreWeapon = (e: Equipment) => {
+    const base = e.abilityDamage + e.tier * 2;
+    if (!preferBane) return base;
+    return base * e.multVs(targetTags);
+  };
+
   let weapon: Equipment | undefined;
   if (mode === "2h") {
     weapon = pickBest(
       weapons.filter((w) => is2h(w)),
-      (e) => e.abilityDamage + e.tier * 2,
+      scoreWeapon,
     );
-    if (!weapon) weapon = pickBest(weapons, (e) => e.abilityDamage + e.tier * 2);
+    if (!weapon) weapon = pickBest(weapons, scoreWeapon);
   } else {
     const oneHand = weapons.filter((w) => !is2h(w));
-    weapon = pickBest(oneHand, (e) => e.abilityDamage + e.tier * 2);
+    weapon = pickBest(oneHand, scoreWeapon);
     if (!weapon) {
-      weapon = pickBest(weapons, (e) => e.abilityDamage + e.tier * 2);
+      weapon = pickBest(weapons, scoreWeapon);
       if (weapon && is2h(weapon)) notes.push("No 1H BiS accessible — using 2H (OH disabled)");
     }
   }
+
+  // If affinity bane weapon wins EV vs current weapon (including shared ammo mult)
+  if (preferBane && targetTags.some((t) => t !== "general")) {
+    const affinity = weapons.filter(
+      (w) => w.isBane && w.appliesTo(targetTags) && w.abilityDamage > 0,
+    );
+    const bestAff = pickBest(affinity, scoreWeapon);
+    // Estimate ammo mult available for both (same ammo pool)
+    const ammoPool = pool.filter((e) => e.slot === "ammo" && e.appliesTo(targetTags));
+    const bestAmmo = pickBest(ammoPool, (e) => e.multVs(targetTags) * 100 + e.tier);
+    const ammoM = bestAmmo?.multVs(targetTags) ?? 1;
+
+    if (bestAff && weapon) {
+      const generalScore = weapon.abilityDamage * weapon.multVs(targetTags) * ammoM;
+      const affScore = bestAff.abilityDamage * bestAff.multVs(targetTags) * ammoM;
+      if (affScore > generalScore * 1.01) {
+        weapon = bestAff;
+        notes.push(`Bane weapon swap: ${bestAff.name} (EV vs [${targetTags.join(",")}])`);
+      }
+    } else if (bestAff && !weapon) {
+      weapon = bestAff;
+    }
+  }
+
   if (weapon) pieces.push(weapon);
   else missing.push("weapon");
 
@@ -399,10 +505,9 @@ export function resolveLoadoutOOP(
   if (weaponIs2h || mode === "2h") {
     notes.push("2H weapon — no off-hand");
   } else if (mode === "dual") {
-    const oh = pickBest(
-      pool.filter((e) => e.slot === "offhand" && e.kind === "none" && e.abilityDamage > 0),
-      (e) => e.abilityDamage,
-    );
+    // Prefer bane OH (Leng sliver) when tagged glacor
+    const ohPool = pool.filter((e) => e.slot === "offhand" && e.kind === "none" && e.abilityDamage > 0);
+    const oh = pickBest(ohPool, (e) => e.abilityDamage * (preferBane ? e.multVs(targetTags) : 1));
     if (oh) pieces.push(oh);
     else missing.push("off-hand weapon");
   } else if (mode === "defender") {
@@ -438,12 +543,25 @@ export function resolveLoadoutOOP(
     if (best) pieces.push(best);
   }
 
+  // ── Ammo (ranged only, target-aware) ─────────────────────────────
+  if (style === "ranged" && targetTags.some((t) => t !== "general")) {
+    const ammos = pool.filter((e) => e.slot === "ammo" && e.appliesTo(targetTags));
+    const ammo = pickBest(ammos, (e) => e.multVs(targetTags) * 100 + e.tier);
+    if (ammo) {
+      pieces.push(ammo);
+      notes.push(`Bane ammo: ${ammo.name} ×${ammo.multVs(targetTags).toFixed(2)}`);
+    } else {
+      notes.push(`No bane ammo accessible for [${targetTags.join(",")}]`);
+    }
+  }
+
   let totalArmour = 400;
   let totalWeaponAd = 0;
   let totalLp = 9900;
   let totalPrayer = 0;
   let weaponTier = 1;
   for (const p of pieces) {
+    if (p.slot === "ammo") continue; // ammo is mult-only, not AD stack
     totalArmour += p.armour;
     totalWeaponAd += p.abilityDamage;
     totalLp += p.lp;
@@ -453,8 +571,34 @@ export function resolveLoadoutOOP(
   if (weaponIs2h) totalWeaponAd = Math.round(totalWeaponAd * 1.05);
   totalWeaponAd = Math.round(totalWeaponAd + 900);
 
+  // Bane stack from all equipped pieces with vsTags
+  const banePieces = pieces.filter((p) => p.isBane && p.appliesTo(targetTags));
+  const stacked = stackBaneMults(
+    banePieces.map((p) => ({
+      id: p.id,
+      name: p.name,
+      vsTags: p.vsTags,
+      exclusiveGroup: p.exclusiveGroup,
+    })),
+    targetTags,
+  );
+  const accuracyFactor = stackBaneAccuracy(banePieces, targetTags);
+  const bane: LoadoutBaneInfo = {
+    mult: stacked.mult,
+    accuracyFactor,
+    applied: stacked.applied,
+    pieces: banePieces,
+    targetTags,
+  };
+  if (stacked.mult > 1) {
+    notes.push(
+      `Bane stack ×${stacked.mult.toFixed(3)} (acc×${accuracyFactor.toFixed(3)}): ${stacked.applied.map((a) => a.name).join(" + ")}`,
+    );
+  }
+
   notes.push(
-    `OOP resolve: ${pieces.length} pieces from ${pool.length} accessible / ${EQUIPMENT_CATALOG.length} catalog`,
+    `OOP resolve: ${pieces.length} pieces from ${pool.length} accessible / ${EQUIPMENT_CATALOG.length} catalog` +
+      (targetTags[0] !== "general" ? ` · target=[${targetTags.join(",")}]` : ""),
   );
 
   return {
@@ -471,7 +615,22 @@ export function resolveLoadoutOOP(
     missingSlots: missing,
     notes,
     blockedCandidates: blockedCandidates.slice(0, 25),
+    bane,
   };
+}
+
+/** Pick bane Equipment objects from full catalog (OOP). */
+export function pickBaneFromCatalog(
+  player: PlayerSnapshot,
+  style: Exclude<CombatStyle, "all">,
+  targetTags: readonly TargetTag[],
+  opts?: { ignoreBossFlags?: boolean },
+): Equipment[] {
+  const load = resolveLoadoutOOP(player, style, style === "ranged" || style === "magic" ? "2h" : "dual", {
+    ignoreBossFlags: opts?.ignoreBossFlags ?? true,
+    targetTags: [...targetTags],
+  });
+  return load.bane.pieces;
 }
 
 export function equipmentStats() {
@@ -479,11 +638,13 @@ export function equipmentStats() {
   const byRegion: Record<string, number> = {};
   let withSkills = 0;
   let withFlags = 0;
+  let withBane = 0;
   for (const e of EQUIPMENT_CATALOG) {
     bySlot[e.slot] = (bySlot[e.slot] ?? 0) + 1;
     for (const r of e.regions) byRegion[r] = (byRegion[r] ?? 0) + 1;
     if (e.skillReqs.length) withSkills++;
     if (e.flags.length) withFlags++;
+    if (e.isBane) withBane++;
   }
   return {
     total: EQUIPMENT_CATALOG.length,
@@ -491,7 +652,9 @@ export function equipmentStats() {
     byRegion,
     withSkills,
     withFlags,
+    withBane,
     wikiGenerated: EQUIPMENT_CATALOG.filter((e) => e.wikiGenerated).length,
-    handCurated: EQUIPMENT_CATALOG.filter((e) => !e.wikiGenerated).length,
+    handCurated: EQUIPMENT_CATALOG.filter((e) => !e.wikiGenerated && !e.isBane).length,
+    banePieces: withBane,
   };
 }

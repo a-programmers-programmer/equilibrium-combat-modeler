@@ -30,7 +30,8 @@ export type ItemSlot =
   | "amulet"
   | "ring"
   | "aura"
-  | "pocket";
+  | "pocket"
+  | "ammo";
 
 export type CombatStyle = "necromancy" | "melee" | "magic" | "ranged" | "all";
 export type ArmourKind = "tank" | "power" | "hybrid" | "shield" | "defender" | "none";

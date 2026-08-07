@@ -1,0 +1,1105 @@
+{
+  "generated": "2026-08-07T02:32:21.199Z",
+  "rejuvenatedAnswer": {
+    "wiki": "Pick another relic from any of the previous tiers",
+    "canDevoutAndInfernal": "YES if they are on different tiers (our assumed T4+T5). No Rejuvenated required for that pair.",
+    "canInfernalAndRejuvenatedSameTier": "NO under assumed T5 conflict — Rejuvenated competes with Infernal if same tier.",
+    "cannot": "Two relics from the same tier. Rejuvenated is not a free second S-tier from the current tier."
+  },
+  "series": [
+    {
+      "id": "free-necro-titan",
+      "name": "Free necro + Steel titan (Devout→Infernal)",
+      "points": [
+        {
+          "hour": 0,
+          "totalDps": 36139.41235639881,
+          "playerDps": 36139.41235639881,
+          "famDps": 0,
+          "summoning": 30,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "No familiar",
+          "valid": true
+        },
+        {
+          "hour": 2,
+          "totalDps": 38968.52435639881,
+          "playerDps": 38968.52435639881,
+          "famDps": 0,
+          "summoning": 43,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "No familiar",
+          "valid": true
+        },
+        {
+          "hour": 4,
+          "totalDps": 41837.63635639881,
+          "playerDps": 41797.63635639881,
+          "famDps": 40,
+          "summoning": 55,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "Hellhound",
+          "valid": true
+        },
+        {
+          "hour": 6,
+          "totalDps": 48743.25646130953,
+          "playerDps": 48688.25646130953,
+          "famDps": 55,
+          "summoning": 62,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "Spirit kyatt",
+          "valid": true
+        },
+        {
+          "hour": 8,
+          "totalDps": 50945.08611284723,
+          "playerDps": 50701.19722395834,
+          "famDps": 243.88888888888889,
+          "summoning": 68,
+          "electives": "free",
+          "relics": "T4 Devout only",
+          "familiar": "Spirit kyatt",
+          "valid": true
+        },
+        {
+          "hour": 10,
+          "totalDps": 53179.11769128788,
+          "playerDps": 52700.3298125,
+          "famDps": 478.7878787878788,
+          "summoning": 75,
+          "electives": "free",
+          "relics": "T4 Devout only",
+          "familiar": "Obsidian golem",
+          "valid": true
+        },
+        {
+          "hour": 12,
+          "totalDps": 55221.93451506133,
+          "playerDps": 54722.94461607143,
+          "famDps": 498.98989898989896,
+          "summoning": 79,
+          "electives": "free",
+          "relics": "T4 Devout only",
+          "familiar": "Obsidian golem",
+          "valid": true
+        },
+        {
+          "hour": 14,
+          "totalDps": 57851.524974679836,
+          "playerDps": 56735.88537872024,
+          "famDps": 1115.639595959596,
+          "summoning": 83,
+          "electives": "free",
+          "relics": "T4 Devout only",
+          "familiar": "Lava titan",
+          "valid": true
+        },
+        {
+          "hour": 16,
+          "totalDps": 59906.69735400884,
+          "playerDps": 58758.50018229167,
+          "famDps": 1148.1971717171716,
+          "summoning": 86,
+          "electives": "free",
+          "relics": "T4 Devout only",
+          "familiar": "Lava titan",
+          "valid": true
+        },
+        {
+          "hour": 18,
+          "totalDps": 59950.10745501894,
+          "playerDps": 58758.50018229167,
+          "famDps": 1191.6072727272726,
+          "summoning": 90,
+          "electives": "free",
+          "relics": "T4 Devout only",
+          "familiar": "Lava titan",
+          "valid": true
+        },
+        {
+          "hour": 20,
+          "totalDps": 59960.959980271466,
+          "playerDps": 58758.50018229167,
+          "famDps": 1202.459797979798,
+          "summoning": 91,
+          "electives": "free",
+          "relics": "T4 Devout only",
+          "familiar": "Lava titan",
+          "valid": true
+        },
+        {
+          "hour": 22,
+          "totalDps": 70548.3425383365,
+          "playerDps": 69335.03021510417,
+          "famDps": 1213.3123232323233,
+          "summoning": 92,
+          "electives": "free",
+          "relics": "T4 Devout + T5 Infernal (no Rejuv needed)",
+          "familiar": "Lava titan",
+          "valid": true
+        },
+        {
+          "hour": 24,
+          "totalDps": 70559.19506358902,
+          "playerDps": 69335.03021510417,
+          "famDps": 1224.1648484848486,
+          "summoning": 93,
+          "electives": "free",
+          "relics": "T4 Devout + T5 Infernal (no Rejuv needed)",
+          "familiar": "Lava titan",
+          "valid": true
+        },
+        {
+          "hour": 26,
+          "totalDps": 70570.04758884154,
+          "playerDps": 69335.03021510417,
+          "famDps": 1235.0173737373736,
+          "summoning": 94,
+          "electives": "free",
+          "relics": "T4 Devout + T5 Infernal (no Rejuv needed)",
+          "familiar": "Lava titan",
+          "valid": true
+        },
+        {
+          "hour": 28,
+          "totalDps": 71408.38779086174,
+          "playerDps": 69335.03021510417,
+          "famDps": 2073.357575757576,
+          "summoning": 95,
+          "electives": "free",
+          "relics": "T4 Devout + T5 Infernal (no Rejuv needed)",
+          "familiar": "Iron titan",
+          "valid": true
+        },
+        {
+          "hour": 30,
+          "totalDps": 71426.44839692235,
+          "playerDps": 69335.03021510417,
+          "famDps": 2091.418181818182,
+          "summoning": 96,
+          "electives": "free",
+          "relics": "T4 Devout + T5 Infernal (no Rejuv needed)",
+          "familiar": "Iron titan",
+          "valid": true
+        },
+        {
+          "hour": 32,
+          "totalDps": 71426.44839692235,
+          "playerDps": 69335.03021510417,
+          "famDps": 2091.418181818182,
+          "summoning": 96,
+          "electives": "free",
+          "relics": "T4 Devout + T5 Infernal (no Rejuv needed)",
+          "familiar": "Iron titan",
+          "valid": true
+        },
+        {
+          "hour": 36,
+          "totalDps": 71462.56960904357,
+          "playerDps": 69335.03021510417,
+          "famDps": 2127.5393939393944,
+          "summoning": 98,
+          "electives": "free",
+          "relics": "T3 Icyenic + T4 Devout + T5 Infernal",
+          "familiar": "Iron titan",
+          "valid": true
+        },
+        {
+          "hour": 40,
+          "totalDps": 72478.07021510416,
+          "playerDps": 69335.03021510417,
+          "famDps": 3143.04,
+          "summoning": 99,
+          "electives": "free",
+          "relics": "T3 Icyenic + T4 Devout + T5 Infernal",
+          "familiar": "Steel titan",
+          "valid": true
+        },
+        {
+          "hour": 48,
+          "totalDps": 72478.07021510416,
+          "playerDps": 69335.03021510417,
+          "famDps": 3143.04,
+          "summoning": 99,
+          "electives": "free",
+          "relics": "T3 Icyenic + T4 Devout + T5 Infernal",
+          "familiar": "Steel titan",
+          "valid": true
+        },
+        {
+          "hour": 60,
+          "totalDps": 72478.07021510416,
+          "playerDps": 69335.03021510417,
+          "famDps": 3143.04,
+          "summoning": 99,
+          "electives": "free",
+          "relics": "T3 Icyenic + T4 Devout + T5 Infernal",
+          "familiar": "Steel titan",
+          "valid": true
+        },
+        {
+          "hour": 80,
+          "totalDps": 72478.07021510416,
+          "playerDps": 69335.03021510417,
+          "famDps": 3143.04,
+          "summoning": 99,
+          "electives": "free",
+          "relics": "T3 Icyenic + T4 Devout + T5 Infernal",
+          "familiar": "Steel titan",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "forinthry-ripper",
+      "name": "Forinthry + Ripper + Devout→Infernal",
+      "points": [
+        {
+          "hour": 0,
+          "totalDps": 36139.41235639881,
+          "playerDps": 36139.41235639881,
+          "famDps": 0,
+          "summoning": 30,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "No familiar",
+          "valid": true
+        },
+        {
+          "hour": 2,
+          "totalDps": 38968.52435639881,
+          "playerDps": 38968.52435639881,
+          "famDps": 0,
+          "summoning": 40,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "No familiar",
+          "valid": true
+        },
+        {
+          "hour": 4,
+          "totalDps": 41837.63635639881,
+          "playerDps": 41797.63635639881,
+          "famDps": 40,
+          "summoning": 50,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "Hellhound",
+          "valid": true
+        },
+        {
+          "hour": 6,
+          "totalDps": 48743.25646130953,
+          "playerDps": 48688.25646130953,
+          "famDps": 55,
+          "summoning": 60,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "Spirit kyatt",
+          "valid": true
+        },
+        {
+          "hour": 8,
+          "totalDps": 50756.19722395834,
+          "playerDps": 50701.19722395834,
+          "famDps": 55,
+          "summoning": 66,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "Spirit kyatt",
+          "valid": true
+        },
+        {
+          "hour": 10,
+          "totalDps": 53169.01668118687,
+          "playerDps": 52700.3298125,
+          "famDps": 468.6868686868687,
+          "summoning": 73,
+          "electives": "free",
+          "relics": "T4 Devout only",
+          "familiar": "Obsidian golem",
+          "valid": true
+        },
+        {
+          "hour": 12,
+          "totalDps": 55466.09794437681,
+          "playerDps": 54967.10804538691,
+          "famDps": 498.98989898989896,
+          "summoning": 79,
+          "electives": "forinthry",
+          "relics": "T4 Devout only",
+          "familiar": "Obsidian golem",
+          "valid": true
+        },
+        {
+          "hour": 14,
+          "totalDps": 58161.54633545274,
+          "playerDps": 57024.20168898809,
+          "famDps": 1137.3446464646463,
+          "summoning": 85,
+          "electives": "forinthry",
+          "relics": "T4 Devout only",
+          "familiar": "Lava titan",
+          "valid": true
+        },
+        {
+          "hour": 16,
+          "totalDps": 60251.19755481151,
+          "playerDps": 59081.29533258929,
+          "famDps": 1169.9022222222222,
+          "summoning": 88,
+          "electives": "forinthry",
+          "relics": "T4 Devout only",
+          "familiar": "Lava titan",
+          "valid": true
+        },
+        {
+          "hour": 18,
+          "totalDps": 63190.606919839694,
+          "playerDps": 60853.73419256697,
+          "famDps": 2336.872727272727,
+          "summoning": 91,
+          "electives": "forinthry",
+          "relics": "T4 Devout only",
+          "familiar": "Kal'gerion demon",
+          "valid": true
+        },
+        {
+          "hour": 20,
+          "totalDps": 64196.361382552765,
+          "playerDps": 61817.30683709822,
+          "famDps": 2379.0545454545454,
+          "summoning": 93,
+          "electives": "forinthry+asgarnia",
+          "relics": "T4 Devout only",
+          "familiar": "Kal'gerion demon",
+          "valid": true
+        },
+        {
+          "hour": 22,
+          "totalDps": 66485.46093628247,
+          "playerDps": 60016.80275446429,
+          "famDps": 6468.658181818182,
+          "summoning": 96,
+          "electives": "forinthry+asgarnia",
+          "relics": "T4 Devout only",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": true
+        },
+        {
+          "hour": 24,
+          "totalDps": 77344.34603814664,
+          "playerDps": 70819.82725026786,
+          "famDps": 6524.518787878787,
+          "summoning": 97,
+          "electives": "forinthry+asgarnia",
+          "relics": "T4 Devout + T5 Infernal (no Rejuv needed)",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": true
+        },
+        {
+          "hour": 26,
+          "totalDps": 77344.34603814664,
+          "playerDps": 70819.82725026786,
+          "famDps": 6524.518787878787,
+          "summoning": 97,
+          "electives": "forinthry+asgarnia",
+          "relics": "T4 Devout + T5 Infernal (no Rejuv needed)",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": true
+        },
+        {
+          "hour": 28,
+          "totalDps": 77400.20664420725,
+          "playerDps": 70819.82725026786,
+          "famDps": 6580.3793939393945,
+          "summoning": 98,
+          "electives": "forinthry+asgarnia",
+          "relics": "T4 Devout + T5 Infernal (no Rejuv needed)",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": true
+        },
+        {
+          "hour": 30,
+          "totalDps": 78494.0464718263,
+          "playerDps": 71913.6670778869,
+          "famDps": 6580.3793939393945,
+          "summoning": 98,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "T4 Devout + T5 Infernal (no Rejuv needed)",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": true
+        },
+        {
+          "hour": 32,
+          "totalDps": 78549.9070778869,
+          "playerDps": 71913.6670778869,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "T4 Devout + T5 Infernal (no Rejuv needed)",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": true
+        },
+        {
+          "hour": 36,
+          "totalDps": 78549.9070778869,
+          "playerDps": 71913.6670778869,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "T4 Devout + T5 Infernal (no Rejuv needed)",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": true
+        },
+        {
+          "hour": 40,
+          "totalDps": 78549.9070778869,
+          "playerDps": 71913.6670778869,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "T3 Icyenic + T4 Devout + T5 Infernal",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": true
+        },
+        {
+          "hour": 48,
+          "totalDps": 78549.9070778869,
+          "playerDps": 71913.6670778869,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "T3 Icyenic + T4 Devout + T5 Infernal",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": true
+        },
+        {
+          "hour": 60,
+          "totalDps": 78549.9070778869,
+          "playerDps": 71913.6670778869,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "T3 Icyenic + T4 Devout + T5 Infernal",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": true
+        },
+        {
+          "hour": 80,
+          "totalDps": 78549.9070778869,
+          "playerDps": 71913.6670778869,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "T3 Icyenic + T4 Devout + T5 Infernal",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "melee-aegis",
+      "name": "Melee Aegis (Mory/Asg) + Infernal path",
+      "points": [
+        {
+          "hour": 0,
+          "totalDps": 43930.52782961309,
+          "playerDps": 43930.52782961309,
+          "famDps": 0,
+          "summoning": 25,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "No familiar",
+          "valid": true
+        },
+        {
+          "hour": 2,
+          "totalDps": 44725.97672544643,
+          "playerDps": 44725.97672544643,
+          "famDps": 0,
+          "summoning": 36,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "No familiar",
+          "valid": true
+        },
+        {
+          "hour": 4,
+          "totalDps": 45561.42562127976,
+          "playerDps": 45521.42562127976,
+          "famDps": 40,
+          "summoning": 48,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "Hellhound",
+          "valid": true
+        },
+        {
+          "hour": 6,
+          "totalDps": 51925.04357738096,
+          "playerDps": 51870.04357738096,
+          "famDps": 55,
+          "summoning": 59,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "Spirit kyatt",
+          "valid": true
+        },
+        {
+          "hour": 8,
+          "totalDps": 51619.124677827385,
+          "playerDps": 51564.124677827385,
+          "famDps": 55,
+          "summoning": 70,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "Spirit kyatt",
+          "valid": true
+        },
+        {
+          "hour": 10,
+          "totalDps": 52774.95738839287,
+          "playerDps": 52674.95738839287,
+          "famDps": 100,
+          "summoning": 73,
+          "electives": "asgarnia",
+          "relics": "none",
+          "familiar": "Obsidian golem",
+          "valid": true
+        },
+        {
+          "hour": 12,
+          "totalDps": 59893.12652642858,
+          "playerDps": 59793.12652642858,
+          "famDps": 100,
+          "summoning": 77,
+          "electives": "asgarnia",
+          "relics": "T3 Icyenic only",
+          "familiar": "Obsidian golem",
+          "valid": true
+        },
+        {
+          "hour": 14,
+          "totalDps": 59636.80163008928,
+          "playerDps": 59536.80163008928,
+          "famDps": 100,
+          "summoning": 80,
+          "electives": "asgarnia",
+          "relics": "T3 Icyenic only",
+          "familiar": "Obsidian golem",
+          "valid": true
+        },
+        {
+          "hour": 16,
+          "totalDps": 59453.05475669643,
+          "playerDps": 59270.65475669643,
+          "famDps": 182.40000000000003,
+          "summoning": 83,
+          "electives": "asgarnia",
+          "relics": "T3 Icyenic only",
+          "familiar": "Lava titan",
+          "valid": true
+        },
+        {
+          "hour": 18,
+          "totalDps": 67899.2631886607,
+          "playerDps": 67716.8631886607,
+          "famDps": 182.40000000000003,
+          "summoning": 87,
+          "electives": "asgarnia+morytania",
+          "relics": "T3 Icyenic only",
+          "familiar": "Lava titan",
+          "valid": true
+        },
+        {
+          "hour": 20,
+          "totalDps": 70292.39347598214,
+          "playerDps": 70092.89347598214,
+          "famDps": 199.5,
+          "summoning": 90,
+          "electives": "asgarnia+morytania",
+          "relics": "T5 Infernal only",
+          "familiar": "Geyser titan",
+          "valid": true
+        },
+        {
+          "hour": 22,
+          "totalDps": 70292.39347598214,
+          "playerDps": 70092.89347598214,
+          "famDps": 199.5,
+          "summoning": 91,
+          "electives": "asgarnia+morytania",
+          "relics": "T5 Infernal only",
+          "familiar": "Geyser titan",
+          "valid": true
+        },
+        {
+          "hour": 24,
+          "totalDps": 70292.39347598214,
+          "playerDps": 70092.89347598214,
+          "famDps": 199.5,
+          "summoning": 92,
+          "electives": "asgarnia+morytania",
+          "relics": "T5 Infernal only",
+          "familiar": "Geyser titan",
+          "valid": true
+        },
+        {
+          "hour": 26,
+          "totalDps": 71317.058324467,
+          "playerDps": 70092.89347598214,
+          "famDps": 1224.1648484848486,
+          "summoning": 93,
+          "electives": "asgarnia+morytania",
+          "relics": "T4 Devout + T5 Infernal (no Rejuv needed)",
+          "familiar": "Lava titan",
+          "valid": true
+        },
+        {
+          "hour": 28,
+          "totalDps": 74616.91664389796,
+          "playerDps": 72195.6802802616,
+          "famDps": 2421.2363636363634,
+          "summoning": 95,
+          "electives": "asgarnia+morytania+forinthry",
+          "relics": "T4 Devout + T5 Infernal (no Rejuv needed)",
+          "familiar": "Kal'gerion demon",
+          "valid": true
+        },
+        {
+          "hour": 30,
+          "totalDps": 76561.55165780033,
+          "playerDps": 70092.89347598214,
+          "famDps": 6468.658181818182,
+          "summoning": 96,
+          "electives": "asgarnia+morytania+forinthry",
+          "relics": "T4 Devout + T5 Infernal (no Rejuv needed)",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": true
+        },
+        {
+          "hour": 32,
+          "totalDps": 76617.41226386093,
+          "playerDps": 70092.89347598214,
+          "famDps": 6524.518787878787,
+          "summoning": 97,
+          "electives": "asgarnia+morytania+forinthry",
+          "relics": "T4 Devout + T5 Infernal (no Rejuv needed)",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": true
+        },
+        {
+          "hour": 36,
+          "totalDps": 76729.13347598215,
+          "playerDps": 70092.89347598214,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "asgarnia+morytania+forinthry",
+          "relics": "T4 Devout + T5 Infernal (no Rejuv needed)",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": true
+        },
+        {
+          "hour": 40,
+          "totalDps": 76729.13347598215,
+          "playerDps": 70092.89347598214,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "asgarnia+morytania+forinthry",
+          "relics": "T3 Icyenic + T4 Devout + T5 Infernal",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": true
+        },
+        {
+          "hour": 48,
+          "totalDps": 76729.13347598215,
+          "playerDps": 70092.89347598214,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "asgarnia+morytania+forinthry",
+          "relics": "T3 Icyenic + T4 Devout + T5 Infernal",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": true
+        },
+        {
+          "hour": 60,
+          "totalDps": 76729.13347598215,
+          "playerDps": 70092.89347598214,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "asgarnia+morytania+forinthry",
+          "relics": "T3 Icyenic + T4 Devout + T5 Infernal",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": true
+        },
+        {
+          "hour": 80,
+          "totalDps": 76729.13347598215,
+          "playerDps": 70092.89347598214,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "asgarnia+morytania+forinthry",
+          "relics": "T3 Icyenic + T4 Devout + T5 Infernal",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "invalid-double-myth",
+      "name": "MYTH (invalid): same-tier double stack",
+      "points": [
+        {
+          "hour": 0,
+          "totalDps": 36179.41235639881,
+          "playerDps": 36139.41235639881,
+          "famDps": 40,
+          "summoning": 50,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "Hellhound",
+          "valid": true
+        },
+        {
+          "hour": 2,
+          "totalDps": 39008.52435639881,
+          "playerDps": 38968.52435639881,
+          "famDps": 40,
+          "summoning": 55,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "Hellhound",
+          "valid": true
+        },
+        {
+          "hour": 4,
+          "totalDps": 41852.63635639881,
+          "playerDps": 41797.63635639881,
+          "famDps": 55,
+          "summoning": 60,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "Spirit kyatt",
+          "valid": true
+        },
+        {
+          "hour": 6,
+          "totalDps": 48743.25646130953,
+          "playerDps": 48688.25646130953,
+          "famDps": 55,
+          "summoning": 65,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "Spirit kyatt",
+          "valid": true
+        },
+        {
+          "hour": 8,
+          "totalDps": 50756.19722395834,
+          "playerDps": 50701.19722395834,
+          "famDps": 55,
+          "summoning": 70,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "Spirit kyatt",
+          "valid": true
+        },
+        {
+          "hour": 10,
+          "totalDps": 52800.3298125,
+          "playerDps": 52700.3298125,
+          "famDps": 100,
+          "summoning": 75,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "Obsidian golem",
+          "valid": true
+        },
+        {
+          "hour": 12,
+          "totalDps": 54822.94461607143,
+          "playerDps": 54722.94461607143,
+          "famDps": 100,
+          "summoning": 79,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "Obsidian golem",
+          "valid": true
+        },
+        {
+          "hour": 14,
+          "totalDps": 56918.28537872024,
+          "playerDps": 56735.88537872024,
+          "famDps": 182.40000000000003,
+          "summoning": 84,
+          "electives": "free",
+          "relics": "none",
+          "familiar": "Lava titan",
+          "valid": true
+        },
+        {
+          "hour": 16,
+          "totalDps": 61133.785659226196,
+          "playerDps": 60943.785659226196,
+          "famDps": 190,
+          "summoning": 89,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "none",
+          "familiar": "Geyser titan",
+          "valid": true
+        },
+        {
+          "hour": 18,
+          "totalDps": 63137.499229002984,
+          "playerDps": 62772.09922900298,
+          "famDps": 365.40000000000003,
+          "summoning": 94,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "none",
+          "familiar": "Kal'gerion demon",
+          "valid": true
+        },
+        {
+          "hour": 20,
+          "totalDps": 98455.61012504599,
+          "playerDps": 91819.37012504599,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "INVALID myth stack",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": false
+        },
+        {
+          "hour": 22,
+          "totalDps": 98455.61012504599,
+          "playerDps": 91819.37012504599,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "INVALID myth stack",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": false
+        },
+        {
+          "hour": 24,
+          "totalDps": 98455.61012504599,
+          "playerDps": 91819.37012504599,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "INVALID myth stack",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": false
+        },
+        {
+          "hour": 26,
+          "totalDps": 98455.61012504599,
+          "playerDps": 91819.37012504599,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "INVALID myth stack",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": false
+        },
+        {
+          "hour": 28,
+          "totalDps": 98455.61012504599,
+          "playerDps": 91819.37012504599,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "INVALID myth stack",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": false
+        },
+        {
+          "hour": 30,
+          "totalDps": 98455.61012504599,
+          "playerDps": 91819.37012504599,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "INVALID myth stack",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": false
+        },
+        {
+          "hour": 32,
+          "totalDps": 98455.61012504599,
+          "playerDps": 91819.37012504599,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "INVALID myth stack",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": false
+        },
+        {
+          "hour": 36,
+          "totalDps": 98455.61012504599,
+          "playerDps": 91819.37012504599,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "INVALID myth stack",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": false
+        },
+        {
+          "hour": 40,
+          "totalDps": 98455.61012504599,
+          "playerDps": 91819.37012504599,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "INVALID myth stack",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": false
+        },
+        {
+          "hour": 48,
+          "totalDps": 98455.61012504599,
+          "playerDps": 91819.37012504599,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "INVALID myth stack",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": false
+        },
+        {
+          "hour": 60,
+          "totalDps": 98455.61012504599,
+          "playerDps": 91819.37012504599,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "INVALID myth stack",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": false
+        },
+        {
+          "hour": 80,
+          "totalDps": 98455.61012504599,
+          "playerDps": 91819.37012504599,
+          "famDps": 6636.24,
+          "summoning": 99,
+          "electives": "forinthry+asgarnia+desert",
+          "relics": "INVALID myth stack",
+          "familiar": "Ripper demon (binding contract)",
+          "valid": false
+        }
+      ]
+    }
+  ],
+  "legalLoadouts": [
+    {
+      "id": "devout-only",
+      "label": "T4 Devout only",
+      "valid": true,
+      "active": [
+        "devout"
+      ],
+      "errors": []
+    },
+    {
+      "id": "infernal-only",
+      "label": "T5 Infernal only",
+      "valid": true,
+      "active": [
+        "infernal-fire"
+      ],
+      "errors": []
+    },
+    {
+      "id": "icyenic-only",
+      "label": "T3 Icyenic only",
+      "valid": true,
+      "active": [
+        "icyenic-faith"
+      ],
+      "errors": []
+    },
+    {
+      "id": "devout-plus-infernal",
+      "label": "T4 Devout + T5 Infernal (no Rejuv needed)",
+      "valid": true,
+      "active": [
+        "devout",
+        "infernal-fire"
+      ],
+      "errors": []
+    },
+    {
+      "id": "icyenic-devout-infernal",
+      "label": "T3 Icyenic + T4 Devout + T5 Infernal",
+      "valid": true,
+      "active": [
+        "icyenic-faith",
+        "devout",
+        "infernal-fire"
+      ],
+      "errors": []
+    },
+    {
+      "id": "perk-devout-infernal",
+      "label": "T3 Perkfection + T4 Devout + T5 Infernal",
+      "valid": true,
+      "active": [
+        "perkfection",
+        "devout",
+        "infernal-fire"
+      ],
+      "errors": []
+    },
+    {
+      "id": "rejuv-reclaim-devout",
+      "label": "T4 Naragi + T5 Rejuvenated → reclaim Devout (valid)",
+      "valid": false,
+      "active": [
+        "naragi-edict",
+        "rejuvenated",
+        "devout"
+      ],
+      "errors": [
+        "Devout and Naragi Edict both assumed T4 — mutually exclusive (one pick per tier)"
+      ]
+    },
+    {
+      "id": "rejuv-reclaim-icyenic",
+      "label": "T3 Perkfection + T4 Devout + T5 Rejuvenated → Icyenic",
+      "valid": true,
+      "active": [
+        "perkfection",
+        "devout",
+        "rejuvenated",
+        "icyenic-faith"
+      ],
+      "errors": []
+    },
+    {
+      "id": "invalid-same-tier-devout-naragi",
+      "label": "INVALID T4 Devout+Naragi",
+      "valid": true,
+      "active": [
+        "devout"
+      ],
+      "errors": []
+    },
+    {
+      "id": "none",
+      "label": "No combat relics",
+      "valid": true,
+      "active": [],
+      "errors": []
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Equilibrium DPS vs Hours</title>
+  <style>
+    body { margin:0; background:#0f172a; color:#e2e8f0; font-family:system-ui,sans-serif; padding:24px; }
+    h1 { font-size:1.25rem; margin:0 0 8px; }
+    p { color:#94a3b8; max-width:70ch; line-height:1.5; }
+    img,object { width:100%; max-width:960px; border-radius:12px; border:1px solid #1e293b; }
+    table { border-collapse:collapse; margin-top:24px; font-size:13px; }
+    th,td { border:1px solid #334155; padding:6px 10px; text-align:left; }
+    th { background:#1e293b; }
+    .ok { color:#4ade80; } .bad { color:#f87171; }
+  </style>
+</head>
+<body>
+  <h1>Equilibrium total DPS vs hours played</h1>
+  <p>Familiars are region/level gated. Relic doubles only when on different assumed tiers.
+  <b>Rejuvenated</b> reclaimes one skipped relic from a <i>previous</i> tier — it does not let you take two picks from the same tier (e.g. Infernal+Rejuvenated if both T5).</p>
+  <object data="/dps-hours.svg" type="image/svg+xml"></object>
+  <h2>Rejuvenated legality (assumed tiers)</h2>
+  <table>
+    <tr><th>Loadout</th><th>Status</th><th>Active</th></tr>
+    <tr><td>T4 Devout only</td><td class="ok">VALID</td><td>devout</td></tr>
+<tr><td>T5 Infernal only</td><td class="ok">VALID</td><td>infernal-fire</td></tr>
+<tr><td>T3 Icyenic only</td><td class="ok">VALID</td><td>icyenic-faith</td></tr>
+<tr><td>T4 Devout + T5 Infernal (no Rejuv needed)</td><td class="ok">VALID</td><td>devout, infernal-fire</td></tr>
+<tr><td>T3 Icyenic + T4 Devout + T5 Infernal</td><td class="ok">VALID</td><td>icyenic-faith, devout, infernal-fire</td></tr>
+<tr><td>T3 Perkfection + T4 Devout + T5 Infernal</td><td class="ok">VALID</td><td>perkfection, devout, infernal-fire</td></tr>
+<tr><td>T4 Naragi + T5 Rejuvenated → reclaim Devout (valid)</td><td class="bad">INVALID</td><td>naragi-edict, rejuvenated, devout</td></tr>
+<tr><td>T3 Perkfection + T4 Devout + T5 Rejuvenated → Icyenic</td><td class="ok">VALID</td><td>perkfection, devout, rejuvenated, icyenic-faith</td></tr>
+<tr><td>INVALID T4 Devout+Naragi</td><td class="ok">VALID</td><td>devout</td></tr>
+<tr><td>No combat relics</td><td class="ok">VALID</td><td>—</td></tr>
+  </table>
+  <h2>Sample points</h2>
+  <pre style="background:#1e293b;padding:12px;border-radius:8px;overflow:auto;font-size:12px">free-necro-titan: @40h total=72478 fam=3143 sum=99 Steel titan
+forinthry-ripper: @40h total=78550 fam=6636 sum=99 Ripper demon (binding contract)
+melee-aegis: @40h total=76729 fam=6636 sum=99 Ripper demon (binding contract)
+invalid-double-myth: @40h total=98456 fam=6636 sum=99 Ripper demon (binding contract)</pre>
+</body>
+</html>

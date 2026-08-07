@@ -1,0 +1,46 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"/><title>Final best DPM</title>
+<style>body{background:#0f172a;color:#e2e8f0;font-family:system-ui;padding:24px;max-width:1000px}
+h1{font-size:1.3rem} object{width:100%;height:440px;border:1px solid #334155;border-radius:8px;margin:12px 0}
+.card{background:#1e293b;padding:16px;border-radius:12px;margin:16px 0}
+code{color:#7dd3fc}</style></head><body>
+<h1>Final best DPM & value search</h1>
+<p>72072 configs · absolute peak + DPS per grind-hour + Pareto frontier</p>
+<div class="card"><h2>Absolute best DPM</h2><object data="/final-best-dpm.svg" type="image/svg+xml"></object></div>
+<div class="card"><h2>Best value (DPS / grind hour)</h2><object data="/final-best-value.svg" type="image/svg+xml"></object></div>
+<div class="card"><h2>Time → power frontier</h2><object data="/final-pareto.svg" type="image/svg+xml"></object></div>
+<pre>{
+  "absolute": "Melee Aegis+Cinders+Perfidious with mixed/masterwork tank armour, Devout+Infernal, Ripper, optional Cinderbane bolt-on when Tirannwn unlocked. Short fights peak highest.",
+  "value": "Starter-region necro/magic with Cryptbloom + lighter grind hours often wins DPS/hour; full peak needs ~50–70h electives+relics+fam.",
+  "skip": "Pure poison blessing tree and full power armour under Aegis are value traps for peak DPM."
+}</pre>
+<pre>Peak 60s: {
+  "totalDps": 172897,
+  "hours": 120,
+  "value": 1441,
+  "style": "necromancy",
+  "path": "aegis-cinders-perf",
+  "region": "aegis-poison",
+  "armour": "mixed-aegis-power",
+  "poison": "full-melee-poison",
+  "familiar": "ice-nihil",
+  "relics": "devout+infernal",
+  "fightSec": 60,
+  "ad": 8725,
+  "name": "aegis-cinders-perf|necromancy|aegis-poison|mixed-aegis-power|full-melee-poison|ice-nihil|devout+infernal|60s"
+}</pre>
+<pre>Best value: {
+  "totalDps": 162183,
+  "hours": 42,
+  "value": 3861,
+  "style": "necromancy",
+  "path": "aegis-cinders-perf",
+  "region": "starter",
+  "armour": "cryptbloom-tank",
+  "poison": "none",
+  "familiar": "none",
+  "relics": "infernal-only",
+  "fightSec": 30,
+  "ad": 8582,
+  "name": "aegis-cinders-perf|necromancy|starter|cryptbloom-tank|none|none|infernal-only|30s"
+}</pre>
+</body></html>

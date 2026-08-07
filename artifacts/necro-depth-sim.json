@@ -1,0 +1,476 @@
+{
+  "generated": "2026-08-07T01:28:47.732Z",
+  "necroFeasibility": {
+    "free": {
+      "freePathWeapons": [
+        {
+          "id": "death-guard-70",
+          "name": "Death Guard (T70)",
+          "tier": 70,
+          "regions": [
+            "free/misthalin"
+          ],
+          "ok": true
+        },
+        {
+          "id": "death-guard-90",
+          "name": "Death Guard (T90)",
+          "tier": 90,
+          "regions": [
+            "free/misthalin"
+          ],
+          "ok": true
+        },
+        {
+          "id": "omni-guard",
+          "name": "Omni guard (T95)",
+          "tier": 95,
+          "regions": [
+            "free/misthalin"
+          ],
+          "ok": true
+        },
+        {
+          "id": "skull-lantern-90",
+          "name": "Skull lantern (T90)",
+          "tier": 90,
+          "regions": [
+            "free/misthalin"
+          ],
+          "ok": true
+        },
+        {
+          "id": "soulbound-lantern",
+          "name": "Soulbound lantern (T95)",
+          "tier": 95,
+          "regions": [
+            "free/misthalin"
+          ],
+          "ok": true
+        }
+      ],
+      "desertUpgrades": [
+        {
+          "id": "devourers-guard",
+          "name": "Devourer's Guard",
+          "tier": 95,
+          "ok": false
+        },
+        {
+          "id": "mask-of-tumekens-resplendence",
+          "name": "Mask of Tumeken's resplendence",
+          "tier": 75,
+          "ok": false
+        },
+        {
+          "id": "robe-top-of-tumekens-resplendence",
+          "name": "Robe top of Tumeken's resplendence",
+          "tier": 75,
+          "ok": false
+        }
+      ],
+      "summary": [
+        "Core T95 weapons (Omni + Soulbound) = Rasial in Misthalin — FREE region, no elective required.",
+        "Deathwarden/Deathdealer T70–T90 ladder = City of Um / Kili path — FREE (materials grind remains).",
+        "First Necromancer robes (T95 power) = Rasial — FREE.",
+        "Desert elective unlocks Amascut line (Tumeken's resplendence, Devourer's Guard) — optional upgrade.",
+        "Asgarnia does NOT gate necro weapons; it gates RoD/Souls/EOF/Invention.",
+        "Current electives exclude Desert → Amascut line locked; Rasial kit still complete."
+      ]
+    },
+    "withDesert": {
+      "freePathWeapons": [
+        {
+          "id": "death-guard-70",
+          "name": "Death Guard (T70)",
+          "tier": 70,
+          "regions": [
+            "free/misthalin"
+          ],
+          "ok": true
+        },
+        {
+          "id": "death-guard-90",
+          "name": "Death Guard (T90)",
+          "tier": 90,
+          "regions": [
+            "free/misthalin"
+          ],
+          "ok": true
+        },
+        {
+          "id": "omni-guard",
+          "name": "Omni guard (T95)",
+          "tier": 95,
+          "regions": [
+            "free/misthalin"
+          ],
+          "ok": true
+        },
+        {
+          "id": "skull-lantern-90",
+          "name": "Skull lantern (T90)",
+          "tier": 90,
+          "regions": [
+            "free/misthalin"
+          ],
+          "ok": true
+        },
+        {
+          "id": "soulbound-lantern",
+          "name": "Soulbound lantern (T95)",
+          "tier": 95,
+          "regions": [
+            "free/misthalin"
+          ],
+          "ok": true
+        }
+      ],
+      "desertUpgrades": [
+        {
+          "id": "devourers-guard",
+          "name": "Devourer's Guard",
+          "tier": 95,
+          "ok": true
+        },
+        {
+          "id": "mask-of-tumekens-resplendence",
+          "name": "Mask of Tumeken's resplendence",
+          "tier": 75,
+          "ok": true
+        },
+        {
+          "id": "robe-top-of-tumekens-resplendence",
+          "name": "Robe top of Tumeken's resplendence",
+          "tier": 75,
+          "ok": true
+        }
+      ],
+      "summary": [
+        "Core T95 weapons (Omni + Soulbound) = Rasial in Misthalin — FREE region, no elective required.",
+        "Deathwarden/Deathdealer T70–T90 ladder = City of Um / Kili path — FREE (materials grind remains).",
+        "First Necromancer robes (T95 power) = Rasial — FREE.",
+        "Desert elective unlocks Amascut line (Tumeken's resplendence, Devourer's Guard) — optional upgrade.",
+        "Asgarnia does NOT gate necro weapons; it gates RoD/Souls/EOF/Invention.",
+        "Current electives INCLUDE Desert → Amascut line available."
+      ]
+    },
+    "answer": "YES — good necro gear (Omni + Soulbound + T90 deathwarden/dealer) is fully obtainable on free Misthalin via Rasial/Kili. Electives only add jewellery (Asgarnia) or Amascut upgrades (Desert)."
+  },
+  "stages": [
+    {
+      "id": "t70-free",
+      "name": "T70 free (early Kili)",
+      "necroLevel": 70,
+      "electives": [],
+      "flags": [],
+      "weaponAd": 1800,
+      "armour": 1371,
+      "pieces": [
+        "Whip vine",
+        "Deathwarden robe set (T70)",
+        "Ganodermic boots",
+        "Latent Offering",
+        "Ganodermic gloves",
+        "Dragon full helm"
+      ],
+      "notes": [
+        "Death Guard T70 + Deathwarden — fully free path"
+      ],
+      "canObtainWeapons": false,
+      "missingForWeapons": [
+        "need necro 70<95 for Omni"
+      ]
+    },
+    {
+      "id": "t90-free",
+      "name": "T90 free (Kili complete)",
+      "necroLevel": 90,
+      "electives": [],
+      "flags": [],
+      "weaponAd": 3978,
+      "armour": 1671,
+      "pieces": [
+        "Death Guard (T90)",
+        "Deathwarden robe set (T90)",
+        "Skull lantern (T90)",
+        "Ganodermic boots",
+        "Latent Offering",
+        "Ganodermic gloves",
+        "Dragon full helm"
+      ],
+      "notes": [
+        "Death Guard T90 + Skull lantern + Deathdealer/Warden T90 — free"
+      ],
+      "canObtainWeapons": true,
+      "missingForWeapons": [
+        "need necro 90<95 for Omni"
+      ]
+    },
+    {
+      "id": "rasial-free",
+      "name": "Rasial BiS (free regions only)",
+      "necroLevel": 95,
+      "electives": [],
+      "flags": [
+        "killed:rasial"
+      ],
+      "weaponAd": 4575,
+      "armour": 1671,
+      "pieces": [
+        "Omni guard (T95)",
+        "Deathwarden robe set (T90)",
+        "Soulbound lantern (T95)",
+        "Ganodermic boots",
+        "Latent Offering",
+        "Ganodermic gloves",
+        "Dragon full helm"
+      ],
+      "notes": [
+        "Omni + Soulbound — NO elective required",
+        "This is real endgame necro weapons"
+      ],
+      "canObtainWeapons": true,
+      "missingForWeapons": []
+    },
+    {
+      "id": "rasial-asg",
+      "name": "Rasial + Asgarnia jewellery",
+      "necroLevel": 95,
+      "electives": [
+        "asgarnia"
+      ],
+      "flags": [
+        "killed:rasial",
+        "killed:vorago"
+      ],
+      "weaponAd": 4575,
+      "armour": 1721,
+      "pieces": [
+        "Omni guard (T95)",
+        "Deathwarden robe set (T90)",
+        "Soulbound lantern (T95)",
+        "Ganodermic boots",
+        "Ring of death",
+        "God wars cape",
+        "Amulet of souls (or essence)",
+        "Ganodermic gloves",
+        "Dragon full helm"
+      ],
+      "notes": [
+        "Same weapons + RoD/Souls/EOF",
+        "Invention hub"
+      ],
+      "canObtainWeapons": true,
+      "missingForWeapons": []
+    },
+    {
+      "id": "rasial-desert",
+      "name": "Rasial + Desert (Amascut)",
+      "necroLevel": 95,
+      "electives": [
+        "desert"
+      ],
+      "flags": [
+        "killed:rasial",
+        "killed:amascut"
+      ],
+      "weaponAd": 4575,
+      "armour": 1855,
+      "pieces": [
+        "Devourer's Guard",
+        "Achtó armour pieces",
+        "Soulbound lantern (T95)",
+        "Achto Primeval boots",
+        "Asylum surgeon's ring",
+        "Achto Primeval gloves",
+        "Achto Primeval mask"
+      ],
+      "notes": [
+        "Amascut armour/weapons if better model scores",
+        "Optional vs free Rasial kit"
+      ],
+      "canObtainWeapons": true,
+      "missingForWeapons": []
+    },
+    {
+      "id": "full-combat",
+      "name": "Asgarnia+Desert+Forinthry full",
+      "necroLevel": 99,
+      "electives": [
+        "asgarnia",
+        "desert",
+        "forinthry"
+      ],
+      "flags": [
+        "killed:rasial",
+        "killed:amascut",
+        "killed:vorago"
+      ],
+      "weaponAd": 4575,
+      "armour": 1905,
+      "pieces": [
+        "Devourer's Guard",
+        "Achtó armour pieces",
+        "Soulbound lantern (T95)",
+        "Achto Primeval boots",
+        "Ring of death",
+        "God wars cape",
+        "Amulet of souls (or essence)",
+        "Achto Primeval gloves",
+        "Achto Primeval mask"
+      ],
+      "notes": [
+        "Max jewellery + Achtó hybrids + Rasial weapons"
+      ],
+      "canObtainWeapons": true,
+      "missingForWeapons": []
+    },
+    {
+      "id": "ancient-path",
+      "name": "Asgarnia+Kandarin+Forinthry (Ancient Inv)",
+      "necroLevel": 99,
+      "electives": [
+        "asgarnia",
+        "kandarin",
+        "forinthry"
+      ],
+      "flags": [
+        "killed:rasial",
+        "killed:vorago"
+      ],
+      "weaponAd": 4575,
+      "armour": 1734,
+      "pieces": [
+        "Omni guard (T95)",
+        "Deathwarden robe set (T90)",
+        "Soulbound lantern (T95)",
+        "Ganodermic boots",
+        "Ring of death",
+        "God wars cape",
+        "Amulet of souls (or essence)",
+        "Ganodermic gloves",
+        "Gemstone helm"
+      ],
+      "notes": [
+        "No Amascut; Ancient Invention available",
+        "Weapons still free Rasial"
+      ],
+      "canObtainWeapons": true,
+      "missingForWeapons": []
+    }
+  ],
+  "sims": 2016,
+  "winners": {
+    "best30st": {
+      "window": 30,
+      "scenario": "ST",
+      "path": "OCOBOC",
+      "packageId": "desert-mory-asgarnia",
+      "style": "melee",
+      "arch": "shield-tank",
+      "dmg": 2947854.945675,
+      "dps": 58489.18543005953,
+      "ult": 1.68,
+      "hasHP": false,
+      "ad": 5397,
+      "armour": 2696,
+      "pieces": "Khopesh of Elidinis | Trimmed masterwork melee set | Malevolent kiteshield | Achto Primeval boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Achto Primeval gloves | Achto Primeval mask"
+    },
+    "best30m": {
+      "window": 30,
+      "scenario": "MULTI",
+      "path": "OCOBOC",
+      "packageId": "desert-mory-asgarnia",
+      "style": "melee",
+      "arch": "shield-tank",
+      "dmg": 3445657.0092000007,
+      "dps": 68366.21050000002,
+      "ult": 1.68,
+      "hasHP": false,
+      "ad": 5397,
+      "armour": 2696,
+      "pieces": "Khopesh of Elidinis | Trimmed masterwork melee set | Malevolent kiteshield | Achto Primeval boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Achto Primeval gloves | Achto Primeval mask"
+    },
+    "best2mSt": {
+      "window": 120,
+      "scenario": "ST",
+      "path": "OCOBOC",
+      "packageId": "desert-mory-asgarnia",
+      "style": "melee",
+      "arch": "shield-tank",
+      "dmg": 9166425.14059893,
+      "dps": 58489.18543005953,
+      "ult": 1.306,
+      "hasHP": false,
+      "ad": 5397,
+      "armour": 2696,
+      "pieces": "Khopesh of Elidinis | Trimmed masterwork melee set | Malevolent kiteshield | Achto Primeval boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Achto Primeval gloves | Achto Primeval mask"
+    },
+    "best5mSt": {
+      "window": 300,
+      "scenario": "ST",
+      "path": "OCOBOC",
+      "packageId": "desert-asgarnia-forinthry",
+      "style": "necromancy",
+      "arch": "shield-tank",
+      "dmg": 21457758.700883217,
+      "dps": 63999.51891220239,
+      "ult": 1.1176,
+      "hasHP": false,
+      "ad": 5438,
+      "armour": 2485,
+      "pieces": "Devourer's Guard | Achtó armour pieces | Divine spirit shield | Achto Primeval boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Achto Primeval gloves | Achto Primeval mask"
+    }
+  },
+  "freeOnly729": {
+    "code": "OCOBCC",
+    "dmg": 8504955.65439,
+    "hasHP": false,
+    "blessings": "Teragard's Aegis · Abyssal Cinders · Steadfast Will · True Equilibrium · Unholy Critual · Perfidious · Sacred Fervor · Chaotic Insight"
+  },
+  "freeVsFull": [
+    {
+      "window": 30,
+      "free": {
+        "path": "OCOBOC",
+        "dmg": 2579739,
+        "pieces": "Omni guard (T95) | Deathwarden robe set (T90) | Ancient lantern (necro shield-like) | Ganodermic boots | Latent Offering | Igneous Kal-Zuk | Ganodermic gloves | Dragon full helm"
+      },
+      "full": {
+        "path": "OCOBOC",
+        "dmg": 2726380,
+        "pieces": "Devourer's Guard | Achtó armour pieces | Divine spirit shield | Achto Primeval boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Achto Primeval gloves | Achto Primeval mask"
+      },
+      "electiveGainPct": 5.68
+    },
+    {
+      "window": 120,
+      "free": {
+        "path": "OCOBOC",
+        "dmg": 8640310,
+        "pieces": "Omni guard (T95) | Deathwarden robe set (T90) | Ancient lantern (necro shield-like) | Ganodermic boots | Latent Offering | Igneous Kal-Zuk | Ganodermic gloves | Dragon full helm"
+      },
+      "full": {
+        "path": "OCOBOC",
+        "dmg": 9131451,
+        "pieces": "Devourer's Guard | Achtó armour pieces | Divine spirit shield | Achto Primeval boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Achto Primeval gloves | Achto Primeval mask"
+      },
+      "electiveGainPct": 5.68
+    },
+    {
+      "window": 300,
+      "free": {
+        "path": "OOCOBO",
+        "dmg": 20566940,
+        "pieces": "Omni guard (T95) | Deathwarden robe set (T90) | Soulbound lantern (T95) | Ganodermic boots | Latent Offering | Igneous Kal-Zuk | Ganodermic gloves | Dragon full helm"
+      },
+      "full": {
+        "path": "OCOBOC",
+        "dmg": 21457759,
+        "pieces": "Devourer's Guard | Achtó armour pieces | Divine spirit shield | Achto Primeval boots | Ring of death | Igneous Kal-Zuk | Amulet of souls (or essence) | Achto Primeval gloves | Achto Primeval mask"
+      },
+      "electiveGainPct": 4.33
+    }
+  ]
+}

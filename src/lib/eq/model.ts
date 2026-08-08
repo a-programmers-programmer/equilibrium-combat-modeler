@@ -608,6 +608,41 @@ export function modelCombat(input: ModelInput): ModelResult {
   const setEffMult = gear.setEffectMult ?? armourRes.setEffectMult * armourRes.chaoticInsightMult;
   for (const f of armourRes.flags) flags.push(f);
 
+  // ── Relic structural effects early (Icyenic prayer/crit/AD%, Naragi armour, pockets) ──
+  // Full mult stack still applied later; structural fields feed AD/crit/Aegis.
+  const relicEarly = stackRelicPlayerMult(
+    input.relic ?? "none",
+    input.relicSecondary ?? null,
+    {
+      style: input.style,
+      fightSeconds: input.fightSeconds ?? 60,
+      prayerBonus: prayer,
+      baselineAd: ad,
+      summoningLevel: input.summoningLevel ?? 99,
+    },
+  );
+  const rc = relicEarly.combat;
+  if (rc) {
+    if (rc.prayerBonusAdd) {
+      prayer += rc.prayerBonusAdd;
+      flags.push(`Relic prayer +${rc.prayerBonusAdd} → ${prayer}`);
+    }
+    if (rc.flatArmour) {
+      armour += rc.flatArmour;
+      flags.push(`Relic armour +${rc.flatArmour}`);
+    }
+    if (rc.flatAd) {
+      ad += rc.flatAd;
+      flags.push(`Relic pocket AD +${Math.round(rc.flatAd)}`);
+    }
+    if (rc.critChanceAdd > 0) {
+      critChance += rc.critChanceAdd;
+      flags.push(
+        `Icyenic/crit +${(rc.critChanceAdd * 100).toFixed(1)}% crit (prayer-scaled)`,
+      );
+    }
+  }
+
   if (has("true-equilibrium")) {
     const stacks = Math.max(1, Math.min(3, uniq));
     ad += 75 * stacks;
@@ -617,6 +652,17 @@ export function modelCombat(input: ModelInput): ModelResult {
     critDmg += 0.075 * stacks;
     prayer += 5 * stacks;
     flags.push(`True Equilibrium ×${stacks}`);
+    // Icyenic scales with total prayer — top up crit if TE added prayer after early resolve
+    if (rc?.hasIcyenic) {
+      const targetCrit = prayer * 0.002;
+      const already = rc.critChanceAdd;
+      if (targetCrit > already) {
+        critChance += targetCrit - already;
+        flags.push(
+          `Icyenic crit top-up +${((targetCrit - already) * 100).toFixed(1)}% (prayer now ${prayer})`,
+        );
+      }
+    }
   }
 
   if (has("havoc-born")) {
@@ -674,6 +720,23 @@ export function modelCombat(input: ModelInput): ModelResult {
   if (has("genesis-essence")) {
     ad += gear.genesisAdBonus;
     flags.push("Genesis T120 weapons");
+  }
+
+  // Icyenic / relic ability-damage % from prayer (0.2% per prayer bonus)
+  // Recompute from final prayer so TE / pockets count
+  if (rc?.hasIcyenic) {
+    const icyPct = prayer * 0.002;
+    const before = ad;
+    ad = floor(ad * (1 + icyPct));
+    flags.push(
+      `Icyenic Faith AD +${(icyPct * 100).toFixed(1)}% from prayer ${prayer} (${before}→${ad})`,
+    );
+  } else if (rc && rc.abilityDamagePct > 0) {
+    const before = ad;
+    ad = floor(ad * (1 + rc.abilityDamagePct));
+    flags.push(
+      `Relic base AD +${(rc.abilityDamagePct * 100).toFixed(1)}% (${before}→${ad})`,
+    );
   }
 
   // Power armour style damage bonuses + set effects (on top of weapon AD + Aegis)
@@ -1182,19 +1245,17 @@ export function modelCombat(input: ModelInput): ModelResult {
 
 
   // ── Relics + Summoning familiars ──────────────────────────────────
-  const relicStack = stackRelicPlayerMult(
-    input.relic ?? "none",
-    input.relicSecondary ?? null,
-    {
-      style: input.style,
-      fightSeconds: input.fightSeconds ?? 60,
-      prayerBonus: prayer,
-      baselineAd: ad,
-      summoningLevel: input.summoningLevel ?? 99,
-    },
-  );
-  let playerDpsMult = relicStack.mult;
+  // Structural AD/crit/prayer already applied early; end mult = execute/perk only
+  const relicStack = relicEarly;
+  let playerDpsMult = rc?.dpsMult ?? relicStack.mult;
+  // If we already applied structural AD/crit, don't also multiply playerDpsMult by structural
+  if (rc && (rc.abilityDamagePct > 0 || rc.critChanceAdd > 0)) {
+    playerDpsMult = rc.dpsMult; // execute/perk only
+  }
   for (const f of relicStack.flags) flags.push(f);
+  if (rc?.hasIcyenic) flags.push("Icyenic Faith: Tome active (100% pray + SS)");
+  if (rc?.hasInfernal) flags.push("Infernal Fire: Death Mark execute");
+  if (rc?.hasNaragi) flags.push("Naragi Edict: 255 duty windows");
 
   const famId = input.familiar ?? "none";
   const famDef = FAMILIAR_BY_ID[famId] ?? FAMILIAR_BY_ID.none!;

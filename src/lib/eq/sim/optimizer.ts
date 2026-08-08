@@ -149,14 +149,30 @@ function primarySecondary(combo: RelicCombo): {
   primary: RelicId;
   secondary: RelicId | null;
 } {
-  // Prefer highest playerDpsMult as primary for stackRelic; attach devout/druid as secondary
+  // Prefer T7 combat apex, then perkfection, then devout
+  const priority = (id: RelicId): number => {
+    if (id === "icyenic-faith" || id === "infernal-fire" || id === "naragi-edict")
+      return 100 + (RELIC_BY_ID[id]?.playerDpsMult ?? 1);
+    if (id === "perkfection") return 50;
+    if (id === "devout" || id === "divine-druid") return 40;
+    return RELIC_BY_ID[id]?.playerDpsMult ?? 1;
+  };
   const combat = combo.active
     .filter((id) => id !== "none")
-    .map((id) => ({ id, mult: RELIC_BY_ID[id]?.playerDpsMult ?? 1 }))
+    .map((id) => ({ id, mult: priority(id) }))
     .sort((a, b) => b.mult - a.mult);
   const primary = combat[0]?.id ?? "none";
   const secondary =
-    combo.active.find((id) => id !== primary && (id === "devout" || id === "divine-druid" || id === "perkfection")) ??
+    combo.active.find(
+      (id) =>
+        id !== primary &&
+        (id === "devout" ||
+          id === "divine-druid" ||
+          id === "perkfection" ||
+          id === "icyenic-faith" ||
+          id === "infernal-fire" ||
+          id === "naragi-edict"),
+    ) ??
     combat[1]?.id ??
     null;
   return { primary, secondary: secondary === primary ? null : secondary };

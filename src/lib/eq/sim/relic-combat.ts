@@ -29,33 +29,38 @@ export interface RelicCombatContext {
 
 export interface RelicCombatSlice {
   id: RelicId;
-  /** Multiplier on player-sourced DPS (product stack) */
+  /** Multiplicative DPS (execute, perk procs, etc.) — applied at end */
   dpsMult: number;
-  /** Flat AD added (pocket style bonuses approximated) */
+  /** Flat AD added (pocket style bonuses) */
   flatAd: number;
-  /** Extra armour for Aegis etc. */
+  /** Extra armour (Naragi pocket) — apply before Aegis */
   flatArmour: number;
-  /** Crit chance added (0–1) */
+  /** Crit chance added (0–1) from Icyenic etc. */
   critChanceAdd: number;
-  /** Ability damage % from prayer (Icyenic) */
+  /** Base ability damage fraction from prayer (Icyenic 0.2%/pt) */
   abilityDamagePct: number;
+  /** Extra prayer bonus (Tome +50, Star +15, Sliver +15) */
+  prayerBonusAdd: number;
   notes: string[];
-  /** Component breakdown for audit */
   components: { name: string; mult: number; detail: string }[];
 }
 
 export interface RelicCombatResult {
   slices: RelicCombatSlice[];
-  /** Combined DPS mult (product of slice dpsMult) */
   dpsMult: number;
   flatAd: number;
   flatArmour: number;
   critChanceAdd: number;
   abilityDamagePct: number;
+  prayerBonusAdd: number;
   notes: string[];
   components: { relic: RelicId; name: string; mult: number; detail: string }[];
-  /** Legacy single number for model compatibility */
   playerDpsMult: number;
+  hasIcyenic: boolean;
+  hasInfernal: boolean;
+  hasNaragi: boolean;
+  hasPerkfection: boolean;
+  hasDevout: boolean;
 }
 
 /** Style bonus 18.7 ≈ rough AD conversion (RS3: style bonus → AD nonlinear; use ~AD*0.004 per point as coarse) */
@@ -75,6 +80,7 @@ function resolveOne(
   let flatArmour = 0;
   let critChanceAdd = 0;
   let abilityDamagePct = 0;
+  let prayerBonusAdd = 0;
 
   const push = (name: string, mult: number, detail: string) => {
     if (Math.abs(mult - 1) < 0.001 && !detail.includes("flat")) return;
@@ -84,58 +90,67 @@ function resolveOne(
 
   switch (id) {
     case "infernal-fire": {
-      // Death Mark 100%: target dies at 20% HP → effective damage needed = 80%
-      // For TTK-limited content: +25% "kills" throughput. For DPS meter on full HP dummy: lower.
-      // Use fight-aware: short fights weight execute more.
       const executeFrac = 0.2;
       const fight = Math.max(15, ctx.fightSeconds);
-      // Portion of kill that is "skipped": min(executeFrac, 8/fight) style
       const skipWeight = Math.min(0.22, executeFrac * (45 / fight) + 0.08);
       const executeMult = 1 / (1 - skipWeight);
-      push("Death Mark execute EV", executeMult, `skip~${(skipWeight * 100).toFixed(0)}% HP @ ${fight}s fights`);
-      // Pocket: +18.7 all-style + 15 prayer
+      push(
+        "Death Mark execute EV",
+        executeMult,
+        `skip~${(skipWeight * 100).toFixed(0)}% HP @ ${fight}s fights`,
+      );
       const pocketAd = styleBonusToAd(18.7, ctx.baselineAd);
       flatAd += pocketAd;
-      notes.push(`Avernic Star pocket +${pocketAd.toFixed(0)} AD eq`);
+      prayerBonusAdd += 15;
+      notes.push(`Avernic Star pocket +${pocketAd.toFixed(0)} AD eq +15 prayer`);
       components.push({
         name: "Avernic Star pocket style",
         mult: 1,
         detail: `+18.7 style → +${pocketAd.toFixed(0)} AD; +15 prayer`,
       });
-      // +15 prayer ≈ small AD if also icyenic; alone minor
-      push("Star prayer pad", 1.01, "+15 prayer bonus");
       break;
     }
     case "naragi-edict": {
-      // Active 16.8s every 90s → uptime 16.8/90 = 18.67%
       const uptime = 16.8 / 90;
-      // Combat levels → 255: enormous accuracy + level-scaled AD. Model peak ~1.55× during window
       const peak = 1.55;
       const duty = 1 + (peak - 1) * uptime;
-      push("Naragi 255 duty cycle", duty, `${(uptime * 100).toFixed(1)}% uptime ×${peak} peak`);
-      // Pocket passive always on: +14 style, +300 armour, +1500 LP, +15 prayer
+      push(
+        "Naragi 255 duty cycle",
+        duty,
+        `${(uptime * 100).toFixed(1)}% uptime ×${peak} peak`,
+      );
       flatAd += styleBonusToAd(14, ctx.baselineAd);
       flatArmour += 300;
-      notes.push("Sliver pocket +300 armour / +14 style");
+      prayerBonusAdd += 15;
+      notes.push("Sliver pocket +300 armour / +14 style / +15 prayer");
       components.push({
         name: "Sliver pocket",
         mult: 1,
-        detail: `+14 style AD, +300 armour, +1500 LP`,
+        detail: `+14 style AD, +300 armour, +1500 LP, +15 prayer`,
       });
-      push("Pocket style passive", 1.02, "always-on pocket damage");
       break;
     }
     case "icyenic-faith": {
-      // Tome: +50 prayer; 0.2% crit and 0.2% base AD per 1 prayer bonus
-      const prayer = ctx.prayerBonus + 50;
-      critChanceAdd += prayer * 0.002;
-      abilityDamagePct += prayer * 0.002;
-      const adFromPrayer = 1 + abilityDamagePct;
-      push("Icyenic AD from prayer", adFromPrayer, `prayer ${prayer} → +${(abilityDamagePct * 100).toFixed(1)}% AD`);
-      // Crit chance will be applied by model via critChanceAdd — also bake partial into mult for legacy path
-      const critBake = 1 + Math.min(0.5, critChanceAdd) * 0.35;
-      push("Icyenic crit EV bake", critBake, `+${(critChanceAdd * 100).toFixed(1)}% crit chance`);
-      notes.push("Protect = 100% block + Soul Split");
+      // Tome of the Icyene: +50 prayer; 0.2% crit + 0.2% base AD per 1 prayer bonus
+      // Applied structurally in modelCombat (not as opaque end mult) so AD/crit stack correctly
+      prayerBonusAdd += 50;
+      const prayerTotal = ctx.prayerBonus + prayerBonusAdd;
+      abilityDamagePct += prayerTotal * 0.002;
+      critChanceAdd += prayerTotal * 0.002;
+      components.push({
+        name: "Icyenic AD from prayer",
+        mult: 1 + abilityDamagePct,
+        detail: `prayer ${prayerTotal} → +${(abilityDamagePct * 100).toFixed(1)}% base AD`,
+      });
+      components.push({
+        name: "Icyenic crit from prayer",
+        mult: 1 + Math.min(0.5, critChanceAdd) * 0.45,
+        detail: `+${(critChanceAdd * 100).toFixed(1)}% crit chance (applied in crit mult)`,
+      });
+      notes.push(
+        "Tome +50 prayer; Protect/Deflect = 100% block + act as Soul Split",
+      );
+      // dpsMult stays 1 — model applies abilityDamagePct + critChanceAdd
       break;
     }
     case "devout": {
@@ -201,6 +216,7 @@ function resolveOne(
     flatArmour,
     critChanceAdd,
     abilityDamagePct,
+    prayerBonusAdd,
     notes,
     components,
   };
@@ -221,6 +237,7 @@ export function resolveRelicCombat(
   let flatArmour = 0;
   let critChanceAdd = 0;
   let abilityDamagePct = 0;
+  let prayerBonusAdd = 0;
   const notes: string[] = [];
   const components: RelicCombatResult["components"] = [];
 
@@ -230,11 +247,18 @@ export function resolveRelicCombat(
     flatArmour += s.flatArmour;
     critChanceAdd += s.critChanceAdd;
     abilityDamagePct += s.abilityDamagePct;
+    prayerBonusAdd += s.prayerBonusAdd;
     notes.push(...s.notes.map((n) => `${s.id}: ${n}`));
     for (const c of s.components) {
       components.push({ relic: s.id, ...c });
     }
   }
+
+  // Effective player mult for legacy: multiplicative + structural AD/crit EV
+  const structural =
+    (1 + abilityDamagePct) *
+    (1 + Math.min(0.5, critChanceAdd) * 0.45);
+  const playerDpsMult = dpsMult * structural;
 
   return {
     slices,
@@ -243,9 +267,15 @@ export function resolveRelicCombat(
     flatArmour,
     critChanceAdd,
     abilityDamagePct,
+    prayerBonusAdd,
     notes,
     components,
-    playerDpsMult: dpsMult,
+    playerDpsMult,
+    hasIcyenic: ids.includes("icyenic-faith"),
+    hasInfernal: ids.includes("infernal-fire"),
+    hasNaragi: ids.includes("naragi-edict"),
+    hasPerkfection: ids.includes("perkfection"),
+    hasDevout: ids.includes("devout"),
   };
 }
 

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-08T07:38:17.596Z",
+  "generated": "2026-08-08T07:40:39.194Z",
   "wikiTiers": {
     "1": {
       "points": 10,
@@ -192,32 +192,30 @@
     {
       "id": "infernal-fire",
       "tier": 7,
-      "dpsMult": 1.2949,
+      "dpsMult": 1.2821,
       "components": [
         "Death Mark execute EV:×1.282 (skip~22% HP @ 60s fights)",
-        "Avernic Star pocket style:×1.000 (+18.7 style → +270 AD; +15 prayer)",
-        "Star prayer pad:×1.010 (+15 prayer bonus)"
-      ],
-      "combatRelevant": true
-    },
-    {
-      "id": "icyenic-faith",
-      "tier": 7,
-      "dpsMult": 1.2543,
-      "components": [
-        "Icyenic AD from prayer:×1.180 (prayer 90 → +18.0% AD)",
-        "Icyenic crit EV bake:×1.063 (+18.0% crit chance)"
+        "Avernic Star pocket style:×1.000 (+18.7 style → +270 AD; +15 prayer)"
       ],
       "combatRelevant": true
     },
     {
       "id": "naragi-edict",
       "tier": 7,
-      "dpsMult": 1.1247,
+      "dpsMult": 1.1027,
       "components": [
         "Naragi 255 duty cycle:×1.103 (18.7% uptime ×1.55 peak)",
-        "Sliver pocket:×1.000 (+14 style AD, +300 armour, +1500 LP)",
-        "Pocket style passive:×1.020 (always-on pocket damage)"
+        "Sliver pocket:×1.000 (+14 style AD, +300 armour, +1500 LP, +15 prayer)"
+      ],
+      "combatRelevant": true
+    },
+    {
+      "id": "icyenic-faith",
+      "tier": 7,
+      "dpsMult": 1,
+      "components": [
+        "Icyenic AD from prayer:×1.180 (prayer 90 → +18.0% base AD)",
+        "Icyenic crit from prayer:×1.081 (+18.0% crit chance (applied in crit mult))"
       ],
       "combatRelevant": true
     }

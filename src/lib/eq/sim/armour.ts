@@ -33,7 +33,10 @@ export type ArmourProfileId =
   | "sirenic-power"
   | "tectonic-power"
   | "anima-core"
-  | "mixed-aegis-power";
+  | "mixed-aegis-power"
+  | "void-elite"
+  | "warpriest"
+  | "vestments-of-havoc";
 
 export interface ArmourProfile {
   id: ArmourProfileId;
@@ -298,6 +301,79 @@ export const ARMOUR_PROFILES: readonly ArmourProfile[] = [
     setEffectNotes: ["Mixed tank+power for Aegis"],
     archetype: "shield-tank",
     notes: "Common Aegis optimise — high armour + partial power bonuses",
+  },
+  {
+    id: "void-elite",
+    name: "Elite / superior Void knight",
+    kind: "power",
+    armourBody: 900,
+    offhandArmour: { none: 0, defender: 80, shield: 0 },
+    styleDamageMult: {
+      // Void: notable style damage when set complete; low armour
+      melee: 1.1,
+      magic: 1.1,
+      ranged: 1.1,
+      necromancy: 1.0, // void historically melee/mage/range kits
+    },
+    lpBonus: 200,
+    prayerBonus: 6,
+    setEffectMult: 1.06,
+    setEffectNotes: [
+      "Void set: style damage when full set (melee/mage/range)",
+      "Weak Aegis convert (low armour)",
+    ],
+    archetype: "power-dps",
+    notes:
+      "Pest Control void — attainable early. Strong pre-Aegis / no-Aegis; loses hard to tank under Teragard's Aegis.",
+    legalStyles: ["melee", "magic", "ranged"],
+  },
+  {
+    id: "warpriest",
+    name: "Warpriest of Zamorak/Saradomin (full)",
+    kind: "hybrid",
+    armourBody: 1650,
+    offhandArmour: { none: 0, defender: 160, shield: 320 },
+    styleDamageMult: {
+      melee: 1.04,
+      magic: 1.04,
+      ranged: 1.04,
+      necromancy: 1.03,
+    },
+    lpBonus: 500,
+    prayerBonus: 22,
+    setEffectMult: 1.035,
+    setEffectNotes: [
+      "Warpriest set: damage reduction charges / hybrid stats",
+      "Prayer-friendly for Icyenic",
+    ],
+    archetype: "defender",
+    notes:
+      "GWD warpriest — mid armour, high prayer. Nice Icyenic synergy, not Aegis BiS.",
+  },
+  {
+    id: "vestments-of-havoc",
+    name: "Vestments of Havoc (melee power)",
+    kind: "power",
+    armourBody: 1480,
+    offhandArmour: { none: 0, defender: 100, shield: 0 },
+    styleDamageMult: {
+      melee: 1.16,
+      magic: 0.96,
+      ranged: 0.96,
+      necromancy: 0.96,
+    },
+    lpBonus: 350,
+    prayerBonus: 12,
+    setEffectMult: 1.09,
+    setEffectNotes: [
+      "Herald of Chaos: adren after melee ult",
+      "3pc: Berserk +6s duration",
+      "4pc: +20% max adren with melee",
+    ],
+    archetype: "power-dps",
+    notes:
+      "Zamorak melee power set — strong Berserk/ult density. Weaker Aegis than tank; pairs with Chaos path + Rampage.",
+    legalStyles: ["melee"],
   },
 ];
 

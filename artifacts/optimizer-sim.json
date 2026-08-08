@@ -1,0 +1,1159 @@
+{
+  "generated": "2026-08-08T01:38:12.800Z",
+  "relicStats": {
+    "total": 6561,
+    "withDevout": 2187,
+    "withInfernal": 2187,
+    "withRejuv": 5832,
+    "withPerk": 729,
+    "maxMult": 1.3924400256,
+    "minMult": 1,
+    "avgMult": 1.1996926194304378
+  },
+  "trieLeaves": 6561,
+  "topRelics": [
+    {
+      "mult": 1.3924400256,
+      "active": [
+        "endless-harvest",
+        "divine-druid",
+        "assassins-insight",
+        "crystal-grace",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "devout": true,
+      "perkfection": true
+    },
+    {
+      "mult": 1.3924400256,
+      "active": [
+        "survivalist",
+        "divine-druid",
+        "assassins-insight",
+        "crystal-grace",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "devout": true,
+      "perkfection": true
+    },
+    {
+      "mult": 1.3924400256,
+      "active": [
+        "golden-touch",
+        "divine-druid",
+        "assassins-insight",
+        "crystal-grace",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "devout": true,
+      "perkfection": true
+    },
+    {
+      "mult": 1.35188352,
+      "active": [
+        "endless-harvest",
+        "divine-druid",
+        "natures-network",
+        "crystal-grace",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "devout": true,
+      "perkfection": true
+    },
+    {
+      "mult": 1.35188352,
+      "active": [
+        "endless-harvest",
+        "divine-druid",
+        "voidwalker",
+        "crystal-grace",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "devout": true,
+      "perkfection": true
+    },
+    {
+      "mult": 1.35188352,
+      "active": [
+        "survivalist",
+        "divine-druid",
+        "natures-network",
+        "crystal-grace",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "devout": true,
+      "perkfection": true
+    },
+    {
+      "mult": 1.35188352,
+      "active": [
+        "survivalist",
+        "divine-druid",
+        "voidwalker",
+        "crystal-grace",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "devout": true,
+      "perkfection": true
+    },
+    {
+      "mult": 1.35188352,
+      "active": [
+        "golden-touch",
+        "divine-druid",
+        "natures-network",
+        "crystal-grace",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "devout": true,
+      "perkfection": true
+    },
+    {
+      "mult": 1.35188352,
+      "active": [
+        "golden-touch",
+        "divine-druid",
+        "voidwalker",
+        "crystal-grace",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "devout": true,
+      "perkfection": true
+    },
+    {
+      "mult": 1.33888464,
+      "active": [
+        "endless-harvest",
+        "divine-druid",
+        "assassins-insight",
+        "transmutation",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "devout": true,
+      "perkfection": true
+    },
+    {
+      "mult": 1.33888464,
+      "active": [
+        "endless-harvest",
+        "divine-druid",
+        "assassins-insight",
+        "antiquarian",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "devout": true,
+      "perkfection": true
+    },
+    {
+      "mult": 1.33888464,
+      "active": [
+        "survivalist",
+        "divine-druid",
+        "assassins-insight",
+        "transmutation",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "devout": true,
+      "perkfection": true
+    },
+    {
+      "mult": 1.33888464,
+      "active": [
+        "survivalist",
+        "divine-druid",
+        "assassins-insight",
+        "antiquarian",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "devout": true,
+      "perkfection": true
+    },
+    {
+      "mult": 1.33888464,
+      "active": [
+        "golden-touch",
+        "divine-druid",
+        "assassins-insight",
+        "transmutation",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "devout": true,
+      "perkfection": true
+    },
+    {
+      "mult": 1.33888464,
+      "active": [
+        "golden-touch",
+        "divine-druid",
+        "assassins-insight",
+        "antiquarian",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "devout": true,
+      "perkfection": true
+    }
+  ],
+  "dpsOpt": {
+    "generated": 451584,
+    "evaluated": 360,
+    "pruned": 2304,
+    "ms": 1421,
+    "best": {
+      "score": 271209.5765147786,
+      "totalDps": 271209.5765147786,
+      "hours": 56.61769064558532,
+      "value": 4790.191429962991,
+      "style": "necromancy",
+      "pathId": "aegis-cinders-perf",
+      "armour": "mixed-aegis-power",
+      "regionId": "inv-ancient",
+      "poison": "none",
+      "familiar": "ice-nihil",
+      "invention": "ancient",
+      "relicKey": "1:endless-harvest|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:",
+      "relicActive": [
+        "endless-harvest",
+        "divine-druid",
+        "assassins-insight",
+        "crystal-grace",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "relicMult": 1.3924400256,
+      "devout": true,
+      "perkfection": true,
+      "flags": [
+        "Gear: stage:endgame (T95)",
+        "Armour: Mixed: tank body/legs + power helm/gloves (Aegis optimise)",
+        "Chaotic Insight set amplification",
+        "Style dmg ×1.070",
+        "Set effects ×1.068",
+        "Armour value 2800 (Aegis base)"
+      ]
+    },
+    "top15": [
+      {
+        "score": 271209.5765147786,
+        "totalDps": 271209.5765147786,
+        "hours": 56.61769064558532,
+        "value": 4790.191429962991,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "mixed-aegis-power",
+        "regionId": "inv-ancient",
+        "poison": "none",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:endless-harvest|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:",
+        "relicActive": [
+          "endless-harvest",
+          "divine-druid",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3924400256,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Mixed: tank body/legs + power helm/gloves (Aegis optimise)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.070",
+          "Set effects ×1.068",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 271209.5765147786,
+        "totalDps": 271209.5765147786,
+        "hours": 56.61769064558532,
+        "value": 4790.191429962991,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "mixed-aegis-power",
+        "regionId": "inv-ancient",
+        "poison": "none",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:survivalist|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:perk",
+        "relicActive": [
+          "survivalist",
+          "divine-druid",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3924400256,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Mixed: tank body/legs + power helm/gloves (Aegis optimise)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.070",
+          "Set effects ×1.068",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 271209.5765147786,
+        "totalDps": 271209.5765147786,
+        "hours": 56.61769064558532,
+        "value": 4790.191429962991,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "mixed-aegis-power",
+        "regionId": "inv-ancient",
+        "poison": "none",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:golden-touch|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:per",
+        "relicActive": [
+          "golden-touch",
+          "divine-druid",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3924400256,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Mixed: tank body/legs + power helm/gloves (Aegis optimise)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.070",
+          "Set effects ×1.068",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 267199.26303284656,
+        "totalDps": 267199.26303284656,
+        "hours": 56.61769064558532,
+        "value": 4719.359973642461,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "mixed-aegis-power",
+        "regionId": "inv-ancient",
+        "poison": "wp-only",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:endless-harvest|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:",
+        "relicActive": [
+          "endless-harvest",
+          "divine-druid",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3924400256,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Mixed: tank body/legs + power helm/gloves (Aegis optimise)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.070",
+          "Set effects ×1.068",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 267199.26303284656,
+        "totalDps": 267199.26303284656,
+        "hours": 56.61769064558532,
+        "value": 4719.359973642461,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "mixed-aegis-power",
+        "regionId": "inv-ancient",
+        "poison": "wp-only",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:survivalist|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:perk",
+        "relicActive": [
+          "survivalist",
+          "divine-druid",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3924400256,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Mixed: tank body/legs + power helm/gloves (Aegis optimise)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.070",
+          "Set effects ×1.068",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 267199.26303284656,
+        "totalDps": 267199.26303284656,
+        "hours": 56.61769064558532,
+        "value": 4719.359973642461,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "mixed-aegis-power",
+        "regionId": "inv-ancient",
+        "poison": "wp-only",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:golden-touch|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:per",
+        "relicActive": [
+          "golden-touch",
+          "divine-druid",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3924400256,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Mixed: tank body/legs + power helm/gloves (Aegis optimise)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.070",
+          "Set effects ×1.068",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 266903.6326767791,
+        "totalDps": 266903.6326767791,
+        "hours": 56.61769064558532,
+        "value": 4714.138454490117,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "mixed-aegis-power",
+        "regionId": "inv-ancient",
+        "poison": "none",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:endless-harvest|2:superheated|3:assassins-insight|4:crystal-grace|5:devout|6:p",
+        "relicActive": [
+          "endless-harvest",
+          "superheated",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3651372800000001,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Mixed: tank body/legs + power helm/gloves (Aegis optimise)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.070",
+          "Set effects ×1.068",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 266903.6326767791,
+        "totalDps": 266903.6326767791,
+        "hours": 56.61769064558532,
+        "value": 4714.138454490117,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "mixed-aegis-power",
+        "regionId": "inv-ancient",
+        "poison": "none",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:endless-harvest|2:animal-wrangler|3:assassins-insight|4:crystal-grace|5:devout",
+        "relicActive": [
+          "endless-harvest",
+          "animal-wrangler",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3651372800000001,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Mixed: tank body/legs + power helm/gloves (Aegis optimise)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.070",
+          "Set effects ×1.068",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 266903.6326767791,
+        "totalDps": 266903.6326767791,
+        "hours": 56.61769064558532,
+        "value": 4714.138454490117,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "mixed-aegis-power",
+        "regionId": "inv-ancient",
+        "poison": "none",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:survivalist|2:superheated|3:assassins-insight|4:crystal-grace|5:devout|6:perkf",
+        "relicActive": [
+          "survivalist",
+          "superheated",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3651372800000001,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Mixed: tank body/legs + power helm/gloves (Aegis optimise)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.070",
+          "Set effects ×1.068",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 266903.6326767791,
+        "totalDps": 266903.6326767791,
+        "hours": 56.61769064558532,
+        "value": 4714.138454490117,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "mixed-aegis-power",
+        "regionId": "inv-ancient",
+        "poison": "none",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:survivalist|2:animal-wrangler|3:assassins-insight|4:crystal-grace|5:devout|6:p",
+        "relicActive": [
+          "survivalist",
+          "animal-wrangler",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3651372800000001,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Mixed: tank body/legs + power helm/gloves (Aegis optimise)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.070",
+          "Set effects ×1.068",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 266903.6326767791,
+        "totalDps": 266903.6326767791,
+        "hours": 56.61769064558532,
+        "value": 4714.138454490117,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "mixed-aegis-power",
+        "regionId": "inv-ancient",
+        "poison": "none",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:golden-touch|2:superheated|3:assassins-insight|4:crystal-grace|5:devout|6:perk",
+        "relicActive": [
+          "golden-touch",
+          "superheated",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3651372800000001,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Mixed: tank body/legs + power helm/gloves (Aegis optimise)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.070",
+          "Set effects ×1.068",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 266903.6326767791,
+        "totalDps": 266903.6326767791,
+        "hours": 56.61769064558532,
+        "value": 4714.138454490117,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "mixed-aegis-power",
+        "regionId": "inv-ancient",
+        "poison": "none",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:golden-touch|2:animal-wrangler|3:assassins-insight|4:crystal-grace|5:devout|6:",
+        "relicActive": [
+          "golden-touch",
+          "animal-wrangler",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3651372800000001,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Mixed: tank body/legs + power helm/gloves (Aegis optimise)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.070",
+          "Set effects ×1.068",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 266833.2511911415,
+        "totalDps": 266833.2511911415,
+        "hours": 52.14852859499008,
+        "value": 5116.793481624258,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "cryptbloom-tank",
+        "regionId": "inv-ancient",
+        "poison": "none",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:endless-harvest|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:",
+        "relicActive": [
+          "endless-harvest",
+          "divine-druid",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3924400256,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Cryptbloom tank (magic free-region)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.020",
+          "Set effects ×1.102",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 266833.2511911415,
+        "totalDps": 266833.2511911415,
+        "hours": 52.14852859499008,
+        "value": 5116.793481624258,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "cryptbloom-tank",
+        "regionId": "inv-ancient",
+        "poison": "none",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:survivalist|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:perk",
+        "relicActive": [
+          "survivalist",
+          "divine-druid",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3924400256,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Cryptbloom tank (magic free-region)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.020",
+          "Set effects ×1.102",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 266833.2511911415,
+        "totalDps": 266833.2511911415,
+        "hours": 52.14852859499008,
+        "value": 5116.793481624258,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "cryptbloom-tank",
+        "regionId": "inv-ancient",
+        "poison": "none",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:golden-touch|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:per",
+        "relicActive": [
+          "golden-touch",
+          "divine-druid",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3924400256,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Cryptbloom tank (magic free-region)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.020",
+          "Set effects ×1.102",
+          "Armour value 2800 (Aegis base)"
+        ]
+      }
+    ]
+  },
+  "valOpt": {
+    "generated": 322560,
+    "evaluated": 360,
+    "ms": 1119,
+    "best": {
+      "score": 5116.793481624258,
+      "totalDps": 266833.2511911415,
+      "hours": 52.14852859499008,
+      "value": 5116.793481624258,
+      "style": "necromancy",
+      "pathId": "aegis-cinders-perf",
+      "armour": "cryptbloom-tank",
+      "regionId": "inv-ancient",
+      "poison": "none",
+      "familiar": "ice-nihil",
+      "invention": "ancient",
+      "relicKey": "1:endless-harvest|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:",
+      "relicActive": [
+        "endless-harvest",
+        "divine-druid",
+        "assassins-insight",
+        "crystal-grace",
+        "devout",
+        "perkfection",
+        "infernal-fire"
+      ],
+      "relicMult": 1.3924400256,
+      "devout": true,
+      "perkfection": true,
+      "flags": [
+        "Gear: stage:endgame (T95)",
+        "Armour: Cryptbloom tank (magic free-region)",
+        "Chaotic Insight set amplification",
+        "Style dmg ×1.020",
+        "Set effects ×1.102",
+        "Armour value 2800 (Aegis base)"
+      ]
+    },
+    "top10": [
+      {
+        "score": 5116.793481624258,
+        "totalDps": 266833.2511911415,
+        "hours": 52.14852859499008,
+        "value": 5116.793481624258,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "cryptbloom-tank",
+        "regionId": "inv-ancient",
+        "poison": "none",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:endless-harvest|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:",
+        "relicActive": [
+          "endless-harvest",
+          "divine-druid",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3924400256,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Cryptbloom tank (magic free-region)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.020",
+          "Set effects ×1.102",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 5116.793481624258,
+        "totalDps": 266833.2511911415,
+        "hours": 52.14852859499008,
+        "value": 5116.793481624258,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "cryptbloom-tank",
+        "regionId": "inv-ancient",
+        "poison": "none",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:survivalist|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:perk",
+        "relicActive": [
+          "survivalist",
+          "divine-druid",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3924400256,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Cryptbloom tank (magic free-region)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.020",
+          "Set effects ×1.102",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 5116.793481624258,
+        "totalDps": 266833.2511911415,
+        "hours": 52.14852859499008,
+        "value": 5116.793481624258,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "cryptbloom-tank",
+        "regionId": "inv-ancient",
+        "poison": "none",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:golden-touch|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:per",
+        "relicActive": [
+          "golden-touch",
+          "divine-druid",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3924400256,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Cryptbloom tank (magic free-region)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.020",
+          "Set effects ×1.102",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 5041.147370135504,
+        "totalDps": 262888.4177830704,
+        "hours": 52.14852859499008,
+        "value": 5041.147370135504,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "cryptbloom-tank",
+        "regionId": "inv-ancient",
+        "poison": "wp-only",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:endless-harvest|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:",
+        "relicActive": [
+          "endless-harvest",
+          "divine-druid",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3924400256,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Cryptbloom tank (magic free-region)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.020",
+          "Set effects ×1.102",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 5041.147370135504,
+        "totalDps": 262888.4177830704,
+        "hours": 52.14852859499008,
+        "value": 5041.147370135504,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "cryptbloom-tank",
+        "regionId": "inv-ancient",
+        "poison": "wp-only",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:survivalist|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:perk",
+        "relicActive": [
+          "survivalist",
+          "divine-druid",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3924400256,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Cryptbloom tank (magic free-region)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.020",
+          "Set effects ×1.102",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 5041.147370135504,
+        "totalDps": 262888.4177830704,
+        "hours": 52.14852859499008,
+        "value": 5041.147370135504,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "cryptbloom-tank",
+        "regionId": "inv-ancient",
+        "poison": "wp-only",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:golden-touch|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:per",
+        "relicActive": [
+          "golden-touch",
+          "divine-druid",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3924400256,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Cryptbloom tank (magic free-region)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.020",
+          "Set effects ×1.102",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 4790.191429962991,
+        "totalDps": 271209.5765147786,
+        "hours": 56.61769064558532,
+        "value": 4790.191429962991,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "mixed-aegis-power",
+        "regionId": "inv-ancient",
+        "poison": "none",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:endless-harvest|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:",
+        "relicActive": [
+          "endless-harvest",
+          "divine-druid",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3924400256,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Mixed: tank body/legs + power helm/gloves (Aegis optimise)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.070",
+          "Set effects ×1.068",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 4790.191429962991,
+        "totalDps": 271209.5765147786,
+        "hours": 56.61769064558532,
+        "value": 4790.191429962991,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "mixed-aegis-power",
+        "regionId": "inv-ancient",
+        "poison": "none",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:survivalist|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:perk",
+        "relicActive": [
+          "survivalist",
+          "divine-druid",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3924400256,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Mixed: tank body/legs + power helm/gloves (Aegis optimise)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.070",
+          "Set effects ×1.068",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 4790.191429962991,
+        "totalDps": 271209.5765147786,
+        "hours": 56.61769064558532,
+        "value": 4790.191429962991,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "mixed-aegis-power",
+        "regionId": "inv-ancient",
+        "poison": "none",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:golden-touch|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:per",
+        "relicActive": [
+          "golden-touch",
+          "divine-druid",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3924400256,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Mixed: tank body/legs + power helm/gloves (Aegis optimise)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.070",
+          "Set effects ×1.068",
+          "Armour value 2800 (Aegis base)"
+        ]
+      },
+      {
+        "score": 4719.359973642461,
+        "totalDps": 267199.26303284656,
+        "hours": 56.61769064558532,
+        "value": 4719.359973642461,
+        "style": "necromancy",
+        "pathId": "aegis-cinders-perf",
+        "armour": "mixed-aegis-power",
+        "regionId": "inv-ancient",
+        "poison": "wp-only",
+        "familiar": "ice-nihil",
+        "invention": "ancient",
+        "relicKey": "1:endless-harvest|2:divine-druid|3:assassins-insight|4:crystal-grace|5:devout|6:",
+        "relicActive": [
+          "endless-harvest",
+          "divine-druid",
+          "assassins-insight",
+          "crystal-grace",
+          "devout",
+          "perkfection",
+          "infernal-fire"
+        ],
+        "relicMult": 1.3924400256,
+        "devout": true,
+        "perkfection": true,
+        "flags": [
+          "Gear: stage:endgame (T95)",
+          "Armour: Mixed: tank body/legs + power helm/gloves (Aegis optimise)",
+          "Chaotic Insight set amplification",
+          "Style dmg ×1.070",
+          "Set effects ×1.068",
+          "Armour value 2800 (Aegis base)"
+        ]
+      }
+    ]
+  }
+}

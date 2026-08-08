@@ -80,6 +80,10 @@ import {
   type ArmourResolveResult,
   ARMOUR_BY_ID,
 } from "./sim/armour";
+import {
+  modelInvention,
+  type InventionTier,
+} from "./sim/invention";
 
 export interface GearSnapshot {
   armour: number;
@@ -178,6 +182,13 @@ export interface ModelInput {
    * Default: auto from style + offhand + Aegis presence.
    */
   armourProfile?: ArmourProfileId;
+  /**
+   * Invention tier: none | standard (Asgarnia) | ancient (Kandarin).
+   * Auto-locked if regions don't allow.
+   */
+  inventionTier?: InventionTier;
+  /** Force Perkfection perk bonus (when full loadout has it) */
+  perkfection?: boolean;
 }
 
 export interface DamageBreakdown {
@@ -559,6 +570,26 @@ export function modelCombat(input: ModelInput): ModelResult {
   }
   const armourBonusAd = ad - adBeforeArmourBonus;
 
+  // ── Invention perks (gated by Asgarnia / Kandarin) ──
+  const invRes = modelInvention({
+    tier: input.inventionTier ?? "none",
+    style: input.style,
+    perkfection:
+      input.perkfection === true ||
+      input.relic === "perkfection" ||
+      input.relicSecondary === "perkfection",
+    powerArchive: has("power-archive"),
+    regions: input.baneRegions,
+    player: input.summoningPlayer,
+  });
+  // Also detect perkfection from... we only have primary/secondary here; full loadout may differ
+  if (invRes.perkMult > 1 || invRes.procDpsFactor > 1) {
+    ad = floor(ad * invRes.perkMult);
+    flags.push(...invRes.flags);
+  }
+  for (const w of invRes.warnings) warnings.push(w);
+  const inventionProcMult = invRes.procDpsFactor;
+
   let densityMult = 1;
   if (has("adrenaline-junkie")) {
     densityMult *= 1.12;
@@ -598,6 +629,11 @@ export function modelCombat(input: ModelInput): ModelResult {
   const havocMult = has("havoc-born") ? 1.2 : 1;
 
   let coreAbility = ad * avgPct * hitsPerSec * critMult * havocMult;
+  // Invention proc EV (Aftershock etc.) on ability throughput
+  if (inventionProcMult > 1.001) {
+    coreAbility *= inventionProcMult;
+    flags.push(`Invention procs ×${inventionProcMult.toFixed(3)}`);
+  }
 
   let bigBonedFlat = 0;
   const flatPerHit = has("big-boned") ? floor(maxLp * 0.05) : 0;
@@ -1270,6 +1306,12 @@ export function modelCombat(input: ModelInput): ModelResult {
       aegisAd,
       armourBonusAd,
       prayerBonus: prayer,
+    },
+    invention: {
+      tier: invRes.tier,
+      locked: invRes.locked,
+      perkMult: invRes.perkMult,
+      procFactor: invRes.procDpsFactor,
     },
     poisonStack: {
       dps: poisonResult.dps,

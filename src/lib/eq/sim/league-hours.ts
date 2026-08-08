@@ -392,6 +392,18 @@ export const CONTENT_PADS: {
     label: "Power armour piece grind",
   },
   {
+    id: "invention-standard",
+    hours: 4,
+    when: (c) => c.regions.includes("asgarnia"),
+    label: "Invention unlock + early gizmos (Asgarnia)",
+  },
+  {
+    id: "invention-ancient",
+    hours: 5,
+    when: (c) => c.regions.includes("kandarin") && c.regions.includes("asgarnia"),
+    label: "Ancient Invention / Stormguard (Kandarin)",
+  },
+  {
     id: "herb-ovl-unlock",
     hours: 1,
     when: (c) => c.poison !== "none" || c.endgame,

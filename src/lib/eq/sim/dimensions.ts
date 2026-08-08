@@ -225,26 +225,71 @@ export function conjureDps(
   return { dps: ad * mult * 2.2, sources }; // 2.2 ≈ effective hits density of conjures
 }
 
-/** Special attack duty-cycle EV */
+/** Special attack duty-cycle EV — includes full Chaos (Zammy) Rampage windows. */
 export function specialAttackDps(
   style: Style,
   ad: number,
   densityMult: number,
   adrenPotsPerMin: number,
   hasAvernic: boolean,
-): { dps: number; sources: string[] } {
-  // Specs ~8% of rotation value baseline; avernic + adren pots open free windows
+  opts?: {
+    /** Adrenaline Junkie — faster rebuild between windows */
+    hasJunkie?: boolean;
+    /** Hits/attacks per sec (drives Rampage uptime) */
+    attacksPerSec?: number;
+    /** Melee claws / EOF Slice & Dice dump during free-adren */
+    clawDump?: boolean;
+  },
+): { dps: number; sources: string[]; rampageUptime: number } {
+  const sources: string[] = [`${style} weapon specials`];
+  // Baseline: occasional EOF/spec in normal adren economy
   let share = 0.08;
-  const sources = [`${style} weapon specials`];
-  if (hasAvernic) {
-    share += 0.06;
-    sources.push("Avernic free-spec windows");
-  }
   if (adrenPotsPerMin > 0) {
     share += 0.015 * adrenPotsPerMin;
     sources.push(`Adren pots ×${adrenPotsPerMin}/min`);
   }
-  return { dps: ad * share * 2.5 * densityMult, sources };
+  if (opts?.hasJunkie) {
+    share += 0.03;
+    sources.push("Adren Junkie rebuild → more specs");
+  }
+
+  let rampageUptime = 0;
+  let rampageDps = 0;
+
+  if (hasAvernic) {
+    // Wiki: 5% on-attack, 7.2s free abilities + specials
+    // Full zammy: more attacks/sec (Junkie density, multi-hit) → much higher uptime than 5% alone suggests
+    const atk = Math.max(0.5, opts?.attacksPerSec ?? 0.9 * densityMult);
+    const lambda = atk * 0.05; // procs per second
+    // Refreshing duration: uptime ≈ 1 - e^(-λD) with D=7.2, cap high when attack rate is high
+    const D = 7.2;
+    rampageUptime = Math.min(0.92, 1 - Math.exp(-lambda * D));
+    // Simple λD also used as floor when chaining feels better in practice
+    rampageUptime = Math.max(rampageUptime, Math.min(0.88, lambda * D * 0.85));
+    sources.push(
+      `Avernic Rampage ~${(rampageUptime * 100).toFixed(0)}% uptime (λ=${lambda.toFixed(3)}/s)`,
+    );
+
+    // During window: free thresholds already partly in densityMult; specials are EXTRA
+    // Claw Slice & Dice ~360% AD, free → can fire every ~1.5–1.8s on melee
+    if (opts?.clawDump && style === "melee") {
+      const clawCastsPerSec = 1 / 1.55;
+      const clawPct = 3.6; // mid of 320–400%
+      rampageDps = ad * clawPct * clawCastsPerSec * rampageUptime;
+      sources.push("Claw/EOF dump during Rampage (free adren)");
+    } else {
+      // Non-melee free specials / extra thresholds ~ +25% package during window
+      rampageDps = ad * 1.1 * 1.2 * rampageUptime;
+      sources.push("Free specials/thresholds during Rampage");
+    }
+  }
+
+  const baselineDps = ad * share * 2.5 * densityMult;
+  // Outside rampage only count baseline; during rampage claw stream dominates specials
+  const dps =
+    baselineDps * (1 - rampageUptime * 0.5) + rampageDps;
+
+  return { dps, sources, rampageUptime };
 }
 
 /** Ult duty cycle mult (1 = none). Higher Power removes these. */

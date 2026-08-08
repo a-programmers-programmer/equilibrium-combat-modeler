@@ -170,6 +170,8 @@ export interface ModelInput {
   modelDots?: boolean;
   /** Include weapon specials EV */
   modelSpecials?: boolean;
+  /** Force claw/EOF dump modeling during Avernic windows */
+  clawSpecDump?: boolean;
   /** Include necro conjures */
   modelConjures?: boolean;
   /**
@@ -763,10 +765,28 @@ export function modelCombat(input: ModelInput): ModelResult {
   let inferno = 0;
   if (has("abyssal-cinders")) {
     cindersOnHit = ad * 0.15 * hitsPerSec * critMult * havocMult;
+    // Inferno of Zamorak: 5% on-hit; Perfidious ×5 → 25%; Unholy Critual also fires on crit
     let infChance = 0.05;
     if (has("perfidious")) infChance *= 5;
-    if (has("unholy-critual")) infChance += totalCritChance * 0.5;
-    inferno = ad * 1.5 * hitsPerSec * Math.min(infChance, 0.6) * critMult * havocMult;
+    if (has("unholy-critual")) {
+      // On crit: guaranteed Inferno — adds critChance * (1 - cindersChance) in expectation
+      infChance = 1 - (1 - infChance) * (1 - totalCritChance);
+      flags.push("Unholy Critual → Inferno on crit");
+    }
+    // Full zammy multi-hit: do NOT hard-cap at 0.6 — allow high Inferno density
+    const infCap = has("perfidious") && has("unholy-critual") ? 0.92 : 0.65;
+    const infCritDmg = has("unholy-critual") ? 1.25 : 1; // Inferno gains 50% crit dmg (wiki) → EV ~1.25
+    inferno =
+      ad *
+      1.5 *
+      hitsPerSec *
+      Math.min(infChance, infCap) *
+      critMult *
+      havocMult *
+      infCritDmg;
+    flags.push(
+      `Inferno p=${Math.min(infChance, infCap).toFixed(2)}/hit @ ${hitsPerSec.toFixed(2)} hps`,
+    );
     flags.push("Abyssal Cinders");
   }
 
@@ -916,11 +936,23 @@ export function modelCombat(input: ModelInput): ModelResult {
       input.style,
       ad,
       densityMult,
-      potions.adrenPotsPerMin,
+      potions.adrenPotsPerMin ?? 0,
       has("avernic-rampage"),
+      {
+        hasJunkie: has("adrenaline-junkie"),
+        // on-attack rate: mix of ability GCDs + multi-hit pressure (full zammy hits hard)
+        attacksPerSec: hitsPerSec * 0.5 + basicsPerSec * 0.4,
+        clawDump:
+          input.style === "melee" ||
+          input.clawSpecDump === true ||
+          (has("avernic-rampage") && has("adrenaline-junkie")),
+      },
     );
     specialAttack = sp.dps * critMult * havocMult;
     for (const s of sp.sources) flags.push(s);
+    if (sp.rampageUptime > 0.05) {
+      flags.push(`Rampage uptime ${(sp.rampageUptime * 100).toFixed(0)}%`);
+    }
   }
 
   // ── Conjures (necro) ──

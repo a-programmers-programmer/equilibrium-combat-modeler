@@ -727,6 +727,7 @@ export function stackRelicPlayerMult(
   primary: RelicId,
   secondary: RelicId | null = null,
   combatCtx?: Partial<RelicCombatContext>,
+  extras: readonly RelicId[] = [],
 ): {
   mult: number;
   devout: boolean;
@@ -745,79 +746,37 @@ export function stackRelicPlayerMult(
     baselineAd: combatCtx?.baselineAd ?? 7000,
   };
 
-  if (!secondary || secondary === "none") {
-    const combat = resolveRelicCombat(primary, null, ctx);
-    const def = RELIC_BY_ID[primary] ?? RELIC_BY_ID.none!;
-    return {
-      mult: combat.playerDpsMult,
-      devout: primary === "devout",
-      divineDruid: primary === "divine-druid",
-      flags:
-        primary === "none"
-          ? []
-          : [
-              `Relic: ${def.name} (T${def.assumedTier}) ×${combat.playerDpsMult.toFixed(3)}`,
-              ...combat.components.map(
-                (c) => `${c.name} ×${c.mult.toFixed(3)}`,
-              ),
-            ],
-      valid: true,
-      errors: [],
-      notes: combat.notes,
-      combat,
-    };
-  }
-
-  const byTier: Partial<Record<number, RelicId>> = {};
-  const a = RELIC_BY_ID[primary]!;
-  const b = RELIC_BY_ID[secondary]!;
-  let rejuvenatedExtra: RelicLoadout["rejuvenatedExtra"];
-  let errors: string[] = [];
-
-  if (primary === "rejuvenated") {
-    byTier[a.assumedTier] = "rejuvenated";
-    rejuvenatedExtra = { fromTier: b.assumedTier, relic: secondary };
-  } else if (secondary === "rejuvenated") {
-    byTier[b.assumedTier] = "rejuvenated";
-    rejuvenatedExtra = { fromTier: a.assumedTier, relic: primary };
-  } else if (a.assumedTier === b.assumedTier) {
-    errors.push(
-      `${a.name} and ${b.name} are both T${a.assumedTier} — mutually exclusive (one per tier). Use Rejuvenated (T6) to reclaim a *previous* tier pick.`,
-    );
-    // Still compute mult for display but mark invalid
-    const combat = resolveRelicCombat(primary, secondary, ctx);
-    return {
-      mult: combat.playerDpsMult,
-      devout: primary === "devout" || secondary === "devout",
-      divineDruid: primary === "divine-druid" || secondary === "divine-druid",
-      flags: combat.components.map((c) => `${c.relic}:${c.name}`),
-      valid: false,
-      errors,
-      notes: combat.notes,
-      combat,
-    };
-  } else {
-    byTier[a.assumedTier] = primary;
-    byTier[b.assumedTier] = secondary;
-  }
-
-  const loadout: RelicLoadout = { byTier, rejuvenatedExtra };
-  const v = validateRelicLoadout(loadout);
-  const combat = resolveRelicCombat(primary, secondary, ctx);
+  const all = [primary, secondary, ...extras].filter(
+    (x): x is RelicId => !!x && x !== "none",
+  );
+  const uniq = [...new Set(all)];
+  const combat = resolveRelicCombat(
+    uniq[0] ?? "none",
+    uniq[1] ?? null,
+    ctx,
+    uniq.slice(2),
+  );
+  const devout = uniq.includes("devout");
+  const divineDruid = uniq.includes("divine-druid");
+  const errors: string[] = [];
+  const t7 = uniq.filter((id) =>
+    ["infernal-fire", "naragi-edict", "icyenic-faith"].includes(id),
+  );
+  if (t7.length > 1) errors.push(`T7 exclusive: ${t7.join("+")}`);
 
   return {
     mult: combat.playerDpsMult,
-    devout: primary === "devout" || secondary === "devout",
-    divineDruid: primary === "divine-druid" || secondary === "divine-druid",
+    devout,
+    divineDruid,
     flags: [
+      `Relics [${uniq.join("+") || "none"}] ×${combat.playerDpsMult.toFixed(3)}`,
       ...combat.components.map(
         (c) => `${c.relic}: ${c.name} ×${c.mult.toFixed(3)}`,
       ),
-      ...v.flags,
     ],
-    valid: v.valid && errors.length === 0,
-    errors: [...errors, ...v.errors],
-    notes: [...combat.notes, ...v.notes],
+    valid: errors.length === 0,
+    errors,
+    notes: combat.notes,
     combat,
   };
 }

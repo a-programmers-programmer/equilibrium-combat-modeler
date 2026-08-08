@@ -152,6 +152,10 @@ export interface ModelInput {
   relic?: RelicId;
   /** Secondary relic if Rejuvenated double-dip */
   relicSecondary?: RelicId | null;
+  /** Additional active combat relics (e.g. Devout + Perk + T7) */
+  relicExtras?: RelicId[];
+  /** Extra combat relics from full loadout (Devout+Perk+T7 etc.) */
+  relicExtras?: RelicId[];
   /**
    * Player snapshot for familiar/scroll requirement gates.
    * If omitted, builds one from baneRegions + summoningLevel (soft access).
@@ -620,6 +624,7 @@ export function modelCombat(input: ModelInput): ModelResult {
       baselineAd: ad,
       summoningLevel: input.summoningLevel ?? 99,
     },
+    input.relicExtras ?? [],
   );
   const rc = relicEarly.combat;
   if (rc) {

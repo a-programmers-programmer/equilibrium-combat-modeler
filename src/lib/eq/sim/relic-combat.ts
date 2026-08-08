@@ -226,11 +226,14 @@ export function resolveRelicCombat(
   primary: RelicId | null | undefined,
   secondary: RelicId | null | undefined,
   ctx: RelicCombatContext,
+  extra: readonly RelicId[] = [],
 ): RelicCombatResult {
-  const ids = [primary, secondary].filter(
+  const ids = [primary, secondary, ...extra].filter(
     (x): x is RelicId => !!x && x !== "none",
   );
-  const slices = ids.map((id) => resolveOne(id, ctx));
+  // Dedupe
+  const uniq = [...new Set(ids)];
+  const slices = uniq.map((id) => resolveOne(id, ctx));
 
   let dpsMult = 1;
   let flatAd = 0;

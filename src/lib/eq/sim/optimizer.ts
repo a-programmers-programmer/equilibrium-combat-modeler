@@ -45,6 +45,9 @@ export interface OptAxes {
   fightSeconds?: number;
   /** Score mode */
   mode?: "dps" | "value";
+  /** Multi-target weight 0–1 */
+  multiContentWeight?: number;
+  targetTiles?: number;
 }
 
 export interface OptCandidate {
@@ -73,7 +76,7 @@ const DEFAULT_PATHS = [
     picks: ["Order", "Chaos", "Order", "Balance", "Chaos", "Chaos"] as Path[],
   },
   {
-    id: "aegis-light",
+    id: "aegis-light-fervor",
     picks: ["Order", "Order", "Order", "Order", "Order", "Order"] as Path[],
   },
   {
@@ -81,8 +84,29 @@ const DEFAULT_PATHS = [
     picks: ["Order", "Chaos", "Balance", "Balance", "Order", "Order"] as Path[],
   },
   {
+    id: "full-chaos-zammy",
+    picks: ["Chaos", "Chaos", "Chaos", "Chaos", "Chaos", "Chaos"] as Path[],
+  },
+  {
+    id: "aegis-then-zammy",
+    picks: ["Order", "Chaos", "Chaos", "Chaos", "Chaos", "Chaos"] as Path[],
+  },
+  {
+    id: "icyenic-order-stack",
+    // Aegis + Light + Fervor + TE/PowerArchive-ish Order + late Chaos Inferno steal
+    picks: ["Order", "Order", "Order", "Order", "Order", "Chaos"] as Path[],
+  },
+  {
+    id: "bigboned-balance",
+    picks: ["Balance", "Balance", "Balance", "Balance", "Balance", "Balance"] as Path[],
+  },
+  {
     id: "poison-env",
     picks: ["Balance", "Balance", "Order", "Balance", "Balance", "Balance"] as Path[],
+  },
+  {
+    id: "hybrid-aegis-crit",
+    picks: ["Order", "Chaos", "Order", "Balance", "Chaos", "Order"] as Path[],
   },
 ];
 
@@ -216,19 +240,33 @@ function upperBound(opts: {
   familiar: FamiliarId;
   poison: PoisonKitId;
   armour: ArmourProfileId;
+  style: Style;
+  multi: number;
+  fightSeconds: number;
+  hasIcyenic: boolean;
+  hasInfernal: boolean;
 }): number {
-  let u = 90_000; // rough base aegis kit
-  if (opts.pathId.includes("aegis")) u *= 1.15;
-  if (opts.pathId.includes("poison")) u *= 0.75;
-  u *= opts.relicMult;
-  if (opts.devout) u *= 1.08;
+  let u = 95_000;
+  if (opts.pathId.includes("aegis")) u *= 1.18;
+  if (opts.pathId.includes("zammy") || opts.pathId.includes("chaos")) u *= 1.08;
+  if (opts.pathId.includes("icyenic") || opts.pathId.includes("order-stack")) u *= 1.1;
+  if (opts.pathId.includes("poison")) u *= 0.78;
+  if (opts.pathId.includes("bigboned")) u *= 1.05;
+  u *= Math.min(opts.relicMult, 1.85); // catalog mult can overstate; cap UB
+  if (opts.devout) u *= 1.1;
+  if (opts.hasIcyenic) u *= 1.12;
+  if (opts.hasInfernal) u *= opts.fightSeconds <= 40 ? 1.2 : 1.12;
   if (opts.invention === "standard") u *= 1.12;
   if (opts.invention === "ancient") u *= 1.18;
   if (opts.familiar === "ice-nihil") u *= 1.12;
-  if (opts.familiar === "ripper-demon") u *= 1.06;
-  if (opts.poison.includes("cinder") || opts.poison === "full-melee-poison") u *= 1.03;
-  if (opts.armour.includes("mixed") || opts.armour.includes("masterwork")) u *= 1.05;
+  if (opts.familiar === "ripper-demon") u *= 1.08;
+  if (opts.familiar === "steel-titan") u *= 1.04;
+  if (opts.poison.includes("cinder") || opts.poison === "full-melee-poison") u *= 1.04;
+  if (opts.armour.includes("mixed") || opts.armour.includes("masterwork")) u *= 1.06;
   if (opts.armour === "cryptbloom-tank") u *= 1.04;
+  if (opts.armour === "deathwarden-tank") u *= 1.08;
+  if (opts.style === "necromancy") u *= 1.06;
+  if (opts.multi > 0.3) u *= 1.15;
   return u;
 }
 
@@ -276,6 +314,8 @@ export function optimizeSuite(axes: OptAxes = {}): OptimizeResult {
   const topRelicsN = axes.topRelics ?? 48;
   const fightSeconds = axes.fightSeconds ?? 60;
   const mode = axes.mode ?? "dps";
+  const multiW = axes.multiContentWeight ?? 0;
+  const tiles = axes.targetTiles ?? 1;
 
   // 1) Relic universe via trie
   const allCombos = enumerateRelicCombos({ validOnly: true, combatOnly: false });
@@ -324,6 +364,8 @@ export function optimizeSuite(axes: OptAxes = {}): OptimizeResult {
                 }
                 for (const combo of combatRelics) {
                   generated++;
+                  const hasIcyenic = combo.active.includes("icyenic-faith");
+                  const hasInfernal = combo.active.includes("infernal-fire");
                   const ub = upperBound({
                     pathId: path.id,
                     relicMult: combo.mult,
@@ -332,6 +374,11 @@ export function optimizeSuite(axes: OptAxes = {}): OptimizeResult {
                     familiar: fam,
                     poison,
                     armour,
+                    style,
+                    multi: multiW,
+                    fightSeconds,
+                    hasIcyenic,
+                    hasInfernal,
                   });
                   pool.push({
                     ub,
@@ -355,28 +402,45 @@ export function optimizeSuite(axes: OptAxes = {}): OptimizeResult {
 
   // Beam: keep top by upper bound
   pool.sort((a, b) => b.ub - a.ub);
-  // Evaluate more than beam then re-rank — 3× beam full evals
-  const toEval = pool.slice(0, Math.min(pool.length, beamWidth * 6));
+  const toEval = pool.slice(0, Math.min(pool.length, beamWidth * 8));
 
   const results: OptCandidate[] = [];
   for (const g of toEval) {
     const { primary, secondary } = primarySecondary(g.combo);
-    const arch =
-      g.armour.includes("tank") || g.armour === "mixed-aegis-power"
-        ? "shield-tank"
-        : g.armour === "hybrid-cinder"
-          ? "defender"
-          : "power-dps";
+    const extras = g.combo.active.filter(
+      (id) =>
+        id !== primary &&
+        id !== secondary &&
+        id !== "none" &&
+        id !== "rejuvenated",
+    );
+    // Prefer shield when Aegis path OR deathwarden/cryptbloom/mixed tank
+    const wantsShield =
+      g.path.id.includes("aegis") ||
+      g.path.id.includes("icyenic") ||
+      g.armour.includes("tank") ||
+      g.armour === "mixed-aegis-power" ||
+      g.armour === "deathwarden-tank" ||
+      g.armour === "cryptbloom-tank";
+    const arch = wantsShield
+      ? "shield-tank"
+      : g.armour === "hybrid-cinder"
+        ? "defender"
+        : "power-dps";
     const input: ModelInput = {
       picks: g.path.picks,
       style: g.style,
       stage,
       archetype: arch as any,
       offhand:
-        arch === "shield-tank" ? "shield" : arch === "defender" ? "defender" : "none",
+        arch === "shield-tank"
+          ? "shield"
+          : arch === "defender"
+            ? "defender"
+            : "none",
       herbloreLevel: 110,
-      targetTiles: 1,
-      multiContentWeight: 0,
+      targetTiles: tiles,
+      multiContentWeight: multiW,
       powerburst: true,
       potionProfile: "elder-ovl",
       armourProfile: g.armour,
@@ -384,6 +448,7 @@ export function optimizeSuite(axes: OptAxes = {}): OptimizeResult {
       familiar: g.fam,
       relic: primary,
       relicSecondary: secondary,
+      relicExtras: extras,
       perkfection: g.combo.perkfection,
       inventionTier: g.inv,
       summoningLevel: g.fam === "none" ? 1 : 99,
@@ -392,17 +457,11 @@ export function optimizeSuite(axes: OptAxes = {}): OptimizeResult {
       modelDots: true,
       modelSpecials: true,
       modelConjures: true,
+      clawSpecDump: g.style === "melee" && g.path.id.includes("zammy"),
     };
-    // Apply full relic mult if stack undercounted (primary*secondary only)
     const r = modelCombat(input);
-    let total = r.totalDps ?? r.dps;
-    // Scale to full loadout mult if we only applied primary/secondary
-    const applied =
-      (RELIC_BY_ID[primary]?.playerDpsMult ?? 1) *
-      (secondary ? RELIC_BY_ID[secondary]?.playerDpsMult ?? 1 : 1);
-    if (g.combo.mult > applied + 0.001) {
-      total = total * (g.combo.mult / applied);
-    }
+    const total = r.totalDps ?? r.dps;
+    // Do NOT rescale by opaque combo.mult — model already applies effect mults
 
     const h = hoursToPower({
       style: g.style,
@@ -411,10 +470,15 @@ export function optimizeSuite(axes: OptAxes = {}): OptimizeResult {
       armour: g.armour,
       poison: g.poison,
       familiar: g.fam,
-      relicKey: g.combo.devout ? "devout+infernal" : "infernal-only",
+      relicKey: g.combo.devout
+        ? g.combo.active.includes("icyenic-faith")
+          ? "devout+icyenic"
+          : "devout+infernal"
+        : g.combo.active.includes("icyenic-faith")
+          ? "icyenic-only"
+          : "infernal-only",
       endgame: true,
     });
-    // Invention pad already if asgarnia in regions
     const hours = h.totalHours;
     const value = total / Math.max(0.5, hours);
     const score = mode === "value" ? value : total;
@@ -430,12 +494,17 @@ export function optimizeSuite(axes: OptAxes = {}): OptimizeResult {
       poison: g.poison,
       familiar: g.fam,
       invention: g.inv,
-      relicKey: g.combo.key.slice(0, 80),
+      relicKey: g.combo.key.slice(0, 100),
       relicActive: g.combo.active,
       relicMult: g.combo.mult,
       devout: g.combo.devout,
       perkfection: g.combo.perkfection,
-      flags: r.flags.slice(0, 6),
+      flags: r.flags.filter(
+        (f) =>
+          /Icyenic|Infernal|Naragi|Aegis|Rampage|Inferno|Death Mark|Devout|Perk|prayer/i.test(
+            f,
+          ),
+      ).slice(0, 8),
     });
   }
 

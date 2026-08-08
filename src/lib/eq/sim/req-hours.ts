@@ -27,7 +27,7 @@ import {
   type RegionTag,
   type PlayerSnapshot,
 } from "./requirements";
-import { calcDrop, type DropCalcResult } from "./acquisition";
+import { calcDrop } from "./acquisition/drops";
 import { rareMultAtTier, relicLadderHours } from "./league-passives";
 
 /** Hedge: minimum hours never below this for any real unlock */

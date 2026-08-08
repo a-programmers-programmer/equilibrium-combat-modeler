@@ -13,7 +13,7 @@ import {
   type TimedNode,
   summarizeReqHours,
 } from "./req-hours";
-import { calcDrop } from "./acquisition";
+import { calcDrop } from "./acquisition/drops";
 import {
   AllReq,
   SkillReq,

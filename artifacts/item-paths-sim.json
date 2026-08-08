@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-08T07:09:50.263Z",
+  "generated": "2026-08-08T07:12:51.661Z",
   "audit": {
     "total": 120,
     "withReq": 120,
@@ -1561,14 +1561,12 @@
       "itemPath": 51.02555095119048,
       "hedged": 31.954627057723215,
       "planBreakdown": [
-        "Farm league tier 4 → rare ×4 (wiki passive ladder)",
-        "Skills union (5×→16× XP): 5.8h (combat 3.8 + support 2.1)",
-        "Exclusive (drops/crafts/relics/blessings): 26.1h",
-        "  combat-training exclusive: 5.5h",
-        "Parallel credit: −3.2h",
-        "Req-graph region/flag hedge: +0.4h",
+        "Farm league tier 4 → rare ×4",
+        "Skills union: 5.8h (combat 3.8 + support 2.1)",
+        "Exclusive: 26.1h (combat-train 5.5h)",
+        "Parallel −3.2h · region/flag hedge +0.4h",
         "WALL mean 29.2h · p50 29.2h · p90 29.2h",
-        "Sensitivity mean h: noBoost=29 · earlyT2=29 · midT4=29 · lateT6=29 · apexT7=29"
+        "Sensitivity: noBoost=29 · earlyT2=29 · midT4=29 · lateT6=29 · apexT7=29"
       ],
       "itemLedger": [
         {
@@ -1609,14 +1607,12 @@
       "itemPath": 42.13666206230158,
       "hedged": 45.193528323809524,
       "planBreakdown": [
-        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
-        "Skills union (5×→16× XP): 7.1h (combat 3.8 + support 3.3)",
-        "Exclusive (drops/crafts/relics/blessings): 38.2h",
-        "  combat-training exclusive: 16.4h",
-        "Parallel credit: −3.2h",
-        "Req-graph region/flag hedge: +3.1h",
+        "Farm league tier 6 → rare ×6",
+        "Skills union: 7.1h (combat 3.8 + support 3.3)",
+        "Exclusive: 38.2h (combat-train 16.4h)",
+        "Parallel −3.2h · region/flag hedge +3.1h",
         "WALL mean 45.2h · p50 44.3h · p90 48.2h",
-        "Sensitivity mean h: noBoost=75 · earlyT2=55 · midT4=45 · lateT6=42 · apexT7=40"
+        "Sensitivity: noBoost=75 · earlyT2=55 · midT4=45 · lateT6=42 · apexT7=40"
       ],
       "itemLedger": [
         {

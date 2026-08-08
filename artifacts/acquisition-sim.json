@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-08T07:09:51.476Z",
+  "generated": "2026-08-08T07:12:46.724Z",
   "hardened": true,
   "passives": [
     {
@@ -124,14 +124,12 @@
         }
       ],
       "breakdown": [
-        "Farm league tier 4 → rare ×4 (wiki passive ladder)",
-        "Skills union (5×→16× XP): 5.8h (combat 3.8 + support 2.1)",
-        "Exclusive (drops/crafts/relics/blessings): 26.1h",
-        "  combat-training exclusive: 5.5h",
-        "Parallel credit: −3.2h",
-        "Req-graph region/flag hedge: +0.4h",
+        "Farm league tier 4 → rare ×4",
+        "Skills union: 5.8h (combat 3.8 + support 2.1)",
+        "Exclusive: 26.1h (combat-train 5.5h)",
+        "Parallel −3.2h · region/flag hedge +0.4h",
         "WALL mean 29.2h · p50 29.2h · p90 29.2h",
-        "Sensitivity mean h: noBoost=29 · earlyT2=29 · midT4=29 · lateT6=29 · apexT7=29"
+        "Sensitivity: noBoost=29 · earlyT2=29 · midT4=29 · lateT6=29 · apexT7=29"
       ]
     },
     {
@@ -191,14 +189,12 @@
         }
       ],
       "breakdown": [
-        "Farm league tier 4 → rare ×4 (wiki passive ladder)",
-        "Skills union (5×→16× XP): 5.8h (combat 3.8 + support 2.1)",
-        "Exclusive (drops/crafts/relics/blessings): 24.1h",
-        "  combat-training exclusive: 7.0h",
-        "Parallel credit: −3.2h",
-        "Req-graph region/flag hedge: +7.4h",
+        "Farm league tier 4 → rare ×4",
+        "Skills union: 5.8h (combat 3.8 + support 2.1)",
+        "Exclusive: 24.1h (combat-train 7.0h)",
+        "Parallel −3.2h · region/flag hedge +7.4h",
         "WALL mean 34.1h · p50 34.1h · p90 34.1h",
-        "Sensitivity mean h: noBoost=27 · earlyT2=27 · midT4=27 · lateT6=27 · apexT7=27"
+        "Sensitivity: noBoost=27 · earlyT2=27 · midT4=27 · lateT6=27 · apexT7=27"
       ]
     },
     {
@@ -279,14 +275,12 @@
         }
       ],
       "breakdown": [
-        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
-        "Skills union (5×→16× XP): 7.1h (combat 3.8 + support 3.3)",
-        "Exclusive (drops/crafts/relics/blessings): 38.2h",
-        "  combat-training exclusive: 16.4h",
-        "Parallel credit: −3.2h",
-        "Req-graph region/flag hedge: +3.1h",
+        "Farm league tier 6 → rare ×6",
+        "Skills union: 7.1h (combat 3.8 + support 3.3)",
+        "Exclusive: 38.2h (combat-train 16.4h)",
+        "Parallel −3.2h · region/flag hedge +3.1h",
         "WALL mean 45.2h · p50 44.3h · p90 48.2h",
-        "Sensitivity mean h: noBoost=75 · earlyT2=55 · midT4=45 · lateT6=42 · apexT7=40"
+        "Sensitivity: noBoost=75 · earlyT2=55 · midT4=45 · lateT6=42 · apexT7=40"
       ]
     },
     {
@@ -382,14 +376,12 @@
         }
       ],
       "breakdown": [
-        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
-        "Skills union (5×→16× XP): 8.3h (combat 3.8 + support 4.6)",
-        "Exclusive (drops/crafts/relics/blessings): 39.9h",
-        "  combat-training exclusive: 16.4h",
-        "Parallel credit: −3.2h",
-        "Req-graph region/flag hedge: +3.7h",
+        "Farm league tier 6 → rare ×6",
+        "Skills union: 8.3h (combat 3.8 + support 4.6)",
+        "Exclusive: 39.9h (combat-train 16.4h)",
+        "Parallel −3.2h · region/flag hedge +3.7h",
         "WALL mean 48.8h · p50 47.9h · p90 51.8h",
-        "Sensitivity mean h: noBoost=78 · earlyT2=58 · midT4=48 · lateT6=45 · apexT7=43"
+        "Sensitivity: noBoost=78 · earlyT2=58 · midT4=48 · lateT6=45 · apexT7=43"
       ]
     },
     {
@@ -460,14 +452,12 @@
         }
       ],
       "breakdown": [
-        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
-        "Skills union (5×→16× XP): 9.7h (combat 6.3 + support 3.3)",
-        "Exclusive (drops/crafts/relics/blessings): 26.0h",
-        "  combat-training exclusive: 4.7h",
-        "Parallel credit: −4.0h",
-        "Req-graph region/flag hedge: +16.0h",
+        "Farm league tier 6 → rare ×6",
+        "Skills union: 9.7h (combat 6.3 + support 3.3)",
+        "Exclusive: 26.0h (combat-train 4.7h)",
+        "Parallel −4.0h · region/flag hedge +16.0h",
         "WALL mean 47.7h · p50 47.6h · p90 48.2h",
-        "Sensitivity mean h: noBoost=36 · earlyT2=32 · midT4=32 · lateT6=32 · apexT7=32"
+        "Sensitivity: noBoost=36 · earlyT2=32 · midT4=32 · lateT6=32 · apexT7=32"
       ]
     },
     {
@@ -568,14 +558,12 @@
         }
       ],
       "breakdown": [
-        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
-        "Skills union (5×→16× XP): 8.3h (combat 3.8 + support 4.6)",
-        "Exclusive (drops/crafts/relics/blessings): 45.2h",
-        "  combat-training exclusive: 16.4h",
-        "Parallel credit: −3.2h",
-        "Req-graph region/flag hedge: +7.2h",
+        "Farm league tier 6 → rare ×6",
+        "Skills union: 8.3h (combat 3.8 + support 4.6)",
+        "Exclusive: 45.2h (combat-train 16.4h)",
+        "Parallel −3.2h · region/flag hedge +7.2h",
         "WALL mean 57.5h · p50 56.6h · p90 60.5h",
-        "Sensitivity mean h: noBoost=84 · earlyT2=64 · midT4=54 · lateT6=50 · apexT7=49"
+        "Sensitivity: noBoost=84 · earlyT2=64 · midT4=54 · lateT6=50 · apexT7=49"
       ]
     },
     {
@@ -701,14 +689,12 @@
         }
       ],
       "breakdown": [
-        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
-        "Skills union (5×→16× XP): 13.7h (combat 3.8 + support 10.0)",
-        "Exclusive (drops/crafts/relics/blessings): 57.4h",
-        "  combat-training exclusive: 16.4h",
-        "Parallel credit: −3.2h",
-        "Req-graph region/flag hedge: +6.2h",
+        "Farm league tier 6 → rare ×6",
+        "Skills union: 13.7h (combat 3.8 + support 10.0)",
+        "Exclusive: 57.4h (combat-train 16.4h)",
+        "Parallel −3.2h · region/flag hedge +6.2h",
         "WALL mean 74.2h · p50 73.3h · p90 77.2h",
-        "Sensitivity mean h: noBoost=101 · earlyT2=81 · midT4=71 · lateT6=68 · apexT7=66"
+        "Sensitivity: noBoost=101 · earlyT2=81 · midT4=71 · lateT6=68 · apexT7=66"
       ]
     },
     {
@@ -790,14 +776,12 @@
         }
       ],
       "breakdown": [
-        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
-        "Skills union (5×→16× XP): 5.3h (combat 2.0 + support 3.3)",
-        "Exclusive (drops/crafts/relics/blessings): 46.1h",
-        "  combat-training exclusive: 27.8h",
-        "Parallel credit: −1.7h",
-        "Req-graph region/flag hedge: +1.7h",
+        "Farm league tier 6 → rare ×6",
+        "Skills union: 5.3h (combat 2.0 + support 3.3)",
+        "Exclusive: 46.1h (combat-train 27.8h)",
+        "Parallel −1.7h · region/flag hedge +1.7h",
         "WALL mean 51.5h · p50 49.2h · p90 60.6h",
-        "Sensitivity mean h: noBoost=134 · earlyT2=83 · midT4=58 · lateT6=50 · apexT7=46"
+        "Sensitivity: noBoost=134 · earlyT2=83 · midT4=58 · lateT6=50 · apexT7=46"
       ]
     },
     {
@@ -858,14 +842,12 @@
         }
       ],
       "breakdown": [
-        "Farm league tier 5 → rare ×4 (wiki passive ladder)",
-        "Skills union (5×→16× XP): 5.8h (combat 3.8 + support 2.1)",
-        "Exclusive (drops/crafts/relics/blessings): 61.8h",
-        "  combat-training exclusive: 3.0h",
-        "Parallel credit: −2.5h",
-        "Req-graph region/flag hedge: +0.8h",
+        "Farm league tier 5 → rare ×4",
+        "Skills union: 5.8h (combat 3.8 + support 2.1)",
+        "Exclusive: 61.8h (combat-train 3.0h)",
+        "Parallel −2.5h · region/flag hedge +0.8h",
         "WALL mean 65.9h · p50 61.0h · p90 88.7h",
-        "Sensitivity mean h: noBoost=179 · earlyT2=103 · midT4=65 · lateT6=52 · apexT7=46"
+        "Sensitivity: noBoost=179 · earlyT2=103 · midT4=65 · lateT6=52 · apexT7=46"
       ]
     },
     {
@@ -1032,14 +1014,12 @@
         }
       ],
       "breakdown": [
-        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
-        "Skills union (5×→16× XP): 22.9h (combat 8.6 + support 14.3)",
-        "Exclusive (drops/crafts/relics/blessings): 77.5h",
-        "  combat-training exclusive: 17.7h",
-        "Parallel credit: −7.3h",
-        "Req-graph region/flag hedge: +27.3h",
+        "Farm league tier 6 → rare ×6",
+        "Skills union: 22.9h (combat 8.6 + support 14.3)",
+        "Exclusive: 77.5h (combat-train 17.7h)",
+        "Parallel −7.3h · region/flag hedge +27.3h",
         "WALL mean 120.3h · p50 119.0h · p90 125.0h",
-        "Sensitivity mean h: noBoost=133 · earlyT2=109 · midT4=97 · lateT6=93 · apexT7=91"
+        "Sensitivity: noBoost=133 · earlyT2=109 · midT4=97 · lateT6=93 · apexT7=91"
       ]
     },
     {
@@ -1116,14 +1096,12 @@
         }
       ],
       "breakdown": [
-        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
-        "Skills union (5×→16× XP): 7.1h (combat 3.8 + support 3.3)",
-        "Exclusive (drops/crafts/relics/blessings): 60.2h",
-        "  combat-training exclusive: 8.4h",
-        "Parallel credit: −3.2h",
-        "Req-graph region/flag hedge: +10.1h",
+        "Farm league tier 6 → rare ×6",
+        "Skills union: 7.1h (combat 3.8 + support 3.3)",
+        "Exclusive: 60.2h (combat-train 8.4h)",
+        "Parallel −3.2h · region/flag hedge +10.1h",
         "WALL mean 74.2h · p50 70.4h · p90 91.1h",
-        "Sensitivity mean h: noBoost=208 · earlyT2=122 · midT4=78 · lateT6=64 · apexT7=57"
+        "Sensitivity: noBoost=208 · earlyT2=122 · midT4=78 · lateT6=64 · apexT7=57"
       ]
     },
     {
@@ -1230,14 +1208,12 @@
         }
       ],
       "breakdown": [
-        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
-        "Skills union (5×→16× XP): 13.2h (combat 8.6 + support 4.6)",
-        "Exclusive (drops/crafts/relics/blessings): 43.2h",
-        "  combat-training exclusive: 5.9h",
-        "Parallel credit: −5.0h",
-        "Req-graph region/flag hedge: +35.2h",
+        "Farm league tier 6 → rare ×6",
+        "Skills union: 13.2h (combat 8.6 + support 4.6)",
+        "Exclusive: 43.2h (combat-train 5.9h)",
+        "Parallel −5.0h · region/flag hedge +35.2h",
         "WALL mean 86.6h · p50 86.0h · p90 88.7h",
-        "Sensitivity mean h: noBoost=61 · earlyT2=54 · midT4=52 · lateT6=51 · apexT7=51"
+        "Sensitivity: noBoost=61 · earlyT2=54 · midT4=52 · lateT6=51 · apexT7=51"
       ]
     }
   ]

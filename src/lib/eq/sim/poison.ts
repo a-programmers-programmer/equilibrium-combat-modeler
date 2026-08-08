@@ -194,9 +194,9 @@ export function modelPoisonStack(input: PoisonModelInput): PoisonModelResult {
   }
 
   // Effective tier: WP tier +1 if cinderbane with another source
-  let tier = input.weaponPoisonTier;
+  let tier: number = input.weaponPoisonTier;
   if (cinder && tier > 0) {
-    tier = Math.min(5, tier + 1) as number; // "tier 5" above +++
+    tier = Math.min(5, tier + 1); // "tier 5" above +++
     flags.push(`Cinderbane +1 poison tier → effective T${tier}`);
   } else if (cinder && tier === 0) {
     // Cinderbanes alone apply tier 2 poison

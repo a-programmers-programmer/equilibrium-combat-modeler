@@ -181,6 +181,16 @@ function invOk(tier: InventionTier, regions: RegionTag[]): boolean {
   return regions.includes("asgarnia") && regions.includes("kandarin");
 }
 
+/** Style-locked armour packages (Cryptbloom magic-only, Deathwarden/TFN necro-only, …) */
+function armourOk(style: Style, armour: ArmourProfileId): boolean {
+  if (armour === "cryptbloom-tank") return style === "magic";
+  if (armour === "deathwarden-tank" || armour === "tfn-power") return style === "necromancy";
+  if (armour === "sirenic-power") return style === "ranged";
+  if (armour === "tectonic-power") return style === "magic";
+  if (armour === "masterwork-tank") return style === "melee";
+  return true;
+}
+
 /** Heuristic upper bound before full sim */
 function upperBound(opts: {
   pathId: string;
@@ -228,10 +238,14 @@ export function optimizeSuite(axes: OptAxes = {}): OptimizeResult {
     ([
       "mixed-aegis-power",
       "cryptbloom-tank",
+      "deathwarden-tank",
+      "tfn-power",
       "masterwork-tank",
       "tank-aegis",
       "power-bis",
       "hybrid-cinder",
+      "sirenic-power",
+      "tectonic-power",
     ] as ArmourProfileId[]);
   const regions = axes.regions ?? DEFAULT_REGIONS;
   const poisons =
@@ -272,6 +286,10 @@ export function optimizeSuite(axes: OptAxes = {}): OptimizeResult {
   for (const style of styles) {
     for (const path of paths) {
       for (const armour of armours) {
+        if (!armourOk(style, armour)) {
+          pruned++;
+          continue;
+        }
         for (const reg of regions) {
           for (const inv of inventions) {
             if (!invOk(inv, reg.regions)) {

@@ -27,6 +27,8 @@ import {
   unlockedFromPackage,
   type RegionPackage,
   REGION_PACKAGES,
+  findIllegalLoadoutPieces,
+  FREE_REGION_IDS,
 } from "./items";
 import { resolveLoadoutOOP, type Equipment } from "./sim/equipment";
 import {
@@ -79,6 +81,8 @@ import {
   type ArmourProfileId,
   type ArmourResolveResult,
   ARMOUR_BY_ID,
+  profileFromBodyPiece,
+  sanitizeArmourProfile,
 } from "./sim/armour";
 import {
   modelInvention,
@@ -94,7 +98,7 @@ export interface GearSnapshot {
   genesisAdBonus: number;
   weaponTier: number;
   source: string;
-  pieces?: { name: string; slot: string }[];
+  pieces?: { name: string; slot: string; id?: string; style?: string }[];
   notes?: string[];
   /** Armour profile for style dmg / set effects (optional) */
   armourProfileId?: ArmourProfileId;
@@ -102,6 +106,8 @@ export interface GearSnapshot {
   styleDamageMult?: number;
   /** Set effect mult */
   setEffectMult?: number;
+  /** Regions this loadout was resolved under (invention / poison gates) */
+  unlockedRegions?: RegionId[];
   /** Bane stack from OOP loadout (ammo + affinity weapons) */
   bane?: {
     mult: number;
@@ -230,7 +236,7 @@ export interface ModelResult {
   };
   dps: number;
   /** Player + familiar */
-  totalDps?: number;
+  totalDps: number;
   vsBaseline: number;
   breakdown: DamageBreakdown;
   flags: string[];
@@ -264,8 +270,30 @@ export interface ModelResult {
     devout: boolean;
     divineDruid: boolean;
   };
-  /** Total = player + familiar */
-  totalDps: number;
+  armourBonuses?: {
+    profile: ArmourProfileId;
+    profileName: string;
+    totalArmour: number;
+    styleDamageMult: number;
+    setEffectMult: number;
+    abilityMult: number;
+    aegisAd: number;
+    armourBonusAd: number;
+    prayerBonus: number;
+  };
+  invention?: {
+    tier: InventionTier;
+    locked: boolean;
+    perkMult: number;
+    procFactor: number;
+  };
+  poisonStack?: {
+    dps: number;
+    effectiveTier: number;
+    applyChance: number;
+    sources: unknown[];
+    gearStatus: unknown;
+  };
 }
 
 function floor(n: number): number {
@@ -322,6 +350,26 @@ export function loadoutToSnapshot(
   },
 ): GearSnapshot {
   const genesisAdBonus = Math.round(loadout.totalWeaponAd * 0.22 + (120 - loadout.weaponTier) * 8);
+  const body = loadout.pieces.find((p) => p.slot === "body");
+  const wantTank = loadout.mode === "shield";
+  const armourProfileId = profileFromBodyPiece(
+    loadout.style as Style,
+    body ? `${body.id} ${body.name}` : undefined,
+    wantTank ? "tank" : "power",
+  );
+
+  // Defense-in-depth: never snapshot illegal style/region/cryptbloom-on-necro pieces
+  const illegal = findIllegalLoadoutPieces(loadout);
+  const notes = [...(loadout.notes ?? [])];
+  let pieces = loadout.pieces;
+  if (illegal.length) {
+    const badIds = new Set(illegal.map((i) => i.piece.id));
+    pieces = loadout.pieces.filter((p) => !badIds.has(p.id));
+    for (const i of illegal) {
+      notes.push(`ILLEGAL stripped: ${i.piece.name} (${i.reasons.join("; ")})`);
+    }
+  }
+
   const snap: GearSnapshot = {
     armour: loadout.totalArmour,
     baselineAd: loadout.totalWeaponAd,
@@ -330,8 +378,15 @@ export function loadoutToSnapshot(
     genesisAdBonus: Math.max(400, genesisAdBonus),
     weaponTier: loadout.weaponTier,
     source: `regions:${loadout.unlocked.join("+")} · ${loadout.mode}`,
-    pieces: loadout.pieces.map((p) => ({ name: p.name, slot: p.slot })),
-    notes: loadout.notes,
+    pieces: pieces.map((p) => ({
+      name: p.name,
+      slot: p.slot,
+      id: p.id,
+      style: p.style,
+    })),
+    notes,
+    armourProfileId,
+    unlockedRegions: [...loadout.unlocked],
   };
   if (loadout.bane && loadout.bane.mult > 1) {
     snap.bane = {
@@ -369,7 +424,7 @@ function playerSnapFromRegions(
   return {
     levels,
     regions,
-    quests: new Set(["ritual-of-the-mahjarrat"]),
+    quests: new Set(["ritual-of-the-mahjarrat", "necromancy-questline"]),
     flags: new Set([
       "unlocked:tune-bane",
       "unlocked:dinarrows",
@@ -381,6 +436,12 @@ function playerSnapFromRegions(
       "unlocked:inq-imbue",
       "unlocked:glacor-front",
       "unlocked:leng-core",
+      // gearFromPackage endgame assumes free-path bosses farmed when ignoreBossFlags
+      "killed:rasial",
+      "killed:kerapac",
+      "killed:vorkath-path",
+      "killed:zamorak",
+      "killed:zuk",
     ]),
     relicTier: 6,
   };
@@ -398,9 +459,11 @@ export function gearFromRegions(
     ignoreBossFlags: true,
     targetTags,
   });
+  // Prefer explicit elective unlock list for invention / audit (catalog may omit free tags)
+  const merged = { ...loadout, unlocked: unlocked.length ? unlocked : loadout.unlocked };
   return {
-    snapshot: loadoutToSnapshot(loadout),
-    loadout,
+    snapshot: loadoutToSnapshot(merged),
+    loadout: merged,
     offhand: offhandFromLoadout(loadout),
   };
 }
@@ -417,9 +480,10 @@ export function gearFromPackage(
     ignoreBossFlags: true,
     targetTags,
   });
+  const merged = { ...loadout, unlocked: unlocked.length ? unlocked : loadout.unlocked };
   return {
-    snapshot: loadoutToSnapshot(loadout),
-    loadout,
+    snapshot: loadoutToSnapshot(merged),
+    loadout: merged,
     offhand: offhandFromLoadout(loadout),
   };
 }
@@ -436,6 +500,24 @@ function snapshotFromStage(stage: GearStage, style: Style, archetype: BuildArche
   };
 }
 
+/** Regions for invention / poison soft gates from input + gear snapshot. */
+function regionsForGates(input: ModelInput, gear: GearSnapshot): RegionTag[] {
+  if (input.baneRegions) {
+    return Array.isArray(input.baneRegions) ? [...input.baneRegions] : [...input.baneRegions];
+  }
+  if (input.summoningPlayer) {
+    return [...input.summoningPlayer.regions];
+  }
+  if (gear.unlockedRegions?.length) {
+    return ["free", ...gear.unlockedRegions] as RegionTag[];
+  }
+  const m = /^regions:([^\s·]+)/.exec(gear.source);
+  if (m?.[1]) {
+    return ["free", ...(m[1].split("+").filter(Boolean) as RegionTag[])];
+  }
+  return ["free", ...FREE_REGION_IDS] as RegionTag[];
+}
+
 export function modelCombat(input: ModelInput): ModelResult {
   const style = styleById(input.style);
   const offhand = input.offhand ?? offhandForArchetype(input.archetype);
@@ -447,7 +529,29 @@ export function modelCombat(input: ModelInput): ModelResult {
   const flags: string[] = [];
   const warnings: string[] = [];
 
-  const gear = input.gear ?? snapshotFromStage(input.stage, input.style, input.archetype);
+  let gear = input.gear ?? snapshotFromStage(input.stage, input.style, input.archetype);
+
+  // Snapshot piece validation — Cryptbloom never on necro; wrong-style weapons stripped from notes
+  if (gear.pieces?.length) {
+    const cleaned = gear.pieces.filter((p) => {
+      if (input.style === "necromancy" && /cryptbloom/i.test(p.name)) {
+        warnings.push(`Stripped Cryptbloom from necro gear: ${p.name}`);
+        return false;
+      }
+      if (p.style && p.slot === "body" && p.style !== "all" && p.style !== input.style) {
+        warnings.push(`Stripped illegal body ${p.name} (${p.style}) for ${input.style}`);
+        return false;
+      }
+      if (p.style && p.slot === "weapon" && p.style !== input.style && p.style !== "all") {
+        warnings.push(`Stripped illegal weapon ${p.name} (${p.style}) for ${input.style}`);
+        return false;
+      }
+      return true;
+    });
+    if (cleaned.length !== gear.pieces.length) {
+      gear = { ...gear, pieces: cleaned };
+    }
+  }
 
   let armour = gear.armour;
   let baseLp = gear.baseLp;
@@ -458,15 +562,25 @@ export function modelCombat(input: ModelInput): ModelResult {
 
   if (gear.notes) {
     for (const n of gear.notes) {
-      if (n.startsWith("WARNING")) warnings.push(n);
+      if (n.startsWith("WARNING") || n.startsWith("ILLEGAL") || n.startsWith("CRITICAL"))
+        warnings.push(n);
       else flags.push(n);
     }
   }
   flags.push(`Gear: ${gear.source} (T${gear.weaponTier})`);
 
-  // Armour package (power/tank/hybrid) — style dmg + set effects + prayer/LP
+  // Armour package — sanitize off-style profiles (Cryptbloom≠necro, TFN≠melee, …)
+  const requestedProfile = input.armourProfile ?? gear.armourProfileId;
+  const sanitized = sanitizeArmourProfile(input.style, requestedProfile, {
+    hasAegis: has("teragards-aegis"),
+    offhand,
+  });
+  if (sanitized.remapped && sanitized.reason) {
+    warnings.push(`Armour profile gate: ${sanitized.reason}`);
+  }
+
   let armourRes = resolveArmourBonuses({
-    profileId: input.armourProfile ?? gear.armourProfileId,
+    profileId: sanitized.profileId,
     style: input.style,
     offhand,
     hasAegis: has("teragards-aegis"),
@@ -570,7 +684,8 @@ export function modelCombat(input: ModelInput): ModelResult {
   }
   const armourBonusAd = ad - adBeforeArmourBonus;
 
-  // ── Invention perks (gated by Asgarnia / Kandarin) ──
+  // ── Invention perks (gated by Asgarnia / Kandarin via gear regions) ──
+  const invRegions = regionsForGates(input, gear);
   const invRes = modelInvention({
     tier: input.inventionTier ?? "none",
     style: input.style,
@@ -579,12 +694,14 @@ export function modelCombat(input: ModelInput): ModelResult {
       input.relic === "perkfection" ||
       input.relicSecondary === "perkfection",
     powerArchive: has("power-archive"),
-    regions: input.baneRegions,
+    regions: invRegions,
     player: input.summoningPlayer,
   });
   // Also detect perkfection from... we only have primary/secondary here; full loadout may differ
   if (invRes.perkMult > 1 || invRes.procDpsFactor > 1) {
     ad = floor(ad * invRes.perkMult);
+    flags.push(...invRes.flags);
+  } else if (input.inventionTier && input.inventionTier !== "none" && invRes.locked) {
     flags.push(...invRes.flags);
   }
   for (const w of invRes.warnings) warnings.push(w);
@@ -725,10 +842,11 @@ export function modelCombat(input: ModelInput): ModelResult {
     targetPoisonImmune: input.targetPoisonImmune ?? kit?.gear.targetPoisonImmune ?? false,
     ...input.poisonGear,
   };
-  // Regions for poison gear gates
-  const poisonRegions = new Set<RegionTag>(
-    input.baneRegions ?? ["free", "misthalin", "havenhythe", "karamja"],
-  );
+  // Regions for poison gear gates (prefer explicit, else loadout/invention regions)
+  const poisonRegions = new Set<RegionTag>(invRegions);
+  if (input.baneRegions) {
+    for (const r of input.baneRegions) poisonRegions.add(r);
+  }
   if (input.summoningPlayer?.regions) {
     for (const r of input.summoningPlayer.regions) poisonRegions.add(r);
   }
@@ -874,20 +992,23 @@ export function modelCombat(input: ModelInput): ModelResult {
     !(targetTags.length === 1 && targetTags[0] === "general")
   ) {
     const regions = new Set<RegionTag>(
-      input.baneRegions ?? [
-        "free",
-        "misthalin",
-        "havenhythe",
-        "karamja",
-        "asgarnia",
-        "desert",
-        "forinthry",
-        "anachronia",
-        "fremennik",
-        "morytania",
-        "kandarin",
-        "tirannwn",
-      ],
+      input.baneRegions ??
+        (invRegions.length > 3
+          ? invRegions
+          : [
+              "free",
+              "misthalin",
+              "havenhythe",
+              "karamja",
+              "asgarnia",
+              "desert",
+              "forinthry",
+              "anachronia",
+              "fremennik",
+              "morytania",
+              "kandarin",
+              "tirannwn",
+            ]),
     );
     const levels: Partial<Record<SkillId, number>> = {
       attack: 99,
@@ -1054,12 +1175,7 @@ export function modelCombat(input: ModelInput): ModelResult {
         necromancy: 99,
       },
       regions: new Set<RegionTag>(
-        input.baneRegions ?? [
-          "free",
-          "misthalin",
-          "havenhythe",
-          "karamja",
-        ],
+        input.baneRegions ?? invRegions,
       ),
       quests: new Set<string>(),
       flags: new Set<string>(["league:contract-claws-auto"]),
@@ -1275,7 +1391,15 @@ export function modelCombat(input: ModelInput): ModelResult {
     god4,
     god8,
     offhand,
-    gear,
+    gear: {
+      ...gear,
+      armour,
+      prayer,
+      armourProfileId: armourRes.profile.id,
+      unlockedRegions:
+        gear.unlockedRegions ??
+        (invRegions.filter((r) => r !== "free" && r !== "any") as RegionId[]),
+    },
     stats: {
       baselineAd: gear.baselineAd,
       effectiveAd: ad,

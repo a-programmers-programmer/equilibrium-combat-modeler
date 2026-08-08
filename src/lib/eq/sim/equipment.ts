@@ -1,7 +1,8 @@
 /**
  * OOP equipment model — every piece has a Requirement graph.
  * Combines wiki-generated catalog + hand-curated combat BiS + bane/affinity gear.
- * Loadout resolution is target-aware (dragonbane, hexhunter, etc.).
+ * Loadout resolution is target-aware (dragonbane, hexhunter, etc.) and
+ * STRICTLY style/region gated (modelCombat cannot equip illegal gear).
  */
 
 import {
@@ -13,7 +14,10 @@ import {
   ITEMS,
   type OffhandMode,
   type ResolvedLoadout,
+  itemStyleLegal,
+  scoreBodyForMode,
 } from "../items";
+
 import type { SkillId } from "../xp";
 import {
   Requirement,
@@ -221,9 +225,86 @@ export class Equipment {
       }`,
     };
   }
+
+  /** Style legality for a combat style (delegates to shared rule). */
+  styleLegalFor(style: Exclude<CombatStyle, "all">): boolean {
+    if (this.slot === "material" || this.slot === "codex" || this.slot === "unknown") {
+      return false;
+    }
+    return itemStyleLegal(
+      {
+        slot: this.slot as ItemSlot,
+        style: this.style as CombatStyle,
+        kind: this.kind,
+        abilityDamage: this.abilityDamage,
+      },
+      style,
+    );
+  }
+}
+
+/** Known wiki mis-tags / incomplete rows — fix at catalog build time. */
+function patchGenerated(g: GeneratedGearDef): GeneratedGearDef {
+  const out = { ...g };
+  // Melee-only weapons mis-tagged style:all
+  if (out.id === "obsidian-blade" || out.id === "whip-vine" || out.id === "abyssal-whip") {
+    out.style = "melee";
+  }
+  if (out.id === "annihilation" || out.id === "decimation" || out.id === "obliteration") {
+    if (out.id === "annihilation") out.style = "melee";
+    if (out.id === "decimation") out.style = "ranged";
+    if (out.id === "obliteration") out.style = "magic";
+  }
+  // Khopeshes are MELEE (Gate of Elidinis) — wiki mis-tagged Tumeken as necro weapon
+  if (out.id === "khopesh-of-tumeken" || /khopesh of tumeken/i.test(out.name)) {
+    out.style = "melee";
+    out.slot = "offhand";
+    out.kind = "none";
+    out.twoHanded = false;
+  }
+  if (out.id === "khopesh-of-elidinis" || /khopesh of elidinis/i.test(out.name)) {
+    out.style = "melee";
+    out.slot = "weapon";
+    out.kind = "none";
+  }
+  // Death Guard wiki row sometimes lands as unknown slot
+  if (/death-guard/i.test(out.id) || /death guard/i.test(out.name)) {
+    out.style = "necromancy";
+    if (out.slot === "unknown" || out.slot === "material" || out.slot === "codex") {
+      out.slot = "weapon";
+    }
+    if (!out.abilityDamage || out.abilityDamage <= 0) {
+      out.abilityDamage = out.tier >= 90 ? 2052 : 857;
+    }
+  }
+  // Deathwarden is a body tank set, not an offhand shield
+  if (out.id === "deathwarden-robe-set") {
+    out.slot = "body";
+    out.kind = "tank";
+    out.armour = out.armour && out.armour > 0 ? out.armour : 700;
+    out.style = "necromancy";
+  }
+  // TFN power set
+  if (out.id === "first-necromancers-equipment") {
+    out.kind = "power";
+    out.tier = Math.max(out.tier, 95);
+    out.armour = Math.max(out.armour ?? 0, 560);
+    out.style = "necromancy";
+  }
+  // Cryptbloom is magic only (already tagged, reinforce)
+  if (/cryptbloom/i.test(out.id) || /cryptbloom/i.test(out.name)) {
+    out.style = "magic";
+    out.kind = "tank";
+  }
+  // Tumeken's resplendence is magic (Desert Amascut) not necro
+  if (/tumeken.*resplendence|resplendence.*tumeken/i.test(out.id + out.name)) {
+    out.style = "magic";
+  }
+  return out;
 }
 
 function fromGenerated(g: GeneratedGearDef): Equipment {
+  g = patchGenerated(g);
   let skillReqs = [...g.skillReqs];
   if (
     (g.slot === "weapon" || (g.slot === "offhand" && (g.abilityDamage ?? 0) > 0)) &&
@@ -267,11 +348,17 @@ function fromHandItem(item: CombatItem): Equipment {
     if (item.style === "necromancy") skillReqs.push({ skill: "necromancy", level: Math.min(t, 95) });
   } else if (["body", "helmet", "legs", "boots", "gloves"].includes(item.slot)) {
     skillReqs.push({ skill: "defence", level: Math.min(Math.max(t - 10, 1), 90) });
+    if (item.style === "necromancy") skillReqs.push({ skill: "necromancy", level: Math.min(t, 95) });
+    if (item.style === "magic") skillReqs.push({ skill: "magic", level: Math.min(t, 95) });
+    if (item.style === "ranged") skillReqs.push({ skill: "ranged", level: Math.min(t, 95) });
   }
   if (/masterwork/i.test(item.name)) skillReqs.push({ skill: "smithing", level: 90 });
 
   const flags: string[] = [];
-  if (/omni|soulbound/i.test(item.name)) flags.push("killed:rasial");
+  // Rasial / TFN gate for top necro uniques
+  if (/omni|soulbound|first necromancer|tfn-robes|tfn robes/i.test(`${item.id} ${item.name}`)) {
+    flags.push("killed:rasial");
+  }
   if (/seismic/i.test(item.name)) flags.push("killed:vorago");
   if (/fsoa|fractured staff/i.test(item.name)) flags.push("killed:kerapac");
   if (/ezk|ek-zekkil/i.test(item.name)) flags.push("killed:zamorak");
@@ -366,7 +453,8 @@ export function equipmentAccessible(
 }
 
 function styleMatch(e: Equipment, style: CombatStyle): boolean {
-  return e.style === "all" || e.style === style;
+  if (style === "all") return true;
+  return e.styleLegalFor(style);
 }
 
 function is2h(e: Equipment): boolean {
@@ -391,6 +479,7 @@ export type ResolveLoadoutOpts = {
 
 /**
  * Requirement-aware BiS resolve — only pieces the player can equip.
+ * Enforces style + region gates hard (strips illegal pieces).
  * When targetTags set: picks best ammo + may swap to affinity weapons (hex/terra/inq/Leng).
  */
 export function resolveLoadoutOOP(
@@ -445,8 +534,10 @@ export function resolveLoadoutOOP(
   const weapons = pool.filter((e) => e.slot === "weapon");
   const scoreWeapon = (e: Equipment) => {
     const base = e.abilityDamage + e.tier * 2;
-    if (!preferBane) return base;
-    return base * e.multVs(targetTags);
+    // Prefer exact style over anything else (already filtered)
+    const styleBoost = e.style === style ? 50 : 0;
+    if (!preferBane) return base + styleBoost;
+    return base * e.multVs(targetTags) + styleBoost;
   };
 
   let weapon: Equipment | undefined;
@@ -471,7 +562,6 @@ export function resolveLoadoutOOP(
       (w) => w.isBane && w.appliesTo(targetTags) && w.abilityDamage > 0,
     );
     const bestAff = pickBest(affinity, scoreWeapon);
-    // Estimate ammo mult available for both (same ammo pool)
     const ammoPool = pool.filter((e) => e.slot === "ammo" && e.appliesTo(targetTags));
     const bestAmmo = pickBest(ammoPool, (e) => e.multVs(targetTags) * 100 + e.tier);
     const ammoM = bestAmmo?.multVs(targetTags) ?? 1;
@@ -495,17 +585,37 @@ export function resolveLoadoutOOP(
 
   const bodies = pool.filter((e) => e.slot === "body");
   const wantTank = mode === "shield";
-  const body = pickBest(bodies, (e) => {
-    if (wantTank) return e.armour * 2 + e.lp + (e.kind === "tank" ? 200 : 0);
-    return e.armour + e.lp + (e.kind === "power" ? 150 : 0) + e.tier;
-  });
-  if (body) pieces.push(body);
-  else missing.push("armour set");
+  const body = pickBest(bodies, (e) =>
+    scoreBodyForMode(
+      { armour: e.armour, lp: e.lp, kind: e.kind, tier: e.tier },
+      wantTank,
+    ) + (e.style === style ? 100 : 0),
+  );
+  if (body) {
+    if (style === "necromancy" && /cryptbloom/i.test(body.id + body.name)) {
+      notes.push("CRITICAL blocked: refused Cryptbloom on necromancy");
+    } else {
+      pieces.push(body);
+    }
+  } else missing.push("armour set");
+
+  // Necro hard-guard: if somehow no body, force best deathwarden/tfn from pool
+  if (style === "necromancy" && !pieces.some((p) => p.slot === "body")) {
+    const necroBodies = bodies.filter(
+      (e) => e.style === "necromancy" && !/cryptbloom/i.test(e.id + e.name),
+    );
+    const forced = pickBest(necroBodies, (e) =>
+      scoreBodyForMode({ armour: e.armour, lp: e.lp, kind: e.kind, tier: e.tier }, wantTank),
+    );
+    if (forced) {
+      pieces.push(forced);
+      notes.push(`Necro armour fallback: ${forced.name}`);
+    }
+  }
 
   if (weaponIs2h || mode === "2h") {
     notes.push("2H weapon — no off-hand");
   } else if (mode === "dual") {
-    // Prefer bane OH (Leng sliver) when tagged glacor
     const ohPool = pool.filter((e) => e.slot === "offhand" && e.kind === "none" && e.abilityDamage > 0);
     const oh = pickBest(ohPool, (e) => e.abilityDamage * (preferBane ? e.multVs(targetTags) : 1));
     if (oh) pieces.push(oh);
@@ -529,7 +639,7 @@ export function resolveLoadoutOOP(
   } else {
     const shield = pickBest(
       pool.filter((e) => e.slot === "offhand" && e.kind === "shield"),
-      (e) => e.armour * 2 + e.lp,
+      (e) => e.armour * 2 + e.lp + (e.style === style ? 40 : 0),
     );
     if (shield) pieces.push(shield);
     else missing.push("shield");
@@ -538,7 +648,12 @@ export function resolveLoadoutOOP(
   for (const slot of ["boots", "ring", "cape", "amulet", "gloves", "helmet"] as EquipSlot[]) {
     const best = pickBest(
       pool.filter((e) => e.slot === slot),
-      (e) => e.tier + e.armour + e.prayer * 5 + e.abilityDamage * 0.1,
+      (e) =>
+        e.tier +
+        e.armour +
+        e.prayer * 5 +
+        e.abilityDamage * 0.1 +
+        (e.style === style ? 40 : 0),
     );
     if (best) pieces.push(best);
   }
@@ -555,13 +670,57 @@ export function resolveLoadoutOOP(
     }
   }
 
+  // ── Hard strip illegal pieces (style / region) ───────────────────
+  const unlockedRegions = new Set<RegionId>(
+    [...player.regions].filter(
+      (r): r is RegionId =>
+        r !== "free" && r !== "any" && r !== undefined,
+    ) as RegionId[],
+  );
+  // free milestone regions always present when free/misthalin
+  if (player.regions.has("free") || player.regions.has("misthalin")) {
+    unlockedRegions.add("misthalin");
+    unlockedRegions.add("havenhythe");
+    unlockedRegions.add("karamja");
+  }
+  for (const r of player.regions) {
+    if (r !== "free" && r !== "any") unlockedRegions.add(r as RegionId);
+  }
+
+  const legalPieces: Equipment[] = [];
+  for (const p of pieces) {
+    if (p.slot === "ammo") {
+      legalPieces.push(p);
+      continue;
+    }
+    if (!p.styleLegalFor(style)) {
+      notes.push(`Stripped illegal style: ${p.name} (${p.style}≠${style})`);
+      continue;
+    }
+    if (/cryptbloom/i.test(p.id + p.name) && style !== "magic") {
+      notes.push(`Stripped Cryptbloom off-style: ${p.name}`);
+      continue;
+    }
+    // Region check via accessible flags already applied; double-check regions
+    if (p.regions.length > 0) {
+      const missReg = p.regions.filter((r) => !unlockedRegions.has(r) && !player.regions.has(r as RegionTag));
+      if (missReg.length) {
+        notes.push(`Stripped region-locked: ${p.name} needs ${missReg.join("+")}`);
+        continue;
+      }
+    }
+    legalPieces.push(p);
+  }
+  pieces.length = 0;
+  pieces.push(...legalPieces);
+
   let totalArmour = 400;
   let totalWeaponAd = 0;
   let totalLp = 9900;
   let totalPrayer = 0;
   let weaponTier = 1;
   for (const p of pieces) {
-    if (p.slot === "ammo") continue; // ammo is mult-only, not AD stack
+    if (p.slot === "ammo") continue;
     totalArmour += p.armour;
     totalWeaponAd += p.abilityDamage;
     totalLp += p.lp;
@@ -571,7 +730,6 @@ export function resolveLoadoutOOP(
   if (weaponIs2h) totalWeaponAd = Math.round(totalWeaponAd * 1.05);
   totalWeaponAd = Math.round(totalWeaponAd + 900);
 
-  // Bane stack from all equipped pieces with vsTags
   const banePieces = pieces.filter((p) => p.isBane && p.appliesTo(targetTags));
   const stacked = stackBaneMults(
     banePieces.map((p) => ({
@@ -601,8 +759,10 @@ export function resolveLoadoutOOP(
       (targetTags[0] !== "general" ? ` · target=[${targetTags.join(",")}]` : ""),
   );
 
+  const unlockedList = [...unlockedRegions];
+
   return {
-    unlocked: [...player.regions].filter((r) => r !== "free" && r !== "any") as RegionId[],
+    unlocked: unlockedList,
     style,
     mode: weaponIs2h ? "2h" : mode,
     pieces: pieces.map((p) => p.toCombatItem()),

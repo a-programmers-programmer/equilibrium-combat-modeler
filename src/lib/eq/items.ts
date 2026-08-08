@@ -206,7 +206,7 @@ export const ITEMS: readonly CombatItem[] = [
     kind: "none",
     requires: [],
     abilityDamage: 2450,
-    notes: "Rasial unique — free Misthalin",
+    notes: "Rasial unique — free Misthalin (flag: killed:rasial)",
   },
   {
     id: "skull-lantern-90",
@@ -227,6 +227,7 @@ export const ITEMS: readonly CombatItem[] = [
     kind: "none",
     requires: [],
     abilityDamage: 1225,
+    notes: "Rasial unique (flag: killed:rasial)",
   },
 
   // ─── Melee weapons ───
@@ -460,7 +461,7 @@ export const ITEMS: readonly CombatItem[] = [
     twoHanded: true,
   },
 
-  // ─── Tank armour (style-agnostic armour rating for Aegis) ───
+  // ─── Tank / power armour (style-strict — never cross-style BiS) ───
   {
     id: "deathwarden-70",
     name: "Deathwarden robe set (T70)",
@@ -482,7 +483,7 @@ export const ITEMS: readonly CombatItem[] = [
     requires: [],
     armour: 720,
     lp: 900,
-    notes: "Full set proxy (helm/body/legs/boots/gloves)",
+    notes: "Full set proxy (helm/body/legs/boots/gloves) — free Kili/Rasial ladder",
   },
   {
     id: "deathdealer-90",
@@ -494,6 +495,19 @@ export const ITEMS: readonly CombatItem[] = [
     requires: [],
     armour: 480,
     lp: 400,
+    notes: "Pre-TFN necro power (Kili)",
+  },
+  {
+    id: "tfn-robes",
+    name: "Robes of the First Necromancer (T95)",
+    slot: "body",
+    style: "necromancy",
+    tier: 95,
+    kind: "power",
+    requires: [],
+    armour: 560,
+    lp: 450,
+    notes: "TFN power BiS — Rasial (flag: killed:rasial). NEVER Cryptbloom for necro.",
   },
   {
     id: "free-melee-tank",
@@ -528,7 +542,7 @@ export const ITEMS: readonly CombatItem[] = [
     requires: [],
     armour: 850,
     lp: 1100,
-    notes: "Croesus — free path; huge for Aegis mage",
+    notes: "Croesus — free path MAGIC tank only. Illegal as necro BiS.",
   },
   {
     id: "tectonic",
@@ -953,20 +967,83 @@ export interface ResolvedLoadout {
   notes: string[];
 }
 
+/**
+ * Style legality for equipping.
+ * - Exact style always OK
+ * - style:"all" OK for jewellery / hybrid utility / hybrid armour / shields
+ * - style:"all" NEVER OK as main-hand weapon (wiki mis-tags pollute BiS)
+ * - Damage off-hands (kind none + AD) must match combat style
+ * - Power/tank body of wrong combat style is illegal
+ */
+export function itemStyleLegal(
+  item: Pick<CombatItem, "slot" | "style" | "kind" | "abilityDamage">,
+  combatStyle: Exclude<CombatStyle, "all">,
+): boolean {
+  if (item.style === combatStyle) return true;
+  if (item.style !== "all") return false;
+
+  // Hybrid jewellery / aura / pocket / ammo
+  if (
+    item.slot === "ring" ||
+    item.slot === "amulet" ||
+    item.slot === "cape" ||
+    item.slot === "pocket" ||
+    item.slot === "aura" ||
+    item.slot === "ammo"
+  ) {
+    return true;
+  }
+
+  // Main-hand weapons must be style-exact (block Obsidian blade / whip vine etc.)
+  if (item.slot === "weapon") return false;
+
+  // Off-hand: shields/defenders may be hybrid; damage OH must be style-exact
+  if (item.slot === "offhand") {
+    if (item.kind === "shield" || item.kind === "defender") return true;
+    if (item.kind === "none" && (item.abilityDamage ?? 0) > 0) return false;
+    return true;
+  }
+
+  // Hybrid armour pieces (gemstone, achto) allowed as style:all
+  if (["body", "helmet", "legs", "boots", "gloves"].includes(item.slot)) {
+    return true;
+  }
+
+  return false;
+}
+
 function styleMatch(item: CombatItem, style: CombatStyle): boolean {
-  return item.style === "all" || item.style === style;
+  if (style === "all") return true;
+  return itemStyleLegal(item, style);
+}
+
+/** Score body armour for tank vs power offhand modes. */
+export function scoreBodyForMode(
+  item: Pick<CombatItem, "armour" | "lp" | "kind" | "tier">,
+  wantTank: boolean,
+): number {
+  const armour = item.armour ?? 0;
+  const lp = item.lp ?? 0;
+  if (wantTank) {
+    return armour * 2 + lp + (item.kind === "tank" ? 500 : item.kind === "hybrid" ? 200 : 0);
+  }
+  // Power / dual / 2h — never prefer tank armour just because armour rating is high
+  const powerBoost =
+    item.kind === "power" ? 900 : item.kind === "hybrid" ? 250 : item.kind === "tank" ? -400 : 0;
+  return item.tier * 12 + powerBoost + armour * 0.2 + lp * 0.15;
 }
 
 /**
  * Greedy best-in-slot from accessible items for a style + offhand mode.
  * Body set items are whole-set proxies (one body entry covers armour set).
- * Enforces 2H vs dual/shield/defender mutual exclusion.
+ * Enforces 2H vs dual/shield/defender mutual exclusion + style/region gates.
  */
 export function resolveLoadout(
   unlocked: readonly RegionId[],
   style: Exclude<CombatStyle, "all">,
   mode: OffhandMode,
 ): ResolvedLoadout {
+  const unlockedSet = new Set(unlocked);
   const pool = accessibleItems(unlocked).filter((i) => styleMatch(i, style));
   const notes: string[] = [];
   const pieces: CombatItem[] = [];
@@ -1008,14 +1085,14 @@ export function resolveLoadout(
 
   const bodies = pool.filter((i) => i.slot === "body");
   const wantTank = mode === "shield";
-  const body = pickBest(bodies, (i) => {
-    const armour = i.armour ?? 0;
-    const lp = i.lp ?? 0;
-    if (wantTank) return armour * 2 + lp + (i.kind === "tank" ? 200 : 0);
-    return armour + lp + (i.kind === "power" ? 150 : 0) + i.tier;
-  });
-  if (body) pieces.push(body);
-  else missing.push("armour set");
+  const body = pickBest(bodies, (i) => scoreBodyForMode(i, wantTank));
+  if (body) {
+    pieces.push(body);
+    if (style === "necromancy" && /cryptbloom/i.test(body.id + body.name)) {
+      // Should be impossible via style gate — keep as hard fail note
+      notes.push("CRITICAL: Cryptbloom on necro — style gate failed");
+    }
+  } else missing.push("armour set");
 
   if (weaponIs2h || mode === "2h") {
     notes.push("2H weapon — no off-hand");
@@ -1053,7 +1130,11 @@ export function resolveLoadout(
 
   const boots = pickBest(
     pool.filter((i) => i.slot === "boots"),
-    (i) => (i.armour ?? 0) + (i.lp ?? 0) + i.tier,
+    (i) => {
+      // Prefer style-exact boots over hybrid
+      const styleBoost = i.style === style ? 50 : 0;
+      return (i.armour ?? 0) + (i.lp ?? 0) + i.tier + styleBoost;
+    },
   );
   if (boots) pieces.push(boots);
 
@@ -1074,6 +1155,21 @@ export function resolveLoadout(
     (i) => i.tier + (i.prayer ?? 0) * 10,
   );
   if (amulet) pieces.push(amulet);
+
+  // Hard reject any piece that somehow violated style/region
+  const legal = pieces.filter((p) => {
+    if (!itemStyleLegal(p, style)) {
+      notes.push(`Stripped illegal style piece: ${p.name}`);
+      return false;
+    }
+    if (!itemAccessible(p, unlockedSet)) {
+      notes.push(`Stripped region-locked piece: ${p.name}`);
+      return false;
+    }
+    return true;
+  });
+  pieces.length = 0;
+  pieces.push(...legal);
 
   const baseArmour = 400;
   const baseLp = 9900;
@@ -1132,7 +1228,8 @@ export const REGION_PACKAGES: readonly RegionPackage[] = [
   {
     id: "free-only",
     name: "Free regions only",
-    description: "Misthalin + Havenhythe + Karamja. Still has FSOA, BOLG, EZK, Rasial, Cryptbloom, Vorkath.",
+    description:
+      "Misthalin + Havenhythe + Karamja. Still has FSOA, BOLG, EZK, Rasial/Deathwarden/TFN, Cryptbloom (magic), Vorkath. No Invention.",
     electives: [],
     tags: ["starter", "realistic-early"],
   },
@@ -1167,7 +1264,8 @@ export const REGION_PACKAGES: readonly RegionPackage[] = [
   {
     id: "necro-focus",
     name: "Necro comfort (Wildy+Asg+Ana)",
-    description: "Rasial is free; electives fill jewellery, boots, shields, invention.",
+    description:
+      "Rasial/Deathwarden/TFN free; electives fill jewellery, boots, shields, Invention (Asgarnia).",
     electives: ["forinthry", "asgarnia", "anachronia"],
     tags: ["necromancy"],
   },
@@ -1187,4 +1285,26 @@ export function unlockedFromPackage(pkg: RegionPackage): RegionId[] {
 export function unlockedFromElectives(electives: readonly RegionId[]): RegionId[] {
   const clean = electives.filter((e) => ELECTIVE_REGION_IDS.includes(e)).slice(0, MAX_ELECTIVES);
   return [...FREE_REGION_IDS, ...clean];
+}
+
+/** Audit helper: list pieces that violate style or region for a resolved loadout. */
+export function findIllegalLoadoutPieces(
+  loadout: ResolvedLoadout,
+): { piece: CombatItem; reasons: string[] }[] {
+  const unlocked = new Set(loadout.unlocked);
+  const bad: { piece: CombatItem; reasons: string[] }[] = [];
+  for (const p of loadout.pieces) {
+    const reasons: string[] = [];
+    if (!itemStyleLegal(p, loadout.style as Exclude<CombatStyle, "all">)) {
+      reasons.push(`style ${p.style} illegal for ${loadout.style}`);
+    }
+    if (!itemAccessible(p, unlocked)) {
+      reasons.push(`missing regions: ${p.requires.filter((r) => !unlocked.has(r)).join(",")}`);
+    }
+    if (loadout.style === "necromancy" && /cryptbloom/i.test(p.id + p.name)) {
+      reasons.push("Cryptbloom must never equip on necromancy");
+    }
+    if (reasons.length) bad.push({ piece: p, reasons });
+  }
+  return bad;
 }

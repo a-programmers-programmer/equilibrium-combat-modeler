@@ -12,6 +12,9 @@
  * 8. Chaotic Insight       → set pieces count +2 each (blessing)
  *
  * Tank vs power tradeoff is the big Equilibrium decision with Aegis.
+ *
+ * Style gates: Cryptbloom is MAGIC only; Deathwarden/TFN are NECRO only.
+ * modelCombat always sanitizes profiles so off-style packages cannot equip.
  */
 
 import type { Style } from "../gear";
@@ -52,6 +55,8 @@ export interface ArmourProfile {
   /** Preferred archetype */
   archetype: BuildArchetype;
   notes: string;
+  /** Combat style this profile is legal for (undefined = any hybrid) */
+  legalStyles?: readonly Style[];
 }
 
 /**
@@ -123,25 +128,23 @@ export const ARMOUR_PROFILES: readonly ArmourProfile[] = [
     armourBody: 2600,
     offhandArmour: { none: 0, defender: 200, shield: 480 },
     styleDamageMult: {
-      // Magic: intended style — full tank + set EV
       magic: 1.05,
-      // Off-style: RS3 accuracy / no style dmg — NET LOSS for DPS
       melee: 0.94,
       ranged: 0.94,
       necromancy: 0.93,
     },
     lpBonus: 1400,
     prayerBonus: 14,
-    // Set (Deathspores etc.) is magic-oriented; off-style gets almost nothing
     setEffectMult: 1.06,
     setEffectNotes: ["Cryptbloom Nature's Envoy / Deathspores — magic kit"],
     archetype: "shield-tank",
     notes:
-      "T90 magic tank from Croesus (Misthalin starter). GREAT for magic+Aegis. BAD idea as necro DPS armour (wrong style).",
+      "T90 magic tank from Croesus (Misthalin starter). GREAT for magic+Aegis. ILLEGAL as necro DPS armour.",
+    legalStyles: ["magic"],
   },
   {
     id: "deathwarden-tank",
-    name: "Deathwarden / TFN necro tank",
+    name: "Deathwarden necro tank",
     kind: "tank",
     armourBody: 2450,
     offhandArmour: { none: 0, defender: 180, shield: 420 },
@@ -157,6 +160,7 @@ export const ARMOUR_PROFILES: readonly ArmourProfile[] = [
     setEffectNotes: ["Necro tank path (Kili)", "Aegis-friendly armour"],
     archetype: "shield-tank",
     notes: "Correct necro tank for Teragard Aegis — free-region Necromancy progression",
+    legalStyles: ["necromancy"],
   },
   {
     id: "tfn-power",
@@ -173,9 +177,10 @@ export const ARMOUR_PROFILES: readonly ArmourProfile[] = [
     lpBonus: 400,
     prayerBonus: 10,
     setEffectMult: 1.05,
-    setEffectNotes: ["TFN power set"],
+    setEffectNotes: ["TFN power set — Rasial"],
     archetype: "power-dps",
-    notes: "Necro power BiS path — weaker Aegis convert than Deathwarden tank",
+    notes: "Necro power BiS path (Rasial) — weaker Aegis convert than Deathwarden tank",
+    legalStyles: ["necromancy"],
   },
   {
     id: "masterwork-tank",
@@ -195,6 +200,7 @@ export const ARMOUR_PROFILES: readonly ArmourProfile[] = [
     setEffectNotes: ["Masterwork set", "Melee tank"],
     archetype: "shield-tank",
     notes: "Aegis + melee strength hybrid tank",
+    legalStyles: ["melee"],
   },
   {
     id: "sirenic-power",
@@ -214,6 +220,7 @@ export const ARMOUR_PROFILES: readonly ArmourProfile[] = [
     setEffectNotes: ["Sirenic set"],
     archetype: "power-dps",
     notes: "Ranged power BiS package",
+    legalStyles: ["ranged"],
   },
   {
     id: "tectonic-power",
@@ -233,6 +240,7 @@ export const ARMOUR_PROFILES: readonly ArmourProfile[] = [
     setEffectNotes: ["Tectonic set"],
     archetype: "power-dps",
     notes: "Magic power BiS package",
+    legalStyles: ["magic"],
   },
   {
     id: "hybrid-cinder",
@@ -297,12 +305,102 @@ export const ARMOUR_BY_ID: Readonly<Record<string, ArmourProfile>> = Object.from
   ARMOUR_PROFILES.map((p) => [p.id, p]),
 );
 
+/**
+ * Remap illegal armour profiles to the correct style package.
+ * Cryptbloom never sticks on necro/melee/ranged; TFN/Deathwarden only on necro.
+ */
+export function sanitizeArmourProfile(
+  style: Style,
+  profileId: ArmourProfileId | undefined,
+  opts?: { hasAegis?: boolean; offhand?: Offhand },
+): { profileId: ArmourProfileId; remapped: boolean; reason?: string } {
+  const hasAegis = opts?.hasAegis ?? false;
+  const offhand = opts?.offhand ?? "none";
+  const fallback = defaultProfile(style, offhand, hasAegis);
+
+  if (!profileId) {
+    return { profileId: fallback, remapped: false };
+  }
+
+  const profile = ARMOUR_BY_ID[profileId];
+  if (!profile) {
+    return { profileId: fallback, remapped: true, reason: `Unknown profile ${profileId}` };
+  }
+
+  if (profile.legalStyles && !profile.legalStyles.includes(style)) {
+    // Style-specific remap
+    let alt: ArmourProfileId = fallback;
+    if (profileId === "cryptbloom-tank") {
+      alt =
+        style === "necromancy"
+          ? "deathwarden-tank"
+          : style === "melee"
+            ? "masterwork-tank"
+            : style === "ranged"
+              ? hasAegis
+                ? "tank-aegis"
+                : "sirenic-power"
+              : fallback;
+    } else if (profileId === "deathwarden-tank" || profileId === "tfn-power") {
+      alt = fallback;
+    } else if (profileId === "sirenic-power") {
+      alt = style === "magic" ? "tectonic-power" : style === "necromancy" ? "tfn-power" : "power-bis";
+    } else if (profileId === "tectonic-power") {
+      alt = style === "ranged" ? "sirenic-power" : style === "necromancy" ? "tfn-power" : "power-bis";
+    } else if (profileId === "masterwork-tank") {
+      alt =
+        style === "necromancy"
+          ? "deathwarden-tank"
+          : style === "magic"
+            ? "cryptbloom-tank"
+            : "tank-aegis";
+    }
+    return {
+      profileId: alt,
+      remapped: true,
+      reason: `${profileId} illegal for ${style} → ${alt}`,
+    };
+  }
+
+  return { profileId, remapped: false };
+}
+
+/** Infer armour profile from equipped body piece names. */
+export function profileFromBodyPiece(
+  style: Style,
+  bodyNameOrId: string | undefined,
+  mode: "tank" | "power",
+): ArmourProfileId {
+  const n = (bodyNameOrId ?? "").toLowerCase();
+  if (/cryptbloom/.test(n)) {
+    return style === "magic" ? "cryptbloom-tank" : sanitizeArmourProfile(style, "cryptbloom-tank").profileId;
+  }
+  if (/deathwarden/.test(n)) return "deathwarden-tank";
+  if (/first necromancer|tfn|deathdealer/.test(n)) return "tfn-power";
+  if (/sirenic|dracolich/.test(n)) return style === "ranged" ? "sirenic-power" : "power-bis";
+  if (/tectonic/.test(n)) return style === "magic" ? "tectonic-power" : "power-bis";
+  if (/masterwork|malevolent|bandos|trimmed/.test(n)) {
+    return mode === "tank" ? "masterwork-tank" : "power-bis";
+  }
+  if (/anima/.test(n)) return "anima-core";
+  if (mode === "tank") {
+    if (style === "necromancy") return "deathwarden-tank";
+    if (style === "magic") return "cryptbloom-tank";
+    if (style === "melee") return "masterwork-tank";
+    return "tank-aegis";
+  }
+  if (style === "necromancy") return "tfn-power";
+  if (style === "magic") return "tectonic-power";
+  if (style === "ranged") return "sirenic-power";
+  return "power-bis";
+}
+
 export interface ArmourResolveInput {
   profileId?: ArmourProfileId;
   style: Style;
   offhand: Offhand;
   hasAegis: boolean;
-  hasChaoticInsight: boolean;
+  hasChaoticInsight?: boolean;
   /** Override raw armour if loadout already summed */
   armourOverride?: number;
   prayerOverride?: number;
@@ -325,11 +423,18 @@ export interface ArmourResolveResult {
   flags: string[];
   /** Effective mult on ability-like damage from armour system alone */
   abilityMult: number;
+  /** True if profile was remapped for style legality */
+  remappedFrom?: string;
 }
 
 export function resolveArmourBonuses(input: ArmourResolveInput): ArmourResolveResult {
+  const sanitized = sanitizeArmourProfile(input.style, input.profileId, {
+    hasAegis: input.hasAegis,
+    offhand: input.offhand,
+  });
   const profile =
-    ARMOUR_BY_ID[input.profileId ?? defaultProfile(input.style, input.offhand, input.hasAegis)] ??
+    ARMOUR_BY_ID[sanitized.profileId] ??
+    ARMOUR_BY_ID[defaultProfile(input.style, input.offhand, input.hasAegis)] ??
     ARMOUR_BY_ID["mixed-aegis-power"]!;
 
   const ohArm = profile.offhandArmour[input.offhand] ?? 0;
@@ -338,8 +443,12 @@ export function resolveArmourBonuses(input: ArmourResolveInput): ArmourResolveRe
   let setEffectMult = profile.setEffectMult;
   let chaoticInsightMult = 1;
   const flags: string[] = [`Armour: ${profile.name}`];
+  if (sanitized.remapped && sanitized.reason) {
+    flags.push(`⚠ Armour remapped: ${sanitized.reason}`);
+  }
 
   // Off-style tank sets: set effects largely don't apply (e.g. Cryptbloom on necro)
+  // After sanitize this should be rare, but keep safety net.
   if (profile.id === "cryptbloom-tank" && input.style !== "magic") {
     setEffectMult = 1.0;
     flags.push(
@@ -363,7 +472,6 @@ export function resolveArmourBonuses(input: ArmourResolveInput): ArmourResolveRe
   }
 
   if (input.hasChaoticInsight) {
-    // Set pieces count as +2 each → roughly +50–80% set-effect EV
     chaoticInsightMult = 1.08;
     setEffectMult = 1 + (setEffectMult - 1) * 1.7;
     flags.push("Chaotic Insight set amplification");
@@ -391,6 +499,7 @@ export function resolveArmourBonuses(input: ArmourResolveInput): ArmourResolveRe
     armourForAegis: totalArmour,
     flags,
     abilityMult,
+    remappedFrom: sanitized.remapped ? input.profileId : undefined,
   };
 }
 
@@ -429,8 +538,16 @@ export function compareAegisArmourTradeoff(opts: {
     offhand: "none",
     hasAegis: true,
   });
+  const tankProfile =
+    opts.style === "necromancy"
+      ? "deathwarden-tank"
+      : opts.style === "magic"
+        ? "cryptbloom-tank"
+        : opts.style === "melee"
+          ? "masterwork-tank"
+          : "tank-aegis";
   const tank = resolveArmourBonuses({
-    profileId: "tank-aegis",
+    profileId: tankProfile,
     style: opts.style,
     offhand: "shield",
     hasAegis: true,
@@ -442,15 +559,15 @@ export function compareAegisArmourTradeoff(opts: {
     hasAegis: true,
   });
 
-  const score = (r: ArmourResolveResult, oh: Offhand) => {
+  const score = (r: ArmourResolveResult) => {
     const aegisAd = r.totalArmour * opts.aegisPct;
     const ad = (opts.baselineAd + aegisAd) * r.abilityMult;
     return { ad, armour: r.totalArmour, mult: r.abilityMult };
   };
 
-  const p = score(power, "none");
-  const t = score(tank, "shield");
-  const m = score(mixed, "shield");
+  const p = score(power);
+  const t = score(tank);
+  const m = score(mixed);
   let winner: "power" | "tank" | "mixed" = "tank";
   if (p.ad >= t.ad && p.ad >= m.ad) winner = "power";
   else if (m.ad >= t.ad) winner = "mixed";

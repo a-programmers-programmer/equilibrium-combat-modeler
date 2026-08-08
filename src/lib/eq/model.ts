@@ -1185,6 +1185,13 @@ export function modelCombat(input: ModelInput): ModelResult {
   const relicStack = stackRelicPlayerMult(
     input.relic ?? "none",
     input.relicSecondary ?? null,
+    {
+      style: input.style,
+      fightSeconds: input.fightSeconds ?? 60,
+      prayerBonus: prayer,
+      baselineAd: ad,
+      summoningLevel: input.summoningLevel ?? 99,
+    },
   );
   let playerDpsMult = relicStack.mult;
   for (const f of relicStack.flags) flags.push(f);

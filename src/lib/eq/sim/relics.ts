@@ -1,25 +1,17 @@
 /**
  * Equilibrium League relics — ONE pick per tier permanently.
  *
- * ## Restrictions that EXIST (wiki)
- * 1. One relic per tier (permanent for that tier).
- * 2. Tiers unlock by league points sequentially (T1→T7).
- * 3. Rejuvenated: claim ONE extra relic from a *previous* tier only.
- * 4. Tier passives apply regardless of which relic you pick on that tier.
+ * Tiers: wiki (relic-tiers-wiki.ts) is source of truth.
+ * Combat mults: effect-based via relic-combat.ts (not opaque fudges).
  *
- * ## Restrictions that do NOT appear on wiki (as of pre-launch)
- * - No "must pick relic A before relic B" affinity chains between combat relics.
- * - No path/Order/Chaos affinity on *relics* (that system is for *blessings*).
- * - Most combat relics still "Unknown Tier" → we use assumedTier guesses.
- *
- * ## Do not confuse with Blessings
- * Blessing God tiers (T4/T8) ARE path-affined: majority of prior picks
- * (2+ same path → that God; 1 of each → Balance). See blessings.ts.
- *
- * Archaeology "relic powers" unlocked by Antiquarian are a different system.
- *
- * Tier numbers follow Wazzy Leagues Hub estimates (wazzy-tiers.ts).
+ * Rejuvenated: claim ONE extra relic from a *previous* tier only.
  */
+
+import { wikiTierOf, wikiPeers, WIKI_RELIC_TIERS } from "./relic-tiers-wiki";
+import {
+  resolveRelicCombat,
+  type RelicCombatContext,
+} from "./relic-combat";
 
 export type RelicId =
   | "endless-harvest"
@@ -515,6 +507,24 @@ export const RELIC_BY_ID: Readonly<Record<string, RelicDef>> = Object.fromEntrie
   RELICS.map((r) => [r.id, r]),
 );
 
+/** Force wiki tiers + peer exclusivity after catalog load */
+function applyWikiTiersToCatalog(): void {
+  for (const r of RELICS) {
+    if (r.id === "none") continue;
+    const t = wikiTierOf(r.id);
+    if (!t) continue;
+    (r as { assumedTier: number }).assumedTier = t;
+    (r as { assumedTierSource: "wiki" | "guess" }).assumedTierSource = "wiki";
+    (r as { restrictions: RelicRestriction[] }).restrictions = baseRestrictions(
+      r.id,
+      t,
+      "wiki",
+      wikiPeers(r.id),
+    );
+  }
+}
+applyWikiTiersToCatalog();
+
 export interface RelicLoadout {
   byTier: Partial<Record<number, RelicId>>;
   rejuvenatedExtra?: { fromTier: number; relic: RelicId };
@@ -661,15 +671,34 @@ export function validateRelicLoadout(loadout: RelicLoadout): ValidatedRelics {
   }
 
   let mult = 1;
+  const combat = resolveRelicCombat(
+    active[0] ?? "none",
+    active.length > 1 ? active[1]! : null,
+    {
+      prayerBonus: 40,
+      fightSeconds: 60,
+      style: "melee",
+      summoningLevel: 99,
+      baselineAd: 7000,
+    },
+  );
+  // Product all active combat slices (relic-combat only takes 2 — fold rest)
+  mult = 1;
   for (const id of active) {
-    const def = RELIC_BY_ID[id];
-    if (def) mult *= def.playerDpsMult;
+    mult *= resolveRelicCombat(id, null, {
+      prayerBonus: 40,
+      fightSeconds: 60,
+      style: "melee",
+      summoningLevel: 99,
+      baselineAd: 7000,
+    }).playerDpsMult;
   }
+  void combat;
   const devout = active.includes("devout");
   const divineDruid = active.includes("divine-druid");
   for (const id of active) {
     const def = RELIC_BY_ID[id];
-    if (def) flags.push(`Relic: ${def.name}`);
+    if (def) flags.push(`Relic: ${def.name} T${def.assumedTier}`);
   }
 
   // Transparency: no prior-affinity chains loaded
@@ -697,6 +726,7 @@ export function validateRelicLoadout(loadout: RelicLoadout): ValidatedRelics {
 export function stackRelicPlayerMult(
   primary: RelicId,
   secondary: RelicId | null = null,
+  combatCtx?: Partial<RelicCombatContext>,
 ): {
   mult: number;
   devout: boolean;
@@ -705,17 +735,36 @@ export function stackRelicPlayerMult(
   valid: boolean;
   errors: string[];
   notes: string[];
+  combat?: ReturnType<typeof resolveRelicCombat>;
 } {
+  const ctx: RelicCombatContext = {
+    prayerBonus: combatCtx?.prayerBonus ?? 40,
+    fightSeconds: combatCtx?.fightSeconds ?? 60,
+    style: combatCtx?.style ?? "melee",
+    summoningLevel: combatCtx?.summoningLevel ?? 99,
+    baselineAd: combatCtx?.baselineAd ?? 7000,
+  };
+
   if (!secondary || secondary === "none") {
+    const combat = resolveRelicCombat(primary, null, ctx);
     const def = RELIC_BY_ID[primary] ?? RELIC_BY_ID.none!;
     return {
-      mult: def.playerDpsMult,
+      mult: combat.playerDpsMult,
       devout: primary === "devout",
       divineDruid: primary === "divine-druid",
-      flags: primary === "none" ? [] : [`Relic: ${def.name}`],
+      flags:
+        primary === "none"
+          ? []
+          : [
+              `Relic: ${def.name} (T${def.assumedTier}) ×${combat.playerDpsMult.toFixed(3)}`,
+              ...combat.components.map(
+                (c) => `${c.name} ×${c.mult.toFixed(3)}`,
+              ),
+            ],
       valid: true,
       errors: [],
-      notes: [],
+      notes: combat.notes,
+      combat,
     };
   }
 
@@ -733,33 +782,43 @@ export function stackRelicPlayerMult(
     rejuvenatedExtra = { fromTier: a.assumedTier, relic: primary };
   } else if (a.assumedTier === b.assumedTier) {
     errors.push(
-      `${a.name} and ${b.name} are both assumed T${a.assumedTier} — cannot both be active (one pick per tier). Rejuvenated does NOT merge same-tier picks.`,
+      `${a.name} and ${b.name} are both T${a.assumedTier} — mutually exclusive (one per tier). Use Rejuvenated (T6) to reclaim a *previous* tier pick.`,
     );
+    // Still compute mult for display but mark invalid
+    const combat = resolveRelicCombat(primary, secondary, ctx);
     return {
-      mult: a.playerDpsMult * b.playerDpsMult,
+      mult: combat.playerDpsMult,
       devout: primary === "devout" || secondary === "devout",
       divineDruid: primary === "divine-druid" || secondary === "divine-druid",
-      flags: [`INVALID: ${a.name}+${b.name}`],
+      flags: combat.components.map((c) => `${c.relic}:${c.name}`),
       valid: false,
       errors,
-      notes: [
-        "To combine two combat relics they must be on different tiers; use Rejuvenated on a LATER tier to reclaim a skipped earlier tier relic.",
-      ],
+      notes: combat.notes,
+      combat,
     };
   } else {
     byTier[a.assumedTier] = primary;
     byTier[b.assumedTier] = secondary;
   }
 
-  const v = validateRelicLoadout({ byTier, rejuvenatedExtra });
+  const loadout: RelicLoadout = { byTier, rejuvenatedExtra };
+  const v = validateRelicLoadout(loadout);
+  const combat = resolveRelicCombat(primary, secondary, ctx);
+
   return {
-    mult: v.mult,
-    devout: v.devout,
-    divineDruid: v.divineDruid,
-    flags: v.valid ? v.flags : [...v.flags, ...v.errors.map((e) => `ERR: ${e}`)],
+    mult: combat.playerDpsMult,
+    devout: primary === "devout" || secondary === "devout",
+    divineDruid: primary === "divine-druid" || secondary === "divine-druid",
+    flags: [
+      ...combat.components.map(
+        (c) => `${c.relic}: ${c.name} ×${c.mult.toFixed(3)}`,
+      ),
+      ...v.flags,
+    ],
     valid: v.valid && errors.length === 0,
     errors: [...errors, ...v.errors],
-    notes: v.notes,
+    notes: [...combat.notes, ...v.notes],
+    combat,
   };
 }
 
@@ -769,7 +828,7 @@ export function legalCombatLoadouts(): {
   loadout: RelicLoadout;
   validation: ValidatedRelics;
 }[] {
-  // Tiers per Wazzy Hub: T5 Devout, T6 Rejuv/Perk, T7 Infernal|Naragi|Icyenic
+  // Wiki tiers: T5 Devout, T6 Rejuv/Perk, T7 Infernal|Naragi|Icyenic
   const specs: { id: string; label: string; loadout: RelicLoadout }[] = [
     {
       id: "devout-only",

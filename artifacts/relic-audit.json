@@ -1,0 +1,226 @@
+{
+  "generated": "2026-08-08T07:38:17.596Z",
+  "wikiTiers": {
+    "1": {
+      "points": 10,
+      "relics": [
+        "endless-harvest",
+        "survivalist",
+        "golden-touch"
+      ]
+    },
+    "2": {
+      "points": 750,
+      "relics": [
+        "animal-wrangler",
+        "superheated",
+        "divine-druid"
+      ]
+    },
+    "3": {
+      "points": 1750,
+      "relics": [
+        "natures-network",
+        "assassins-insight",
+        "voidwalker"
+      ]
+    },
+    "4": {
+      "points": 3500,
+      "relics": [
+        "crystal-grace",
+        "transmutation",
+        "antiquarian"
+      ]
+    },
+    "5": {
+      "points": 6000,
+      "relics": [
+        "clue-connoisseur",
+        "production-master",
+        "devout"
+      ]
+    },
+    "6": {
+      "points": 12000,
+      "relics": [
+        "perkfection",
+        "rejuvenated"
+      ]
+    },
+    "7": {
+      "points": 20000,
+      "relics": [
+        "infernal-fire",
+        "naragi-edict",
+        "icyenic-faith"
+      ]
+    }
+  },
+  "tierMismatches": 0,
+  "audit": [
+    {
+      "id": "endless-harvest",
+      "tier": 1,
+      "dpsMult": 1,
+      "components": [],
+      "combatRelevant": false
+    },
+    {
+      "id": "survivalist",
+      "tier": 1,
+      "dpsMult": 1,
+      "components": [],
+      "combatRelevant": false
+    },
+    {
+      "id": "golden-touch",
+      "tier": 1,
+      "dpsMult": 1,
+      "components": [],
+      "combatRelevant": false
+    },
+    {
+      "id": "divine-druid",
+      "tier": 2,
+      "dpsMult": 1.03,
+      "components": [
+        "Divine Druid scroll/familiar QoL:×1.030 (10 scrolls/pouch, better familiar uptime)"
+      ],
+      "combatRelevant": true
+    },
+    {
+      "id": "superheated",
+      "tier": 2,
+      "dpsMult": 1,
+      "components": [],
+      "combatRelevant": false
+    },
+    {
+      "id": "animal-wrangler",
+      "tier": 2,
+      "dpsMult": 1,
+      "components": [],
+      "combatRelevant": false
+    },
+    {
+      "id": "assassins-insight",
+      "tier": 3,
+      "dpsMult": 1.045,
+      "components": [
+        "Corrupted slayer helm effects:×1.045 (on-task (assumed assignment))"
+      ],
+      "combatRelevant": true
+    },
+    {
+      "id": "voidwalker",
+      "tier": 3,
+      "dpsMult": 1,
+      "components": [],
+      "combatRelevant": false
+    },
+    {
+      "id": "natures-network",
+      "tier": 3,
+      "dpsMult": 1,
+      "components": [],
+      "combatRelevant": false
+    },
+    {
+      "id": "antiquarian",
+      "tier": 4,
+      "dpsMult": 1.03,
+      "components": [
+        "Archaeology relic powers unlocked:×1.030 (e.g. Fury of the Small / combat powers)"
+      ],
+      "combatRelevant": true
+    },
+    {
+      "id": "crystal-grace",
+      "tier": 4,
+      "dpsMult": 1.01,
+      "components": [
+        "Crystal Grace (off-style):×1.010 (spell unlocks / utility)"
+      ],
+      "combatRelevant": true
+    },
+    {
+      "id": "transmutation",
+      "tier": 4,
+      "dpsMult": 1,
+      "components": [],
+      "combatRelevant": false
+    },
+    {
+      "id": "production-master",
+      "tier": 5,
+      "dpsMult": 1,
+      "components": [],
+      "combatRelevant": false
+    },
+    {
+      "id": "devout",
+      "tier": 5,
+      "dpsMult": 1,
+      "components": [],
+      "combatRelevant": false
+    },
+    {
+      "id": "clue-connoisseur",
+      "tier": 5,
+      "dpsMult": 1,
+      "components": [],
+      "combatRelevant": false
+    },
+    {
+      "id": "perkfection",
+      "tier": 6,
+      "dpsMult": 1.248,
+      "components": [
+        "Helpful perks +20%:×1.200 (Aftershock/Eruptive/etc. proc rate)",
+        "Toolbox extra gizmos EV:×1.040 (2 additional gizmo slots)"
+      ],
+      "combatRelevant": true
+    },
+    {
+      "id": "rejuvenated",
+      "tier": 6,
+      "dpsMult": 1,
+      "components": [],
+      "combatRelevant": false
+    },
+    {
+      "id": "infernal-fire",
+      "tier": 7,
+      "dpsMult": 1.2949,
+      "components": [
+        "Death Mark execute EV:×1.282 (skip~22% HP @ 60s fights)",
+        "Avernic Star pocket style:×1.000 (+18.7 style → +270 AD; +15 prayer)",
+        "Star prayer pad:×1.010 (+15 prayer bonus)"
+      ],
+      "combatRelevant": true
+    },
+    {
+      "id": "icyenic-faith",
+      "tier": 7,
+      "dpsMult": 1.2543,
+      "components": [
+        "Icyenic AD from prayer:×1.180 (prayer 90 → +18.0% AD)",
+        "Icyenic crit EV bake:×1.063 (+18.0% crit chance)"
+      ],
+      "combatRelevant": true
+    },
+    {
+      "id": "naragi-edict",
+      "tier": 7,
+      "dpsMult": 1.1247,
+      "components": [
+        "Naragi 255 duty cycle:×1.103 (18.7% uptime ×1.55 peak)",
+        "Sliver pocket:×1.000 (+14 style AD, +300 armour, +1500 LP)",
+        "Pocket style passive:×1.020 (always-on pocket damage)"
+      ],
+      "combatRelevant": true
+    }
+  ],
+  "note": "Combat mults are effect-based (relic-combat.ts). Devout familiar damage is separate (summoning.ts)."
+}

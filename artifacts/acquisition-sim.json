@@ -1,0 +1,747 @@
+{
+  "generated": "2026-08-08T06:07:35.292Z",
+  "dropAssumptions": {
+    "rasial": "1/640 base, league ×2 → 1/320 effective, 22 kph, coupon collector sets",
+    "croesus": "1/600 base ×2 league, 8 kph, 5pc cryptbloom",
+    "cinderbane": "1/1500 on-task ×2 league, 180 kph",
+    "parallel": "0.85 × min(combat boss hours, combat skill bundle)"
+  },
+  "ranked": [
+    {
+      "id": "necro-mid-deathwarden",
+      "name": "Necro mid — Deathwarden T90 + Infernal (no Rasial)",
+      "dps": 149467,
+      "meanH": 23.2,
+      "p50": 21.4,
+      "p90": 23.2,
+      "value": 6439,
+      "exclusive": 19.5,
+      "skills": 5.8,
+      "parallel": 2.1,
+      "blocked": 0,
+      "ledger": [
+        {
+          "name": "Relic ladder T1→T7 (league points/tasks)",
+          "h": 10
+        },
+        {
+          "name": "Blessing path to Aegis+Cinders+Perfidious God picks",
+          "h": 4
+        },
+        {
+          "name": "Necromancy 90",
+          "h": 0
+        },
+        {
+          "name": "Prayer 95 (curses)",
+          "h": 0
+        },
+        {
+          "name": "Kili tasks → Death Guard/Warden T70",
+          "h": 2.5
+        },
+        {
+          "name": "Deathwarden T90 full tank set",
+          "h": 3
+        },
+        {
+          "name": "Herblore 96 (overloads)",
+          "h": 0
+        }
+      ],
+      "breakdown": [
+        "Skills union (league 5×→16×, combat bundled): 5.8h",
+        "  combat bundle: 3.8h · support: 2.1h",
+        "Exclusive content (drops/crafts/relics): 19.5h",
+        "  of which combat-training: 2.5h",
+        "Parallel skill credit from bossing: −2.1h",
+        "WALL mean: 23.2h · p50≈21.4h · p90≈23.2h"
+      ]
+    },
+    {
+      "id": "melee-mid",
+      "name": "Melee mid Aegis mixed",
+      "dps": 141332,
+      "meanH": 24.6,
+      "p50": 22.7,
+      "p90": 24.6,
+      "value": 5738,
+      "exclusive": 22,
+      "skills": 5.8,
+      "parallel": 3.2,
+      "blocked": 0,
+      "ledger": [
+        {
+          "name": "Relic ladder T1→T7 (league points/tasks)",
+          "h": 10
+        },
+        {
+          "name": "Blessing path to Aegis+Cinders+Perfidious God picks",
+          "h": 4
+        },
+        {
+          "name": "Combat stats 90 (style primary)",
+          "h": 0
+        },
+        {
+          "name": "Prayer 95 (curses)",
+          "h": 0
+        },
+        {
+          "name": "Mid melee weapons (drygores/chaotics tier)",
+          "h": 8
+        },
+        {
+          "name": "Herblore 96 (overloads)",
+          "h": 0
+        }
+      ],
+      "breakdown": [
+        "Skills union (league 5×→16×, combat bundled): 5.8h",
+        "  combat bundle: 3.8h · support: 2.1h",
+        "Exclusive content (drops/crafts/relics): 22.0h",
+        "  of which combat-training: 8.0h",
+        "Parallel skill credit from bossing: −3.2h",
+        "WALL mean: 24.6h · p50≈22.7h · p90≈24.6h"
+      ]
+    },
+    {
+      "id": "melee-cinder",
+      "name": "Melee end + Cinderbanes + Ripper",
+      "dps": 156846,
+      "meanH": 47.5,
+      "p50": 43.7,
+      "p90": 52.2,
+      "value": 3301,
+      "exclusive": 41.7,
+      "skills": 13.2,
+      "parallel": 7.3,
+      "blocked": 0,
+      "ledger": [
+        {
+          "name": "Relic ladder T1→T7 (league points/tasks)",
+          "h": 10
+        },
+        {
+          "name": "Blessing path to Aegis+Cinders+Perfidious God picks",
+          "h": 4
+        },
+        {
+          "name": "Unlock Forinthry elective + early access",
+          "h": 3
+        },
+        {
+          "name": "Unlock Tirannwn + Prif access",
+          "h": 5
+        },
+        {
+          "name": "Combat stats 90 (style primary)",
+          "h": 0
+        },
+        {
+          "name": "Prayer 95 (curses)",
+          "h": 0
+        },
+        {
+          "name": "Mid melee weapons (drygores/chaotics tier)",
+          "h": 8
+        },
+        {
+          "name": "Herblore 106 (elder OVL)",
+          "h": 0
+        },
+        {
+          "name": "Elder overload production ready",
+          "h": 1
+        },
+        {
+          "name": "Weapon poison+++ supply line",
+          "h": 0.5
+        },
+        {
+          "name": "Slayer 99",
+          "h": 0
+        },
+        {
+          "name": "Cinderbane gloves",
+          "h": 4.17,
+          "drop": "750k @180/h"
+        },
+        {
+          "name": "Summoning 99",
+          "h": 0
+        },
+        {
+          "name": "Ripper demon binding contract",
+          "h": 6
+        }
+      ],
+      "breakdown": [
+        "Skills union (league 5×→16×, combat bundled): 13.2h",
+        "  combat bundle: 8.6h · support: 4.6h",
+        "Exclusive content (drops/crafts/relics): 41.7h",
+        "  of which combat-training: 12.2h",
+        "Parallel skill credit from bossing: −7.3h",
+        "WALL mean: 47.5h · p50≈43.7h · p90≈52.2h"
+      ]
+    },
+    {
+      "id": "necro-end-deathwarden",
+      "name": "Necro end — Omni+Soul + Deathwarden tank",
+      "dps": 156832,
+      "meanH": 48.7,
+      "p50": 44.8,
+      "p90": 56.4,
+      "value": 3218,
+      "exclusive": 44.8,
+      "skills": 7.1,
+      "parallel": 3.2,
+      "blocked": 0,
+      "ledger": [
+        {
+          "name": "Relic ladder T1→T7 (league points/tasks)",
+          "h": 10
+        },
+        {
+          "name": "Blessing path to Aegis+Cinders+Perfidious God picks",
+          "h": 4
+        },
+        {
+          "name": "Necromancy 95",
+          "h": 0
+        },
+        {
+          "name": "Necromancy 99",
+          "h": 0
+        },
+        {
+          "name": "Prayer 95 (curses)",
+          "h": 0
+        },
+        {
+          "name": "Kili tasks → Death Guard/Warden/Skull T90",
+          "h": 5
+        },
+        {
+          "name": "Omni guard + Soulbound lantern",
+          "h": 21.82,
+          "drop": "480k @22/h"
+        },
+        {
+          "name": "Deathwarden T90 full tank set",
+          "h": 3
+        },
+        {
+          "name": "Herblore 106 (elder OVL)",
+          "h": 0
+        },
+        {
+          "name": "Elder overload production ready",
+          "h": 1
+        }
+      ],
+      "breakdown": [
+        "Skills union (league 5×→16×, combat bundled): 7.1h",
+        "  combat bundle: 3.8h · support: 3.3h",
+        "Exclusive content (drops/crafts/relics): 44.8h",
+        "  of which combat-training: 26.8h",
+        "Parallel skill credit from bossing: −3.2h",
+        "WALL mean: 48.7h · p50≈44.8h · p90≈56.4h"
+      ]
+    },
+    {
+      "id": "necro-inv-asgarnia",
+      "name": "Necro end + Asgarnia Invention + Perkfection",
+      "dps": 206100,
+      "meanH": 64.9,
+      "p50": 59.7,
+      "p90": 72.6,
+      "value": 3174,
+      "exclusive": 54.4,
+      "skills": 13.7,
+      "parallel": 3.2,
+      "blocked": 0,
+      "ledger": [
+        {
+          "name": "Relic ladder T1→T7 (league points/tasks)",
+          "h": 10
+        },
+        {
+          "name": "Blessing path to Aegis+Cinders+Perfidious God picks",
+          "h": 4
+        },
+        {
+          "name": "Unlock Asgarnia elective",
+          "h": 2.5
+        },
+        {
+          "name": "Necromancy 95",
+          "h": 0
+        },
+        {
+          "name": "Necromancy 99",
+          "h": 0
+        },
+        {
+          "name": "Prayer 95 (curses)",
+          "h": 0
+        },
+        {
+          "name": "Kili tasks → Death Guard/Warden/Skull T90",
+          "h": 5
+        },
+        {
+          "name": "Omni guard + Soulbound lantern",
+          "h": 21.82,
+          "drop": "480k @22/h"
+        },
+        {
+          "name": "Deathwarden T90 full tank set",
+          "h": 3
+        },
+        {
+          "name": "Herblore 106 (elder OVL)",
+          "h": 0
+        },
+        {
+          "name": "Elder overload production ready",
+          "h": 1
+        },
+        {
+          "name": "Weapon poison+++ supply line",
+          "h": 0.5
+        },
+        {
+          "name": "Summoning 99",
+          "h": 0
+        },
+        {
+          "name": "Steel titan pouch + scrolls",
+          "h": 1
+        },
+        {
+          "name": "Invention gates (80 Craft/Smith/Div)",
+          "h": 0
+        },
+        {
+          "name": "Invention 90",
+          "h": 0
+        },
+        {
+          "name": "Invention tutorial + first gizmos",
+          "h": 2
+        },
+        {
+          "name": "BiS-ish gizmo perk rolls (AS/Precise/Eq/Biting)",
+          "h": 3.6
+        }
+      ],
+      "breakdown": [
+        "Skills union (league 5×→16×, combat bundled): 13.7h",
+        "  combat bundle: 3.8h · support: 10.0h",
+        "Exclusive content (drops/crafts/relics): 54.4h",
+        "  of which combat-training: 26.8h",
+        "Parallel skill credit from bossing: −3.2h",
+        "WALL mean: 64.9h · p50≈59.7h · p90≈72.6h"
+      ]
+    },
+    {
+      "id": "necro-end-titan",
+      "name": "Necro end + Steel Titan + Devout path",
+      "dps": 157620,
+      "meanH": 51.4,
+      "p50": 47.3,
+      "p90": 59.1,
+      "value": 3064,
+      "exclusive": 46.3,
+      "skills": 8.3,
+      "parallel": 3.2,
+      "blocked": 0,
+      "ledger": [
+        {
+          "name": "Relic ladder T1→T7 (league points/tasks)",
+          "h": 10
+        },
+        {
+          "name": "Blessing path to Aegis+Cinders+Perfidious God picks",
+          "h": 4
+        },
+        {
+          "name": "Necromancy 95",
+          "h": 0
+        },
+        {
+          "name": "Necromancy 99",
+          "h": 0
+        },
+        {
+          "name": "Prayer 95 (curses)",
+          "h": 0
+        },
+        {
+          "name": "Kili tasks → Death Guard/Warden/Skull T90",
+          "h": 5
+        },
+        {
+          "name": "Omni guard + Soulbound lantern",
+          "h": 21.82,
+          "drop": "480k @22/h"
+        },
+        {
+          "name": "Deathwarden T90 full tank set",
+          "h": 3
+        },
+        {
+          "name": "Herblore 106 (elder OVL)",
+          "h": 0
+        },
+        {
+          "name": "Elder overload production ready",
+          "h": 1
+        },
+        {
+          "name": "Weapon poison+++ supply line",
+          "h": 0.5
+        },
+        {
+          "name": "Summoning 99",
+          "h": 0
+        },
+        {
+          "name": "Steel titan pouch + scrolls",
+          "h": 1
+        }
+      ],
+      "breakdown": [
+        "Skills union (league 5×→16×, combat bundled): 8.3h",
+        "  combat bundle: 3.8h · support: 4.6h",
+        "Exclusive content (drops/crafts/relics): 46.3h",
+        "  of which combat-training: 26.8h",
+        "Parallel skill credit from bossing: −3.2h",
+        "WALL mean: 51.4h · p50≈47.3h · p90≈59.1h"
+      ]
+    },
+    {
+      "id": "necro-nihil",
+      "name": "Necro end + Forinthry Ice Nihil",
+      "dps": 164915,
+      "meanH": 56.4,
+      "p50": 51.9,
+      "p90": 64.1,
+      "value": 2922,
+      "exclusive": 51.3,
+      "skills": 8.3,
+      "parallel": 3.2,
+      "blocked": 0,
+      "ledger": [
+        {
+          "name": "Relic ladder T1→T7 (league points/tasks)",
+          "h": 10
+        },
+        {
+          "name": "Blessing path to Aegis+Cinders+Perfidious God picks",
+          "h": 4
+        },
+        {
+          "name": "Unlock Forinthry elective + early access",
+          "h": 3
+        },
+        {
+          "name": "Necromancy 95",
+          "h": 0
+        },
+        {
+          "name": "Necromancy 99",
+          "h": 0
+        },
+        {
+          "name": "Prayer 95 (curses)",
+          "h": 0
+        },
+        {
+          "name": "Kili tasks → Death Guard/Warden/Skull T90",
+          "h": 5
+        },
+        {
+          "name": "Omni guard + Soulbound lantern",
+          "h": 21.82,
+          "drop": "480k @22/h"
+        },
+        {
+          "name": "Deathwarden T90 full tank set",
+          "h": 3
+        },
+        {
+          "name": "Herblore 106 (elder OVL)",
+          "h": 0
+        },
+        {
+          "name": "Elder overload production ready",
+          "h": 1
+        },
+        {
+          "name": "Weapon poison+++ supply line",
+          "h": 0.5
+        },
+        {
+          "name": "Summoning 99",
+          "h": 0
+        },
+        {
+          "name": "Ice nihil pouch",
+          "h": 3
+        }
+      ],
+      "breakdown": [
+        "Skills union (league 5×→16×, combat bundled): 8.3h",
+        "  combat bundle: 3.8h · support: 4.6h",
+        "Exclusive content (drops/crafts/relics): 51.3h",
+        "  of which combat-training: 26.8h",
+        "Parallel skill credit from bossing: −3.2h",
+        "WALL mean: 56.4h · p50≈51.9h · p90≈64.1h"
+      ]
+    },
+    {
+      "id": "necro-full-send",
+      "name": "Necro FULL — Ancient Inv + Nihil + Cinder",
+      "dps": 231406,
+      "meanH": 91.1,
+      "p50": 83.9,
+      "p90": 103.5,
+      "value": 2539,
+      "exclusive": 75.6,
+      "skills": 22.9,
+      "parallel": 7.3,
+      "blocked": 0,
+      "ledger": [
+        {
+          "name": "Relic ladder T1→T7 (league points/tasks)",
+          "h": 10
+        },
+        {
+          "name": "Blessing path to Aegis+Cinders+Perfidious God picks",
+          "h": 4
+        },
+        {
+          "name": "Unlock Forinthry elective + early access",
+          "h": 3
+        },
+        {
+          "name": "Unlock Asgarnia elective",
+          "h": 2.5
+        },
+        {
+          "name": "Unlock Kandarin elective",
+          "h": 3
+        },
+        {
+          "name": "Unlock Tirannwn + Prif access",
+          "h": 5
+        },
+        {
+          "name": "Necromancy 95",
+          "h": 0
+        },
+        {
+          "name": "Necromancy 99",
+          "h": 0
+        },
+        {
+          "name": "Prayer 95 (curses)",
+          "h": 0
+        },
+        {
+          "name": "Kili tasks → Death Guard/Warden/Skull T90",
+          "h": 5
+        },
+        {
+          "name": "Omni guard + Soulbound lantern",
+          "h": 21.82,
+          "drop": "480k @22/h"
+        },
+        {
+          "name": "Deathwarden T90 full tank set",
+          "h": 3
+        },
+        {
+          "name": "Herblore 106 (elder OVL)",
+          "h": 0
+        },
+        {
+          "name": "Elder overload production ready",
+          "h": 1
+        },
+        {
+          "name": "Weapon poison+++ supply line",
+          "h": 0.5
+        },
+        {
+          "name": "Slayer 99",
+          "h": 0
+        },
+        {
+          "name": "Cinderbane gloves",
+          "h": 4.17,
+          "drop": "750k @180/h"
+        },
+        {
+          "name": "Summoning 99",
+          "h": 0
+        },
+        {
+          "name": "Ice nihil pouch",
+          "h": 3
+        },
+        {
+          "name": "Invention gates (80 Craft/Smith/Div)",
+          "h": 0
+        },
+        {
+          "name": "Invention 90",
+          "h": 0
+        },
+        {
+          "name": "Invention tutorial + first gizmos",
+          "h": 2
+        },
+        {
+          "name": "BiS-ish gizmo perk rolls (AS/Precise/Eq/Biting)",
+          "h": 3.6
+        },
+        {
+          "name": "Archaeology 95 (Ancient Inv path)",
+          "h": 0
+        },
+        {
+          "name": "Invention 99",
+          "h": 0
+        },
+        {
+          "name": "Ancient Invention unlock (Stormguard)",
+          "h": 4
+        }
+      ],
+      "breakdown": [
+        "Skills union (league 5×→16×, combat bundled): 22.9h",
+        "  combat bundle: 8.6h · support: 14.3h",
+        "Exclusive content (drops/crafts/relics): 75.6h",
+        "  of which combat-training: 31.0h",
+        "Parallel skill credit from bossing: −7.3h",
+        "WALL mean: 91.1h · p50≈83.9h · p90≈103.5h"
+      ]
+    },
+    {
+      "id": "necro-tfn-power",
+      "name": "Necro TFN power set (full Rasial armour)",
+      "dps": 128370,
+      "meanH": 78.7,
+      "p50": 72.4,
+      "p90": 97.9,
+      "value": 1632,
+      "exclusive": 75,
+      "skills": 5.3,
+      "parallel": 1.7,
+      "blocked": 0,
+      "ledger": [
+        {
+          "name": "Relic ladder T1→T7 (league points/tasks)",
+          "h": 10
+        },
+        {
+          "name": "Blessing path to Aegis+Cinders+Perfidious God picks",
+          "h": 4
+        },
+        {
+          "name": "Necromancy 95",
+          "h": 0
+        },
+        {
+          "name": "Necromancy 99",
+          "h": 0
+        },
+        {
+          "name": "Prayer 95 (curses)",
+          "h": 0
+        },
+        {
+          "name": "Kili tasks → Death Guard/Warden/Skull T90",
+          "h": 5
+        },
+        {
+          "name": "Omni guard + Soulbound lantern",
+          "h": 21.82,
+          "drop": "480k @22/h"
+        },
+        {
+          "name": "First Necromancer robe set (5 pieces)",
+          "h": 33.21,
+          "drop": "731k @22/h"
+        },
+        {
+          "name": "Herblore 106 (elder OVL)",
+          "h": 0
+        },
+        {
+          "name": "Elder overload production ready",
+          "h": 1
+        }
+      ],
+      "breakdown": [
+        "Skills union (league 5×→16×, combat bundled): 5.3h",
+        "  combat bundle: 2.0h · support: 3.3h",
+        "Exclusive content (drops/crafts/relics): 75.0h",
+        "  of which combat-training: 60.0h",
+        "Parallel skill credit from bossing: −1.7h",
+        "WALL mean: 78.7h · p50≈72.4h · p90≈97.9h"
+      ]
+    },
+    {
+      "id": "magic-cryptbloom",
+      "name": "Magic Aegis — Cryptbloom set (Croesus)",
+      "dps": 128263,
+      "meanH": 107.5,
+      "p50": 98.9,
+      "p90": 137.4,
+      "value": 1194,
+      "exclusive": 101.6,
+      "skills": 5.8,
+      "parallel": 0,
+      "blocked": 0,
+      "ledger": [
+        {
+          "name": "Relic ladder T1→T7 (league points/tasks)",
+          "h": 10
+        },
+        {
+          "name": "Blessing path to Aegis+Cinders+Perfidious God picks",
+          "h": 4
+        },
+        {
+          "name": "Magic 90",
+          "h": 0
+        },
+        {
+          "name": "Prayer 95 (curses)",
+          "h": 0
+        },
+        {
+          "name": "Cryptbloom full set (5 pieces incomplete→restore)",
+          "h": 87.63,
+          "drop": "685k @8/h"
+        },
+        {
+          "name": "Herblore 96 (overloads)",
+          "h": 0
+        }
+      ],
+      "breakdown": [
+        "Skills union (league 5×→16×, combat bundled): 5.8h",
+        "  combat bundle: 3.8h · support: 2.1h",
+        "Exclusive content (drops/crafts/relics): 101.6h",
+        "  of which combat-training: 0.0h",
+        "Parallel skill credit from bossing: −0.0h",
+        "WALL mean: 107.5h · p50≈98.9h · p90≈137.4h"
+      ]
+    }
+  ]
+}

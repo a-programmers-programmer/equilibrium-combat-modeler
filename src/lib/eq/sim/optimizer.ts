@@ -228,6 +228,8 @@ function armourOk(style: Style, armour: ArmourProfileId): boolean {
   if (armour === "sirenic-power") return style === "ranged";
   if (armour === "tectonic-power") return style === "magic";
   if (armour === "masterwork-tank") return style === "melee";
+  if (armour === "vestments-of-havoc") return style === "melee";
+  if (armour === "void-elite") return style !== "necromancy";
   return true;
 }
 

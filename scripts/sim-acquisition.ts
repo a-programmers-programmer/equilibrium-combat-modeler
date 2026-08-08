@@ -1,25 +1,54 @@
 /**
- * Full acquisition ledger sim — expected hours p50/mean/p90 per kit.
+ * Hardened acquisition ledger — rare×2–8, learn-tax, full components.
  * npx tsx scripts/sim-acquisition.ts
  */
 import { writeFileSync, mkdirSync } from "fs";
 import {
   planAcquisition,
+  calcDrop,
   type BuildSpec,
   couponCollectorKills,
   DROP_SOURCES,
+  RARE_MULT_SCENARIOS,
+  relicLadderHours,
+  blessingTrackHours,
 } from "../src/lib/eq/sim/acquisition.ts";
 import { modelCombat } from "../src/lib/eq/model.ts";
 import { stageById } from "../src/lib/eq/gear.ts";
 import type { Path } from "../src/lib/eq/blessings.ts";
+import { LEAGUE_TIER_PASSIVES } from "../src/lib/eq/sim/league-passives.ts";
 
 const stage = stageById("endgame")!;
 const AEGIS: Path[] = ["Order", "Chaos", "Order", "Balance", "Chaos", "Chaos"];
 
+console.log("═══ League passives (wiki) ═══");
+for (const p of LEAGUE_TIER_PASSIVES) {
+  console.log(`  T${p.leagueTier}: XP ${p.xpMult}× · rares ${p.rareMult}× — ${p.notes}`);
+}
+console.log(`Relic T1→T7: ${relicLadderHours(7).toFixed(1)}h`);
+console.log(`Blessing Aegis track: ${blessingTrackHours().toFixed(1)}h`);
+
+console.log("\n═══ Drop EV at rare×6 (T6 farm) vs ×2 / ×8 ═══");
+for (const [id, pieces] of [
+  ["rasial", 2],
+  ["rasial", 5],
+  ["croesus", 5],
+  ["kerapac", 3],
+  ["kalphiteKing", 2],
+  ["lostGroveOnTask", 1],
+] as const) {
+  for (const m of [2, 6, 8]) {
+    const d = calcDrop(id, { pieces, rareMult: m });
+    console.log(
+      `  ${id}×${pieces} rare×${m}: ${d.expectedKills.toFixed(0)} kills · mean ${d.hoursMean.toFixed(1)}h · p90 ${d.hoursP90.toFixed(1)}h`,
+    );
+  }
+}
+
 const builds: BuildSpec[] = [
   {
-    id: "necro-mid-deathwarden",
-    name: "Necro mid — Deathwarden T90 + Infernal (no Rasial)",
+    id: "necro-mid-dw",
+    name: "Necro mid Deathwarden + Infernal",
     style: "necromancy",
     armour: "deathwarden-tank",
     poison: "none",
@@ -28,12 +57,11 @@ const builds: BuildSpec[] = [
     regions: ["free", "misthalin", "havenhythe", "karamja"],
     electives: [],
     gearTier: "mid",
-    aegisPath: true,
-    relicsT7: true,
+    farmLeagueTier: 4,
   },
   {
-    id: "necro-end-deathwarden",
-    name: "Necro end — Omni+Soul + Deathwarden tank",
+    id: "necro-end-omni-dw",
+    name: "Necro Omni+Soul + Deathwarden",
     style: "necromancy",
     armour: "deathwarden-tank",
     poison: "none",
@@ -42,12 +70,11 @@ const builds: BuildSpec[] = [
     regions: ["free", "misthalin", "havenhythe", "karamja"],
     electives: [],
     gearTier: "end",
-    aegisPath: true,
-    relicsT7: true,
+    farmLeagueTier: 6,
   },
   {
-    id: "necro-end-titan",
-    name: "Necro end + Steel Titan + Devout path",
+    id: "necro-titan",
+    name: "Necro end + Titan",
     style: "necromancy",
     armour: "deathwarden-tank",
     poison: "wp-only",
@@ -58,8 +85,8 @@ const builds: BuildSpec[] = [
     gearTier: "end",
   },
   {
-    id: "necro-inv-asgarnia",
-    name: "Necro end + Asgarnia Invention + Perkfection",
+    id: "necro-inv",
+    name: "Necro + Asgarnia Inv + Perks",
     style: "necromancy",
     armour: "deathwarden-tank",
     poison: "wp-only",
@@ -69,10 +96,11 @@ const builds: BuildSpec[] = [
     electives: ["asgarnia"],
     gearTier: "end",
     perkfection: true,
+    bisJewellery: true,
   },
   {
     id: "necro-nihil",
-    name: "Necro end + Forinthry Ice Nihil",
+    name: "Necro + Nihil Forinthry",
     style: "necromancy",
     armour: "deathwarden-tank",
     poison: "wp-only",
@@ -83,8 +111,8 @@ const builds: BuildSpec[] = [
     gearTier: "end",
   },
   {
-    id: "necro-full-send",
-    name: "Necro FULL — Ancient Inv + Nihil + Cinder",
+    id: "necro-full",
+    name: "Necro FULL Ancient+Nihil+Cinder",
     style: "necromancy",
     armour: "deathwarden-tank",
     poison: "wp-cinder",
@@ -103,10 +131,11 @@ const builds: BuildSpec[] = [
     electives: ["asgarnia", "kandarin", "forinthry"],
     gearTier: "end",
     perkfection: true,
+    bisJewellery: true,
   },
   {
-    id: "necro-tfn-power",
-    name: "Necro TFN power set (full Rasial armour)",
+    id: "necro-tfn",
+    name: "Necro full TFN power (5pc)",
     style: "necromancy",
     armour: "tfn-power",
     poison: "none",
@@ -117,8 +146,8 @@ const builds: BuildSpec[] = [
     gearTier: "end",
   },
   {
-    id: "magic-cryptbloom",
-    name: "Magic Aegis — Cryptbloom set (Croesus)",
+    id: "magic-crypt",
+    name: "Magic Cryptbloom set",
     style: "magic",
     armour: "cryptbloom-tank",
     poison: "none",
@@ -127,10 +156,23 @@ const builds: BuildSpec[] = [
     regions: ["free", "misthalin", "havenhythe", "karamja"],
     electives: [],
     gearTier: "mid",
+    farmLeagueTier: 5,
+  },
+  {
+    id: "magic-fsoa",
+    name: "Magic Cryptbloom + FSOA (Anachronia)",
+    style: "magic",
+    armour: "cryptbloom-tank",
+    poison: "none",
+    familiar: "none",
+    invention: "none",
+    regions: ["free", "misthalin", "havenhythe", "karamja", "anachronia"],
+    electives: ["anachronia"],
+    gearTier: "end",
   },
   {
     id: "melee-mid",
-    name: "Melee mid Aegis mixed",
+    name: "Melee mid free-region",
     style: "melee",
     armour: "mixed-aegis-power",
     poison: "none",
@@ -139,10 +181,23 @@ const builds: BuildSpec[] = [
     regions: ["free", "misthalin", "havenhythe", "karamja"],
     electives: [],
     gearTier: "mid",
+    farmLeagueTier: 4,
   },
   {
-    id: "melee-cinder",
-    name: "Melee end + Cinderbanes + Ripper",
+    id: "melee-drygore",
+    name: "Melee dual drygores (Desert)",
+    style: "melee",
+    armour: "mixed-aegis-power",
+    poison: "none",
+    familiar: "none",
+    invention: "none",
+    regions: ["free", "misthalin", "havenhythe", "karamja", "desert"],
+    electives: ["desert"],
+    gearTier: "end",
+  },
+  {
+    id: "melee-cinder-ripper",
+    name: "Melee Cinder + Ripper",
     style: "melee",
     armour: "mixed-aegis-power",
     poison: "full-melee-poison",
@@ -155,55 +210,15 @@ const builds: BuildSpec[] = [
       "karamja",
       "forinthry",
       "tirannwn",
+      "desert",
     ],
-    electives: ["forinthry", "tirannwn"],
+    electives: ["forinthry", "tirannwn", "desert"],
     gearTier: "end",
   },
 ];
 
-console.log("═══ Drop math sanity ═══");
-const r = DROP_SOURCES.rasial!;
-const rate = r.rateDenom / (r.leagueDropMult ?? 1);
-console.log(
-  `Rasial effective unique rate 1/${rate} (base 1/${r.rateDenom}, league ×${r.leagueDropMult})`,
-);
-console.log(
-  `  Omni+Soul (2): ${couponCollectorKills(rate, 2).toFixed(0)} kills → ${(couponCollectorKills(rate, 2) / r.killsPerHour).toFixed(1)}h @${r.killsPerHour} kph`,
-);
-console.log(
-  `  TFN 5pc: ${couponCollectorKills(rate, 5).toFixed(0)} kills → ${(couponCollectorKills(rate, 5) / r.killsPerHour).toFixed(1)}h`,
-);
-console.log(
-  `  Full 7 uniques: ${couponCollectorKills(rate, 7).toFixed(0)} kills → ${(couponCollectorKills(rate, 7) / r.killsPerHour).toFixed(1)}h`,
-);
-const cind = DROP_SOURCES.lostGroveOnTask!;
-const cr = cind.rateDenom / (cind.leagueDropMult ?? 1);
-console.log(
-  `Cinderbane on-task 1/${cr}: ${(cr / cind.killsPerHour).toFixed(1)}h EV @${cind.killsPerHour} kph`,
-);
-const cro = DROP_SOURCES.croesus!;
-const crr = cro.rateDenom / (cro.leagueDropMult ?? 1);
-console.log(
-  `Cryptbloom 5pc Croesus 1/${crr}: ${couponCollectorKills(crr, 5).toFixed(0)} kills → ${(couponCollectorKills(crr, 5) / cro.killsPerHour).toFixed(1)}h`,
-);
-
-console.log("\n═══ Full acquisition plans ═══\n");
-
-const rows: {
-  id: string;
-  name: string;
-  dps: number;
-  meanH: number;
-  p50: number;
-  p90: number;
-  value: number;
-  exclusive: number;
-  skills: number;
-  parallel: number;
-  blocked: number;
-  ledger: { name: string; h: number; drop?: string }[];
-  breakdown: string[];
-}[] = [];
+console.log("\n═══ Plans ═══\n");
+const rows: Record<string, unknown>[] = [];
 
 for (const b of builds) {
   const plan = planAcquisition(b);
@@ -238,18 +253,23 @@ for (const b of builds) {
 
   console.log(`▸ ${b.name}`);
   console.log(
-    `  DPS ${Math.round(dps).toLocaleString()} · mean ${plan.wallClockMean.toFixed(1)}h · p50 ${plan.wallClockP50.toFixed(1)}h · p90 ${plan.wallClockP90.toFixed(1)}h · val ${Math.round(value)} dps/h`,
+    `  DPS ${Math.round(dps).toLocaleString()} · mean ${plan.wallClockMean.toFixed(1)}h · p50 ${plan.wallClockP50.toFixed(1)} · p90 ${plan.wallClockP90.toFixed(1)} · val ${Math.round(value)} · rare×${plan.rareMultUsed}`,
   );
-  if (plan.blocked.length) {
-    console.log(`  BLOCKED: ${plan.blocked.map((x) => x.id + " " + x.reasons.join(",")).join("; ")}`);
-  }
-  for (const line of plan.breakdown) console.log(`  ${line}`);
-  console.log("  Ledger (exclusive h):");
-  for (const L of plan.ledger.filter((x) => x.exclusiveH > 0.05)) {
-    console.log(
-      `    ${L.exclusiveH.toFixed(1).padStart(6)}h  ${L.name}${L.drop ? "  [" + L.drop + "]" : ""}`,
-    );
-  }
+  console.log(
+    `  Sensitivity: ${Object.entries(plan.sensitivity)
+      .map(([k, v]) => `${k}:${v.toFixed(0)}h`)
+      .join(" ")}`,
+  );
+  for (const line of plan.breakdown.slice(0, 4)) console.log(`  ${line}`);
+  const big = plan.ledger.filter((x) => x.exclusiveH >= 1).sort((a, b) => b.exclusiveH - a.exclusiveH);
+  console.log(
+    `  Top costs: ${big
+      .slice(0, 6)
+      .map((x) => `${x.exclusiveH.toFixed(1)}h ${x.name.split(" ").slice(0, 4).join(" ")}`)
+      .join(" · ")}`,
+  );
+  if (plan.blocked.length)
+    console.log(`  BLOCKED ${plan.blocked.map((x) => x.id).join(",")}`);
   console.log("");
 
   rows.push({
@@ -260,24 +280,21 @@ for (const b of builds) {
     p50: +plan.wallClockP50.toFixed(1),
     p90: +plan.wallClockP90.toFixed(1),
     value: Math.round(value),
+    rareMult: plan.rareMultUsed,
+    sensitivity: plan.sensitivity,
     exclusive: +plan.exclusiveHours.toFixed(1),
     skills: +plan.skillUnionHours.toFixed(1),
     parallel: +plan.parallelCredit.toFixed(1),
-    blocked: plan.blocked.length,
-    ledger: plan.ledger.map((L) => ({
-      name: L.name,
-      h: L.exclusiveH,
-      drop: L.drop,
-    })),
+    ledger: plan.ledger,
     breakdown: plan.breakdown,
   });
 }
 
-rows.sort((a, b) => b.value - a.value);
-console.log("═══ RANKED BY VALUE (DPS / mean hours) ═══");
+rows.sort((a, b) => (b.value as number) - (a.value as number));
+console.log("═══ VALUE RANK ═══");
 rows.forEach((r, i) => {
   console.log(
-    `#${i + 1} val=${r.value}  ${r.dps} dps  mean ${r.meanH}h (p50 ${r.p50} / p90 ${r.p90})  ${r.name}`,
+    `#${i + 1} val=${r.value}  ${r.dps} dps  ${r.meanH}h mean (p90 ${r.p90}) rare×${r.rareMult}  ${r.name}`,
   );
 });
 
@@ -287,12 +304,11 @@ writeFileSync(
   JSON.stringify(
     {
       generated: new Date().toISOString(),
-      dropAssumptions: {
-        rasial: "1/640 base, league ×2 → 1/320 effective, 22 kph, coupon collector sets",
-        croesus: "1/600 base ×2 league, 8 kph, 5pc cryptbloom",
-        cinderbane: "1/1500 on-task ×2 league, 180 kph",
-        parallel: "0.85 × min(combat boss hours, combat skill bundle)",
-      },
+      hardened: true,
+      passives: LEAGUE_TIER_PASSIVES,
+      relicLadderH: relicLadderHours(7),
+      blessingTrackH: blessingTrackHours(),
+      rareScenarios: RARE_MULT_SCENARIOS,
       ranked: rows,
     },
     null,

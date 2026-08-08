@@ -1,746 +1,1231 @@
 {
-  "generated": "2026-08-08T06:07:35.292Z",
-  "dropAssumptions": {
-    "rasial": "1/640 base, league ×2 → 1/320 effective, 22 kph, coupon collector sets",
-    "croesus": "1/600 base ×2 league, 8 kph, 5pc cryptbloom",
-    "cinderbane": "1/1500 on-task ×2 league, 180 kph",
-    "parallel": "0.85 × min(combat boss hours, combat skill bundle)"
+  "generated": "2026-08-08T06:51:53.575Z",
+  "hardened": true,
+  "passives": [
+    {
+      "leagueTier": 1,
+      "label": "T1 start",
+      "xpMult": 5,
+      "rareMult": 1,
+      "notes": "Base before rare passive"
+    },
+    {
+      "leagueTier": 2,
+      "label": "T2",
+      "xpMult": 8,
+      "rareMult": 2,
+      "notes": "Rares 2× more common"
+    },
+    {
+      "leagueTier": 3,
+      "label": "T3",
+      "xpMult": 8,
+      "rareMult": 2,
+      "notes": "Rares still 2×"
+    },
+    {
+      "leagueTier": 4,
+      "label": "T4",
+      "xpMult": 12,
+      "rareMult": 4,
+      "notes": "Rares 4×; 12× XP"
+    },
+    {
+      "leagueTier": 5,
+      "label": "T5",
+      "xpMult": 12,
+      "rareMult": 4,
+      "notes": "Rares 4×"
+    },
+    {
+      "leagueTier": 6,
+      "label": "T6",
+      "xpMult": 16,
+      "rareMult": 6,
+      "notes": "Rares 6×; 16× XP starts"
+    },
+    {
+      "leagueTier": 7,
+      "label": "T7",
+      "xpMult": 16,
+      "rareMult": 8,
+      "notes": "Rares 8× at apex"
+    }
+  ],
+  "relicLadderH": 11.7,
+  "blessingTrackH": 5.4,
+  "rareScenarios": {
+    "noBoost": 1,
+    "earlyT2": 2,
+    "midT4": 4,
+    "lateT6": 6,
+    "apexT7": 8
   },
   "ranked": [
     {
-      "id": "necro-mid-deathwarden",
-      "name": "Necro mid — Deathwarden T90 + Infernal (no Rasial)",
-      "dps": 149467,
-      "meanH": 23.2,
-      "p50": 21.4,
-      "p90": 23.2,
-      "value": 6439,
-      "exclusive": 19.5,
-      "skills": 5.8,
-      "parallel": 2.1,
-      "blocked": 0,
-      "ledger": [
-        {
-          "name": "Relic ladder T1→T7 (league points/tasks)",
-          "h": 10
-        },
-        {
-          "name": "Blessing path to Aegis+Cinders+Perfidious God picks",
-          "h": 4
-        },
-        {
-          "name": "Necromancy 90",
-          "h": 0
-        },
-        {
-          "name": "Prayer 95 (curses)",
-          "h": 0
-        },
-        {
-          "name": "Kili tasks → Death Guard/Warden T70",
-          "h": 2.5
-        },
-        {
-          "name": "Deathwarden T90 full tank set",
-          "h": 3
-        },
-        {
-          "name": "Herblore 96 (overloads)",
-          "h": 0
-        }
-      ],
-      "breakdown": [
-        "Skills union (league 5×→16×, combat bundled): 5.8h",
-        "  combat bundle: 3.8h · support: 2.1h",
-        "Exclusive content (drops/crafts/relics): 19.5h",
-        "  of which combat-training: 2.5h",
-        "Parallel skill credit from bossing: −2.1h",
-        "WALL mean: 23.2h · p50≈21.4h · p90≈23.2h"
-      ]
-    },
-    {
       "id": "melee-mid",
-      "name": "Melee mid Aegis mixed",
+      "name": "Melee mid free-region",
       "dps": 141332,
-      "meanH": 24.6,
-      "p50": 22.7,
-      "p90": 24.6,
-      "value": 5738,
-      "exclusive": 22,
+      "meanH": 26.7,
+      "p50": 26.7,
+      "p90": 26.7,
+      "value": 5287,
+      "rareMult": 4,
+      "sensitivity": {
+        "noBoost": 26.73162558467262,
+        "earlyT2": 26.73162558467262,
+        "midT4": 26.73162558467262,
+        "lateT6": 26.73162558467262,
+        "apexT7": 26.73162558467262
+      },
+      "exclusive": 24.1,
       "skills": 5.8,
       "parallel": 3.2,
-      "blocked": 0,
       "ledger": [
         {
-          "name": "Relic ladder T1→T7 (league points/tasks)",
-          "h": 10
+          "id": "relics-t7",
+          "name": "Relic ladder T1→T7",
+          "exclusiveH": 11.7
         },
         {
-          "name": "Blessing path to Aegis+Cinders+Perfidious God picks",
-          "h": 4
+          "id": "blessings-aegis-path",
+          "name": "Blessing track Aegis+Cinders+Perf",
+          "exclusiveH": 5.4
         },
         {
-          "name": "Combat stats 90 (style primary)",
-          "h": 0
+          "id": "skill-combat-bundle-90",
+          "name": "Melee combat 90 bundle",
+          "exclusiveH": 0
         },
         {
-          "name": "Prayer 95 (curses)",
-          "h": 0
+          "id": "skill-prayer-95",
+          "name": "Prayer 95",
+          "exclusiveH": 0
         },
         {
-          "name": "Mid melee weapons (drygores/chaotics tier)",
-          "h": 8
+          "id": "melee-mid-weapons",
+          "name": "Mid melee (chaotics / early dry path)",
+          "exclusiveH": 4
         },
         {
-          "name": "Herblore 96 (overloads)",
-          "h": 0
+          "id": "jewellery-reaper-stack",
+          "name": "Reaper crew + essence / mid jewellery",
+          "exclusiveH": 3
+        },
+        {
+          "id": "skill-herb-96",
+          "name": "Herblore 96",
+          "exclusiveH": 0
         }
       ],
       "breakdown": [
-        "Skills union (league 5×→16×, combat bundled): 5.8h",
-        "  combat bundle: 3.8h · support: 2.1h",
-        "Exclusive content (drops/crafts/relics): 22.0h",
-        "  of which combat-training: 8.0h",
-        "Parallel skill credit from bossing: −3.2h",
-        "WALL mean: 24.6h · p50≈22.7h · p90≈24.6h"
+        "Farm league tier 4 → rare ×4 (wiki passive ladder)",
+        "Skills union (5×→16× XP): 5.8h (combat 3.8 + support 2.1)",
+        "Exclusive (drops/crafts/relics/blessings): 24.1h",
+        "  combat-training exclusive: 7.0h",
+        "Parallel credit: −3.2h",
+        "WALL mean 26.7h · p50 26.7h · p90 26.7h",
+        "Sensitivity mean h: noBoost=27 · earlyT2=27 · midT4=27 · lateT6=27 · apexT7=27"
       ]
     },
     {
-      "id": "melee-cinder",
-      "name": "Melee end + Cinderbanes + Ripper",
-      "dps": 156846,
-      "meanH": 47.5,
-      "p50": 43.7,
-      "p90": 52.2,
-      "value": 3301,
-      "exclusive": 41.7,
-      "skills": 13.2,
-      "parallel": 7.3,
-      "blocked": 0,
+      "id": "necro-mid-dw",
+      "name": "Necro mid Deathwarden + Infernal",
+      "dps": 149467,
+      "meanH": 28.7,
+      "p50": 28.7,
+      "p90": 28.7,
+      "value": 5202,
+      "rareMult": 4,
+      "sensitivity": {
+        "noBoost": 28.73162558467262,
+        "earlyT2": 28.73162558467262,
+        "midT4": 28.73162558467262,
+        "lateT6": 28.73162558467262,
+        "apexT7": 28.73162558467262
+      },
+      "exclusive": 26.1,
+      "skills": 5.8,
+      "parallel": 3.2,
       "ledger": [
         {
-          "name": "Relic ladder T1→T7 (league points/tasks)",
-          "h": 10
+          "id": "relics-t7",
+          "name": "Relic ladder T1→T7",
+          "exclusiveH": 11.7
         },
         {
-          "name": "Blessing path to Aegis+Cinders+Perfidious God picks",
-          "h": 4
+          "id": "blessings-aegis-path",
+          "name": "Blessing track Aegis+Cinders+Perf",
+          "exclusiveH": 5.4
         },
         {
-          "name": "Unlock Forinthry elective + early access",
-          "h": 3
+          "id": "skill-necro-90",
+          "name": "Necromancy 90",
+          "exclusiveH": 0
         },
         {
-          "name": "Unlock Tirannwn + Prif access",
-          "h": 5
+          "id": "skill-prayer-95",
+          "name": "Prayer 95",
+          "exclusiveH": 0
         },
         {
-          "name": "Combat stats 90 (style primary)",
-          "h": 0
+          "id": "kili-t70",
+          "name": "Kili → T70 necro weapons/armour",
+          "exclusiveH": 2.5
         },
         {
-          "name": "Prayer 95 (curses)",
-          "h": 0
+          "id": "deathwarden-t90-set",
+          "name": "Deathwarden T90 tank set",
+          "exclusiveH": 3.5
         },
         {
-          "name": "Mid melee weapons (drygores/chaotics tier)",
-          "h": 8
+          "id": "jewellery-reaper-stack",
+          "name": "Reaper crew + essence / mid jewellery",
+          "exclusiveH": 3
         },
         {
-          "name": "Herblore 106 (elder OVL)",
-          "h": 0
-        },
-        {
-          "name": "Elder overload production ready",
-          "h": 1
-        },
-        {
-          "name": "Weapon poison+++ supply line",
-          "h": 0.5
-        },
-        {
-          "name": "Slayer 99",
-          "h": 0
-        },
-        {
-          "name": "Cinderbane gloves",
-          "h": 4.17,
-          "drop": "750k @180/h"
-        },
-        {
-          "name": "Summoning 99",
-          "h": 0
-        },
-        {
-          "name": "Ripper demon binding contract",
-          "h": 6
+          "id": "skill-herb-96",
+          "name": "Herblore 96",
+          "exclusiveH": 0
         }
       ],
       "breakdown": [
-        "Skills union (league 5×→16×, combat bundled): 13.2h",
-        "  combat bundle: 8.6h · support: 4.6h",
-        "Exclusive content (drops/crafts/relics): 41.7h",
-        "  of which combat-training: 12.2h",
-        "Parallel skill credit from bossing: −7.3h",
-        "WALL mean: 47.5h · p50≈43.7h · p90≈52.2h"
+        "Farm league tier 4 → rare ×4 (wiki passive ladder)",
+        "Skills union (5×→16× XP): 5.8h (combat 3.8 + support 2.1)",
+        "Exclusive (drops/crafts/relics/blessings): 26.1h",
+        "  combat-training exclusive: 5.5h",
+        "Parallel credit: −3.2h",
+        "WALL mean 28.7h · p50 28.7h · p90 28.7h",
+        "Sensitivity mean h: noBoost=29 · earlyT2=29 · midT4=29 · lateT6=29 · apexT7=29"
       ]
     },
     {
-      "id": "necro-end-deathwarden",
-      "name": "Necro end — Omni+Soul + Deathwarden tank",
+      "id": "melee-drygore",
+      "name": "Melee dual drygores (Desert)",
+      "dps": 148311,
+      "meanH": 31.7,
+      "p50": 31.5,
+      "p90": 32.2,
+      "value": 4682,
+      "rareMult": 6,
+      "sensitivity": {
+        "noBoost": 35.509671195183984,
+        "earlyT2": 32.359671195183985,
+        "midT4": 31.758006088474026,
+        "lateT6": 31.679256088474027,
+        "apexT7": 31.639881088474027
+      },
+      "exclusive": 26,
+      "skills": 9.7,
+      "parallel": 4,
+      "ledger": [
+        {
+          "id": "relics-t7",
+          "name": "Relic ladder T1→T7",
+          "exclusiveH": 11.7
+        },
+        {
+          "id": "blessings-aegis-path",
+          "name": "Blessing track Aegis+Cinders+Perf",
+          "exclusiveH": 5.4
+        },
+        {
+          "id": "unlock-desert",
+          "name": "Unlock Desert",
+          "exclusiveH": 3
+        },
+        {
+          "id": "skill-combat-bundle-99",
+          "name": "Melee combat 99 bundle",
+          "exclusiveH": 0
+        },
+        {
+          "id": "skill-prayer-95",
+          "name": "Prayer 95",
+          "exclusiveH": 0
+        },
+        {
+          "id": "drygore-dual",
+          "name": "Dual drygores (KK)",
+          "exclusiveH": 1.66,
+          "drop": "21k rare×6"
+        },
+        {
+          "id": "jewellery-reaper-stack",
+          "name": "Reaper crew + essence / mid jewellery",
+          "exclusiveH": 3
+        },
+        {
+          "id": "skill-herb-106",
+          "name": "Herblore 106",
+          "exclusiveH": 0
+        },
+        {
+          "id": "elder-overload-line",
+          "name": "Elder overload ready",
+          "exclusiveH": 1.2
+        }
+      ],
+      "breakdown": [
+        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
+        "Skills union (5×→16× XP): 9.7h (combat 6.3 + support 3.3)",
+        "Exclusive (drops/crafts/relics/blessings): 26.0h",
+        "  combat-training exclusive: 4.7h",
+        "Parallel credit: −4.0h",
+        "WALL mean 31.7h · p50 31.5h · p90 32.2h",
+        "Sensitivity mean h: noBoost=36 · earlyT2=32 · midT4=32 · lateT6=32 · apexT7=32"
+      ]
+    },
+    {
+      "id": "necro-end-omni-dw",
+      "name": "Necro Omni+Soul + Deathwarden",
       "dps": 156832,
-      "meanH": 48.7,
-      "p50": 44.8,
-      "p90": 56.4,
-      "value": 3218,
-      "exclusive": 44.8,
+      "meanH": 42.1,
+      "p50": 41.2,
+      "p90": 45.1,
+      "value": 3723,
+      "rareMult": 6,
+      "sensitivity": {
+        "noBoost": 75.46162988154762,
+        "earlyT2": 55.46162988154762,
+        "midT4": 45.46162988154762,
+        "lateT6": 42.12829654821429,
+        "apexT7": 40.46162988154762
+      },
+      "exclusive": 38.2,
       "skills": 7.1,
       "parallel": 3.2,
-      "blocked": 0,
       "ledger": [
         {
-          "name": "Relic ladder T1→T7 (league points/tasks)",
-          "h": 10
+          "id": "relics-t7",
+          "name": "Relic ladder T1→T7",
+          "exclusiveH": 11.7
         },
         {
-          "name": "Blessing path to Aegis+Cinders+Perfidious God picks",
-          "h": 4
+          "id": "blessings-aegis-path",
+          "name": "Blessing track Aegis+Cinders+Perf",
+          "exclusiveH": 5.4
         },
         {
+          "id": "skill-necro-95",
           "name": "Necromancy 95",
-          "h": 0
+          "exclusiveH": 0
         },
         {
+          "id": "skill-necro-99",
           "name": "Necromancy 99",
-          "h": 0
+          "exclusiveH": 0
         },
         {
-          "name": "Prayer 95 (curses)",
-          "h": 0
+          "id": "skill-prayer-95",
+          "name": "Prayer 95",
+          "exclusiveH": 0
         },
         {
-          "name": "Kili tasks → Death Guard/Warden/Skull T90",
-          "h": 5
+          "id": "kili-t90",
+          "name": "Kili → T90 Death Guard/Warden/Skull",
+          "exclusiveH": 5.5
         },
         {
+          "id": "rasial-omni-soul",
           "name": "Omni guard + Soulbound lantern",
-          "h": 21.82,
-          "drop": "480k @22/h"
+          "exclusiveH": 7.92,
+          "drop": "160k rare×6"
         },
         {
-          "name": "Deathwarden T90 full tank set",
-          "h": 3
+          "id": "deathwarden-t90-set",
+          "name": "Deathwarden T90 tank set",
+          "exclusiveH": 3.5
         },
         {
-          "name": "Herblore 106 (elder OVL)",
-          "h": 0
+          "id": "jewellery-reaper-stack",
+          "name": "Reaper crew + essence / mid jewellery",
+          "exclusiveH": 3
         },
         {
-          "name": "Elder overload production ready",
-          "h": 1
+          "id": "skill-herb-106",
+          "name": "Herblore 106",
+          "exclusiveH": 0
+        },
+        {
+          "id": "elder-overload-line",
+          "name": "Elder overload ready",
+          "exclusiveH": 1.2
         }
       ],
       "breakdown": [
-        "Skills union (league 5×→16×, combat bundled): 7.1h",
-        "  combat bundle: 3.8h · support: 3.3h",
-        "Exclusive content (drops/crafts/relics): 44.8h",
-        "  of which combat-training: 26.8h",
-        "Parallel skill credit from bossing: −3.2h",
-        "WALL mean: 48.7h · p50≈44.8h · p90≈56.4h"
+        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
+        "Skills union (5×→16× XP): 7.1h (combat 3.8 + support 3.3)",
+        "Exclusive (drops/crafts/relics/blessings): 38.2h",
+        "  combat-training exclusive: 16.4h",
+        "Parallel credit: −3.2h",
+        "WALL mean 42.1h · p50 41.2h · p90 45.1h",
+        "Sensitivity mean h: noBoost=75 · earlyT2=55 · midT4=45 · lateT6=42 · apexT7=40"
       ]
     },
     {
-      "id": "necro-inv-asgarnia",
-      "name": "Necro end + Asgarnia Invention + Perkfection",
-      "dps": 206100,
-      "meanH": 64.9,
-      "p50": 59.7,
-      "p90": 72.6,
-      "value": 3174,
-      "exclusive": 54.4,
-      "skills": 13.7,
-      "parallel": 3.2,
-      "blocked": 0,
-      "ledger": [
-        {
-          "name": "Relic ladder T1→T7 (league points/tasks)",
-          "h": 10
-        },
-        {
-          "name": "Blessing path to Aegis+Cinders+Perfidious God picks",
-          "h": 4
-        },
-        {
-          "name": "Unlock Asgarnia elective",
-          "h": 2.5
-        },
-        {
-          "name": "Necromancy 95",
-          "h": 0
-        },
-        {
-          "name": "Necromancy 99",
-          "h": 0
-        },
-        {
-          "name": "Prayer 95 (curses)",
-          "h": 0
-        },
-        {
-          "name": "Kili tasks → Death Guard/Warden/Skull T90",
-          "h": 5
-        },
-        {
-          "name": "Omni guard + Soulbound lantern",
-          "h": 21.82,
-          "drop": "480k @22/h"
-        },
-        {
-          "name": "Deathwarden T90 full tank set",
-          "h": 3
-        },
-        {
-          "name": "Herblore 106 (elder OVL)",
-          "h": 0
-        },
-        {
-          "name": "Elder overload production ready",
-          "h": 1
-        },
-        {
-          "name": "Weapon poison+++ supply line",
-          "h": 0.5
-        },
-        {
-          "name": "Summoning 99",
-          "h": 0
-        },
-        {
-          "name": "Steel titan pouch + scrolls",
-          "h": 1
-        },
-        {
-          "name": "Invention gates (80 Craft/Smith/Div)",
-          "h": 0
-        },
-        {
-          "name": "Invention 90",
-          "h": 0
-        },
-        {
-          "name": "Invention tutorial + first gizmos",
-          "h": 2
-        },
-        {
-          "name": "BiS-ish gizmo perk rolls (AS/Precise/Eq/Biting)",
-          "h": 3.6
-        }
-      ],
-      "breakdown": [
-        "Skills union (league 5×→16×, combat bundled): 13.7h",
-        "  combat bundle: 3.8h · support: 10.0h",
-        "Exclusive content (drops/crafts/relics): 54.4h",
-        "  of which combat-training: 26.8h",
-        "Parallel skill credit from bossing: −3.2h",
-        "WALL mean: 64.9h · p50≈59.7h · p90≈72.6h"
-      ]
-    },
-    {
-      "id": "necro-end-titan",
-      "name": "Necro end + Steel Titan + Devout path",
+      "id": "necro-titan",
+      "name": "Necro end + Titan",
       "dps": 157620,
-      "meanH": 51.4,
-      "p50": 47.3,
-      "p90": 59.1,
-      "value": 3064,
-      "exclusive": 46.3,
+      "meanH": 45,
+      "p50": 44.1,
+      "p90": 48,
+      "value": 3500,
+      "rareMult": 6,
+      "sensitivity": {
+        "noBoost": 78.36709024092262,
+        "earlyT2": 58.36709024092263,
+        "midT4": 48.36709024092263,
+        "lateT6": 45.03375690758929,
+        "apexT7": 43.36709024092263
+      },
+      "exclusive": 39.9,
       "skills": 8.3,
       "parallel": 3.2,
-      "blocked": 0,
       "ledger": [
         {
-          "name": "Relic ladder T1→T7 (league points/tasks)",
-          "h": 10
+          "id": "relics-t7",
+          "name": "Relic ladder T1→T7",
+          "exclusiveH": 11.7
         },
         {
-          "name": "Blessing path to Aegis+Cinders+Perfidious God picks",
-          "h": 4
+          "id": "blessings-aegis-path",
+          "name": "Blessing track Aegis+Cinders+Perf",
+          "exclusiveH": 5.4
         },
         {
+          "id": "skill-necro-95",
           "name": "Necromancy 95",
-          "h": 0
+          "exclusiveH": 0
         },
         {
+          "id": "skill-necro-99",
           "name": "Necromancy 99",
-          "h": 0
+          "exclusiveH": 0
         },
         {
-          "name": "Prayer 95 (curses)",
-          "h": 0
+          "id": "skill-prayer-95",
+          "name": "Prayer 95",
+          "exclusiveH": 0
         },
         {
-          "name": "Kili tasks → Death Guard/Warden/Skull T90",
-          "h": 5
+          "id": "kili-t90",
+          "name": "Kili → T90 Death Guard/Warden/Skull",
+          "exclusiveH": 5.5
         },
         {
+          "id": "rasial-omni-soul",
           "name": "Omni guard + Soulbound lantern",
-          "h": 21.82,
-          "drop": "480k @22/h"
+          "exclusiveH": 7.92,
+          "drop": "160k rare×6"
         },
         {
-          "name": "Deathwarden T90 full tank set",
-          "h": 3
+          "id": "deathwarden-t90-set",
+          "name": "Deathwarden T90 tank set",
+          "exclusiveH": 3.5
         },
         {
-          "name": "Herblore 106 (elder OVL)",
-          "h": 0
+          "id": "jewellery-reaper-stack",
+          "name": "Reaper crew + essence / mid jewellery",
+          "exclusiveH": 3
         },
         {
-          "name": "Elder overload production ready",
-          "h": 1
+          "id": "skill-herb-106",
+          "name": "Herblore 106",
+          "exclusiveH": 0
         },
         {
-          "name": "Weapon poison+++ supply line",
-          "h": 0.5
+          "id": "elder-overload-line",
+          "name": "Elder overload ready",
+          "exclusiveH": 1.2
         },
         {
+          "id": "weapon-poison-plus-plus-plus",
+          "name": "Weapon poison+++ line",
+          "exclusiveH": 0.5
+        },
+        {
+          "id": "skill-sum-99",
           "name": "Summoning 99",
-          "h": 0
+          "exclusiveH": 0
         },
         {
-          "name": "Steel titan pouch + scrolls",
-          "h": 1
+          "id": "fam-steel-titan",
+          "name": "Steel titan pouches",
+          "exclusiveH": 1.2
         }
       ],
       "breakdown": [
-        "Skills union (league 5×→16×, combat bundled): 8.3h",
-        "  combat bundle: 3.8h · support: 4.6h",
-        "Exclusive content (drops/crafts/relics): 46.3h",
-        "  of which combat-training: 26.8h",
-        "Parallel skill credit from bossing: −3.2h",
-        "WALL mean: 51.4h · p50≈47.3h · p90≈59.1h"
+        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
+        "Skills union (5×→16× XP): 8.3h (combat 3.8 + support 4.6)",
+        "Exclusive (drops/crafts/relics/blessings): 39.9h",
+        "  combat-training exclusive: 16.4h",
+        "Parallel credit: −3.2h",
+        "WALL mean 45.0h · p50 44.1h · p90 48.0h",
+        "Sensitivity mean h: noBoost=78 · earlyT2=58 · midT4=48 · lateT6=45 · apexT7=43"
       ]
     },
     {
       "id": "necro-nihil",
-      "name": "Necro end + Forinthry Ice Nihil",
+      "name": "Necro + Nihil Forinthry",
       "dps": 164915,
-      "meanH": 56.4,
-      "p50": 51.9,
-      "p90": 64.1,
-      "value": 2922,
-      "exclusive": 51.3,
+      "meanH": 50.3,
+      "p50": 49.4,
+      "p90": 53.3,
+      "value": 3276,
+      "rareMult": 6,
+      "sensitivity": {
+        "noBoost": 83.66709024092262,
+        "earlyT2": 63.667090240922626,
+        "midT4": 53.667090240922626,
+        "lateT6": 50.33375690758929,
+        "apexT7": 48.667090240922626
+      },
+      "exclusive": 45.2,
       "skills": 8.3,
       "parallel": 3.2,
-      "blocked": 0,
       "ledger": [
         {
-          "name": "Relic ladder T1→T7 (league points/tasks)",
-          "h": 10
+          "id": "relics-t7",
+          "name": "Relic ladder T1→T7",
+          "exclusiveH": 11.7
         },
         {
-          "name": "Blessing path to Aegis+Cinders+Perfidious God picks",
-          "h": 4
+          "id": "blessings-aegis-path",
+          "name": "Blessing track Aegis+Cinders+Perf",
+          "exclusiveH": 5.4
         },
         {
-          "name": "Unlock Forinthry elective + early access",
-          "h": 3
+          "id": "unlock-forinthry",
+          "name": "Unlock Forinthry",
+          "exclusiveH": 3
         },
         {
+          "id": "skill-necro-95",
           "name": "Necromancy 95",
-          "h": 0
+          "exclusiveH": 0
         },
         {
+          "id": "skill-necro-99",
           "name": "Necromancy 99",
-          "h": 0
+          "exclusiveH": 0
         },
         {
-          "name": "Prayer 95 (curses)",
-          "h": 0
+          "id": "skill-prayer-95",
+          "name": "Prayer 95",
+          "exclusiveH": 0
         },
         {
-          "name": "Kili tasks → Death Guard/Warden/Skull T90",
-          "h": 5
+          "id": "kili-t90",
+          "name": "Kili → T90 Death Guard/Warden/Skull",
+          "exclusiveH": 5.5
         },
         {
+          "id": "rasial-omni-soul",
           "name": "Omni guard + Soulbound lantern",
-          "h": 21.82,
-          "drop": "480k @22/h"
+          "exclusiveH": 7.92,
+          "drop": "160k rare×6"
         },
         {
-          "name": "Deathwarden T90 full tank set",
-          "h": 3
+          "id": "deathwarden-t90-set",
+          "name": "Deathwarden T90 tank set",
+          "exclusiveH": 3.5
         },
         {
-          "name": "Herblore 106 (elder OVL)",
-          "h": 0
+          "id": "jewellery-reaper-stack",
+          "name": "Reaper crew + essence / mid jewellery",
+          "exclusiveH": 3
         },
         {
-          "name": "Elder overload production ready",
-          "h": 1
+          "id": "skill-herb-106",
+          "name": "Herblore 106",
+          "exclusiveH": 0
         },
         {
-          "name": "Weapon poison+++ supply line",
-          "h": 0.5
+          "id": "elder-overload-line",
+          "name": "Elder overload ready",
+          "exclusiveH": 1.2
         },
         {
+          "id": "weapon-poison-plus-plus-plus",
+          "name": "Weapon poison+++ line",
+          "exclusiveH": 0.5
+        },
+        {
+          "id": "skill-sum-99",
           "name": "Summoning 99",
-          "h": 0
+          "exclusiveH": 0
         },
         {
-          "name": "Ice nihil pouch",
-          "h": 3
+          "id": "fam-ice-nihil",
+          "name": "Ice nihil pouches",
+          "exclusiveH": 3.5
         }
       ],
       "breakdown": [
-        "Skills union (league 5×→16×, combat bundled): 8.3h",
-        "  combat bundle: 3.8h · support: 4.6h",
-        "Exclusive content (drops/crafts/relics): 51.3h",
-        "  of which combat-training: 26.8h",
-        "Parallel skill credit from bossing: −3.2h",
-        "WALL mean: 56.4h · p50≈51.9h · p90≈64.1h"
+        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
+        "Skills union (5×→16× XP): 8.3h (combat 3.8 + support 4.6)",
+        "Exclusive (drops/crafts/relics/blessings): 45.2h",
+        "  combat-training exclusive: 16.4h",
+        "Parallel credit: −3.2h",
+        "WALL mean 50.3h · p50 49.4h · p90 53.3h",
+        "Sensitivity mean h: noBoost=84 · earlyT2=64 · midT4=54 · lateT6=50 · apexT7=49"
       ]
     },
     {
-      "id": "necro-full-send",
-      "name": "Necro FULL — Ancient Inv + Nihil + Cinder",
-      "dps": 231406,
-      "meanH": 91.1,
-      "p50": 83.9,
-      "p90": 103.5,
-      "value": 2539,
-      "exclusive": 75.6,
-      "skills": 22.9,
-      "parallel": 7.3,
-      "blocked": 0,
+      "id": "melee-cinder-ripper",
+      "name": "Melee Cinder + Ripper",
+      "dps": 156846,
+      "meanH": 51.4,
+      "p50": 50.8,
+      "p90": 53.5,
+      "value": 3053,
+      "rareMult": 6,
+      "sensitivity": {
+        "noBoost": 60.55952542598756,
+        "earlyT2": 53.65952542598756,
+        "midT4": 51.54067559070617,
+        "lateT6": 51.36817559070617,
+        "apexT7": 51.281925590706166
+      },
+      "exclusive": 43.2,
+      "skills": 13.2,
+      "parallel": 5,
       "ledger": [
         {
-          "name": "Relic ladder T1→T7 (league points/tasks)",
-          "h": 10
+          "id": "relics-t7",
+          "name": "Relic ladder T1→T7",
+          "exclusiveH": 11.7
         },
         {
-          "name": "Blessing path to Aegis+Cinders+Perfidious God picks",
-          "h": 4
+          "id": "blessings-aegis-path",
+          "name": "Blessing track Aegis+Cinders+Perf",
+          "exclusiveH": 5.4
         },
         {
-          "name": "Unlock Forinthry elective + early access",
-          "h": 3
+          "id": "unlock-forinthry",
+          "name": "Unlock Forinthry",
+          "exclusiveH": 3
         },
         {
-          "name": "Unlock Asgarnia elective",
-          "h": 2.5
+          "id": "unlock-tirannwn",
+          "name": "Unlock Tirannwn/Prif",
+          "exclusiveH": 5.5
         },
         {
-          "name": "Unlock Kandarin elective",
-          "h": 3
+          "id": "unlock-desert",
+          "name": "Unlock Desert",
+          "exclusiveH": 3
         },
         {
-          "name": "Unlock Tirannwn + Prif access",
-          "h": 5
+          "id": "skill-combat-bundle-99",
+          "name": "Melee combat 99 bundle",
+          "exclusiveH": 0
         },
         {
-          "name": "Necromancy 95",
-          "h": 0
+          "id": "skill-prayer-95",
+          "name": "Prayer 95",
+          "exclusiveH": 0
         },
         {
-          "name": "Necromancy 99",
-          "h": 0
+          "id": "drygore-dual",
+          "name": "Dual drygores (KK)",
+          "exclusiveH": 1.66,
+          "drop": "21k rare×6"
         },
         {
-          "name": "Prayer 95 (curses)",
-          "h": 0
+          "id": "jewellery-reaper-stack",
+          "name": "Reaper crew + essence / mid jewellery",
+          "exclusiveH": 3
         },
         {
-          "name": "Kili tasks → Death Guard/Warden/Skull T90",
-          "h": 5
+          "id": "skill-herb-106",
+          "name": "Herblore 106",
+          "exclusiveH": 0
         },
         {
-          "name": "Omni guard + Soulbound lantern",
-          "h": 21.82,
-          "drop": "480k @22/h"
+          "id": "elder-overload-line",
+          "name": "Elder overload ready",
+          "exclusiveH": 1.2
         },
         {
-          "name": "Deathwarden T90 full tank set",
-          "h": 3
+          "id": "weapon-poison-plus-plus-plus",
+          "name": "Weapon poison+++ line",
+          "exclusiveH": 0.5
         },
         {
-          "name": "Herblore 106 (elder OVL)",
-          "h": 0
-        },
-        {
-          "name": "Elder overload production ready",
-          "h": 1
-        },
-        {
-          "name": "Weapon poison+++ supply line",
-          "h": 0.5
-        },
-        {
+          "id": "skill-slayer-99",
           "name": "Slayer 99",
-          "h": 0
+          "exclusiveH": 0
         },
         {
-          "name": "Cinderbane gloves",
-          "h": 4.17,
-          "drop": "750k @180/h"
+          "id": "cinderbane-gloves",
+          "name": "Cinderbane gloves (Lost Grove on-task)",
+          "exclusiveH": 1.25,
+          "drop": "250k rare×6"
         },
         {
+          "id": "skill-sum-99",
           "name": "Summoning 99",
-          "h": 0
+          "exclusiveH": 0
         },
         {
-          "name": "Ice nihil pouch",
-          "h": 3
-        },
-        {
-          "name": "Invention gates (80 Craft/Smith/Div)",
-          "h": 0
-        },
-        {
-          "name": "Invention 90",
-          "h": 0
-        },
-        {
-          "name": "Invention tutorial + first gizmos",
-          "h": 2
-        },
-        {
-          "name": "BiS-ish gizmo perk rolls (AS/Precise/Eq/Biting)",
-          "h": 3.6
-        },
-        {
-          "name": "Archaeology 95 (Ancient Inv path)",
-          "h": 0
-        },
-        {
-          "name": "Invention 99",
-          "h": 0
-        },
-        {
-          "name": "Ancient Invention unlock (Stormguard)",
-          "h": 4
+          "id": "fam-ripper",
+          "name": "Ripper binding contract",
+          "exclusiveH": 7
         }
       ],
       "breakdown": [
-        "Skills union (league 5×→16×, combat bundled): 22.9h",
-        "  combat bundle: 8.6h · support: 14.3h",
-        "Exclusive content (drops/crafts/relics): 75.6h",
-        "  of which combat-training: 31.0h",
-        "Parallel skill credit from bossing: −7.3h",
-        "WALL mean: 91.1h · p50≈83.9h · p90≈103.5h"
+        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
+        "Skills union (5×→16× XP): 13.2h (combat 8.6 + support 4.6)",
+        "Exclusive (drops/crafts/relics/blessings): 43.2h",
+        "  combat-training exclusive: 5.9h",
+        "Parallel credit: −5.0h",
+        "WALL mean 51.4h · p50 50.8h · p90 53.5h",
+        "Sensitivity mean h: noBoost=61 · earlyT2=54 · midT4=52 · lateT6=51 · apexT7=51"
       ]
     },
     {
-      "id": "necro-tfn-power",
-      "name": "Necro TFN power set (full Rasial armour)",
+      "id": "necro-inv",
+      "name": "Necro + Asgarnia Inv + Perks",
+      "dps": 206100,
+      "meanH": 67.9,
+      "p50": 67,
+      "p90": 70.9,
+      "value": 3034,
+      "rareMult": 6,
+      "sensitivity": {
+        "noBoost": 101.26965895818452,
+        "earlyT2": 81.26965895818452,
+        "midT4": 71.26965895818454,
+        "lateT6": 67.9363256248512,
+        "apexT7": 66.26965895818454
+      },
+      "exclusive": 57.4,
+      "skills": 13.7,
+      "parallel": 3.2,
+      "ledger": [
+        {
+          "id": "relics-t7",
+          "name": "Relic ladder T1→T7",
+          "exclusiveH": 11.7
+        },
+        {
+          "id": "blessings-aegis-path",
+          "name": "Blessing track Aegis+Cinders+Perf",
+          "exclusiveH": 5.4
+        },
+        {
+          "id": "unlock-asgarnia",
+          "name": "Unlock Asgarnia",
+          "exclusiveH": 2.5
+        },
+        {
+          "id": "skill-necro-95",
+          "name": "Necromancy 95",
+          "exclusiveH": 0
+        },
+        {
+          "id": "skill-necro-99",
+          "name": "Necromancy 99",
+          "exclusiveH": 0
+        },
+        {
+          "id": "skill-prayer-95",
+          "name": "Prayer 95",
+          "exclusiveH": 0
+        },
+        {
+          "id": "kili-t90",
+          "name": "Kili → T90 Death Guard/Warden/Skull",
+          "exclusiveH": 5.5
+        },
+        {
+          "id": "rasial-omni-soul",
+          "name": "Omni guard + Soulbound lantern",
+          "exclusiveH": 7.92,
+          "drop": "160k rare×6"
+        },
+        {
+          "id": "deathwarden-t90-set",
+          "name": "Deathwarden T90 tank set",
+          "exclusiveH": 3.5
+        },
+        {
+          "id": "jewellery-reaper-stack",
+          "name": "Reaper crew + essence / mid jewellery",
+          "exclusiveH": 3
+        },
+        {
+          "id": "skill-herb-106",
+          "name": "Herblore 106",
+          "exclusiveH": 0
+        },
+        {
+          "id": "elder-overload-line",
+          "name": "Elder overload ready",
+          "exclusiveH": 1.2
+        },
+        {
+          "id": "weapon-poison-plus-plus-plus",
+          "name": "Weapon poison+++ line",
+          "exclusiveH": 0.5
+        },
+        {
+          "id": "skill-sum-99",
+          "name": "Summoning 99",
+          "exclusiveH": 0
+        },
+        {
+          "id": "fam-steel-titan",
+          "name": "Steel titan pouches",
+          "exclusiveH": 1.2
+        },
+        {
+          "id": "skill-inv-gates",
+          "name": "Invention 80 gates",
+          "exclusiveH": 0
+        },
+        {
+          "id": "skill-inv-90",
+          "name": "Invention 90",
+          "exclusiveH": 0
+        },
+        {
+          "id": "invention-unlock",
+          "name": "Invention tutorial + first gizmos",
+          "exclusiveH": 2.5
+        },
+        {
+          "id": "invention-perks-bis",
+          "name": "Weapon/armour perk rolls BiS-ish",
+          "exclusiveH": 4.5
+        },
+        {
+          "id": "jewellery-eof-souls",
+          "name": "EOF / Amulet of Souls / RoD tier",
+          "exclusiveH": 8
+        }
+      ],
+      "breakdown": [
+        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
+        "Skills union (5×→16× XP): 13.7h (combat 3.8 + support 10.0)",
+        "Exclusive (drops/crafts/relics/blessings): 57.4h",
+        "  combat-training exclusive: 16.4h",
+        "Parallel credit: −3.2h",
+        "WALL mean 67.9h · p50 67.0h · p90 70.9h",
+        "Sensitivity mean h: noBoost=101 · earlyT2=81 · midT4=71 · lateT6=68 · apexT7=66"
+      ]
+    },
+    {
+      "id": "necro-tfn",
+      "name": "Necro full TFN power (5pc)",
       "dps": 128370,
-      "meanH": 78.7,
-      "p50": 72.4,
-      "p90": 97.9,
-      "value": 1632,
-      "exclusive": 75,
+      "meanH": 49.8,
+      "p50": 47.5,
+      "p90": 58.8,
+      "value": 2580,
+      "rareMult": 6,
+      "sensitivity": {
+        "noBoost": 133.83118113197222,
+        "earlyT2": 83.38673668752779,
+        "midT4": 58.16451446530556,
+        "lateT6": 49.75710705789815,
+        "apexT7": 45.553403354194444
+      },
+      "exclusive": 46.1,
       "skills": 5.3,
       "parallel": 1.7,
-      "blocked": 0,
       "ledger": [
         {
-          "name": "Relic ladder T1→T7 (league points/tasks)",
-          "h": 10
+          "id": "relics-t7",
+          "name": "Relic ladder T1→T7",
+          "exclusiveH": 11.7
         },
         {
-          "name": "Blessing path to Aegis+Cinders+Perfidious God picks",
-          "h": 4
+          "id": "blessings-aegis-path",
+          "name": "Blessing track Aegis+Cinders+Perf",
+          "exclusiveH": 5.4
         },
         {
+          "id": "skill-necro-95",
           "name": "Necromancy 95",
-          "h": 0
+          "exclusiveH": 0
         },
         {
+          "id": "skill-necro-99",
           "name": "Necromancy 99",
-          "h": 0
+          "exclusiveH": 0
         },
         {
-          "name": "Prayer 95 (curses)",
-          "h": 0
+          "id": "skill-prayer-95",
+          "name": "Prayer 95",
+          "exclusiveH": 0
         },
         {
-          "name": "Kili tasks → Death Guard/Warden/Skull T90",
-          "h": 5
+          "id": "kili-t90",
+          "name": "Kili → T90 Death Guard/Warden/Skull",
+          "exclusiveH": 5.5
         },
         {
+          "id": "rasial-omni-soul",
           "name": "Omni guard + Soulbound lantern",
-          "h": 21.82,
-          "drop": "480k @22/h"
+          "exclusiveH": 7.92,
+          "drop": "160k rare×6"
         },
         {
-          "name": "First Necromancer robe set (5 pieces)",
-          "h": 33.21,
-          "drop": "731k @22/h"
+          "id": "rasial-tfn-set",
+          "name": "TFN robe set (5)",
+          "exclusiveH": 11.4,
+          "drop": "244k rare×6"
         },
         {
-          "name": "Herblore 106 (elder OVL)",
-          "h": 0
+          "id": "jewellery-reaper-stack",
+          "name": "Reaper crew + essence / mid jewellery",
+          "exclusiveH": 3
         },
         {
-          "name": "Elder overload production ready",
-          "h": 1
+          "id": "skill-herb-106",
+          "name": "Herblore 106",
+          "exclusiveH": 0
+        },
+        {
+          "id": "elder-overload-line",
+          "name": "Elder overload ready",
+          "exclusiveH": 1.2
         }
       ],
       "breakdown": [
-        "Skills union (league 5×→16×, combat bundled): 5.3h",
-        "  combat bundle: 2.0h · support: 3.3h",
-        "Exclusive content (drops/crafts/relics): 75.0h",
-        "  of which combat-training: 60.0h",
-        "Parallel skill credit from bossing: −1.7h",
-        "WALL mean: 78.7h · p50≈72.4h · p90≈97.9h"
+        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
+        "Skills union (5×→16× XP): 5.3h (combat 2.0 + support 3.3)",
+        "Exclusive (drops/crafts/relics/blessings): 46.1h",
+        "  combat-training exclusive: 27.8h",
+        "Parallel credit: −1.7h",
+        "WALL mean 49.8h · p50 47.5h · p90 58.8h",
+        "Sensitivity mean h: noBoost=134 · earlyT2=83 · midT4=58 · lateT6=50 · apexT7=46"
       ]
     },
     {
-      "id": "magic-cryptbloom",
-      "name": "Magic Aegis — Cryptbloom set (Croesus)",
-      "dps": 128263,
-      "meanH": 107.5,
-      "p50": 98.9,
-      "p90": 137.4,
-      "value": 1194,
-      "exclusive": 101.6,
-      "skills": 5.8,
-      "parallel": 0,
-      "blocked": 0,
+      "id": "necro-full",
+      "name": "Necro FULL Ancient+Nihil+Cinder",
+      "dps": 231406,
+      "meanH": 93,
+      "p50": 91.7,
+      "p90": 97.6,
+      "value": 2488,
+      "rareMult": 6,
+      "sensitivity": {
+        "noBoost": 132.60713678556547,
+        "earlyT2": 108.85713678556547,
+        "midT4": 96.98213678556549,
+        "lateT6": 93.02380345223214,
+        "apexT7": 91.04463678556549
+      },
+      "exclusive": 77.5,
+      "skills": 22.9,
+      "parallel": 7.3,
       "ledger": [
         {
-          "name": "Relic ladder T1→T7 (league points/tasks)",
-          "h": 10
+          "id": "relics-t7",
+          "name": "Relic ladder T1→T7",
+          "exclusiveH": 11.7
         },
         {
-          "name": "Blessing path to Aegis+Cinders+Perfidious God picks",
-          "h": 4
+          "id": "blessings-aegis-path",
+          "name": "Blessing track Aegis+Cinders+Perf",
+          "exclusiveH": 5.4
         },
         {
-          "name": "Magic 90",
-          "h": 0
+          "id": "unlock-forinthry",
+          "name": "Unlock Forinthry",
+          "exclusiveH": 3
         },
         {
-          "name": "Prayer 95 (curses)",
-          "h": 0
+          "id": "unlock-asgarnia",
+          "name": "Unlock Asgarnia",
+          "exclusiveH": 2.5
         },
         {
-          "name": "Cryptbloom full set (5 pieces incomplete→restore)",
-          "h": 87.63,
-          "drop": "685k @8/h"
+          "id": "unlock-kandarin",
+          "name": "Unlock Kandarin",
+          "exclusiveH": 3
         },
         {
-          "name": "Herblore 96 (overloads)",
-          "h": 0
+          "id": "unlock-tirannwn",
+          "name": "Unlock Tirannwn/Prif",
+          "exclusiveH": 5.5
+        },
+        {
+          "id": "skill-necro-95",
+          "name": "Necromancy 95",
+          "exclusiveH": 0
+        },
+        {
+          "id": "skill-necro-99",
+          "name": "Necromancy 99",
+          "exclusiveH": 0
+        },
+        {
+          "id": "skill-prayer-95",
+          "name": "Prayer 95",
+          "exclusiveH": 0
+        },
+        {
+          "id": "kili-t90",
+          "name": "Kili → T90 Death Guard/Warden/Skull",
+          "exclusiveH": 5.5
+        },
+        {
+          "id": "rasial-omni-soul",
+          "name": "Omni guard + Soulbound lantern",
+          "exclusiveH": 7.92,
+          "drop": "160k rare×6"
+        },
+        {
+          "id": "deathwarden-t90-set",
+          "name": "Deathwarden T90 tank set",
+          "exclusiveH": 3.5
+        },
+        {
+          "id": "jewellery-reaper-stack",
+          "name": "Reaper crew + essence / mid jewellery",
+          "exclusiveH": 3
+        },
+        {
+          "id": "skill-herb-106",
+          "name": "Herblore 106",
+          "exclusiveH": 0
+        },
+        {
+          "id": "elder-overload-line",
+          "name": "Elder overload ready",
+          "exclusiveH": 1.2
+        },
+        {
+          "id": "weapon-poison-plus-plus-plus",
+          "name": "Weapon poison+++ line",
+          "exclusiveH": 0.5
+        },
+        {
+          "id": "skill-slayer-99",
+          "name": "Slayer 99",
+          "exclusiveH": 0
+        },
+        {
+          "id": "cinderbane-gloves",
+          "name": "Cinderbane gloves (Lost Grove on-task)",
+          "exclusiveH": 1.25,
+          "drop": "250k rare×6"
+        },
+        {
+          "id": "skill-sum-99",
+          "name": "Summoning 99",
+          "exclusiveH": 0
+        },
+        {
+          "id": "fam-ice-nihil",
+          "name": "Ice nihil pouches",
+          "exclusiveH": 3.5
+        },
+        {
+          "id": "skill-inv-gates",
+          "name": "Invention 80 gates",
+          "exclusiveH": 0
+        },
+        {
+          "id": "skill-inv-90",
+          "name": "Invention 90",
+          "exclusiveH": 0
+        },
+        {
+          "id": "invention-unlock",
+          "name": "Invention tutorial + first gizmos",
+          "exclusiveH": 2.5
+        },
+        {
+          "id": "invention-perks-bis",
+          "name": "Weapon/armour perk rolls BiS-ish",
+          "exclusiveH": 4.5
+        },
+        {
+          "id": "skill-arch-95",
+          "name": "Archaeology 95",
+          "exclusiveH": 0
+        },
+        {
+          "id": "skill-inv-99",
+          "name": "Invention 99",
+          "exclusiveH": 0
+        },
+        {
+          "id": "ancient-invention",
+          "name": "Ancient Invention (Stormguard)",
+          "exclusiveH": 5
+        },
+        {
+          "id": "jewellery-eof-souls",
+          "name": "EOF / Amulet of Souls / RoD tier",
+          "exclusiveH": 8
         }
       ],
       "breakdown": [
-        "Skills union (league 5×→16×, combat bundled): 5.8h",
-        "  combat bundle: 3.8h · support: 2.1h",
-        "Exclusive content (drops/crafts/relics): 101.6h",
-        "  of which combat-training: 0.0h",
-        "Parallel skill credit from bossing: −0.0h",
-        "WALL mean: 107.5h · p50≈98.9h · p90≈137.4h"
+        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
+        "Skills union (5×→16× XP): 22.9h (combat 8.6 + support 14.3)",
+        "Exclusive (drops/crafts/relics/blessings): 77.5h",
+        "  combat-training exclusive: 17.7h",
+        "Parallel credit: −7.3h",
+        "WALL mean 93.0h · p50 91.7h · p90 97.6h",
+        "Sensitivity mean h: noBoost=133 · earlyT2=109 · midT4=97 · lateT6=93 · apexT7=91"
+      ]
+    },
+    {
+      "id": "magic-fsoa",
+      "name": "Magic Cryptbloom + FSOA (Anachronia)",
+      "dps": 134708,
+      "meanH": 64.1,
+      "p50": 60.3,
+      "p90": 81,
+      "value": 2101,
+      "rareMult": 6,
+      "sensitivity": {
+        "noBoost": 207.90144469636238,
+        "earlyT2": 121.63061136302912,
+        "midT4": 78.49519469636245,
+        "lateT6": 64.11672247414022,
+        "apexT7": 56.92748636302911
+      },
+      "exclusive": 60.2,
+      "skills": 7.1,
+      "parallel": 3.2,
+      "ledger": [
+        {
+          "id": "relics-t7",
+          "name": "Relic ladder T1→T7",
+          "exclusiveH": 11.7
+        },
+        {
+          "id": "blessings-aegis-path",
+          "name": "Blessing track Aegis+Cinders+Perf",
+          "exclusiveH": 5.4
+        },
+        {
+          "id": "unlock-anachronia",
+          "name": "Unlock Anachronia",
+          "exclusiveH": 4.5
+        },
+        {
+          "id": "skill-magic-99",
+          "name": "Magic 99",
+          "exclusiveH": 0
+        },
+        {
+          "id": "skill-prayer-95",
+          "name": "Prayer 95",
+          "exclusiveH": 0
+        },
+        {
+          "id": "cryptbloom-set",
+          "name": "Cryptbloom 5pc + restore",
+          "exclusiveH": 28.98,
+          "drop": "228k rare×6"
+        },
+        {
+          "id": "fsoa",
+          "name": "Fractured Staff of Armadyl (3 pieces)",
+          "exclusiveH": 5.42,
+          "drop": "41k rare×6"
+        },
+        {
+          "id": "jewellery-reaper-stack",
+          "name": "Reaper crew + essence / mid jewellery",
+          "exclusiveH": 3
+        },
+        {
+          "id": "skill-herb-106",
+          "name": "Herblore 106",
+          "exclusiveH": 0
+        },
+        {
+          "id": "elder-overload-line",
+          "name": "Elder overload ready",
+          "exclusiveH": 1.2
+        }
+      ],
+      "breakdown": [
+        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
+        "Skills union (5×→16× XP): 7.1h (combat 3.8 + support 3.3)",
+        "Exclusive (drops/crafts/relics/blessings): 60.2h",
+        "  combat-training exclusive: 8.4h",
+        "Parallel credit: −3.2h",
+        "WALL mean 64.1h · p50 60.3h · p90 81.0h",
+        "Sensitivity mean h: noBoost=208 · earlyT2=122 · midT4=78 · lateT6=64 · apexT7=57"
+      ]
+    },
+    {
+      "id": "magic-crypt",
+      "name": "Magic Cryptbloom set",
+      "dps": 128263,
+      "meanH": 65.1,
+      "p50": 60.2,
+      "p90": 87.9,
+      "value": 1972,
+      "rareMult": 4,
+      "sensitivity": {
+        "noBoost": 179.22034000372022,
+        "earlyT2": 103.10922889260912,
+        "midT4": 65.05367333705357,
+        "lateT6": 52.368488151868384,
+        "apexT7": 46.025895559275796
+      },
+      "exclusive": 61.8,
+      "skills": 5.8,
+      "parallel": 2.5,
+      "ledger": [
+        {
+          "id": "relics-t7",
+          "name": "Relic ladder T1→T7",
+          "exclusiveH": 11.7
+        },
+        {
+          "id": "blessings-aegis-path",
+          "name": "Blessing track Aegis+Cinders+Perf",
+          "exclusiveH": 5.4
+        },
+        {
+          "id": "skill-magic-90",
+          "name": "Magic 90",
+          "exclusiveH": 0
+        },
+        {
+          "id": "skill-prayer-95",
+          "name": "Prayer 95",
+          "exclusiveH": 0
+        },
+        {
+          "id": "cryptbloom-set",
+          "name": "Cryptbloom 5pc + restore",
+          "exclusiveH": 41.67,
+          "drop": "343k rare×4"
+        },
+        {
+          "id": "jewellery-reaper-stack",
+          "name": "Reaper crew + essence / mid jewellery",
+          "exclusiveH": 3
+        },
+        {
+          "id": "skill-herb-96",
+          "name": "Herblore 96",
+          "exclusiveH": 0
+        }
+      ],
+      "breakdown": [
+        "Farm league tier 5 → rare ×4 (wiki passive ladder)",
+        "Skills union (5×→16× XP): 5.8h (combat 3.8 + support 2.1)",
+        "Exclusive (drops/crafts/relics/blessings): 61.8h",
+        "  combat-training exclusive: 3.0h",
+        "Parallel credit: −2.5h",
+        "WALL mean 65.1h · p50 60.2h · p90 87.9h",
+        "Sensitivity mean h: noBoost=179 · earlyT2=103 · midT4=65 · lateT6=52 · apexT7=46"
       ]
     }
   ]

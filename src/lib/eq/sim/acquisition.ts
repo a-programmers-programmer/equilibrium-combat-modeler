@@ -1,18 +1,16 @@
 /**
- * Full acquisition ledger — top-grade expected-hours model.
+ * Full acquisition ledger — hardened expected-hours model.
  *
- * Every combat component is a node with:
- * - Skill gates → XP hours via phased league mults (5×→16×)
- * - Drop sources → E[hours] = E[kills] / kph (geometric / coupon collector)
- * - Craft / unlock pads
- * - Region / quest flags
- *
- * A loadout is a dependency set. Total wall-clock =
- *   skill hours (with parallel credit from bossing)
- * + exclusive content (drops, crafts, relic tasks)
- *
- * Not a Monte-Carlo of every kill; uses closed-form EV (p50 ≈ mean for geo).
- * p90 bands via geometric quantile for key uniques.
+ * Hardened vs v1:
+ * - Equilibrium rare mult by league tier (2×→8× wiki passives)
+ * - Learn-tax on boss kph (slow first kills)
+ * - Relic ladder per-tier hours (not flat 6–10)
+ * - Blessing track step hours
+ * - Wiki drop sources: Rasial, Croesus, Kerapac/FSOA, KK drygores,
+ *   Cinderbane, Solak alt, jewellery pads
+ * - Sensitivity: wall hours at rare mult 1/2/4/6/8
+ * - p50 / mean / p90 with geometric + collector tails
+ * - Parallel skill credit from combat drops
  */
 
 import type { SkillId } from "../xp";
@@ -23,32 +21,29 @@ import type { PoisonKitId } from "./poison";
 import type { FamiliarId } from "./summoning";
 import type { InventionTier } from "./invention";
 import type { RegionTag } from "./requirements";
+import {
+  rareMultAtTier,
+  relicLadderHours,
+  blessingTrackHours,
+  learnTaxHours,
+  RARE_MULT_SCENARIOS,
+  LEAGUE_TIER_PASSIVES,
+  RELIC_TIER_UNLOCKS,
+  BLESSING_AEGIS_TRACK,
+} from "./league-passives";
 
 // ── Math ────────────────────────────────────────────────────────────
 
-/** Expected kills for 1 success at rate 1/N (geometric mean) */
 export function expectedKills(rateDenom: number): number {
-  return rateDenom; // E[X] = 1/p = N
+  return rateDenom;
 }
 
-/** p-quantile of geometric (0-index success trials), p in (0,1) */
 export function geometricQuantile(rateDenom: number, p: number): number {
-  // CDF: 1 - (1-p)^k >= q → k >= log(1-q)/log(1-p)
   const pr = 1 / rateDenom;
   if (pr >= 1) return 1;
   return Math.ceil(Math.log(1 - p) / Math.log(1 - pr));
 }
 
-/**
- * Coupon collector for n distinct items, each kill independently rolls
- * each item at rate 1/N (approx when wiki lists each unique at 1/N).
- * E[T] = N * H_n  if mutually exclusive single-drop table of n items at 1/(N) each
- *       = N * H_n if one unique slot shared equally among n (rate 1/N total unique).
- *
- * Rasial: each unique listed ~1/640 independently-ish on rare table.
- * Model A (shared unique slot 1/640, uniform among n): E = 640 * H_n
- * Model B (independent 1/640 each): harder. Use shared-slot (standard RS rare table).
- */
 export function couponCollectorKills(
   uniqueRateDenom: number,
   distinctItems: number,
@@ -58,80 +53,204 @@ export function couponCollectorKills(
   return uniqueRateDenom * H;
 }
 
+/** Coupon collector p90 approx via 1.4–1.6× mean for n≥2 */
+export function couponCollectorP90(
+  uniqueRateDenom: number,
+  distinctItems: number,
+): number {
+  return couponCollectorKills(uniqueRateDenom, distinctItems) * (1.35 + 0.05 * Math.min(distinctItems, 6));
+}
+
 export function hoursFromKills(kills: number, killsPerHour: number): number {
   return kills / Math.max(0.1, killsPerHour);
 }
 
-// ── Drop sources (wiki-backed where noted) ──────────────────────────
+// ── Drop sources ────────────────────────────────────────────────────
 
 export interface DropSource {
   id: string;
   name: string;
-  /** 1/N rarity for this unique (or unique table) */
+  /** Base 1/N before league rare mult */
   rateDenom: number;
+  /** Peak kph for above-avg player */
   killsPerHour: number;
-  /** Region gate */
   regions: RegionTag[];
   notes: string;
-  /** League drop mult guess (Equilibrium often 2×–5× rares — conservative 2× when flagged) */
-  leagueDropMult?: number;
+  /** Learn-tax: first N kills slower */
+  learnKills?: number;
+  slowFactor?: number;
+  /** If true, rare mult applies (boss uniques). False for some craft. */
+  rareMultApplies?: boolean;
 }
 
 export const DROP_SOURCES: Record<string, DropSource> = {
   rasial: {
     id: "rasial",
     name: "Rasial, the First Necromancer",
-    rateDenom: 640, // wiki Omni / armour pieces ~1/640
-    killsPerHour: 22, // above-avg league player (wiki MMG ~28 peak; 22 realistic mid-learn)
+    rateDenom: 640,
+    killsPerHour: 24,
     regions: ["free", "misthalin"],
-    notes: "Wiki: Omni 1/640, TFN pieces ~1/640, luck T4 → ~1/632. Shared unique table model.",
-    leagueDropMult: 2, // Equilibrium notable-drop 2× common in leagues — apply as rate/2
+    notes: "Wiki Omni/TFN ~1/640; luck ~1/632. Shared unique table.",
+    learnKills: 30,
+    slowFactor: 0.5,
+    rareMultApplies: true,
   },
   croesus: {
     id: "croesus",
     name: "Croesus",
-    // High contribution ~1/450–1/675 for unique; use 600 mid-good
     rateDenom: 600,
-    killsPerHour: 8, // skilling boss, contribution runs
+    killsPerHour: 9,
     regions: ["free", "misthalin"],
-    notes: "Wiki unique 1/5400 (60 contrib) to 1/450 (420+). Model assumes solid contrib ~1/600.",
-    leagueDropMult: 2,
+    notes: "Unique 1/5400@60 → ~1/450@420+ contrib. Model 1/600 solid contrib.",
+    learnKills: 15,
+    slowFactor: 0.6,
+    rareMultApplies: true,
+  },
+  kerapac: {
+    id: "kerapac",
+    name: "Kerapac (bound) — FSOA pieces",
+    // Wiki HM: ~1/400 per pile, 3 piles → ~1/133 per kill for a piece
+    // Need 3 pieces for staff → coupon on piece table
+    rateDenom: 133,
+    killsPerHour: 12,
+    regions: ["anachronia"],
+    notes: "Wiki ~1/400/pile ×3 piles ≈ 1/133/kill per piece; 3 pieces for FSOA.",
+    learnKills: 20,
+    slowFactor: 0.45,
+    rareMultApplies: true,
+  },
+  kalphiteKing: {
+    id: "kalphite-king",
+    name: "Kalphite King — Drygores",
+    // Any drygore pair path: ~1/128 per type pair; any drygore ~3/128 ≈ 1/43 any
+    // For MH+OH same style: treat as 2 items on ~1/252 each or any-pair 1/43 then style
+    rateDenom: 84, // ~ dual drygore set EV (wiki ~1/43 any drygore; refine to pair)
+    killsPerHour: 20,
+    regions: ["desert"],
+    notes: "Wiki ~1/252 per drygore piece; any drygore ~1/43. Model dual set ~1/84 shared.",
+    learnKills: 15,
+    slowFactor: 0.55,
+    rareMultApplies: true,
   },
   lostGroveOnTask: {
     id: "lost-grove-task",
     name: "Lost Grove Slayer (on-task)",
-    rateDenom: 1500, // wiki Cinderbane on-task
-    killsPerHour: 180,
+    rateDenom: 1500,
+    killsPerHour: 200,
     regions: ["tirannwn"],
-    notes: "Wiki: Cinderbane 1/1500 on-task, 1/5000 off-task. Prefer on-task.",
-    leagueDropMult: 2,
+    notes: "Cinderbane 1/1500 on-task, 1/5000 off.",
+    learnKills: 0,
+    rareMultApplies: true,
   },
   solak: {
     id: "solak",
     name: "Solak",
     rateDenom: 1000,
-    killsPerHour: 6,
+    killsPerHour: 7,
     regions: ["tirannwn"],
-    notes: "Wiki Cinderbane 1/1000 from Solak",
-    leagueDropMult: 2,
+    notes: "Cinderbane 1/1000",
+    learnKills: 10,
+    slowFactor: 0.5,
+    rareMultApplies: true,
   },
-  // Familiars / contracts — modeled as grind pads with sources
-  ripperContract: {
-    id: "ripper-contract",
-    name: "Ripper demon binding contract",
-    rateDenom: 1,
-    killsPerHour: 1,
-    regions: ["forinthry"],
-    notes: "Contract grind — use fixed hours below",
+  vorago: {
+    id: "vorago",
+    name: "Vorago — seismic / jewellery path",
+    rateDenom: 200,
+    killsPerHour: 6,
+    regions: ["asgarnia"],
+    notes: "Coarse EV for seismic/rod-adjacent; teams vary.",
+    learnKills: 15,
+    slowFactor: 0.4,
+    rareMultApplies: true,
   },
 };
 
-function effectiveRate(src: DropSource): number {
-  const m = src.leagueDropMult ?? 1;
-  return src.rateDenom / m;
+export interface DropCalcOpts {
+  /** Override league rare mult (default 6 = T6 farm) */
+  rareMult?: number;
+  pieces?: number;
+  rateDenom?: number;
+  kph?: number;
+  applyLearnTax?: boolean;
 }
 
-// ── Component nodes ─────────────────────────────────────────────────
+export interface DropCalcResult {
+  source: DropSource;
+  rateEffective: number;
+  rareMult: number;
+  expectedKills: number;
+  p50Kills: number;
+  p90Kills: number;
+  hoursMean: number;
+  hoursP50: number;
+  hoursP90: number;
+  hoursPeakNoLearn: number;
+}
+
+export function calcDrop(
+  sourceId: keyof typeof DROP_SOURCES,
+  opts: DropCalcOpts = {},
+): DropCalcResult {
+  const src = DROP_SOURCES[sourceId]!;
+  const rareMult =
+    opts.rareMult ??
+    (src.rareMultApplies === false ? 1 : RARE_MULT_SCENARIOS.lateT6);
+  const baseRate = opts.rateDenom ?? src.rateDenom;
+  const rateEffective = Math.max(1, baseRate / rareMult);
+  const pieces = opts.pieces ?? 1;
+  const kph = opts.kph ?? src.killsPerHour;
+
+  const expectedKills =
+    pieces > 1
+      ? couponCollectorKills(rateEffective, pieces)
+      : expectedKillsGeo(rateEffective);
+  const p50Kills =
+    pieces > 1 ? expectedKills * 0.92 : geometricQuantile(rateEffective, 0.5);
+  const p90Kills =
+    pieces > 1
+      ? couponCollectorP90(rateEffective, pieces)
+      : geometricQuantile(rateEffective, 0.9);
+
+  const useLearn = opts.applyLearnTax !== false;
+  const hoursMean = useLearn
+    ? learnTaxHours(expectedKills, kph, {
+        learnKills: src.learnKills,
+        slowFactor: src.slowFactor,
+      })
+    : hoursFromKills(expectedKills, kph);
+  const hoursP50 = useLearn
+    ? learnTaxHours(p50Kills, kph, {
+        learnKills: src.learnKills,
+        slowFactor: src.slowFactor,
+      })
+    : hoursFromKills(p50Kills, kph);
+  const hoursP90 = useLearn
+    ? learnTaxHours(p90Kills, kph, {
+        learnKills: src.learnKills,
+        slowFactor: src.slowFactor,
+      })
+    : hoursFromKills(p90Kills, kph);
+
+  return {
+    source: src,
+    rateEffective,
+    rareMult,
+    expectedKills,
+    p50Kills,
+    p90Kills,
+    hoursMean,
+    hoursP50,
+    hoursP90,
+    hoursPeakNoLearn: hoursFromKills(expectedKills, kph),
+  };
+}
+
+function expectedKillsGeo(rateDenom: number): number {
+  return rateDenom;
+}
+
+// ── Components ──────────────────────────────────────────────────────
 
 export type ComponentKind =
   | "skill"
@@ -142,54 +261,43 @@ export type ComponentKind =
   | "relic"
   | "blessing"
   | "familiar"
-  | "consumable";
+  | "consumable"
+  | "jewellery";
 
 export interface AcqComponent {
   id: string;
   name: string;
   kind: ComponentKind;
-  /** Hard regions required (any of if multiple free-ish) */
   requiresRegions?: RegionTag[];
   requiresAllRegions?: RegionTag[];
-  /** Skill levels needed before this is usable/craftable */
   skillReqs?: Partial<Record<SkillId, number>>;
-  /** Drop modeling */
   drop?: {
     sourceId: keyof typeof DROP_SOURCES;
-    /** Single unique */
-    pieces?: number; // default 1; set → coupon collector
-    /** Override rate denom */
+    pieces?: number;
     rateDenom?: number;
-    /** Override kph */
     kph?: number;
   };
-  /** Fixed hours (craft/quest/task) when not pure drop */
   fixedHours?: number;
-  /** Skills trained while doing this content (parallel credit tags) */
+  /** Dynamic fixed hours resolver */
+  fixedHoursFn?: () => number;
   trainsCombat?: boolean;
   notes?: string;
-  /** Only required for certain build tags */
   tags?: string[];
 }
 
-/**
- * Master component catalog — every meaningful DPS unlock.
- */
 export const COMPONENTS: AcqComponent[] = [
-  // ── Skills (explicit level targets as components) ──
+  // Skills
   {
     id: "skill-necro-90",
     name: "Necromancy 90",
     kind: "skill",
     skillReqs: { necromancy: 90 },
-    notes: "Kili T90 / mid power",
   },
   {
     id: "skill-necro-95",
     name: "Necromancy 95",
     kind: "skill",
     skillReqs: { necromancy: 95 },
-    notes: "Omni / TFN / Rasial entry",
   },
   {
     id: "skill-necro-99",
@@ -199,43 +307,55 @@ export const COMPONENTS: AcqComponent[] = [
   },
   {
     id: "skill-combat-bundle-90",
-    name: "Combat stats 90 (style primary)",
+    name: "Melee combat 90 bundle",
     kind: "skill",
     skillReqs: { attack: 90, strength: 90, defence: 90, constitution: 90 },
+  },
+  {
+    id: "skill-combat-bundle-99",
+    name: "Melee combat 99 bundle",
+    kind: "skill",
+    skillReqs: { attack: 99, strength: 99, defence: 99, constitution: 99 },
   },
   {
     id: "skill-magic-90",
     name: "Magic 90",
     kind: "skill",
-    skillReqs: { magic: 90 },
+    skillReqs: { magic: 90, defence: 90 },
   },
   {
     id: "skill-magic-99",
     name: "Magic 99",
     kind: "skill",
-    skillReqs: { magic: 99 },
+    skillReqs: { magic: 99, defence: 90 },
   },
   {
     id: "skill-ranged-90",
     name: "Ranged 90",
     kind: "skill",
-    skillReqs: { ranged: 90 },
+    skillReqs: { ranged: 90, defence: 90 },
+  },
+  {
+    id: "skill-ranged-99",
+    name: "Ranged 99",
+    kind: "skill",
+    skillReqs: { ranged: 99 },
   },
   {
     id: "skill-prayer-95",
-    name: "Prayer 95 (curses)",
+    name: "Prayer 95",
     kind: "skill",
     skillReqs: { prayer: 95 },
   },
   {
     id: "skill-herb-96",
-    name: "Herblore 96 (overloads)",
+    name: "Herblore 96",
     kind: "skill",
     skillReqs: { herblore: 96 },
   },
   {
     id: "skill-herb-106",
-    name: "Herblore 106 (elder OVL)",
+    name: "Herblore 106",
     kind: "skill",
     skillReqs: { herblore: 106 },
   },
@@ -252,8 +372,14 @@ export const COMPONENTS: AcqComponent[] = [
     skillReqs: { slayer: 99 },
   },
   {
+    id: "skill-smith-99",
+    name: "Smithing 99",
+    kind: "skill",
+    skillReqs: { smithing: 99 },
+  },
+  {
     id: "skill-inv-gates",
-    name: "Invention gates (80 Craft/Smith/Div)",
+    name: "Invention 80 gates",
     kind: "skill",
     skillReqs: { crafting: 80, smithing: 80, divination: 80 },
     requiresAllRegions: ["asgarnia"],
@@ -274,49 +400,52 @@ export const COMPONENTS: AcqComponent[] = [
   },
   {
     id: "skill-arch-95",
-    name: "Archaeology 95 (Ancient Inv path)",
+    name: "Archaeology 95",
     kind: "skill",
     skillReqs: { archaeology: 95 },
     requiresAllRegions: ["kandarin"],
   },
 
-  // ── Relics / blessings ──
+  // Relics / blessings — dynamic
   {
     id: "relics-t7",
-    name: "Relic ladder T1→T7 (league points/tasks)",
+    name: "Relic ladder T1→T7",
     kind: "relic",
-    // Community: T7 often 8–15h focused with mults; use 10h mean for above-avg
-    fixedHours: 10,
-    notes: "Not pure XP — task/point gated. Calibrated ~10h above-avg route.",
+    fixedHoursFn: () => relicLadderHours(7),
+    notes: RELIC_TIER_UNLOCKS.map((r) => `T${r.tier}:${r.exclusiveHours}h`).join(" · "),
+  },
+  {
+    id: "relics-t5",
+    name: "Relic ladder T1→T5",
+    kind: "relic",
+    fixedHoursFn: () => relicLadderHours(5),
   },
   {
     id: "blessings-aegis-path",
-    name: "Blessing path to Aegis+Cinders+Perfidious God picks",
+    name: "Blessing track Aegis+Cinders+Perf",
     kind: "blessing",
-    fixedHours: 4,
-    notes: "Blessing unlocks track with combat/skilling; 4h exclusive estimate",
+    fixedHoursFn: () => blessingTrackHours(),
+    notes: BLESSING_AEGIS_TRACK.map((b) => b.id).join(" → "),
   },
 
-  // ── Necro gear ladder ──
+  // Necro
   {
     id: "kili-t70",
-    name: "Kili tasks → Death Guard/Warden T70",
+    name: "Kili → T70 necro weapons/armour",
     kind: "craft",
     skillReqs: { necromancy: 70 },
     fixedHours: 2.5,
     trainsCombat: true,
-    notes: "Materials + Kili — free City of Um",
-    tags: ["necro", "mid"],
+    notes: "City of Um free; materials under mults",
   },
   {
     id: "kili-t90",
-    name: "Kili tasks → Death Guard/Warden/Skull T90",
+    name: "Kili → T90 Death Guard/Warden/Skull",
     kind: "craft",
     skillReqs: { necromancy: 90 },
-    fixedHours: 5,
+    fixedHours: 5.5,
     trainsCombat: true,
-    notes: "Full Kili T90 ladder free region",
-    tags: ["necro", "mid", "end"],
+    notes: "Full Kili T90 — free region",
   },
   {
     id: "rasial-omni-soul",
@@ -325,206 +454,235 @@ export const COMPONENTS: AcqComponent[] = [
     skillReqs: { necromancy: 95 },
     drop: { sourceId: "rasial", pieces: 2, rateDenom: 640 },
     trainsCombat: true,
-    notes: "2 weapons @ ~1/640 shared unique table → 640*H_2 kills",
-    tags: ["necro", "end"],
+    notes: "2 weapons coupon on Rasial unique table",
   },
   {
     id: "rasial-tfn-set",
-    name: "First Necromancer robe set (5 pieces)",
+    name: "TFN robe set (5)",
     kind: "set-drop",
     skillReqs: { necromancy: 95 },
     drop: { sourceId: "rasial", pieces: 5, rateDenom: 640 },
     trainsCombat: true,
-    notes: "5 armour uniques coupon collector on Rasial table",
-    tags: ["necro", "power", "end"],
   },
   {
     id: "deathwarden-t90-set",
-    name: "Deathwarden T90 full tank set",
+    name: "Deathwarden T90 tank set",
     kind: "craft",
     skillReqs: { necromancy: 90, defence: 90 },
-    fixedHours: 3,
-    notes: "Crafted via Kili tank path — not Rasial",
-    tags: ["necro", "tank", "aegis"],
+    fixedHours: 3.5,
+    notes: "Kili tank path craft — correct Aegis necro armour",
   },
 
-  // ── Magic ──
+  // Magic
   {
     id: "cryptbloom-set",
-    name: "Cryptbloom full set (5 pieces incomplete→restore)",
+    name: "Cryptbloom 5pc + restore",
     kind: "set-drop",
     skillReqs: { magic: 90, defence: 90 },
     drop: { sourceId: "croesus", pieces: 5, rateDenom: 600 },
-    trainsCombat: false, // skilling boss
-    fixedHours: 2, // restore flakes
-    notes: "Croesus Misthalin. Coupon 600*H_5 + restore. MAGIC only.",
-    tags: ["magic", "tank", "aegis"],
+    fixedHours: 2.5,
+    notes: "MAGIC only. Croesus Misthalin.",
   },
   {
     id: "fsoa",
-    name: "Fractured Staff of Armadyl",
-    kind: "drop",
+    name: "Fractured Staff of Armadyl (3 pieces)",
+    kind: "set-drop",
     skillReqs: { magic: 95 },
-    // Kerapac T4 — free-ish path? Kerapac is Orthen/Anachronia often
-    fixedHours: 25,
-    notes: "EV placeholder — Kerapac path long; leagues 2× helps",
-    tags: ["magic", "end"],
+    drop: { sourceId: "kerapac", pieces: 3, rateDenom: 133 },
+    requiresAllRegions: ["anachronia"],
+    trainsCombat: true,
+    notes: "Kerapac HM piece rate ~1/133/kill; 3 pieces",
   },
 
-  // ── Melee ──
+  // Melee
+  {
+    id: "drygore-dual",
+    name: "Dual drygores (KK)",
+    kind: "set-drop",
+    skillReqs: { attack: 90, strength: 90 },
+    drop: { sourceId: "kalphiteKing", pieces: 2, rateDenom: 84 },
+    requiresAllRegions: ["desert"],
+    trainsCombat: true,
+    notes: "Desert elective. Dual drygore EV.",
+  },
   {
     id: "melee-mid-weapons",
-    name: "Mid melee weapons (drygores/chaotics tier)",
-    kind: "drop",
-    skillReqs: { attack: 90, strength: 90 },
-    fixedHours: 8,
+    name: "Mid melee (chaotics / early dry path)",
+    kind: "craft",
+    skillReqs: { attack: 80, strength: 80 },
+    fixedHours: 4,
     trainsCombat: true,
-    tags: ["melee", "mid"],
+    notes: "Dungeoneering chaotics or early PvM — free-region capable",
   },
   {
     id: "masterwork-set",
-    name: "Masterwork armour set craft",
+    name: "Masterwork armour craft",
     kind: "craft",
     skillReqs: { smithing: 99, defence: 90 },
-    fixedHours: 12,
-    notes: "Smithing + materials — heavy",
-    tags: ["melee", "tank"],
+    fixedHours: 14,
+    notes: "Smith + materials heavy",
   },
 
-  // ── Poison ──
+  // Ranged mid
+  {
+    id: "ranged-mid-weapons",
+    name: "Mid ranged weapons (asc/sgb path stub)",
+    kind: "drop",
+    skillReqs: { ranged: 90 },
+    fixedHours: 12,
+    trainsCombat: true,
+    notes: "Coarse — refined when region-specific BiS locked",
+  },
+
+  // Poison
   {
     id: "weapon-poison-plus-plus-plus",
-    name: "Weapon poison+++ supply line",
+    name: "Weapon poison+++ line",
     kind: "consumable",
     skillReqs: { herblore: 82 },
     fixedHours: 0.5,
-    tags: ["poison"],
   },
   {
     id: "cinderbane-gloves",
-    name: "Cinderbane gloves",
+    name: "Cinderbane gloves (Lost Grove on-task)",
     kind: "drop",
     drop: { sourceId: "lostGroveOnTask", pieces: 1, rateDenom: 1500 },
     requiresAllRegions: ["tirannwn"],
     skillReqs: { slayer: 90 },
     trainsCombat: true,
-    notes: "E[kills]=1500/leagueMult; on-task Lost Grove. Solak alt 1/1000 slower kph.",
-    tags: ["poison", "end"],
+  },
+  {
+    id: "cinderbane-solak",
+    name: "Cinderbane via Solak (alt)",
+    kind: "drop",
+    drop: { sourceId: "solak", pieces: 1, rateDenom: 1000 },
+    requiresAllRegions: ["tirannwn"],
+    trainsCombat: true,
+    notes: "Alt if not slayer tasking Grove",
   },
 
-  // ── Familiars ──
+  // Fam
   {
     id: "fam-steel-titan",
-    name: "Steel titan pouch + scrolls",
+    name: "Steel titan pouches",
     kind: "familiar",
     skillReqs: { summoning: 99 },
-    fixedHours: 1,
-    notes: "Charm stack + pouches after 99 Sum",
-    tags: ["fam"],
+    fixedHours: 1.2,
   },
   {
     id: "fam-ice-nihil",
-    name: "Ice nihil pouch",
+    name: "Ice nihil pouches",
     kind: "familiar",
     skillReqs: { summoning: 87 },
     requiresAllRegions: ["forinthry"],
-    fixedHours: 3,
-    notes: "Nihil pouches — Forinthry/wilderness content",
-    tags: ["fam", "end"],
+    fixedHours: 3.5,
   },
   {
     id: "fam-ripper",
-    name: "Ripper demon binding contract",
+    name: "Ripper binding contract",
     kind: "familiar",
     skillReqs: { summoning: 96 },
     requiresAllRegions: ["forinthry"],
-    fixedHours: 6,
+    fixedHours: 7,
     notes: "Contract grind Forinthry",
-    tags: ["fam", "end"],
   },
 
-  // ── Invention ──
+  // Invention
   {
     id: "invention-unlock",
     name: "Invention tutorial + first gizmos",
     kind: "unlock",
     requiresAllRegions: ["asgarnia"],
     skillReqs: { crafting: 80, smithing: 80, divination: 80 },
-    fixedHours: 2,
-    tags: ["invention"],
+    fixedHours: 2.5,
   },
   {
     id: "invention-perks-bis",
-    name: "BiS-ish gizmo perk rolls (AS/Precise/Eq/Biting)",
+    name: "Weapon/armour perk rolls BiS-ish",
     kind: "craft",
     requiresAllRegions: ["asgarnia"],
     skillReqs: { invention: 90 },
-    fixedHours: 8,
-    notes: "Perkfection cuts this; without: longer RNG",
-    tags: ["invention", "end"],
+    fixedHours: 10,
+    notes: "Perkfection multiplies ×0.45 in costComponent",
   },
   {
     id: "ancient-invention",
-    name: "Ancient Invention unlock (Stormguard)",
+    name: "Ancient Invention (Stormguard)",
     kind: "unlock",
     requiresAllRegions: ["asgarnia", "kandarin"],
     skillReqs: { invention: 85, archaeology: 95 },
-    fixedHours: 4,
-    tags: ["invention", "ancient"],
+    fixedHours: 5,
   },
 
-  // ── Regions ──
+  // Jewellery (was missing)
+  {
+    id: "jewellery-reaper-stack",
+    name: "Reaper crew + essence / mid jewellery",
+    kind: "jewellery",
+    fixedHours: 3,
+    trainsCombat: true,
+    notes: "Reaper assignments for essence — free-region capable",
+  },
+  {
+    id: "jewellery-eof-souls",
+    name: "EOF / Amulet of Souls / RoD tier",
+    kind: "jewellery",
+    requiresAllRegions: ["asgarnia"],
+    fixedHours: 8,
+    notes: "Asgarnia boss jewellery path (coarse EV)",
+    tags: ["asgarnia", "end"],
+  },
+
+  // Regions
   {
     id: "unlock-forinthry",
-    name: "Unlock Forinthry elective + early access",
+    name: "Unlock Forinthry",
     kind: "unlock",
     requiresAllRegions: ["forinthry"],
     fixedHours: 3,
   },
   {
     id: "unlock-asgarnia",
-    name: "Unlock Asgarnia elective",
+    name: "Unlock Asgarnia",
     kind: "unlock",
     requiresAllRegions: ["asgarnia"],
     fixedHours: 2.5,
   },
   {
     id: "unlock-kandarin",
-    name: "Unlock Kandarin elective",
+    name: "Unlock Kandarin",
     kind: "unlock",
     requiresAllRegions: ["kandarin"],
     fixedHours: 3,
   },
   {
     id: "unlock-tirannwn",
-    name: "Unlock Tirannwn + Prif access",
+    name: "Unlock Tirannwn/Prif",
     kind: "unlock",
     requiresAllRegions: ["tirannwn"],
-    fixedHours: 5,
+    fixedHours: 5.5,
   },
   {
     id: "unlock-desert",
-    name: "Unlock Desert elective",
+    name: "Unlock Desert",
     kind: "unlock",
     requiresAllRegions: ["desert"],
     fixedHours: 3,
   },
   {
     id: "unlock-anachronia",
-    name: "Unlock Anachronia + base camp",
+    name: "Unlock Anachronia",
     kind: "unlock",
     requiresAllRegions: ["anachronia"],
-    fixedHours: 4,
+    fixedHours: 4.5,
   },
 
-  // ── Consumables end ──
   {
     id: "elder-overload-line",
-    name: "Elder overload production ready",
+    name: "Elder overload ready",
     kind: "consumable",
     skillReqs: { herblore: 106 },
-    fixedHours: 1,
-    tags: ["end"],
+    fixedHours: 1.2,
   },
 ];
 
@@ -532,37 +690,22 @@ export const COMPONENT_BY_ID = Object.fromEntries(
   COMPONENTS.map((c) => [c.id, c]),
 ) as Record<string, AcqComponent>;
 
-// ── Cost of one component ───────────────────────────────────────────
+// ── Cost ────────────────────────────────────────────────────────────
 
 export interface ComponentCost {
   id: string;
   name: string;
   kind: ComponentKind;
-  /** Exclusive hours (drops, fixed, craft) — not pure skill XP */
   exclusiveHours: number;
-  /** Skill XP hours attributed here (before parallel merge) */
   skillHoursDetail: { skill: SkillId; hours: number }[];
   skillHoursSum: number;
-  /** Drop detail */
-  dropDetail?: {
-    source: string;
-    expectedKills: number;
-    p50Kills: number;
-    p90Kills: number;
-    kph: number;
-    hoursP50: number;
-    hoursP90: number;
-    rateEffective: number;
-  };
+  dropDetail?: DropCalcResult;
   trainsCombat: boolean;
   notes: string[];
   blocked?: string[];
 }
 
-function regionsOk(
-  c: AcqComponent,
-  have: Set<RegionTag>,
-): string[] {
+function regionsOk(c: AcqComponent, have: Set<RegionTag>): string[] {
   const miss: string[] = [];
   if (c.requiresAllRegions) {
     for (const r of c.requiresAllRegions) {
@@ -580,7 +723,7 @@ export function costComponent(
   c: AcqComponent,
   electives: readonly string[],
   haveRegions: Set<RegionTag>,
-  opts?: { perkfection?: boolean },
+  opts?: { perkfection?: boolean; rareMult?: number },
 ): ComponentCost {
   const notes: string[] = c.notes ? [c.notes] : [];
   const blocked = regionsOk(c, haveRegions);
@@ -594,52 +737,26 @@ export function costComponent(
     }
   }
 
-  let exclusiveHours = c.fixedHours ?? 0;
-  let dropDetail: ComponentCost["dropDetail"];
+  let exclusiveHours = c.fixedHoursFn?.() ?? c.fixedHours ?? 0;
+  let dropDetail: DropCalcResult | undefined;
 
   if (c.drop) {
-    const src = DROP_SOURCES[c.drop.sourceId];
-    if (!src) {
-      notes.push(`Missing drop source ${c.drop.sourceId}`);
-    } else {
-      const rate = c.drop.rateDenom
-        ? c.drop.rateDenom / (src.leagueDropMult ?? 1)
-        : effectiveRate(src);
-      const pieces = c.drop.pieces ?? 1;
-      const expK =
-        pieces > 1
-          ? couponCollectorKills(rate, pieces)
-          : expectedKills(rate);
-      const p50 = pieces > 1 ? expK : geometricQuantile(rate, 0.5);
-      const p90 =
-        pieces > 1
-          ? expK * 1.5 // approx band for collector
-          : geometricQuantile(rate, 0.9);
-      const kph = c.drop.kph ?? src.killsPerHour;
-      dropDetail = {
-        source: src.name,
-        expectedKills: expK,
-        p50Kills: p50,
-        p90Kills: p90,
-        kph,
-        hoursP50: hoursFromKills(p50, kph),
-        hoursP90: hoursFromKills(p90, kph),
-        rateEffective: rate,
-      };
-      // Use mean EV for exclusive
-      exclusiveHours += hoursFromKills(expK, kph);
-      notes.push(
-        `Drop EV: ${expK.toFixed(0)} kills @ ${kph}/h = ${hoursFromKills(expK, kph).toFixed(1)}h (p90 ${dropDetail.hoursP90.toFixed(1)}h)`,
-      );
-    }
+    dropDetail = calcDrop(c.drop.sourceId, {
+      rareMult: opts?.rareMult,
+      pieces: c.drop.pieces,
+      rateDenom: c.drop.rateDenom,
+      kph: c.drop.kph,
+    });
+    exclusiveHours += dropDetail.hoursMean;
+    notes.push(
+      `Drop EV ${dropDetail.expectedKills.toFixed(0)} kills @ rare×${dropDetail.rareMult} → ${dropDetail.hoursMean.toFixed(1)}h mean / ${dropDetail.hoursP90.toFixed(1)}h p90 (learn-tax on)`,
+    );
   }
 
   if (c.id === "invention-perks-bis" && opts?.perkfection) {
-    exclusiveHours *= 0.45; // Perkfection +20% helpful + free charges → much less reroll
+    exclusiveHours *= 0.45;
     notes.push("Perkfection: perk grind ×0.45");
   }
-
-  const skillHoursSum = skillHoursDetail.reduce((a, s) => a + s.hours, 0);
 
   return {
     id: c.id,
@@ -647,7 +764,7 @@ export function costComponent(
     kind: c.kind,
     exclusiveHours,
     skillHoursDetail,
-    skillHoursSum,
+    skillHoursSum: skillHoursDetail.reduce((a, s) => a + s.hours, 0),
     dropDetail,
     trainsCombat: !!c.trainsCombat,
     notes,
@@ -655,7 +772,7 @@ export function costComponent(
   };
 }
 
-// ── Loadout → component recipe ──────────────────────────────────────
+// ── Recipes ─────────────────────────────────────────────────────────
 
 export interface BuildSpec {
   id: string;
@@ -667,26 +784,33 @@ export interface BuildSpec {
   invention: InventionTier;
   regions: RegionTag[];
   electives: string[];
-  /** mid = T90 kili, end = rasial/tfn */
   gearTier: "mid" | "end";
   perkfection?: boolean;
-  /** Aegis combat path blessings */
   aegisPath?: boolean;
   relicsT7?: boolean;
+  /** League tier assumed when farming rares (default 6) */
+  farmLeagueTier?: number;
+  /** Include EOF/Souls jewellery */
+  bisJewellery?: boolean;
 }
 
 export function recipeForBuild(spec: BuildSpec): string[] {
-  const ids: string[] = ["relics-t7", "blessings-aegis-path"];
-  if (spec.aegisPath === false) {
-    // still need some blessings
-  }
+  const ids: string[] = [];
+  ids.push(spec.relicsT7 === false ? "relics-t5" : "relics-t7");
+  if (spec.aegisPath !== false) ids.push("blessings-aegis-path");
 
   const regs = new Set(spec.regions);
-  for (const r of ["forinthry", "asgarnia", "kandarin", "tirannwn", "desert", "anachronia"] as RegionTag[]) {
+  for (const r of [
+    "forinthry",
+    "asgarnia",
+    "kandarin",
+    "tirannwn",
+    "desert",
+    "anachronia",
+  ] as RegionTag[]) {
     if (regs.has(r)) ids.push(`unlock-${r}`);
   }
 
-  // Style skills + gear
   if (spec.style === "necromancy") {
     ids.push(spec.gearTier === "end" ? "skill-necro-95" : "skill-necro-90");
     if (spec.gearTier === "end") ids.push("skill-necro-99");
@@ -702,74 +826,76 @@ export function recipeForBuild(spec: BuildSpec): string[] {
     } else {
       ids.push("deathwarden-t90-set");
     }
+    ids.push("jewellery-reaper-stack");
   } else if (spec.style === "magic") {
     ids.push(spec.gearTier === "end" ? "skill-magic-99" : "skill-magic-90");
     ids.push("skill-prayer-95");
     if (spec.armour === "cryptbloom-tank") ids.push("cryptbloom-set");
-    if (spec.gearTier === "end") ids.push("fsoa");
+    if (spec.gearTier === "end") {
+      if (regs.has("anachronia")) ids.push("fsoa");
+    }
+    ids.push("jewellery-reaper-stack");
   } else if (spec.style === "melee") {
-    ids.push("skill-combat-bundle-90");
+    ids.push(
+      spec.gearTier === "end" ? "skill-combat-bundle-99" : "skill-combat-bundle-90",
+    );
     ids.push("skill-prayer-95");
-    ids.push("melee-mid-weapons");
-    if (spec.armour === "masterwork-tank") ids.push("masterwork-set");
+    if (regs.has("desert") && spec.gearTier === "end") ids.push("drygore-dual");
+    else ids.push("melee-mid-weapons");
+    if (spec.armour === "masterwork-tank") {
+      ids.push("skill-smith-99", "masterwork-set");
+    }
+    ids.push("jewellery-reaper-stack");
   } else if (spec.style === "ranged") {
-    ids.push("skill-ranged-90");
-    ids.push("skill-prayer-95");
+    ids.push(spec.gearTier === "end" ? "skill-ranged-99" : "skill-ranged-90");
+    ids.push("skill-prayer-95", "ranged-mid-weapons", "jewellery-reaper-stack");
   }
 
-  // Herb
   if (spec.gearTier === "end") ids.push("skill-herb-106", "elder-overload-line");
   else ids.push("skill-herb-96");
 
-  // Poison
   if (spec.poison !== "none") ids.push("weapon-poison-plus-plus-plus");
   if (
-    spec.poison === "wp-cinder" ||
-    spec.poison === "full-melee-poison" ||
-    spec.poison === "full-ranged-blowpipe" ||
-    spec.poison === "cinder-only"
+    ["wp-cinder", "full-melee-poison", "full-ranged-blowpipe", "cinder-only"].includes(
+      spec.poison,
+    )
   ) {
     ids.push("skill-slayer-99", "cinderbane-gloves");
   }
 
-  // Fam
-  if (spec.familiar === "steel-titan") {
-    ids.push("skill-sum-99", "fam-steel-titan");
-  } else if (spec.familiar === "ice-nihil") {
-    ids.push("skill-sum-99", "fam-ice-nihil");
-  } else if (spec.familiar === "ripper-demon") {
-    ids.push("skill-sum-99", "fam-ripper");
-  }
+  if (spec.familiar === "steel-titan") ids.push("skill-sum-99", "fam-steel-titan");
+  else if (spec.familiar === "ice-nihil") ids.push("skill-sum-99", "fam-ice-nihil");
+  else if (spec.familiar === "ripper-demon") ids.push("skill-sum-99", "fam-ripper");
 
-  // Invention
   if (spec.invention === "standard" || spec.invention === "ancient") {
     ids.push("skill-inv-gates", "skill-inv-90", "invention-unlock", "invention-perks-bis");
   }
   if (spec.invention === "ancient") {
     ids.push("skill-arch-95", "skill-inv-99", "ancient-invention");
   }
+  if (spec.bisJewellery) ids.push("jewellery-eof-souls");
 
-  // de-dupe preserve order
   return [...new Set(ids)];
 }
 
-// ── Full acquisition plan ───────────────────────────────────────────
+// ── Plan ────────────────────────────────────────────────────────────
 
 export interface AcquisitionPlan {
   spec: BuildSpec;
+  rareMultUsed: number;
+  farmLeagueTier: number;
   components: ComponentCost[];
   blocked: { id: string; reasons: string[] }[];
-  /** Max skill hours per skill (deduped) */
   skillUnionHours: number;
   skillBySkill: { skill: SkillId; hours: number }[];
   exclusiveHours: number;
-  /** Combat-training exclusive (bosses) that overlap skills */
   combatExclusiveHours: number;
-  /** Wall-clock after parallel skill credit */
   wallClockP50: number;
   wallClockP90: number;
   wallClockMean: number;
   parallelCredit: number;
+  /** Sensitivity wall mean at each rare mult */
+  sensitivity: Record<string, number>;
   breakdown: string[];
   ledger: {
     id: string;
@@ -779,13 +905,9 @@ export interface AcquisitionPlan {
   }[];
 }
 
-/**
- * Merge skill requirements: take max level per skill, chart once.
- */
 function unionSkillHours(
-  components: ComponentCost[],
-  electives: readonly string[],
   recipeIds: string[],
+  electives: readonly string[],
 ): { skill: SkillId; hours: number; level: number }[] {
   const maxLvl: Partial<Record<SkillId, number>> = {};
   for (const id of recipeIds) {
@@ -803,13 +925,11 @@ function unionSkillHours(
   return out;
 }
 
-/**
- * Combat skills overlap: attack/str/def/con/necro/magic/ranged/slayer
- * → wall skill time = 1.2 × max(combat skills) + sum(non-combat)
- */
-function compressSkills(
-  rows: { skill: SkillId; hours: number }[],
-): { combatBundle: number; support: number; total: number } {
+function compressSkills(rows: { skill: SkillId; hours: number }[]): {
+  combatBundle: number;
+  support: number;
+  total: number;
+} {
   const combat = new Set<SkillId>([
     "attack",
     "strength",
@@ -831,13 +951,17 @@ function compressSkills(
 }
 
 export function planAcquisition(spec: BuildSpec): AcquisitionPlan {
-  const have = new Set<RegionTag>(spec.regions);
-  // always have starters
-  for (const r of ["free", "misthalin", "havenhythe", "karamja"] as RegionTag[]) {
-    have.add(r);
-  }
-
+  const have = new Set<RegionTag>([
+    "free",
+    "misthalin",
+    "havenhythe",
+    "karamja",
+    ...spec.regions,
+  ]);
+  const farmTier = spec.farmLeagueTier ?? 6;
+  const rareMult = rareMultAtTier(farmTier);
   const recipe = recipeForBuild(spec);
+
   const components: ComponentCost[] = [];
   const blocked: { id: string; reasons: string[] }[] = [];
 
@@ -846,53 +970,82 @@ export function planAcquisition(spec: BuildSpec): AcquisitionPlan {
     if (!c) continue;
     const cost = costComponent(c, spec.electives, have, {
       perkfection: spec.perkfection,
+      rareMult,
     });
-    // Don't double-count skills on component — skills handled in union
     cost.skillHoursSum = 0;
     cost.skillHoursDetail = [];
     components.push(cost);
     if (cost.blocked?.length) blocked.push({ id, reasons: cost.blocked });
   }
 
-  const skillRows = unionSkillHours(components, spec.electives, recipe);
+  const skillRows = unionSkillHours(recipe, spec.electives);
   const skillComp = compressSkills(skillRows);
   const skillUnionHours = skillComp.total;
 
   let exclusiveHours = 0;
   let combatExclusiveHours = 0;
   let p90Extra = 0;
+  let p50Drop = 0;
+  let meanDrop = 0;
 
   for (const c of components) {
     exclusiveHours += c.exclusiveHours;
     if (c.trainsCombat) combatExclusiveHours += c.exclusiveHours;
     if (c.dropDetail) {
-      p90Extra += Math.max(0, c.dropDetail.hoursP90 - c.dropDetail.hoursP50);
+      p90Extra += Math.max(0, c.dropDetail.hoursP90 - c.dropDetail.hoursMean);
+      p50Drop += c.dropDetail.hoursP50;
+      meanDrop += c.dropDetail.hoursMean;
     }
   }
 
-  // Parallel: while bossing (combat exclusive), you train combat XP.
-  // Credit min(combatExclusive, combatBundle) * 0.85 efficiency
-  const parallelCredit = Math.min(
-    combatExclusiveHours,
-    skillComp.combatBundle,
-  ) * 0.85;
+  const parallelCredit =
+    Math.min(combatExclusiveHours, skillComp.combatBundle) * 0.85;
 
-  const wallClockMean = Math.max(0, skillUnionHours - parallelCredit) + exclusiveHours;
-  // p50 ≈ mean for large EV; p90 adds drop tail
-  const wallClockP50 = wallClockMean * 0.92;
-  const wallClockP90 = wallClockMean + p90Extra * 0.7;
+  const wallClockMean =
+    Math.max(0, skillUnionHours - parallelCredit) + exclusiveHours;
+
+  // p50: slightly under mean on non-drop + p50 drops
+  const nonDropExcl = exclusiveHours - meanDrop;
+  const wallClockP50 =
+    Math.max(0, skillUnionHours - parallelCredit) + nonDropExcl + p50Drop * 0.95;
+  const wallClockP90 = wallClockMean + p90Extra;
+
+  // Sensitivity: recompute exclusive drops only at each mult
+  const sensitivity: Record<string, number> = {};
+  for (const [label, m] of Object.entries(RARE_MULT_SCENARIOS)) {
+    let excl = 0;
+    let combatEx = 0;
+    for (const id of recipe) {
+      const c = COMPONENT_BY_ID[id];
+      if (!c) continue;
+      const cost = costComponent(c, spec.electives, have, {
+        perkfection: spec.perkfection,
+        rareMult: m,
+      });
+      excl += cost.exclusiveHours;
+      if (cost.trainsCombat) combatEx += cost.exclusiveHours;
+    }
+    const par = Math.min(combatEx, skillComp.combatBundle) * 0.85;
+    sensitivity[label] =
+      Math.max(0, skillUnionHours - par) + excl;
+  }
 
   const breakdown = [
-    `Skills union (league 5×→16×, combat bundled): ${skillUnionHours.toFixed(1)}h`,
-    `  combat bundle: ${skillComp.combatBundle.toFixed(1)}h · support: ${skillComp.support.toFixed(1)}h`,
-    `Exclusive content (drops/crafts/relics): ${exclusiveHours.toFixed(1)}h`,
-    `  of which combat-training: ${combatExclusiveHours.toFixed(1)}h`,
-    `Parallel skill credit from bossing: −${parallelCredit.toFixed(1)}h`,
-    `WALL mean: ${wallClockMean.toFixed(1)}h · p50≈${wallClockP50.toFixed(1)}h · p90≈${wallClockP90.toFixed(1)}h`,
+    `Farm league tier ${farmTier} → rare ×${rareMult} (wiki passive ladder)`,
+    `Skills union (5×→16× XP): ${skillUnionHours.toFixed(1)}h (combat ${skillComp.combatBundle.toFixed(1)} + support ${skillComp.support.toFixed(1)})`,
+    `Exclusive (drops/crafts/relics/blessings): ${exclusiveHours.toFixed(1)}h`,
+    `  combat-training exclusive: ${combatExclusiveHours.toFixed(1)}h`,
+    `Parallel credit: −${parallelCredit.toFixed(1)}h`,
+    `WALL mean ${wallClockMean.toFixed(1)}h · p50 ${wallClockP50.toFixed(1)}h · p90 ${wallClockP90.toFixed(1)}h`,
+    `Sensitivity mean h: ${Object.entries(sensitivity)
+      .map(([k, v]) => `${k}=${v.toFixed(0)}`)
+      .join(" · ")}`,
   ];
 
   return {
     spec,
+    rareMultUsed: rareMult,
+    farmLeagueTier: farmTier,
     components,
     blocked,
     skillUnionHours,
@@ -903,14 +1056,17 @@ export function planAcquisition(spec: BuildSpec): AcquisitionPlan {
     wallClockP90,
     wallClockMean,
     parallelCredit,
+    sensitivity,
     breakdown,
     ledger: components.map((c) => ({
       id: c.id,
       name: c.name,
       exclusiveH: +c.exclusiveHours.toFixed(2),
       drop: c.dropDetail
-        ? `${c.dropDetail.expectedKills.toFixed(0)}k @${c.dropDetail.kph}/h`
+        ? `${c.dropDetail.expectedKills.toFixed(0)}k rare×${c.dropDetail.rareMult}`
         : undefined,
     })),
   };
 }
+
+export { LEAGUE_TIER_PASSIVES, RARE_MULT_SCENARIOS, relicLadderHours, blessingTrackHours };

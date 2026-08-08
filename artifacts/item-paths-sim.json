@@ -1,0 +1,1656 @@
+{
+  "generated": "2026-08-08T07:09:50.263Z",
+  "audit": {
+    "total": 120,
+    "withReq": 120,
+    "zeroSolo": 0,
+    "topSolo": [
+      {
+        "itemId": "blightbound-crossbow",
+        "name": "Blightbound crossbow",
+        "style": "ranged",
+        "tier": 92,
+        "slot": "weapon",
+        "reqHours": 8.56011965625,
+        "obtainHours": 25.238095238095237,
+        "soloTotal": 33.798214894345236,
+        "sharedTotal": 33.798214894345236,
+        "reqTree": {
+          "reqId": "all(region:tirannwn&skill:ranged:92&flag:killed:solak)",
+          "describe": "region:tirannwn AND ranged 92+ AND killed:solak",
+          "hours": 8.56011965625,
+          "kind": "composite",
+          "children": [
+            {
+              "reqId": "region:tirannwn",
+              "describe": "region:tirannwn",
+              "hours": 5.5,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "skill:ranged:92",
+              "describe": "ranged 92+",
+              "hours": 1.56011965625,
+              "kind": "skill",
+              "detail": "XP 1→92 league-phased"
+            },
+            {
+              "reqId": "flag:killed:solak",
+              "describe": "killed:solak",
+              "hours": 1.5,
+              "kind": "flag",
+              "detail": "Boss unlock kill: killed:solak"
+            }
+          ],
+          "detail": "ALL of"
+        },
+        "leaves": [
+          {
+            "id": "region:tirannwn",
+            "hours": 5.5,
+            "describe": "region:tirannwn"
+          },
+          {
+            "id": "skill:ranged:92",
+            "hours": 1.56011965625,
+            "describe": "ranged 92+"
+          },
+          {
+            "id": "flag:killed:solak",
+            "hours": 1.5,
+            "describe": "killed:solak"
+          }
+        ],
+        "obtainDetail": "Solak EV rare×6",
+        "regions": [
+          "tirannwn"
+        ]
+      },
+      {
+        "itemId": "off-hand-blightbound-crossbow",
+        "name": "Off-hand Blightbound crossbow",
+        "style": "ranged",
+        "tier": 92,
+        "slot": "weapon",
+        "reqHours": 8.56011965625,
+        "obtainHours": 25.238095238095237,
+        "soloTotal": 33.798214894345236,
+        "sharedTotal": 33.798214894345236,
+        "reqTree": {
+          "reqId": "all(region:tirannwn&skill:ranged:92&flag:killed:solak)",
+          "describe": "region:tirannwn AND ranged 92+ AND killed:solak",
+          "hours": 8.56011965625,
+          "kind": "composite",
+          "children": [
+            {
+              "reqId": "region:tirannwn",
+              "describe": "region:tirannwn",
+              "hours": 5.5,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "skill:ranged:92",
+              "describe": "ranged 92+",
+              "hours": 1.56011965625,
+              "kind": "skill",
+              "detail": "XP 1→92 league-phased"
+            },
+            {
+              "reqId": "flag:killed:solak",
+              "describe": "killed:solak",
+              "hours": 1.5,
+              "kind": "flag",
+              "detail": "Boss unlock kill: killed:solak"
+            }
+          ],
+          "detail": "ALL of"
+        },
+        "leaves": [
+          {
+            "id": "region:tirannwn",
+            "hours": 5.5,
+            "describe": "region:tirannwn"
+          },
+          {
+            "id": "skill:ranged:92",
+            "hours": 1.56011965625,
+            "describe": "ranged 92+"
+          },
+          {
+            "id": "flag:killed:solak",
+            "hours": 1.5,
+            "describe": "killed:solak"
+          }
+        ],
+        "obtainDetail": "Solak EV rare×6",
+        "regions": [
+          "tirannwn"
+        ]
+      },
+      {
+        "itemId": "cryptbloom-armour-incomplete",
+        "name": "Cryptbloom armour (incomplete)",
+        "style": "magic",
+        "tier": 95,
+        "slot": "body",
+        "reqHours": 4.414807832080201,
+        "obtainHours": 12.222222222222223,
+        "soloTotal": 16.637030054302425,
+        "sharedTotal": 16.637030054302425,
+        "reqTree": {
+          "reqId": "all(region:misthalin&skill:defence:85&skill:magic:90)",
+          "describe": "region:misthalin AND defence 85+ AND magic 90+",
+          "hours": 4.414807832080201,
+          "kind": "composite",
+          "children": [
+            {
+              "reqId": "region:misthalin",
+              "describe": "region:misthalin",
+              "hours": 0.8,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "skill:defence:85",
+              "describe": "defence 85+",
+              "hours": 2.148369523809524,
+              "kind": "skill",
+              "detail": "XP 1→85 league-phased"
+            },
+            {
+              "reqId": "skill:magic:90",
+              "describe": "magic 90+",
+              "hours": 1.4664383082706767,
+              "kind": "skill",
+              "detail": "XP 1→90 league-phased"
+            }
+          ],
+          "detail": "ALL of"
+        },
+        "leaves": [
+          {
+            "id": "region:misthalin",
+            "hours": 0.8,
+            "describe": "region:misthalin"
+          },
+          {
+            "id": "skill:defence:85",
+            "hours": 2.148369523809524,
+            "describe": "defence 85+"
+          },
+          {
+            "id": "skill:magic:90",
+            "hours": 1.4664383082706767,
+            "describe": "magic 90+"
+          }
+        ],
+        "obtainDetail": "Croesus unique EV rare×6",
+        "regions": [
+          "misthalin"
+        ]
+      },
+      {
+        "itemId": "cryptbloom-armour-set",
+        "name": "Cryptbloom armour set",
+        "style": "magic",
+        "tier": 95,
+        "slot": "body",
+        "reqHours": 4.414807832080201,
+        "obtainHours": 12.222222222222223,
+        "soloTotal": 16.637030054302425,
+        "sharedTotal": 16.637030054302425,
+        "reqTree": {
+          "reqId": "all(region:misthalin&skill:defence:85&skill:magic:90)",
+          "describe": "region:misthalin AND defence 85+ AND magic 90+",
+          "hours": 4.414807832080201,
+          "kind": "composite",
+          "children": [
+            {
+              "reqId": "region:misthalin",
+              "describe": "region:misthalin",
+              "hours": 0.8,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "skill:defence:85",
+              "describe": "defence 85+",
+              "hours": 2.148369523809524,
+              "kind": "skill",
+              "detail": "XP 1→85 league-phased"
+            },
+            {
+              "reqId": "skill:magic:90",
+              "describe": "magic 90+",
+              "hours": 1.4664383082706767,
+              "kind": "skill",
+              "detail": "XP 1→90 league-phased"
+            }
+          ],
+          "detail": "ALL of"
+        },
+        "leaves": [
+          {
+            "id": "region:misthalin",
+            "hours": 0.8,
+            "describe": "region:misthalin"
+          },
+          {
+            "id": "skill:defence:85",
+            "hours": 2.148369523809524,
+            "describe": "defence 85+"
+          },
+          {
+            "id": "skill:magic:90",
+            "hours": 1.4664383082706767,
+            "describe": "magic 90+"
+          }
+        ],
+        "obtainDetail": "Croesus unique EV rare×6",
+        "regions": [
+          "misthalin"
+        ]
+      },
+      {
+        "itemId": "first-necromancers-equipment",
+        "name": "First Necromancer's equipment",
+        "style": "necromancy",
+        "tier": 95,
+        "slot": "body",
+        "reqHours": 3.612987152380952,
+        "obtainHours": 5.694444444444445,
+        "soloTotal": 9.307431596825396,
+        "sharedTotal": 9.307431596825396,
+        "reqTree": {
+          "reqId": "all(region:misthalin&skill:defence:65&skill:necromancy:75&quest:necromancy-questline&flag:killed:rasial)",
+          "describe": "region:misthalin AND defence 65+ AND necromancy 75+ AND quest:necromancy-questline AND killed:rasial",
+          "hours": 3.612987152380952,
+          "kind": "composite",
+          "children": [
+            {
+              "reqId": "region:misthalin",
+              "describe": "region:misthalin",
+              "hours": 0.8,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "skill:defence:65",
+              "describe": "defence 65+",
+              "hours": 0.742052619047619,
+              "kind": "skill",
+              "detail": "XP 1→65 league-phased"
+            },
+            {
+              "reqId": "skill:necromancy:75",
+              "describe": "necromancy 75+",
+              "hours": 0.27093453333333334,
+              "kind": "skill",
+              "detail": "XP 1→75 league-phased"
+            },
+            {
+              "reqId": "quest:necromancy-questline",
+              "describe": "quest:necromancy-questline",
+              "hours": 1,
+              "kind": "quest",
+              "detail": "Quest"
+            },
+            {
+              "reqId": "flag:killed:rasial",
+              "describe": "killed:rasial",
+              "hours": 0.8,
+              "kind": "flag",
+              "detail": "First Rasial kill + instance setup"
+            }
+          ],
+          "detail": "ALL of"
+        },
+        "leaves": [
+          {
+            "id": "region:misthalin",
+            "hours": 0.8,
+            "describe": "region:misthalin"
+          },
+          {
+            "id": "skill:defence:65",
+            "hours": 0.742052619047619,
+            "describe": "defence 65+"
+          },
+          {
+            "id": "skill:necromancy:75",
+            "hours": 0.27093453333333334,
+            "describe": "necromancy 75+"
+          },
+          {
+            "id": "quest:necromancy-questline",
+            "hours": 1,
+            "describe": "quest:necromancy-questline"
+          },
+          {
+            "id": "flag:killed:rasial",
+            "hours": 0.8,
+            "describe": "killed:rasial"
+          }
+        ],
+        "obtainDetail": "Rasial unique EV 107k rare×6",
+        "regions": [
+          "misthalin"
+        ]
+      },
+      {
+        "itemId": "abyssal-whip",
+        "name": "Abyssal whip",
+        "style": "melee",
+        "tier": 75,
+        "slot": "weapon",
+        "reqHours": 6.704404396825397,
+        "obtainHours": 2.25,
+        "soloTotal": 8.954404396825396,
+        "sharedTotal": 8.954404396825396,
+        "reqTree": {
+          "reqId": "all(region:morytania&region:forinthry&skill:attack:75)",
+          "describe": "region:morytania AND region:forinthry AND attack 75+",
+          "hours": 6.704404396825397,
+          "kind": "composite",
+          "children": [
+            {
+              "reqId": "region:morytania",
+              "describe": "region:morytania",
+              "hours": 3,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "region:forinthry",
+              "describe": "region:forinthry",
+              "hours": 3,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "skill:attack:75",
+              "describe": "attack 75+",
+              "hours": 0.7044043968253968,
+              "kind": "skill",
+              "detail": "XP 1→75 league-phased"
+            }
+          ],
+          "detail": "ALL of"
+        },
+        "leaves": [
+          {
+            "id": "region:morytania",
+            "hours": 3,
+            "describe": "region:morytania"
+          },
+          {
+            "id": "region:forinthry",
+            "hours": 3,
+            "describe": "region:forinthry"
+          },
+          {
+            "id": "skill:attack:75",
+            "hours": 0.7044043968253968,
+            "describe": "attack 75+"
+          }
+        ],
+        "obtainDetail": "Default obtain hedge (source ambiguous)",
+        "regions": [
+          "morytania",
+          "forinthry"
+        ]
+      },
+      {
+        "itemId": "glaiven-boots",
+        "name": "Glaiven boots",
+        "style": "all",
+        "tier": 85,
+        "slot": "boots",
+        "reqHours": 6.473049047619048,
+        "obtainHours": 2.45,
+        "soloTotal": 8.923049047619049,
+        "sharedTotal": 8.923049047619049,
+        "reqTree": {
+          "reqId": "all(region:misthalin&region:forinthry&skill:defence:75&flag:killed:arch-glacor)",
+          "describe": "region:misthalin AND region:forinthry AND defence 75+ AND killed:arch-glacor",
+          "hours": 6.473049047619048,
+          "kind": "composite",
+          "children": [
+            {
+              "reqId": "region:misthalin",
+              "describe": "region:misthalin",
+              "hours": 0.8,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "region:forinthry",
+              "describe": "region:forinthry",
+              "hours": 3,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "skill:defence:75",
+              "describe": "defence 75+",
+              "hours": 1.1730490476190476,
+              "kind": "skill",
+              "detail": "XP 1→75 league-phased"
+            },
+            {
+              "reqId": "flag:killed:arch-glacor",
+              "describe": "killed:arch-glacor",
+              "hours": 1.5,
+              "kind": "flag",
+              "detail": "Boss unlock kill: killed:arch-glacor"
+            }
+          ],
+          "detail": "ALL of"
+        },
+        "leaves": [
+          {
+            "id": "region:misthalin",
+            "hours": 0.8,
+            "describe": "region:misthalin"
+          },
+          {
+            "id": "region:forinthry",
+            "hours": 3,
+            "describe": "region:forinthry"
+          },
+          {
+            "id": "skill:defence:75",
+            "hours": 1.1730490476190476,
+            "describe": "defence 75+"
+          },
+          {
+            "id": "flag:killed:arch-glacor",
+            "hours": 1.5,
+            "describe": "killed:arch-glacor"
+          }
+        ],
+        "obtainDetail": "Default obtain hedge (source ambiguous)",
+        "regions": [
+          "misthalin",
+          "forinthry"
+        ]
+      },
+      {
+        "itemId": "ragefire-boots",
+        "name": "Ragefire boots",
+        "style": "all",
+        "tier": 85,
+        "slot": "boots",
+        "reqHours": 6.473049047619048,
+        "obtainHours": 2.45,
+        "soloTotal": 8.923049047619049,
+        "sharedTotal": 8.923049047619049,
+        "reqTree": {
+          "reqId": "all(region:misthalin&region:forinthry&skill:defence:75&flag:killed:arch-glacor)",
+          "describe": "region:misthalin AND region:forinthry AND defence 75+ AND killed:arch-glacor",
+          "hours": 6.473049047619048,
+          "kind": "composite",
+          "children": [
+            {
+              "reqId": "region:misthalin",
+              "describe": "region:misthalin",
+              "hours": 0.8,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "region:forinthry",
+              "describe": "region:forinthry",
+              "hours": 3,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "skill:defence:75",
+              "describe": "defence 75+",
+              "hours": 1.1730490476190476,
+              "kind": "skill",
+              "detail": "XP 1→75 league-phased"
+            },
+            {
+              "reqId": "flag:killed:arch-glacor",
+              "describe": "killed:arch-glacor",
+              "hours": 1.5,
+              "kind": "flag",
+              "detail": "Boss unlock kill: killed:arch-glacor"
+            }
+          ],
+          "detail": "ALL of"
+        },
+        "leaves": [
+          {
+            "id": "region:misthalin",
+            "hours": 0.8,
+            "describe": "region:misthalin"
+          },
+          {
+            "id": "region:forinthry",
+            "hours": 3,
+            "describe": "region:forinthry"
+          },
+          {
+            "id": "skill:defence:75",
+            "hours": 1.1730490476190476,
+            "describe": "defence 75+"
+          },
+          {
+            "id": "flag:killed:arch-glacor",
+            "hours": 1.5,
+            "describe": "killed:arch-glacor"
+          }
+        ],
+        "obtainDetail": "Default obtain hedge (source ambiguous)",
+        "regions": [
+          "misthalin",
+          "forinthry"
+        ]
+      },
+      {
+        "itemId": "armadyl-equipment",
+        "name": "Armadyl equipment",
+        "style": "melee",
+        "tier": 80,
+        "slot": "body",
+        "reqHours": 4.9479090476190475,
+        "obtainHours": 3.884259259259259,
+        "soloTotal": 8.832168306878307,
+        "sharedTotal": 8.832168306878307,
+        "reqTree": {
+          "reqId": "all(region:asgarnia&skill:defence:70&flag:killed:kree)",
+          "describe": "region:asgarnia AND defence 70+ AND killed:kree",
+          "hours": 4.9479090476190475,
+          "kind": "composite",
+          "children": [
+            {
+              "reqId": "region:asgarnia",
+              "describe": "region:asgarnia",
+              "hours": 2.5,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "skill:defence:70",
+              "describe": "defence 70+",
+              "hours": 0.9479090476190476,
+              "kind": "skill",
+              "detail": "XP 1→70 league-phased"
+            },
+            {
+              "reqId": "flag:killed:kree",
+              "describe": "killed:kree",
+              "hours": 1.5,
+              "kind": "flag",
+              "detail": "Boss unlock kill: killed:kree"
+            }
+          ],
+          "detail": "ALL of"
+        },
+        "leaves": [
+          {
+            "id": "region:asgarnia",
+            "hours": 2.5,
+            "describe": "region:asgarnia"
+          },
+          {
+            "id": "skill:defence:70",
+            "hours": 0.9479090476190476,
+            "describe": "defence 70+"
+          },
+          {
+            "id": "flag:killed:kree",
+            "hours": 1.5,
+            "describe": "killed:kree"
+          }
+        ],
+        "obtainDetail": "Kerapac piece EV rare×6",
+        "regions": [
+          "asgarnia"
+        ]
+      },
+      {
+        "itemId": "abyssal-wand",
+        "name": "Abyssal wand",
+        "style": "magic",
+        "tier": 75,
+        "slot": "weapon",
+        "reqHours": 6.559440281954887,
+        "obtainHours": 2.25,
+        "soloTotal": 8.809440281954888,
+        "sharedTotal": 8.809440281954888,
+        "reqTree": {
+          "reqId": "all(region:morytania&region:forinthry&skill:magic:75)",
+          "describe": "region:morytania AND region:forinthry AND magic 75+",
+          "hours": 6.559440281954887,
+          "kind": "composite",
+          "children": [
+            {
+              "reqId": "region:morytania",
+              "describe": "region:morytania",
+              "hours": 3,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "region:forinthry",
+              "describe": "region:forinthry",
+              "hours": 3,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "skill:magic:75",
+              "describe": "magic 75+",
+              "hours": 0.5594402819548873,
+              "kind": "skill",
+              "detail": "XP 1→75 league-phased"
+            }
+          ],
+          "detail": "ALL of"
+        },
+        "leaves": [
+          {
+            "id": "region:morytania",
+            "hours": 3,
+            "describe": "region:morytania"
+          },
+          {
+            "id": "region:forinthry",
+            "hours": 3,
+            "describe": "region:forinthry"
+          },
+          {
+            "id": "skill:magic:75",
+            "hours": 0.5594402819548873,
+            "describe": "magic 75+"
+          }
+        ],
+        "obtainDetail": "Default obtain hedge (source ambiguous)",
+        "regions": [
+          "morytania",
+          "forinthry"
+        ]
+      },
+      {
+        "itemId": "dark-bow",
+        "name": "Dark bow",
+        "style": "ranged",
+        "tier": 75,
+        "slot": "weapon",
+        "reqHours": 6.515515125,
+        "obtainHours": 2.25,
+        "soloTotal": 8.765515125,
+        "sharedTotal": 8.765515125,
+        "reqTree": {
+          "reqId": "all(region:morytania&region:forinthry&skill:ranged:75)",
+          "describe": "region:morytania AND region:forinthry AND ranged 75+",
+          "hours": 6.515515125,
+          "kind": "composite",
+          "children": [
+            {
+              "reqId": "region:morytania",
+              "describe": "region:morytania",
+              "hours": 3,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "region:forinthry",
+              "describe": "region:forinthry",
+              "hours": 3,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "skill:ranged:75",
+              "describe": "ranged 75+",
+              "hours": 0.515515125,
+              "kind": "skill",
+              "detail": "XP 1→75 league-phased"
+            }
+          ],
+          "detail": "ALL of"
+        },
+        "leaves": [
+          {
+            "id": "region:morytania",
+            "hours": 3,
+            "describe": "region:morytania"
+          },
+          {
+            "id": "region:forinthry",
+            "hours": 3,
+            "describe": "region:forinthry"
+          },
+          {
+            "id": "skill:ranged:75",
+            "hours": 0.515515125,
+            "describe": "ranged 75+"
+          }
+        ],
+        "obtainDetail": "Default obtain hedge (source ambiguous)",
+        "regions": [
+          "morytania",
+          "forinthry"
+        ]
+      },
+      {
+        "itemId": "abyssal-orb",
+        "name": "Abyssal orb",
+        "style": "all",
+        "tier": 75,
+        "slot": "offhand",
+        "reqHours": 6.39524526984127,
+        "obtainHours": 2.25,
+        "soloTotal": 8.64524526984127,
+        "sharedTotal": 8.64524526984127,
+        "reqTree": {
+          "reqId": "all(region:morytania&region:forinthry&skill:attack:60)",
+          "describe": "region:morytania AND region:forinthry AND attack 60+",
+          "hours": 6.39524526984127,
+          "kind": "composite",
+          "children": [
+            {
+              "reqId": "region:morytania",
+              "describe": "region:morytania",
+              "hours": 3,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "region:forinthry",
+              "describe": "region:forinthry",
+              "hours": 3,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "skill:attack:60",
+              "describe": "attack 60+",
+              "hours": 0.3952452698412699,
+              "kind": "skill",
+              "detail": "XP 1→60 league-phased"
+            }
+          ],
+          "detail": "ALL of"
+        },
+        "leaves": [
+          {
+            "id": "region:morytania",
+            "hours": 3,
+            "describe": "region:morytania"
+          },
+          {
+            "id": "region:forinthry",
+            "hours": 3,
+            "describe": "region:forinthry"
+          },
+          {
+            "id": "skill:attack:60",
+            "hours": 0.3952452698412699,
+            "describe": "attack 60+"
+          }
+        ],
+        "obtainDetail": "Default obtain hedge (source ambiguous)",
+        "regions": [
+          "morytania",
+          "forinthry"
+        ]
+      },
+      {
+        "itemId": "ripper-claw",
+        "name": "Ripper claw",
+        "style": "all",
+        "tier": 75,
+        "slot": "weapon",
+        "reqHours": 6.39524526984127,
+        "obtainHours": 2.25,
+        "soloTotal": 8.64524526984127,
+        "sharedTotal": 8.64524526984127,
+        "reqTree": {
+          "reqId": "all(region:desert&region:forinthry&skill:attack:60)",
+          "describe": "region:desert AND region:forinthry AND attack 60+",
+          "hours": 6.39524526984127,
+          "kind": "composite",
+          "children": [
+            {
+              "reqId": "region:desert",
+              "describe": "region:desert",
+              "hours": 3,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "region:forinthry",
+              "describe": "region:forinthry",
+              "hours": 3,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "skill:attack:60",
+              "describe": "attack 60+",
+              "hours": 0.3952452698412699,
+              "kind": "skill",
+              "detail": "XP 1→60 league-phased"
+            }
+          ],
+          "detail": "ALL of"
+        },
+        "leaves": [
+          {
+            "id": "region:desert",
+            "hours": 3,
+            "describe": "region:desert"
+          },
+          {
+            "id": "region:forinthry",
+            "hours": 3,
+            "describe": "region:forinthry"
+          },
+          {
+            "id": "skill:attack:60",
+            "hours": 0.3952452698412699,
+            "describe": "attack 60+"
+          }
+        ],
+        "obtainDetail": "Default obtain hedge (source ambiguous)",
+        "regions": [
+          "desert",
+          "forinthry"
+        ]
+      },
+      {
+        "itemId": "emberkeen-boots",
+        "name": "Emberkeen boots",
+        "style": "all",
+        "tier": 90,
+        "slot": "boots",
+        "reqHours": 6.042404761904762,
+        "obtainHours": 2.55,
+        "soloTotal": 8.592404761904762,
+        "sharedTotal": 8.592404761904762,
+        "reqTree": {
+          "reqId": "all(region:forinthry&skill:defence:80&flag:killed:arch-glacor)",
+          "describe": "region:forinthry AND defence 80+ AND killed:arch-glacor",
+          "hours": 6.042404761904762,
+          "kind": "composite",
+          "children": [
+            {
+              "reqId": "region:forinthry",
+              "describe": "region:forinthry",
+              "hours": 3,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "skill:defence:80",
+              "describe": "defence 80+",
+              "hours": 1.5424047619047618,
+              "kind": "skill",
+              "detail": "XP 1→80 league-phased"
+            },
+            {
+              "reqId": "flag:killed:arch-glacor",
+              "describe": "killed:arch-glacor",
+              "hours": 1.5,
+              "kind": "flag",
+              "detail": "Boss unlock kill: killed:arch-glacor"
+            }
+          ],
+          "detail": "ALL of"
+        },
+        "leaves": [
+          {
+            "id": "region:forinthry",
+            "hours": 3,
+            "describe": "region:forinthry"
+          },
+          {
+            "id": "skill:defence:80",
+            "hours": 1.5424047619047618,
+            "describe": "defence 80+"
+          },
+          {
+            "id": "flag:killed:arch-glacor",
+            "hours": 1.5,
+            "describe": "killed:arch-glacor"
+          }
+        ],
+        "obtainDetail": "Default obtain hedge (source ambiguous)",
+        "regions": [
+          "forinthry"
+        ]
+      },
+      {
+        "itemId": "armadyl-crossbow",
+        "name": "Armadyl crossbow",
+        "style": "ranged",
+        "tier": 80,
+        "slot": "weapon",
+        "reqHours": 4.67710825,
+        "obtainHours": 3.884259259259259,
+        "soloTotal": 8.56136750925926,
+        "sharedTotal": 8.56136750925926,
+        "reqTree": {
+          "reqId": "all(region:asgarnia&skill:ranged:80&flag:killed:zilyana)",
+          "describe": "region:asgarnia AND ranged 80+ AND killed:zilyana",
+          "hours": 4.67710825,
+          "kind": "composite",
+          "children": [
+            {
+              "reqId": "region:asgarnia",
+              "describe": "region:asgarnia",
+              "hours": 2.5,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "skill:ranged:80",
+              "describe": "ranged 80+",
+              "hours": 0.67710825,
+              "kind": "skill",
+              "detail": "XP 1→80 league-phased"
+            },
+            {
+              "reqId": "flag:killed:zilyana",
+              "describe": "killed:zilyana",
+              "hours": 1.5,
+              "kind": "flag",
+              "detail": "Boss unlock kill: killed:zilyana"
+            }
+          ],
+          "detail": "ALL of"
+        },
+        "leaves": [
+          {
+            "id": "region:asgarnia",
+            "hours": 2.5,
+            "describe": "region:asgarnia"
+          },
+          {
+            "id": "skill:ranged:80",
+            "hours": 0.67710825,
+            "describe": "ranged 80+"
+          },
+          {
+            "id": "flag:killed:zilyana",
+            "hours": 1.5,
+            "describe": "killed:zilyana"
+          }
+        ],
+        "obtainDetail": "Kerapac piece EV rare×6",
+        "regions": [
+          "asgarnia"
+        ]
+      },
+      {
+        "itemId": "off-hand-armadyl-crossbow",
+        "name": "Off-hand Armadyl crossbow",
+        "style": "ranged",
+        "tier": 80,
+        "slot": "weapon",
+        "reqHours": 4.67710825,
+        "obtainHours": 3.884259259259259,
+        "soloTotal": 8.56136750925926,
+        "sharedTotal": 8.56136750925926,
+        "reqTree": {
+          "reqId": "all(region:asgarnia&skill:ranged:80&flag:killed:zilyana)",
+          "describe": "region:asgarnia AND ranged 80+ AND killed:zilyana",
+          "hours": 4.67710825,
+          "kind": "composite",
+          "children": [
+            {
+              "reqId": "region:asgarnia",
+              "describe": "region:asgarnia",
+              "hours": 2.5,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "skill:ranged:80",
+              "describe": "ranged 80+",
+              "hours": 0.67710825,
+              "kind": "skill",
+              "detail": "XP 1→80 league-phased"
+            },
+            {
+              "reqId": "flag:killed:zilyana",
+              "describe": "killed:zilyana",
+              "hours": 1.5,
+              "kind": "flag",
+              "detail": "Boss unlock kill: killed:zilyana"
+            }
+          ],
+          "detail": "ALL of"
+        },
+        "leaves": [
+          {
+            "id": "region:asgarnia",
+            "hours": 2.5,
+            "describe": "region:asgarnia"
+          },
+          {
+            "id": "skill:ranged:80",
+            "hours": 0.67710825,
+            "describe": "ranged 80+"
+          },
+          {
+            "id": "flag:killed:zilyana",
+            "hours": 1.5,
+            "describe": "killed:zilyana"
+          }
+        ],
+        "obtainDetail": "Kerapac piece EV rare×6",
+        "regions": [
+          "asgarnia"
+        ]
+      },
+      {
+        "itemId": "devourers-guard",
+        "name": "Devourer's Guard",
+        "style": "necromancy",
+        "tier": 95,
+        "slot": "weapon",
+        "reqHours": 5.702160991666666,
+        "obtainHours": 2.6500000000000004,
+        "soloTotal": 8.352160991666667,
+        "sharedTotal": 8.352160991666667,
+        "reqTree": {
+          "reqId": "all(region:desert&skill:necromancy:95&flag:killed:amascut)",
+          "describe": "region:desert AND necromancy 95+ AND killed:amascut",
+          "hours": 5.702160991666666,
+          "kind": "composite",
+          "children": [
+            {
+              "reqId": "region:desert",
+              "describe": "region:desert",
+              "hours": 3,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "skill:necromancy:95",
+              "describe": "necromancy 95+",
+              "hours": 1.2021609916666667,
+              "kind": "skill",
+              "detail": "XP 1→95 league-phased"
+            },
+            {
+              "reqId": "flag:killed:amascut",
+              "describe": "killed:amascut",
+              "hours": 1.5,
+              "kind": "flag",
+              "detail": "Boss unlock kill: killed:amascut"
+            }
+          ],
+          "detail": "ALL of"
+        },
+        "leaves": [
+          {
+            "id": "region:desert",
+            "hours": 3,
+            "describe": "region:desert"
+          },
+          {
+            "id": "skill:necromancy:95",
+            "hours": 1.2021609916666667,
+            "describe": "necromancy 95+"
+          },
+          {
+            "id": "flag:killed:amascut",
+            "hours": 1.5,
+            "describe": "killed:amascut"
+          }
+        ],
+        "obtainDetail": "Default obtain hedge (source ambiguous)",
+        "regions": [
+          "desert"
+        ]
+      },
+      {
+        "itemId": "reavers-ring",
+        "name": "Reaver's ring",
+        "style": "all",
+        "tier": 75,
+        "slot": "ring",
+        "reqHours": 6,
+        "obtainHours": 2.25,
+        "soloTotal": 8.25,
+        "sharedTotal": 8.25,
+        "reqTree": {
+          "reqId": "all(region:anachronia&flag:killed:rex-matriarchs)",
+          "describe": "region:anachronia AND killed:rex-matriarchs",
+          "hours": 6,
+          "kind": "composite",
+          "children": [
+            {
+              "reqId": "region:anachronia",
+              "describe": "region:anachronia",
+              "hours": 4.5,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "flag:killed:rex-matriarchs",
+              "describe": "killed:rex-matriarchs",
+              "hours": 1.5,
+              "kind": "flag",
+              "detail": "Boss unlock kill: killed:rex-matriarchs"
+            }
+          ],
+          "detail": "ALL of"
+        },
+        "leaves": [
+          {
+            "id": "region:anachronia",
+            "hours": 4.5,
+            "describe": "region:anachronia"
+          },
+          {
+            "id": "flag:killed:rex-matriarchs",
+            "hours": 1.5,
+            "describe": "killed:rex-matriarchs"
+          }
+        ],
+        "obtainDetail": "Default obtain hedge (source ambiguous)",
+        "regions": [
+          "anachronia"
+        ]
+      },
+      {
+        "itemId": "omni-guard",
+        "name": "Omni guard (T95)",
+        "style": "necromancy",
+        "tier": 95,
+        "slot": "weapon",
+        "reqHours": 2.4021609916666664,
+        "obtainHours": 5.694444444444445,
+        "soloTotal": 8.096605436111112,
+        "sharedTotal": 8.096605436111112,
+        "reqTree": {
+          "reqId": "all(any(region:misthalin|region:free|region:havenhythe|region:karamja)&skill:necromancy:95&flag:killed:rasial)",
+          "describe": "region:misthalin OR region:free OR region:havenhythe OR region:karamja AND necromancy 95+ AND killed:rasial",
+          "hours": 2.4021609916666664,
+          "kind": "composite",
+          "children": [
+            {
+              "reqId": "any(region:misthalin|region:free|region:havenhythe|region:karamja)",
+              "describe": "region:misthalin OR region:free OR region:havenhythe OR region:karamja",
+              "hours": 0.4,
+              "kind": "composite",
+              "children": [
+                {
+                  "reqId": "region:free",
+                  "describe": "region:free",
+                  "hours": 0.4,
+                  "kind": "region",
+                  "detail": "Region unlock/access pad"
+                }
+              ],
+              "detail": "ANY of (cheapest)"
+            },
+            {
+              "reqId": "skill:necromancy:95",
+              "describe": "necromancy 95+",
+              "hours": 1.2021609916666667,
+              "kind": "skill",
+              "detail": "XP 1→95 league-phased"
+            },
+            {
+              "reqId": "flag:killed:rasial",
+              "describe": "killed:rasial",
+              "hours": 0.8,
+              "kind": "flag",
+              "detail": "First Rasial kill + instance setup"
+            }
+          ],
+          "detail": "ALL of"
+        },
+        "leaves": [
+          {
+            "id": "region:free",
+            "hours": 0.4,
+            "describe": "region:free"
+          },
+          {
+            "id": "skill:necromancy:95",
+            "hours": 1.2021609916666667,
+            "describe": "necromancy 95+"
+          },
+          {
+            "id": "flag:killed:rasial",
+            "hours": 0.8,
+            "describe": "killed:rasial"
+          }
+        ],
+        "obtainDetail": "Rasial unique EV 107k rare×6",
+        "regions": []
+      },
+      {
+        "itemId": "dragon-2h-sword",
+        "name": "Dragon 2h sword",
+        "style": "all",
+        "tier": 70,
+        "slot": "weapon",
+        "reqHours": 5.89524526984127,
+        "obtainHours": 2.1500000000000004,
+        "soloTotal": 8.04524526984127,
+        "sharedTotal": 8.04524526984127,
+        "reqTree": {
+          "reqId": "all(region:asgarnia&region:desert&skill:attack:60)",
+          "describe": "region:asgarnia AND region:desert AND attack 60+",
+          "hours": 5.89524526984127,
+          "kind": "composite",
+          "children": [
+            {
+              "reqId": "region:asgarnia",
+              "describe": "region:asgarnia",
+              "hours": 2.5,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "region:desert",
+              "describe": "region:desert",
+              "hours": 3,
+              "kind": "region",
+              "detail": "Region unlock/access pad"
+            },
+            {
+              "reqId": "skill:attack:60",
+              "describe": "attack 60+",
+              "hours": 0.3952452698412699,
+              "kind": "skill",
+              "detail": "XP 1→60 league-phased"
+            }
+          ],
+          "detail": "ALL of"
+        },
+        "leaves": [
+          {
+            "id": "region:asgarnia",
+            "hours": 2.5,
+            "describe": "region:asgarnia"
+          },
+          {
+            "id": "region:desert",
+            "hours": 3,
+            "describe": "region:desert"
+          },
+          {
+            "id": "skill:attack:60",
+            "hours": 0.3952452698412699,
+            "describe": "attack 60+"
+          }
+        ],
+        "obtainDetail": "Default obtain hedge (source ambiguous)",
+        "regions": [
+          "asgarnia",
+          "desert"
+        ]
+      }
+    ]
+  },
+  "loadouts": [
+    {
+      "style": "necromancy",
+      "pieces": [
+        "Devourer's Guard",
+        "Robes of the First Necromancer (T95)",
+        "Soulbound lantern (T95)",
+        "Achto Primeval boots",
+        "Ring of death",
+        "Igneous Kal-Zuk",
+        "Amulet of souls (or essence)",
+        "Achto Primeval gloves",
+        "Achto Primeval mask"
+      ],
+      "total": 43.83182416626984,
+      "req": 14.592935277380953,
+      "obtain": 29.23888888888889,
+      "savings": 18.589131507142852,
+      "ledger": [
+        {
+          "name": "Devourer's Guard",
+          "hours": 8.352160991666667,
+          "detail": "req 5.7h + obtain 2.7h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Robes of the First Necromancer (T95)",
+          "hours": 9.042813968253968,
+          "detail": "req 3.3h + obtain 5.7h (Rasial unique EV 107k rare×6)"
+        },
+        {
+          "name": "Soulbound lantern (T95)",
+          "hours": 5.694444444444445,
+          "detail": "req 0.0h + obtain 5.7h (Rasial unique EV 107k rare×6)"
+        },
+        {
+          "name": "Achto Primeval boots",
+          "hours": 4.092404761904762,
+          "detail": "req 1.5h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Ring of death",
+          "hours": 4.95,
+          "detail": "req 2.5h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Igneous Kal-Zuk",
+          "hours": 4.05,
+          "detail": "req 1.5h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Amulet of souls (or essence)",
+          "hours": 2.55,
+          "detail": "req 0.0h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Achto Primeval gloves",
+          "hours": 2.55,
+          "detail": "req 0.0h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Achto Primeval mask",
+          "hours": 2.55,
+          "detail": "req 0.0h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        }
+      ]
+    },
+    {
+      "style": "magic",
+      "pieces": [
+        "Seismic wand",
+        "Elite tectonic set",
+        "Seismic singularity",
+        "Achto Primeval boots",
+        "Ring of death",
+        "Igneous Kal-Zuk",
+        "Amulet of souls (or essence)",
+        "Achto Primeval gloves",
+        "Virtus mask"
+      ],
+      "total": 44.184871091791976,
+      "req": 21.49487109179198,
+      "obtain": 22.69,
+      "savings": 20.00884307017543,
+      "ledger": [
+        {
+          "name": "Seismic wand",
+          "hours": 8.016438308270676,
+          "detail": "req 5.5h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Elite tectonic set",
+          "hours": 5.998580665726816,
+          "detail": "req 3.4h + obtain 2.6h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Seismic singularity",
+          "hours": 2.55,
+          "detail": "req 0.0h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Achto Primeval boots",
+          "hours": 7.092404761904762,
+          "detail": "req 4.5h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Ring of death",
+          "hours": 2.45,
+          "detail": "req 0.0h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Igneous Kal-Zuk",
+          "hours": 4.449999999999999,
+          "detail": "req 1.9h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Amulet of souls (or essence)",
+          "hours": 2.55,
+          "detail": "req 0.0h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Achto Primeval gloves",
+          "hours": 2.55,
+          "detail": "req 0.0h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Virtus mask",
+          "hours": 8.527447355889723,
+          "detail": "req 6.2h + obtain 2.4h (Default obtain hedge (source ambiguous))"
+        }
+      ]
+    },
+    {
+      "style": "melee",
+      "pieces": [
+        "Dark Shard of Leng",
+        "Bandos armour set",
+        "Khopesh of Tumeken",
+        "Achto Primeval boots",
+        "Ring of death",
+        "Igneous Kal-Zuk",
+        "Amulet of souls (or essence)",
+        "Achto Primeval gloves",
+        "Achto Primeval mask"
+      ],
+      "total": 39.790591514484134,
+      "req": 17.200591514484127,
+      "obtain": 22.590000000000003,
+      "savings": 14.48480952380951,
+      "ledger": [
+        {
+          "name": "Dark Shard of Leng",
+          "hours": 8.924286579365079,
+          "detail": "req 6.3h + obtain 2.7h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Bandos armour set",
+          "hours": 5.266562619047619,
+          "detail": "req 3.1h + obtain 2.2h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Khopesh of Tumeken",
+          "hours": 4.357337554166667,
+          "detail": "req 1.8h + obtain 2.6h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Achto Primeval boots",
+          "hours": 7.092404761904762,
+          "detail": "req 4.5h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Ring of death",
+          "hours": 2.45,
+          "detail": "req 0.0h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Igneous Kal-Zuk",
+          "hours": 4.05,
+          "detail": "req 1.5h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Amulet of souls (or essence)",
+          "hours": 2.55,
+          "detail": "req 0.0h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Achto Primeval gloves",
+          "hours": 2.55,
+          "detail": "req 0.0h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Achto Primeval mask",
+          "hours": 2.55,
+          "detail": "req 0.0h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        }
+      ]
+    },
+    {
+      "style": "ranged",
+      "pieces": [
+        "Armadyl crossbow",
+        "Elite sirenic set",
+        "Achto Primeval boots",
+        "Royal torsion spring",
+        "Igneous Kal-Zuk",
+        "Amulet of souls (or essence)",
+        "Achto Primeval gloves",
+        "Achto Primeval mask"
+      ],
+      "total": 36.00344859408069,
+      "req": 14.429189334821428,
+      "obtain": 21.57425925925926,
+      "savings": 16.58480952380952,
+      "ledger": [
+        {
+          "name": "Armadyl crossbow",
+          "hours": 8.56136750925926,
+          "detail": "req 4.7h + obtain 3.9h (Kerapac piece EV rare×6)"
+        },
+        {
+          "name": "Elite sirenic set",
+          "hours": 5.899676322916666,
+          "detail": "req 3.3h + obtain 2.6h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Achto Primeval boots",
+          "hours": 7.092404761904762,
+          "detail": "req 4.5h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Royal torsion spring",
+          "hours": 2.35,
+          "detail": "req 0.0h + obtain 2.4h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Igneous Kal-Zuk",
+          "hours": 4.449999999999999,
+          "detail": "req 1.9h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Amulet of souls (or essence)",
+          "hours": 2.55,
+          "detail": "req 0.0h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Achto Primeval gloves",
+          "hours": 2.55,
+          "detail": "req 0.0h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "Achto Primeval mask",
+          "hours": 2.55,
+          "detail": "req 0.0h + obtain 2.5h (Default obtain hedge (source ambiguous))"
+        }
+      ]
+    }
+  ],
+  "merged": [
+    {
+      "name": "Necro mid Deathwarden",
+      "planMean": 29.153754806101194,
+      "itemPath": 51.02555095119048,
+      "hedged": 31.954627057723215,
+      "planBreakdown": [
+        "Farm league tier 4 → rare ×4 (wiki passive ladder)",
+        "Skills union (5×→16× XP): 5.8h (combat 3.8 + support 2.1)",
+        "Exclusive (drops/crafts/relics/blessings): 26.1h",
+        "  combat-training exclusive: 5.5h",
+        "Parallel credit: −3.2h",
+        "Req-graph region/flag hedge: +0.4h",
+        "WALL mean 29.2h · p50 29.2h · p90 29.2h",
+        "Sensitivity mean h: noBoost=29 · earlyT2=29 · midT4=29 · lateT6=29 · apexT7=29"
+      ],
+      "itemLedger": [
+        {
+          "name": "Devourer's Guard",
+          "hours": 8.352160991666667,
+          "detail": "req 5.7h + obtain 2.7h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "First Necromancer's equipment",
+          "hours": 11.529653819047619,
+          "detail": "req 3.6h + obtain 7.9h (Rasial unique EV 160k rare×4)"
+        },
+        {
+          "name": "Omni guard (T95)",
+          "hours": 7.916666666666667,
+          "detail": "req 0.0h + obtain 7.9h (Rasial unique EV 160k rare×4)"
+        },
+        {
+          "name": "Soulbound lantern (T95)",
+          "hours": 7.916666666666667,
+          "detail": "req 0.0h + obtain 7.9h (Rasial unique EV 160k rare×4)"
+        },
+        {
+          "name": "Robes of the First Necromancer (T95)",
+          "hours": 10.06503619047619,
+          "detail": "req 2.1h + obtain 7.9h (Rasial unique EV 160k rare×4)"
+        },
+        {
+          "name": "Death Guard (T90)",
+          "hours": 5.245366616666667,
+          "detail": "req 0.8h + obtain 4.4h (Craft/upgrade path ~T90)"
+        }
+      ]
+    },
+    {
+      "name": "Necro Omni end",
+      "planMean": 45.193528323809524,
+      "itemPath": 42.13666206230158,
+      "hedged": 45.193528323809524,
+      "planBreakdown": [
+        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
+        "Skills union (5×→16× XP): 7.1h (combat 3.8 + support 3.3)",
+        "Exclusive (drops/crafts/relics/blessings): 38.2h",
+        "  combat-training exclusive: 16.4h",
+        "Parallel credit: −3.2h",
+        "Req-graph region/flag hedge: +3.1h",
+        "WALL mean 45.2h · p50 44.3h · p90 48.2h",
+        "Sensitivity mean h: noBoost=75 · earlyT2=55 · midT4=45 · lateT6=42 · apexT7=40"
+      ],
+      "itemLedger": [
+        {
+          "name": "Devourer's Guard",
+          "hours": 8.352160991666667,
+          "detail": "req 5.7h + obtain 2.7h (Default obtain hedge (source ambiguous))"
+        },
+        {
+          "name": "First Necromancer's equipment",
+          "hours": 9.307431596825396,
+          "detail": "req 3.6h + obtain 5.7h (Rasial unique EV 107k rare×6)"
+        },
+        {
+          "name": "Omni guard (T95)",
+          "hours": 5.694444444444445,
+          "detail": "req 0.0h + obtain 5.7h (Rasial unique EV 107k rare×6)"
+        },
+        {
+          "name": "Soulbound lantern (T95)",
+          "hours": 5.694444444444445,
+          "detail": "req 0.0h + obtain 5.7h (Rasial unique EV 107k rare×6)"
+        },
+        {
+          "name": "Robes of the First Necromancer (T95)",
+          "hours": 7.842813968253969,
+          "detail": "req 2.1h + obtain 5.7h (Rasial unique EV 107k rare×6)"
+        },
+        {
+          "name": "Death Guard (T90)",
+          "hours": 5.245366616666667,
+          "detail": "req 0.8h + obtain 4.4h (Craft/upgrade path ~T90)"
+        }
+      ]
+    }
+  ],
+  "principle": "Every Equipment.req is timed; every obtain path has hours; shared prereqs deduped; never free."
+}

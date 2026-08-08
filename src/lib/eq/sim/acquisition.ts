@@ -31,6 +31,8 @@ import {
   RELIC_TIER_UNLOCKS,
   BLESSING_AEGIS_TRACK,
 } from "./league-passives";
+import { costRequirement, type CostContext } from "./req-hours";
+import { AllReq, SkillReq, RegionReq, FlagReq } from "./requirements";
 
 // ── Math ────────────────────────────────────────────────────────────
 
@@ -758,6 +760,12 @@ export function costComponent(
     notes.push("Perkfection: perk grind ×0.45");
   }
 
+  // Never free: every non-skill component costs something
+  if (c.kind !== "skill" && exclusiveHours < 0.15 && !dropDetail) {
+    exclusiveHours = 0.15;
+    notes.push("Min unlock hedge 0.15h");
+  }
+
   return {
     id: c.id,
     name: c.name,
@@ -1001,13 +1009,51 @@ export function planAcquisition(spec: BuildSpec): AcquisitionPlan {
   const parallelCredit =
     Math.min(combatExclusiveHours, skillComp.combatBundle) * 0.85;
 
-  const wallClockMean =
+  const wallClockMean0 =
     Math.max(0, skillUnionHours - parallelCredit) + exclusiveHours;
+
+  // Requirement-graph hedge: re-cost every component's skill+region+flags
+  // via OOP Requirement so nothing slips to 0 without a path.
+  const reqPaid = new Set<string>();
+  let reqGraphHours = 0;
+  for (const id of recipe) {
+    const c = COMPONENT_BY_ID[id];
+    if (!c) continue;
+    const parts = [];
+    if (c.skillReqs) {
+      for (const [sk, lvl] of Object.entries(c.skillReqs)) {
+        if (lvl && lvl > 1) parts.push(new SkillReq(sk as never, lvl as number));
+      }
+    }
+    if (c.requiresAllRegions) {
+      for (const r of c.requiresAllRegions) parts.push(new RegionReq(r));
+    }
+    if (parts.length) {
+      const node = costRequirement(new AllReq(parts), {
+        electives: spec.electives,
+        rareMult,
+        paid: reqPaid,
+      });
+      reqGraphHours += node.hours;
+    } else if ((c.fixedHoursFn?.() ?? c.fixedHours ?? 0) < 0.05 && !c.drop) {
+      // Truly empty gates — force minimum hedge
+      reqGraphHours += 0.15;
+    }
+  }
+  // Skills already in skillUnionHours; reqGraph double-counts skills.
+  // Use region-only delta: if reqGraph > skillUnion, add the excess as missing region/flag time.
+  const regionFlagHedge = Math.max(0, reqGraphHours - skillUnionHours);
+
+  const wallClockMean =
+    wallClockMean0 + regionFlagHedge;
 
   // p50: slightly under mean on non-drop + p50 drops
   const nonDropExcl = exclusiveHours - meanDrop;
   const wallClockP50 =
-    Math.max(0, skillUnionHours - parallelCredit) + nonDropExcl + p50Drop * 0.95;
+    Math.max(0, skillUnionHours - parallelCredit) +
+    nonDropExcl +
+    p50Drop * 0.95 +
+    regionFlagHedge;
   const wallClockP90 = wallClockMean + p90Extra;
 
   // Sensitivity: recompute exclusive drops only at each mult
@@ -1036,6 +1082,7 @@ export function planAcquisition(spec: BuildSpec): AcquisitionPlan {
     `Exclusive (drops/crafts/relics/blessings): ${exclusiveHours.toFixed(1)}h`,
     `  combat-training exclusive: ${combatExclusiveHours.toFixed(1)}h`,
     `Parallel credit: −${parallelCredit.toFixed(1)}h`,
+    `Req-graph region/flag hedge: +${regionFlagHedge.toFixed(1)}h`,
     `WALL mean ${wallClockMean.toFixed(1)}h · p50 ${wallClockP50.toFixed(1)}h · p90 ${wallClockP90.toFixed(1)}h`,
     `Sensitivity mean h: ${Object.entries(sensitivity)
       .map(([k, v]) => `${k}=${v.toFixed(0)}`)

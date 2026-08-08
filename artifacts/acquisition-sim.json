@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-08T06:51:53.575Z",
+  "generated": "2026-08-08T07:09:51.476Z",
   "hardened": true,
   "passives": [
     {
@@ -63,79 +63,13 @@
   },
   "ranked": [
     {
-      "id": "melee-mid",
-      "name": "Melee mid free-region",
-      "dps": 141332,
-      "meanH": 26.7,
-      "p50": 26.7,
-      "p90": 26.7,
-      "value": 5287,
-      "rareMult": 4,
-      "sensitivity": {
-        "noBoost": 26.73162558467262,
-        "earlyT2": 26.73162558467262,
-        "midT4": 26.73162558467262,
-        "lateT6": 26.73162558467262,
-        "apexT7": 26.73162558467262
-      },
-      "exclusive": 24.1,
-      "skills": 5.8,
-      "parallel": 3.2,
-      "ledger": [
-        {
-          "id": "relics-t7",
-          "name": "Relic ladder T1→T7",
-          "exclusiveH": 11.7
-        },
-        {
-          "id": "blessings-aegis-path",
-          "name": "Blessing track Aegis+Cinders+Perf",
-          "exclusiveH": 5.4
-        },
-        {
-          "id": "skill-combat-bundle-90",
-          "name": "Melee combat 90 bundle",
-          "exclusiveH": 0
-        },
-        {
-          "id": "skill-prayer-95",
-          "name": "Prayer 95",
-          "exclusiveH": 0
-        },
-        {
-          "id": "melee-mid-weapons",
-          "name": "Mid melee (chaotics / early dry path)",
-          "exclusiveH": 4
-        },
-        {
-          "id": "jewellery-reaper-stack",
-          "name": "Reaper crew + essence / mid jewellery",
-          "exclusiveH": 3
-        },
-        {
-          "id": "skill-herb-96",
-          "name": "Herblore 96",
-          "exclusiveH": 0
-        }
-      ],
-      "breakdown": [
-        "Farm league tier 4 → rare ×4 (wiki passive ladder)",
-        "Skills union (5×→16× XP): 5.8h (combat 3.8 + support 2.1)",
-        "Exclusive (drops/crafts/relics/blessings): 24.1h",
-        "  combat-training exclusive: 7.0h",
-        "Parallel credit: −3.2h",
-        "WALL mean 26.7h · p50 26.7h · p90 26.7h",
-        "Sensitivity mean h: noBoost=27 · earlyT2=27 · midT4=27 · lateT6=27 · apexT7=27"
-      ]
-    },
-    {
       "id": "necro-mid-dw",
       "name": "Necro mid Deathwarden + Infernal",
       "dps": 149467,
-      "meanH": 28.7,
-      "p50": 28.7,
-      "p90": 28.7,
-      "value": 5202,
+      "meanH": 29.2,
+      "p50": 29.2,
+      "p90": 29.2,
+      "value": 5127,
       "rareMult": 4,
       "sensitivity": {
         "noBoost": 28.73162558467262,
@@ -195,29 +129,30 @@
         "Exclusive (drops/crafts/relics/blessings): 26.1h",
         "  combat-training exclusive: 5.5h",
         "Parallel credit: −3.2h",
-        "WALL mean 28.7h · p50 28.7h · p90 28.7h",
+        "Req-graph region/flag hedge: +0.4h",
+        "WALL mean 29.2h · p50 29.2h · p90 29.2h",
         "Sensitivity mean h: noBoost=29 · earlyT2=29 · midT4=29 · lateT6=29 · apexT7=29"
       ]
     },
     {
-      "id": "melee-drygore",
-      "name": "Melee dual drygores (Desert)",
-      "dps": 148311,
-      "meanH": 31.7,
-      "p50": 31.5,
-      "p90": 32.2,
-      "value": 4682,
-      "rareMult": 6,
+      "id": "melee-mid",
+      "name": "Melee mid free-region",
+      "dps": 141332,
+      "meanH": 34.1,
+      "p50": 34.1,
+      "p90": 34.1,
+      "value": 4146,
+      "rareMult": 4,
       "sensitivity": {
-        "noBoost": 35.509671195183984,
-        "earlyT2": 32.359671195183985,
-        "midT4": 31.758006088474026,
-        "lateT6": 31.679256088474027,
-        "apexT7": 31.639881088474027
+        "noBoost": 26.73162558467262,
+        "earlyT2": 26.73162558467262,
+        "midT4": 26.73162558467262,
+        "lateT6": 26.73162558467262,
+        "apexT7": 26.73162558467262
       },
-      "exclusive": 26,
-      "skills": 9.7,
-      "parallel": 4,
+      "exclusive": 24.1,
+      "skills": 5.8,
+      "parallel": 3.2,
       "ledger": [
         {
           "id": "relics-t7",
@@ -230,13 +165,8 @@
           "exclusiveH": 5.4
         },
         {
-          "id": "unlock-desert",
-          "name": "Unlock Desert",
-          "exclusiveH": 3
-        },
-        {
-          "id": "skill-combat-bundle-99",
-          "name": "Melee combat 99 bundle",
+          "id": "skill-combat-bundle-90",
+          "name": "Melee combat 90 bundle",
           "exclusiveH": 0
         },
         {
@@ -245,10 +175,9 @@
           "exclusiveH": 0
         },
         {
-          "id": "drygore-dual",
-          "name": "Dual drygores (KK)",
-          "exclusiveH": 1.66,
-          "drop": "21k rare×6"
+          "id": "melee-mid-weapons",
+          "name": "Mid melee (chaotics / early dry path)",
+          "exclusiveH": 4
         },
         {
           "id": "jewellery-reaper-stack",
@@ -256,34 +185,30 @@
           "exclusiveH": 3
         },
         {
-          "id": "skill-herb-106",
-          "name": "Herblore 106",
+          "id": "skill-herb-96",
+          "name": "Herblore 96",
           "exclusiveH": 0
-        },
-        {
-          "id": "elder-overload-line",
-          "name": "Elder overload ready",
-          "exclusiveH": 1.2
         }
       ],
       "breakdown": [
-        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
-        "Skills union (5×→16× XP): 9.7h (combat 6.3 + support 3.3)",
-        "Exclusive (drops/crafts/relics/blessings): 26.0h",
-        "  combat-training exclusive: 4.7h",
-        "Parallel credit: −4.0h",
-        "WALL mean 31.7h · p50 31.5h · p90 32.2h",
-        "Sensitivity mean h: noBoost=36 · earlyT2=32 · midT4=32 · lateT6=32 · apexT7=32"
+        "Farm league tier 4 → rare ×4 (wiki passive ladder)",
+        "Skills union (5×→16× XP): 5.8h (combat 3.8 + support 2.1)",
+        "Exclusive (drops/crafts/relics/blessings): 24.1h",
+        "  combat-training exclusive: 7.0h",
+        "Parallel credit: −3.2h",
+        "Req-graph region/flag hedge: +7.4h",
+        "WALL mean 34.1h · p50 34.1h · p90 34.1h",
+        "Sensitivity mean h: noBoost=27 · earlyT2=27 · midT4=27 · lateT6=27 · apexT7=27"
       ]
     },
     {
       "id": "necro-end-omni-dw",
       "name": "Necro Omni+Soul + Deathwarden",
       "dps": 156832,
-      "meanH": 42.1,
-      "p50": 41.2,
-      "p90": 45.1,
-      "value": 3723,
+      "meanH": 45.2,
+      "p50": 44.3,
+      "p90": 48.2,
+      "value": 3470,
       "rareMult": 6,
       "sensitivity": {
         "noBoost": 75.46162988154762,
@@ -359,7 +284,8 @@
         "Exclusive (drops/crafts/relics/blessings): 38.2h",
         "  combat-training exclusive: 16.4h",
         "Parallel credit: −3.2h",
-        "WALL mean 42.1h · p50 41.2h · p90 45.1h",
+        "Req-graph region/flag hedge: +3.1h",
+        "WALL mean 45.2h · p50 44.3h · p90 48.2h",
         "Sensitivity mean h: noBoost=75 · earlyT2=55 · midT4=45 · lateT6=42 · apexT7=40"
       ]
     },
@@ -367,10 +293,10 @@
       "id": "necro-titan",
       "name": "Necro end + Titan",
       "dps": 157620,
-      "meanH": 45,
-      "p50": 44.1,
-      "p90": 48,
-      "value": 3500,
+      "meanH": 48.8,
+      "p50": 47.9,
+      "p90": 51.8,
+      "value": 3232,
       "rareMult": 6,
       "sensitivity": {
         "noBoost": 78.36709024092262,
@@ -461,18 +387,97 @@
         "Exclusive (drops/crafts/relics/blessings): 39.9h",
         "  combat-training exclusive: 16.4h",
         "Parallel credit: −3.2h",
-        "WALL mean 45.0h · p50 44.1h · p90 48.0h",
+        "Req-graph region/flag hedge: +3.7h",
+        "WALL mean 48.8h · p50 47.9h · p90 51.8h",
         "Sensitivity mean h: noBoost=78 · earlyT2=58 · midT4=48 · lateT6=45 · apexT7=43"
+      ]
+    },
+    {
+      "id": "melee-drygore",
+      "name": "Melee dual drygores (Desert)",
+      "dps": 148311,
+      "meanH": 47.7,
+      "p50": 47.6,
+      "p90": 48.2,
+      "value": 3108,
+      "rareMult": 6,
+      "sensitivity": {
+        "noBoost": 35.509671195183984,
+        "earlyT2": 32.359671195183985,
+        "midT4": 31.758006088474026,
+        "lateT6": 31.679256088474027,
+        "apexT7": 31.639881088474027
+      },
+      "exclusive": 26,
+      "skills": 9.7,
+      "parallel": 4,
+      "ledger": [
+        {
+          "id": "relics-t7",
+          "name": "Relic ladder T1→T7",
+          "exclusiveH": 11.7
+        },
+        {
+          "id": "blessings-aegis-path",
+          "name": "Blessing track Aegis+Cinders+Perf",
+          "exclusiveH": 5.4
+        },
+        {
+          "id": "unlock-desert",
+          "name": "Unlock Desert",
+          "exclusiveH": 3
+        },
+        {
+          "id": "skill-combat-bundle-99",
+          "name": "Melee combat 99 bundle",
+          "exclusiveH": 0
+        },
+        {
+          "id": "skill-prayer-95",
+          "name": "Prayer 95",
+          "exclusiveH": 0
+        },
+        {
+          "id": "drygore-dual",
+          "name": "Dual drygores (KK)",
+          "exclusiveH": 1.66,
+          "drop": "21k rare×6"
+        },
+        {
+          "id": "jewellery-reaper-stack",
+          "name": "Reaper crew + essence / mid jewellery",
+          "exclusiveH": 3
+        },
+        {
+          "id": "skill-herb-106",
+          "name": "Herblore 106",
+          "exclusiveH": 0
+        },
+        {
+          "id": "elder-overload-line",
+          "name": "Elder overload ready",
+          "exclusiveH": 1.2
+        }
+      ],
+      "breakdown": [
+        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
+        "Skills union (5×→16× XP): 9.7h (combat 6.3 + support 3.3)",
+        "Exclusive (drops/crafts/relics/blessings): 26.0h",
+        "  combat-training exclusive: 4.7h",
+        "Parallel credit: −4.0h",
+        "Req-graph region/flag hedge: +16.0h",
+        "WALL mean 47.7h · p50 47.6h · p90 48.2h",
+        "Sensitivity mean h: noBoost=36 · earlyT2=32 · midT4=32 · lateT6=32 · apexT7=32"
       ]
     },
     {
       "id": "necro-nihil",
       "name": "Necro + Nihil Forinthry",
       "dps": 164915,
-      "meanH": 50.3,
-      "p50": 49.4,
-      "p90": 53.3,
-      "value": 3276,
+      "meanH": 57.5,
+      "p50": 56.6,
+      "p90": 60.5,
+      "value": 2866,
       "rareMult": 6,
       "sensitivity": {
         "noBoost": 83.66709024092262,
@@ -568,131 +573,19 @@
         "Exclusive (drops/crafts/relics/blessings): 45.2h",
         "  combat-training exclusive: 16.4h",
         "Parallel credit: −3.2h",
-        "WALL mean 50.3h · p50 49.4h · p90 53.3h",
+        "Req-graph region/flag hedge: +7.2h",
+        "WALL mean 57.5h · p50 56.6h · p90 60.5h",
         "Sensitivity mean h: noBoost=84 · earlyT2=64 · midT4=54 · lateT6=50 · apexT7=49"
-      ]
-    },
-    {
-      "id": "melee-cinder-ripper",
-      "name": "Melee Cinder + Ripper",
-      "dps": 156846,
-      "meanH": 51.4,
-      "p50": 50.8,
-      "p90": 53.5,
-      "value": 3053,
-      "rareMult": 6,
-      "sensitivity": {
-        "noBoost": 60.55952542598756,
-        "earlyT2": 53.65952542598756,
-        "midT4": 51.54067559070617,
-        "lateT6": 51.36817559070617,
-        "apexT7": 51.281925590706166
-      },
-      "exclusive": 43.2,
-      "skills": 13.2,
-      "parallel": 5,
-      "ledger": [
-        {
-          "id": "relics-t7",
-          "name": "Relic ladder T1→T7",
-          "exclusiveH": 11.7
-        },
-        {
-          "id": "blessings-aegis-path",
-          "name": "Blessing track Aegis+Cinders+Perf",
-          "exclusiveH": 5.4
-        },
-        {
-          "id": "unlock-forinthry",
-          "name": "Unlock Forinthry",
-          "exclusiveH": 3
-        },
-        {
-          "id": "unlock-tirannwn",
-          "name": "Unlock Tirannwn/Prif",
-          "exclusiveH": 5.5
-        },
-        {
-          "id": "unlock-desert",
-          "name": "Unlock Desert",
-          "exclusiveH": 3
-        },
-        {
-          "id": "skill-combat-bundle-99",
-          "name": "Melee combat 99 bundle",
-          "exclusiveH": 0
-        },
-        {
-          "id": "skill-prayer-95",
-          "name": "Prayer 95",
-          "exclusiveH": 0
-        },
-        {
-          "id": "drygore-dual",
-          "name": "Dual drygores (KK)",
-          "exclusiveH": 1.66,
-          "drop": "21k rare×6"
-        },
-        {
-          "id": "jewellery-reaper-stack",
-          "name": "Reaper crew + essence / mid jewellery",
-          "exclusiveH": 3
-        },
-        {
-          "id": "skill-herb-106",
-          "name": "Herblore 106",
-          "exclusiveH": 0
-        },
-        {
-          "id": "elder-overload-line",
-          "name": "Elder overload ready",
-          "exclusiveH": 1.2
-        },
-        {
-          "id": "weapon-poison-plus-plus-plus",
-          "name": "Weapon poison+++ line",
-          "exclusiveH": 0.5
-        },
-        {
-          "id": "skill-slayer-99",
-          "name": "Slayer 99",
-          "exclusiveH": 0
-        },
-        {
-          "id": "cinderbane-gloves",
-          "name": "Cinderbane gloves (Lost Grove on-task)",
-          "exclusiveH": 1.25,
-          "drop": "250k rare×6"
-        },
-        {
-          "id": "skill-sum-99",
-          "name": "Summoning 99",
-          "exclusiveH": 0
-        },
-        {
-          "id": "fam-ripper",
-          "name": "Ripper binding contract",
-          "exclusiveH": 7
-        }
-      ],
-      "breakdown": [
-        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
-        "Skills union (5×→16× XP): 13.2h (combat 8.6 + support 4.6)",
-        "Exclusive (drops/crafts/relics/blessings): 43.2h",
-        "  combat-training exclusive: 5.9h",
-        "Parallel credit: −5.0h",
-        "WALL mean 51.4h · p50 50.8h · p90 53.5h",
-        "Sensitivity mean h: noBoost=61 · earlyT2=54 · midT4=52 · lateT6=51 · apexT7=51"
       ]
     },
     {
       "id": "necro-inv",
       "name": "Necro + Asgarnia Inv + Perks",
       "dps": 206100,
-      "meanH": 67.9,
-      "p50": 67,
-      "p90": 70.9,
-      "value": 3034,
+      "meanH": 74.2,
+      "p50": 73.3,
+      "p90": 77.2,
+      "value": 2779,
       "rareMult": 6,
       "sensitivity": {
         "noBoost": 101.26965895818452,
@@ -813,7 +706,8 @@
         "Exclusive (drops/crafts/relics/blessings): 57.4h",
         "  combat-training exclusive: 16.4h",
         "Parallel credit: −3.2h",
-        "WALL mean 67.9h · p50 67.0h · p90 70.9h",
+        "Req-graph region/flag hedge: +6.2h",
+        "WALL mean 74.2h · p50 73.3h · p90 77.2h",
         "Sensitivity mean h: noBoost=101 · earlyT2=81 · midT4=71 · lateT6=68 · apexT7=66"
       ]
     },
@@ -821,10 +715,10 @@
       "id": "necro-tfn",
       "name": "Necro full TFN power (5pc)",
       "dps": 128370,
-      "meanH": 49.8,
-      "p50": 47.5,
-      "p90": 58.8,
-      "value": 2580,
+      "meanH": 51.5,
+      "p50": 49.2,
+      "p90": 60.6,
+      "value": 2494,
       "rareMult": 6,
       "sensitivity": {
         "noBoost": 133.83118113197222,
@@ -901,18 +795,87 @@
         "Exclusive (drops/crafts/relics/blessings): 46.1h",
         "  combat-training exclusive: 27.8h",
         "Parallel credit: −1.7h",
-        "WALL mean 49.8h · p50 47.5h · p90 58.8h",
+        "Req-graph region/flag hedge: +1.7h",
+        "WALL mean 51.5h · p50 49.2h · p90 60.6h",
         "Sensitivity mean h: noBoost=134 · earlyT2=83 · midT4=58 · lateT6=50 · apexT7=46"
+      ]
+    },
+    {
+      "id": "magic-crypt",
+      "name": "Magic Cryptbloom set",
+      "dps": 128263,
+      "meanH": 65.9,
+      "p50": 61,
+      "p90": 88.7,
+      "value": 1947,
+      "rareMult": 4,
+      "sensitivity": {
+        "noBoost": 179.22034000372022,
+        "earlyT2": 103.10922889260912,
+        "midT4": 65.05367333705357,
+        "lateT6": 52.368488151868384,
+        "apexT7": 46.025895559275796
+      },
+      "exclusive": 61.8,
+      "skills": 5.8,
+      "parallel": 2.5,
+      "ledger": [
+        {
+          "id": "relics-t7",
+          "name": "Relic ladder T1→T7",
+          "exclusiveH": 11.7
+        },
+        {
+          "id": "blessings-aegis-path",
+          "name": "Blessing track Aegis+Cinders+Perf",
+          "exclusiveH": 5.4
+        },
+        {
+          "id": "skill-magic-90",
+          "name": "Magic 90",
+          "exclusiveH": 0
+        },
+        {
+          "id": "skill-prayer-95",
+          "name": "Prayer 95",
+          "exclusiveH": 0
+        },
+        {
+          "id": "cryptbloom-set",
+          "name": "Cryptbloom 5pc + restore",
+          "exclusiveH": 41.67,
+          "drop": "343k rare×4"
+        },
+        {
+          "id": "jewellery-reaper-stack",
+          "name": "Reaper crew + essence / mid jewellery",
+          "exclusiveH": 3
+        },
+        {
+          "id": "skill-herb-96",
+          "name": "Herblore 96",
+          "exclusiveH": 0
+        }
+      ],
+      "breakdown": [
+        "Farm league tier 5 → rare ×4 (wiki passive ladder)",
+        "Skills union (5×→16× XP): 5.8h (combat 3.8 + support 2.1)",
+        "Exclusive (drops/crafts/relics/blessings): 61.8h",
+        "  combat-training exclusive: 3.0h",
+        "Parallel credit: −2.5h",
+        "Req-graph region/flag hedge: +0.8h",
+        "WALL mean 65.9h · p50 61.0h · p90 88.7h",
+        "Sensitivity mean h: noBoost=179 · earlyT2=103 · midT4=65 · lateT6=52 · apexT7=46"
       ]
     },
     {
       "id": "necro-full",
       "name": "Necro FULL Ancient+Nihil+Cinder",
       "dps": 231406,
-      "meanH": 93,
-      "p50": 91.7,
-      "p90": 97.6,
-      "value": 2488,
+      "meanH": 120.3,
+      "p50": 119,
+      "p90": 125,
+      "value": 1923,
       "rareMult": 6,
       "sensitivity": {
         "noBoost": 132.60713678556547,
@@ -1074,7 +1037,8 @@
         "Exclusive (drops/crafts/relics/blessings): 77.5h",
         "  combat-training exclusive: 17.7h",
         "Parallel credit: −7.3h",
-        "WALL mean 93.0h · p50 91.7h · p90 97.6h",
+        "Req-graph region/flag hedge: +27.3h",
+        "WALL mean 120.3h · p50 119.0h · p90 125.0h",
         "Sensitivity mean h: noBoost=133 · earlyT2=109 · midT4=97 · lateT6=93 · apexT7=91"
       ]
     },
@@ -1082,10 +1046,10 @@
       "id": "magic-fsoa",
       "name": "Magic Cryptbloom + FSOA (Anachronia)",
       "dps": 134708,
-      "meanH": 64.1,
-      "p50": 60.3,
-      "p90": 81,
-      "value": 2101,
+      "meanH": 74.2,
+      "p50": 70.4,
+      "p90": 91.1,
+      "value": 1815,
       "rareMult": 6,
       "sensitivity": {
         "noBoost": 207.90144469636238,
@@ -1157,29 +1121,30 @@
         "Exclusive (drops/crafts/relics/blessings): 60.2h",
         "  combat-training exclusive: 8.4h",
         "Parallel credit: −3.2h",
-        "WALL mean 64.1h · p50 60.3h · p90 81.0h",
+        "Req-graph region/flag hedge: +10.1h",
+        "WALL mean 74.2h · p50 70.4h · p90 91.1h",
         "Sensitivity mean h: noBoost=208 · earlyT2=122 · midT4=78 · lateT6=64 · apexT7=57"
       ]
     },
     {
-      "id": "magic-crypt",
-      "name": "Magic Cryptbloom set",
-      "dps": 128263,
-      "meanH": 65.1,
-      "p50": 60.2,
-      "p90": 87.9,
-      "value": 1972,
-      "rareMult": 4,
+      "id": "melee-cinder-ripper",
+      "name": "Melee Cinder + Ripper",
+      "dps": 156846,
+      "meanH": 86.6,
+      "p50": 86,
+      "p90": 88.7,
+      "value": 1812,
+      "rareMult": 6,
       "sensitivity": {
-        "noBoost": 179.22034000372022,
-        "earlyT2": 103.10922889260912,
-        "midT4": 65.05367333705357,
-        "lateT6": 52.368488151868384,
-        "apexT7": 46.025895559275796
+        "noBoost": 60.55952542598756,
+        "earlyT2": 53.65952542598756,
+        "midT4": 51.54067559070617,
+        "lateT6": 51.36817559070617,
+        "apexT7": 51.281925590706166
       },
-      "exclusive": 61.8,
-      "skills": 5.8,
-      "parallel": 2.5,
+      "exclusive": 43.2,
+      "skills": 13.2,
+      "parallel": 5,
       "ledger": [
         {
           "id": "relics-t7",
@@ -1192,8 +1157,23 @@
           "exclusiveH": 5.4
         },
         {
-          "id": "skill-magic-90",
-          "name": "Magic 90",
+          "id": "unlock-forinthry",
+          "name": "Unlock Forinthry",
+          "exclusiveH": 3
+        },
+        {
+          "id": "unlock-tirannwn",
+          "name": "Unlock Tirannwn/Prif",
+          "exclusiveH": 5.5
+        },
+        {
+          "id": "unlock-desert",
+          "name": "Unlock Desert",
+          "exclusiveH": 3
+        },
+        {
+          "id": "skill-combat-bundle-99",
+          "name": "Melee combat 99 bundle",
           "exclusiveH": 0
         },
         {
@@ -1202,10 +1182,10 @@
           "exclusiveH": 0
         },
         {
-          "id": "cryptbloom-set",
-          "name": "Cryptbloom 5pc + restore",
-          "exclusiveH": 41.67,
-          "drop": "343k rare×4"
+          "id": "drygore-dual",
+          "name": "Dual drygores (KK)",
+          "exclusiveH": 1.66,
+          "drop": "21k rare×6"
         },
         {
           "id": "jewellery-reaper-stack",
@@ -1213,19 +1193,51 @@
           "exclusiveH": 3
         },
         {
-          "id": "skill-herb-96",
-          "name": "Herblore 96",
+          "id": "skill-herb-106",
+          "name": "Herblore 106",
           "exclusiveH": 0
+        },
+        {
+          "id": "elder-overload-line",
+          "name": "Elder overload ready",
+          "exclusiveH": 1.2
+        },
+        {
+          "id": "weapon-poison-plus-plus-plus",
+          "name": "Weapon poison+++ line",
+          "exclusiveH": 0.5
+        },
+        {
+          "id": "skill-slayer-99",
+          "name": "Slayer 99",
+          "exclusiveH": 0
+        },
+        {
+          "id": "cinderbane-gloves",
+          "name": "Cinderbane gloves (Lost Grove on-task)",
+          "exclusiveH": 1.25,
+          "drop": "250k rare×6"
+        },
+        {
+          "id": "skill-sum-99",
+          "name": "Summoning 99",
+          "exclusiveH": 0
+        },
+        {
+          "id": "fam-ripper",
+          "name": "Ripper binding contract",
+          "exclusiveH": 7
         }
       ],
       "breakdown": [
-        "Farm league tier 5 → rare ×4 (wiki passive ladder)",
-        "Skills union (5×→16× XP): 5.8h (combat 3.8 + support 2.1)",
-        "Exclusive (drops/crafts/relics/blessings): 61.8h",
-        "  combat-training exclusive: 3.0h",
-        "Parallel credit: −2.5h",
-        "WALL mean 65.1h · p50 60.2h · p90 87.9h",
-        "Sensitivity mean h: noBoost=179 · earlyT2=103 · midT4=65 · lateT6=52 · apexT7=46"
+        "Farm league tier 6 → rare ×6 (wiki passive ladder)",
+        "Skills union (5×→16× XP): 13.2h (combat 8.6 + support 4.6)",
+        "Exclusive (drops/crafts/relics/blessings): 43.2h",
+        "  combat-training exclusive: 5.9h",
+        "Parallel credit: −5.0h",
+        "Req-graph region/flag hedge: +35.2h",
+        "WALL mean 86.6h · p50 86.0h · p90 88.7h",
+        "Sensitivity mean h: noBoost=61 · earlyT2=54 · midT4=52 · lateT6=51 · apexT7=51"
       ]
     }
   ]

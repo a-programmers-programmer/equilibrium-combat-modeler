@@ -24,6 +24,8 @@ export type ArmourProfileId =
   | "tank-aegis"
   | "hybrid-cinder"
   | "cryptbloom-tank"
+  | "deathwarden-tank"
+  | "tfn-power"
   | "masterwork-tank"
   | "sirenic-power"
   | "tectonic-power"
@@ -116,22 +118,64 @@ export const ARMOUR_PROFILES: readonly ArmourProfile[] = [
   },
   {
     id: "cryptbloom-tank",
-    name: "Cryptbloom tank (magic free-region)",
+    name: "Cryptbloom tank (magic — Croesus/Misthalin)",
     kind: "tank",
     armourBody: 2600,
     offhandArmour: { none: 0, defender: 200, shield: 480 },
     styleDamageMult: {
-      melee: 1.01,
+      // Magic: intended style — full tank + set EV
       magic: 1.05,
-      ranged: 1.01,
-      necromancy: 1.02,
+      // Off-style: RS3 accuracy / no style dmg — NET LOSS for DPS
+      melee: 0.94,
+      ranged: 0.94,
+      necromancy: 0.93,
     },
     lpBonus: 1400,
     prayerBonus: 14,
+    // Set (Deathspores etc.) is magic-oriented; off-style gets almost nothing
     setEffectMult: 1.06,
-    setEffectNotes: ["Cryptbloom set effect EV", "Magic synergy"],
+    setEffectNotes: ["Cryptbloom Nature's Envoy / Deathspores — magic kit"],
     archetype: "shield-tank",
-    notes: "Misthalin free-region magic tank BiS",
+    notes:
+      "T90 magic tank from Croesus (Misthalin starter). GREAT for magic+Aegis. BAD idea as necro DPS armour (wrong style).",
+  },
+  {
+    id: "deathwarden-tank",
+    name: "Deathwarden / TFN necro tank",
+    kind: "tank",
+    armourBody: 2450,
+    offhandArmour: { none: 0, defender: 180, shield: 420 },
+    styleDamageMult: {
+      necromancy: 1.06,
+      melee: 0.95,
+      magic: 0.95,
+      ranged: 0.95,
+    },
+    lpBonus: 1000,
+    prayerBonus: 12,
+    setEffectMult: 1.04,
+    setEffectNotes: ["Necro tank path (Kili)", "Aegis-friendly armour"],
+    archetype: "shield-tank",
+    notes: "Correct necro tank for Teragard Aegis — free-region Necromancy progression",
+  },
+  {
+    id: "tfn-power",
+    name: "Robes of the First Necromancer (power)",
+    kind: "power",
+    armourBody: 1550,
+    offhandArmour: { none: 0, defender: 100, shield: 0 },
+    styleDamageMult: {
+      necromancy: 1.13,
+      melee: 0.95,
+      magic: 0.95,
+      ranged: 0.95,
+    },
+    lpBonus: 400,
+    prayerBonus: 10,
+    setEffectMult: 1.05,
+    setEffectNotes: ["TFN power set"],
+    archetype: "power-dps",
+    notes: "Necro power BiS path — weaker Aegis convert than Deathwarden tank",
   },
   {
     id: "masterwork-tank",
@@ -295,6 +339,29 @@ export function resolveArmourBonuses(input: ArmourResolveInput): ArmourResolveRe
   let chaoticInsightMult = 1;
   const flags: string[] = [`Armour: ${profile.name}`];
 
+  // Off-style tank sets: set effects largely don't apply (e.g. Cryptbloom on necro)
+  if (profile.id === "cryptbloom-tank" && input.style !== "magic") {
+    setEffectMult = 1.0;
+    flags.push(
+      "⚠ Cryptbloom is MAGIC tank — off-style: no set EV + style penalty (accuracy)",
+    );
+  }
+  if (profile.id === "deathwarden-tank" && input.style !== "necromancy") {
+    setEffectMult = 1.0;
+    flags.push("⚠ Deathwarden is necro tank — off-style set muted");
+  }
+  if (profile.id === "masterwork-tank" && input.style !== "melee") {
+    setEffectMult = Math.min(setEffectMult, 1.01);
+  }
+  if (
+    (profile.id === "sirenic-power" && input.style !== "ranged") ||
+    (profile.id === "tectonic-power" && input.style !== "magic") ||
+    (profile.id === "tfn-power" && input.style !== "necromancy")
+  ) {
+    setEffectMult = 1.0;
+    flags.push("⚠ Power armour off-style — set muted");
+  }
+
   if (input.hasChaoticInsight) {
     // Set pieces count as +2 each → roughly +50–80% set-effect EV
     chaoticInsightMult = 1.08;
@@ -334,13 +401,14 @@ function defaultProfile(
 ): ArmourProfileId {
   if (hasAegis && offhand === "shield") {
     if (style === "magic") return "cryptbloom-tank";
+    if (style === "necromancy") return "deathwarden-tank";
     if (style === "melee") return "masterwork-tank";
     return "tank-aegis";
   }
-  if (hasAegis && offhand === "defender") return "mixed-aegis-power";
+  if (hasAegis) return "mixed-aegis-power";
   if (style === "ranged") return "sirenic-power";
   if (style === "magic") return "tectonic-power";
-  if (style === "melee") return "power-bis";
+  if (style === "necromancy") return "tfn-power";
   return "power-bis";
 }
 
